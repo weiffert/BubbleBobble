@@ -9,7 +9,8 @@ int _tmain(int argc, _TCHAR* argv[])
 {
 	sf::RenderWindow window(sf::VideoMode(200, 200), "SFML works!");
 	sf::CircleShape shape(100.f);
-	shape.setFillColor(sf::Color::Green);
+	sf::Color c(250, 0, 0);
+	shape.setFillColor(c);
 
 	while (window.isOpen())
 	{

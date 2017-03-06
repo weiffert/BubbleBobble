@@ -1,0 +1,12 @@
+﻿Build started 3/6/2017 3:41:27 PM.
+     1>Project "C:\Users\17wbe01\Documents\GitHub\BubbleBobble\BubbleBobble\BubbleBobble\BubbleBobble.vcxproj" on node 2 (Build target(s)).
+     1>ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /IC:\SFML\include /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D SFML_STATIC /D WIN32 /D _DEBUG /D _CONSOLE /D _LIB /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Yu"stdafx.h" /Fp"Debug\BubbleBobble.pch" /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt GameObject.cpp
+         GameObject.cpp
+     1>c:\users\17wbe01\documents\github\bubblebobble\bubblebobble\bubblebobble\gameobject.h(17): error C2146: syntax error : missing ';' before identifier 'name'
+     1>c:\users\17wbe01\documents\github\bubblebobble\bubblebobble\bubblebobble\gameobject.h(17): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+     1>Done Building Project "C:\Users\17wbe01\Documents\GitHub\BubbleBobble\BubbleBobble\BubbleBobble\BubbleBobble.vcxproj" (Build target(s)) -- FAILED.
+
+Build FAILED.
+
+Time Elapsed 00:00:02.30
