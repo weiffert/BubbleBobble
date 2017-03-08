@@ -3,10 +3,8 @@
 
 #include <string>
 #include <SFML/Graphics.hpp>
-#include "FileManager.h"
-#include "Entity.h"
+#include "GameObject.h"
 #include "InputManager.h"
-#include "backGround.h"
 
 
 class BaseState
@@ -39,17 +37,7 @@ class BaseState
         std::string folder;
         //Handles all the input that is detected in the Game class and returns which keys were pressed to the state
         InputManager inputManager;
-        std::vector< Entity* > entityVector;
-
-
-
-        //The FileManager loads all the files the state needs and stores them then returns the files when the class needs
-        //them.
-        FileManager files;
-
-
-
-
+        std::vector< GameObject* > ObjectVector;
 };
 
 

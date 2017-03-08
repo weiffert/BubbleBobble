@@ -23,7 +23,7 @@ void BaseState::draw(sf::RenderWindow &window)
 
 void BaseState::unload()
 {
-    files.unload();
+    //files.unload();
 }
 
 bool BaseState::switchTrue()
