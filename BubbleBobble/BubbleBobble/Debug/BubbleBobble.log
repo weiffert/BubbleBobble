@@ -1,12 +1,28 @@
-﻿Build started 3/6/2017 3:41:27 PM.
-     1>Project "C:\Users\17wbe01\Documents\GitHub\BubbleBobble\BubbleBobble\BubbleBobble\BubbleBobble.vcxproj" on node 2 (Build target(s)).
+﻿Build started 3/8/2017 3:43:43 PM.
+     1>Project "C:\Users\17a9s01\Documents\GitHub\BubbleBobble\BubbleBobble\BubbleBobble\BubbleBobble.vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /IC:\SFML\include /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D SFML_STATIC /D WIN32 /D _DEBUG /D _CONSOLE /D _LIB /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Yu"stdafx.h" /Fp"Debug\BubbleBobble.pch" /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt GameObject.cpp
-         GameObject.cpp
-     1>c:\users\17wbe01\documents\github\bubblebobble\bubblebobble\bubblebobble\gameobject.h(17): error C2146: syntax error : missing ';' before identifier 'name'
-     1>c:\users\17wbe01\documents\github\bubblebobble\bubblebobble\bubblebobble\gameobject.h(17): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
-     1>Done Building Project "C:\Users\17wbe01\Documents\GitHub\BubbleBobble\BubbleBobble\BubbleBobble\BubbleBobble.vcxproj" (Build target(s)) -- FAILED.
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /IC:\SFML\include /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D SFML_STATIC /D WIN32 /D _DEBUG /D _CONSOLE /D _LIB /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Yu"stdafx.h" /Fp"Debug\BubbleBobble.pch" /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt Animation.cpp BaseState.cpp Game.cpp Main.cpp StateManager.cpp
+         StateManager.cpp
+     1>c:\users\17a9s01\documents\github\bubblebobble\bubblebobble\bubblebobble\statemanager.cpp(1): warning C4627: '#include "StateManager.h"': skipped when looking for precompiled header use
+                 Add directive to 'stdafx.h' or rebuild precompiled header
+     1>c:\users\17a9s01\documents\github\bubblebobble\bubblebobble\bubblebobble\statemanager.cpp(65): fatal error C1010: unexpected end of file while looking for precompiled header. Did you forget to add '#include "stdafx.h"' to your source?
+         Main.cpp
+     1>c:\users\17a9s01\documents\github\bubblebobble\bubblebobble\bubblebobble\statemanager.h(8): fatal error C1083: Cannot open include file: 'SplashScreenState.h': No such file or directory
+         Game.cpp
+     1>c:\users\17a9s01\documents\github\bubblebobble\bubblebobble\bubblebobble\game.cpp(1): warning C4627: '#include "Game.h"': skipped when looking for precompiled header use
+                 Add directive to 'stdafx.h' or rebuild precompiled header
+     1>c:\users\17a9s01\documents\github\bubblebobble\bubblebobble\bubblebobble\game.cpp(54): fatal error C1010: unexpected end of file while looking for precompiled header. Did you forget to add '#include "stdafx.h"' to your source?
+         BaseState.cpp
+     1>c:\users\17a9s01\documents\github\bubblebobble\bubblebobble\bubblebobble\basestate.cpp(1): warning C4627: '#include "BaseState.h"': skipped when looking for precompiled header use
+                 Add directive to 'stdafx.h' or rebuild precompiled header
+     1>c:\users\17a9s01\documents\github\bubblebobble\bubblebobble\bubblebobble\basestate.cpp(46): fatal error C1010: unexpected end of file while looking for precompiled header. Did you forget to add '#include "stdafx.h"' to your source?
+         Animation.cpp
+     1>c:\users\17a9s01\documents\github\bubblebobble\bubblebobble\bubblebobble\animation.cpp(1): warning C4627: '#include "Animation.h"': skipped when looking for precompiled header use
+                 Add directive to 'stdafx.h' or rebuild precompiled header
+     1>c:\users\17a9s01\documents\github\bubblebobble\bubblebobble\bubblebobble\animation.cpp(49): fatal error C1010: unexpected end of file while looking for precompiled header. Did you forget to add '#include "stdafx.h"' to your source?
+         Generating Code...
+     1>Done Building Project "C:\Users\17a9s01\Documents\GitHub\BubbleBobble\BubbleBobble\BubbleBobble\BubbleBobble.vcxproj" (Build target(s)) -- FAILED.
 
 Build FAILED.
 
-Time Elapsed 00:00:02.30
+Time Elapsed 00:00:00.63
