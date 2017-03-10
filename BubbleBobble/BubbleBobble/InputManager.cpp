@@ -1,3 +1,4 @@
+#include "stdafx.h"
 #include "InputManager.h"
 
 InputManager::InputManager()
@@ -67,7 +68,7 @@ bool InputManager::keyReleased(sf::Keyboard::Key key)
 bool InputManager::keyReleased(std::vector< sf::Keyboard::Key >& keys)
 {
     //checks how many of the keys were released
-    int tally;
+    int tally = 0;
     for(int key = 0; key < keys.size(); key++)
     {
         if(event_m.type == sf::Event::KeyReleased)
@@ -110,4 +111,3 @@ bool InputManager::keyDown(std::vector< sf::Keyboard::Key >& keys)
     else
         return false;
 }
-
