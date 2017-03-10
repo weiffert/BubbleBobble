@@ -6,6 +6,7 @@
 GameObject::GameObject()
 {
 	//add instance variables
+
 }
 
 
@@ -61,7 +62,7 @@ void GameObject::distance()
 
 void GameObject::render()
 {
-	window.draw(rectangle);
+	window->draw(rectangle);
 }
 
 
@@ -129,9 +130,16 @@ void GameObject::setPedometerLimit(float set)
 {
 	distanceLimit = set;
 }
-void GameObject::setRenderWindow(sf::RenderWindow set)
+void GameObject::setRenderWindow(sf::RenderWindow *set)
 {
 	window = set;
+}
+void GameObject::setAnimation(std::string type)
+{
+	if (type == "")
+	{
+		animations.push_back(Animation(&texture, sf::Vector2u(1,0), 0, 0));
+	}
 }
 
 void GameObject::startClock()
