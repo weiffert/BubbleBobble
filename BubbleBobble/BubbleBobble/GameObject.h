@@ -11,7 +11,7 @@ public:
 	GameObject();
 	~GameObject();
 	//Game Logic
-	void collision(GameObject);
+	void collision(GameObject *);
 	void time();
 	void distance();
 	void render();
@@ -41,7 +41,7 @@ public:
 
 	void startClock();
 	void startPedometer();
-	double stopClock();
+	sf::Time stopClock();
 	double stopPedometer();
 
 protected:
