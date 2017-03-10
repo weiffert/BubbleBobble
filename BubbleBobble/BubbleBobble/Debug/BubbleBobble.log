@@ -1,19 +1,26 @@
-﻿Build started 3/10/2017 2:46:17 PM.
+﻿Build started 3/10/2017 3:01:40 PM.
      1>Project "C:\Users\18mac03\Desktop\Bubble Bobble\BubbleBobble\BubbleBobble\BubbleBobble\BubbleBobble.vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /IC:\SFML\include /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D SFML_STATIC /D WIN32 /D _DEBUG /D _CONSOLE /D _LIB /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Yu"stdafx.h" /Fp"Debug\BubbleBobble.pch" /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt Game.cpp GameObject.cpp Main.cpp StateManager.cpp
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /IC:\SFML\include /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D SFML_STATIC /D WIN32 /D _DEBUG /D _CONSOLE /D _LIB /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Yu"stdafx.h" /Fp"Debug\BubbleBobble.pch" /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt Game.cpp GameObject.cpp Monster.cpp StateManager.cpp
          StateManager.cpp
      1>c:\users\18mac03\desktop\bubble bobble\bubblebobble\bubblebobble\bubblebobble\statemanager.h(8): fatal error C1083: Cannot open include file: 'SplashScreenState.h': No such file or directory
-         Main.cpp
-     1>c:\users\18mac03\desktop\bubble bobble\bubblebobble\bubblebobble\bubblebobble\statemanager.h(8): fatal error C1083: Cannot open include file: 'SplashScreenState.h': No such file or directory
          GameObject.cpp
+     1>c:\sfml\include\sfml\window\window.hpp(530): error C2248: 'sf::NonCopyable::operator =' : cannot access private member declared in class 'sf::NonCopyable'
+                 c:\sfml\include\sfml\system\noncopyable.hpp(79) : see declaration of 'sf::NonCopyable::operator ='
+                 c:\sfml\include\sfml\system\noncopyable.hpp(42) : see declaration of 'sf::NonCopyable'
+                 This diagnostic occurred in the compiler generated function 'sf::Window &sf::Window::operator =(const sf::Window &)'
+     1>c:\sfml\include\sfml\graphics\rendertarget.hpp(419): error C2248: 'sf::NonCopyable::operator =' : cannot access private member declared in class 'sf::NonCopyable'
+                 c:\sfml\include\sfml\system\noncopyable.hpp(79) : see declaration of 'sf::NonCopyable::operator ='
+                 c:\sfml\include\sfml\system\noncopyable.hpp(42) : see declaration of 'sf::NonCopyable'
+                 This diagnostic occurred in the compiler generated function 'sf::RenderTarget &sf::RenderTarget::operator =(const sf::RenderTarget &)'
          Game.cpp
-     1>c:\users\18mac03\desktop\bubble bobble\bubblebobble\bubblebobble\bubblebobble\statemanager.h(8): fatal error C1083: Cannot open include file: 'SplashScreenState.h': No such file or directory
+     1>c:\users\18mac03\desktop\bubble bobble\bubblebobble\bubblebobble\bubblebobble\game.cpp(1): fatal error C1041: cannot open program database 'c:\users\18mac03\desktop\bubble bobble\bubblebobble\bubblebobble\bubblebobble\debug\vc120.pdb'; if multiple CL.EXE write to the same .PDB file, please use /FS
          Generating Code...
-     1>c:\users\18mac03\desktop\bubble bobble\bubblebobble\bubblebobble\bubblebobble\gameobject.cpp(127): error C4716: 'GameObject::stopClock' : must return a value
-     1>c:\users\18mac03\desktop\bubble bobble\bubblebobble\bubblebobble\bubblebobble\gameobject.cpp(131): error C4716: 'GameObject::stopPedometer' : must return a value
+         Compiling...
+         Monster.cpp
+         Generating Code...
      1>Done Building Project "C:\Users\18mac03\Desktop\Bubble Bobble\BubbleBobble\BubbleBobble\BubbleBobble\BubbleBobble.vcxproj" (Build target(s)) -- FAILED.
 
 Build FAILED.
 
-Time Elapsed 00:00:01.79
+Time Elapsed 00:00:01.73
