@@ -26,9 +26,14 @@ void GameObject::update()
 }
 
 //Game Logic
-void GameObject::collision(GameObject)
+//Simple Collision.
+void GameObject::collision(GameObject other)
 {
-	//if collision, call collided();
+	if (rectangle.getGlobalBounds().intersects(other.getRectangle().getGlobalBounds()))
+	{
+		collided();
+		other.collided();
+	}
 }
 
 //Returns true and stops the timer 
@@ -53,6 +58,12 @@ void GameObject::distance()
 		distanceLimitPassed();
 	}
 }
+
+void GameObject::render()
+{
+	window.draw(rectangle);
+}
+
 
 //Specific event type functions.
 void GameObject::collided()
@@ -91,6 +102,14 @@ float GameObject::getDistanceElapsed()
 {
 	return pedometer;
 }
+sf::RectangleShape GameObject::getRectangle()
+{
+	return rectangle;
+}
+sf::Texture GameObject::getTexture()
+{
+	return texture;
+}
 
 
 //Set variables
@@ -110,6 +129,11 @@ void GameObject::setPedometerLimit(float set)
 {
 	distanceLimit = set;
 }
+void GameObject::setRenderWindow(sf::RenderWindow set)
+{
+	window = set;
+}
+
 void GameObject::startClock()
 {
 	trackingTime = true;

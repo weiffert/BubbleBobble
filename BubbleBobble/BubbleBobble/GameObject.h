@@ -13,6 +13,7 @@ public:
 	void collision(GameObject);
 	void time();
 	void distance();
+	void render();
 
 	//Updates every step.
 	virtual void update();
@@ -27,7 +28,6 @@ public:
 	sf::Time getTimeElapsed();
 	float getDistanceElapsed();
 	sf::Vector2f getVelocity();
-	//need to be added
 	sf::RectangleShape getRectangle();
 	sf::Texture getTexture();
 
@@ -35,6 +35,7 @@ public:
 	void setTimeLimit(sf::Time);
 	void setPedometerLimit(float);
 	void setVelocity(sf::Vector2f);
+	void setRenderWindow(sf::RenderWindow);
 
 	void startClock();
 	void startPedometer();
@@ -44,11 +45,13 @@ public:
 protected:
 	sf::Vector2f velocity;
 
+	//Clock variables.
 	sf::Clock clock;
 	sf::Time timeElapsed;
 	sf::Time timeLimit;
 	bool trackingTime;
 
+	//Distance variables.
 	float pedometer;
 	float distanceElapsed;
 	float distanceLimit;
@@ -58,5 +61,6 @@ protected:
 	sf::Texture texture;
 	std::string name;
 	std::vector<double> data;
+	sf::RenderWindow window;
 };
 
