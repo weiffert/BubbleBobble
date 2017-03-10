@@ -85,6 +85,7 @@
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Animation.h" />
     <ClInclude Include="BaseState.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="GameObject.h" />
