@@ -28,12 +28,12 @@ void GameObject::update()
 
 //Game Logic
 //Simple Collision.
-void GameObject::collision(GameObject other)
+void GameObject::collision(GameObject *other)
 {
-	if (rectangle.getGlobalBounds().intersects(other.getRectangle().getGlobalBounds()))
+	if (rectangle.getGlobalBounds().intersects(other->getRectangle().getGlobalBounds()))
 	{
 		collided();
-		other.collided();
+		other->collided();
 	}
 }
 
@@ -152,12 +152,14 @@ void GameObject::startPedometer()
 	trackingDistance = true;
 	pedometer = 0;
 }
-double GameObject::stopClock()
+sf::Time GameObject::stopClock()
 {
 	trackingTime = false;
 	timeElapsed = clock.getElapsedTime();
+	return timeElapsed;
 }
 double GameObject::stopPedometer()
 {
 	trackingDistance = false;
+	return pedometer;
 }
