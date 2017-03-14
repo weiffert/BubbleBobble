@@ -37,7 +37,7 @@ class BaseState
         std::string folder;
         //Handles all the input that is detected in the Game class and returns which keys were pressed to the state
         InputManager inputManager;
-        std::vector< GameObject* > ObjectVector;
+        std::vector< std::vector<GameObject*> > objectVector;
 };
 
 
