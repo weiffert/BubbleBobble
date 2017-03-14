@@ -3,6 +3,7 @@
 #include <vector>
 #include "SFML\System.hpp"
 #include "SFML\Graphics.hpp"
+#include "Animation.h"
 
 class GameObject
 {
@@ -10,7 +11,7 @@ public:
 	GameObject();
 	~GameObject();
 	//Game Logic
-	void collision(GameObject);
+	void collision(GameObject *);
 	void time();
 	void distance();
 	void render();
@@ -35,11 +36,12 @@ public:
 	void setTimeLimit(sf::Time);
 	void setPedometerLimit(float);
 	void setVelocity(sf::Vector2f);
-	void setRenderWindow(sf::RenderWindow);
+	void setRenderWindow(sf::RenderWindow *);
+	void setAnimation(std::string);
 
 	void startClock();
 	void startPedometer();
-	double stopClock();
+	sf::Time stopClock();
 	double stopPedometer();
 
 protected:
@@ -59,8 +61,9 @@ protected:
 
 	sf::RectangleShape rectangle;
 	sf::Texture texture;
+	std::vector<Animation> animations;
 	std::string name;
 	std::vector<double> data;
-	sf::RenderWindow window;
+	sf::RenderWindow *window;
 };
 
