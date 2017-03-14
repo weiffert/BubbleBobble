@@ -6,5 +6,6 @@ class Level :
 public:
 	Level();
 	~Level();
+	virtual void collision(GameObject *);
 };
 
