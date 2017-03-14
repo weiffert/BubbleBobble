@@ -11,7 +11,7 @@ public:
 	GameObject();
 	~GameObject();
 	//Game Logic
-	void collision(GameObject *);
+	virtual void collision(GameObject *);
 	void time();
 	void distance();
 	void render();
