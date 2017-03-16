@@ -39,6 +39,4 @@ class BaseState
         InputManager inputManager;
         std::vector< std::vector<GameObject*> > objectVector;
 };
-
-
 #endif // BASESTATE_H

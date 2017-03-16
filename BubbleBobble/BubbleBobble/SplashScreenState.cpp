@@ -10,8 +10,6 @@ SplashScreenState::SplashScreenState()
 	//from switching to the menustate
     stateSwitch = false;
     c1.restart();
-
-
 }
 
 SplashScreenState::~SplashScreenState()
