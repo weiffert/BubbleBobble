@@ -1,7 +1,7 @@
 #ifndef SPLASHSCREENSTATE_H
 #define SPLASHSCREENSTATE_H
 
-#include <BaseState.h>
+#include "BaseState.h"
 
 
 class SplashScreenState : public BaseState
