@@ -13,7 +13,7 @@ Level::~Level()
 
 void Level::collision(GameObject *other)
 {
-	if (velocity.x != 0 && velocity.y != 0)
+	/*if (velocity.x != 0 && velocity.y != 0)
 	{
 		bool horizontal = false;
 		bool vertical = false;
@@ -60,6 +60,97 @@ void Level::collision(GameObject *other)
 		if (vertical)
 		{
 
+		}
+	}*/
+
+
+	if (velocity.x || velocity.y)
+	{
+		int horizontal = 0;
+		int vertical = 0;
+
+		int multiplierX, multiplierY = 1;
+		sf::RectangleShape rect = other->getRectangle();
+		sf::RectangleShape moving = rect;
+		moving.move(other->getVelocity());
+
+		sf::Vector2f center;
+		sf::Vector2i corner;
+		float width, height;
+		width = moving.getLocalBounds().width;
+		height = moving.getLocalBounds().height;
+		center.x = moving.getGlobalBounds().left + width / 2;
+		center.y = moving.getGlobalBounds().top + height / 2;
+
+		if (other->getVelocity().x < 0)
+			multiplierX = -1;
+		if (other->getVelocity().y < 0)
+			multiplierY = -1;
+
+		corner.x = center.x + multiplierX * width / 2;
+		corner.y = center.y + multiplierY * height / 2;
+
+		if (std::floor(moving.getPosition().x / 8) != std::floor(rect.getPosition().x / 8))
+		{
+			int increment = 0;
+			do
+			{
+				horizontal = bitmap[corner.x][corner.y + multiplierY * increment];
+				increment++;
+			} while (horizontal == 0 && increment < height / 8);
+		}
+
+		if (std::floor(moving.getPosition().y / 8) != std::floor(rect.getPosition().y / 8))
+		{
+			int increment = 0;
+			do
+			{
+				vertical = bitmap[corner.x + -1 * multiplierX * increment][corner.y];
+				increment++;
+			} while (vertical == 0 && increment < width / 8);
+		}
+
+		if (other->getName().find("player"))
+		{
+
+		}
+		else if (other->getName().find("monster"))
+		{
+
+		}
+		else
+		{
+
+		}
+
+	}
+}
+
+void Level::bitmapMaker()
+{
+	sf::Image image = texture.copyToImage();
+	int height = image.getSize().y;
+	int width = image.getSize().x;
+
+	sf::Color black = sf::Color(0, 0, 0);
+
+	for (int x = 0; x < width / 8; x++)
+	{
+		for (int y = 0; y < height / 8; y++)
+		{
+			if (image.getPixel(x * 8 + 3, y * 8 + 3) == black)
+				bitmap[x][y] = 0;
+			else
+				bitmap[x][y] = 1;
+		}
+	}
+
+	for (int x = 0; x < width / 8 - 1; x++)
+	{
+		for (int y = 0; y < height / 8 - 1; y++)
+		{
+			if (bitmap[x][y] == 0 && bitmap[x][y + 1] == 1)
+				bitmap[x][y] = 2;
 		}
 	}
 }
