@@ -1,0 +1,10 @@
+../../BubbleBobble/textures/Levels/level1/level1base.png
+../../BubbleBobble/textures/Levels/level2/level2base.png
+../../BubbleBobble/textures/Levels/level3/level3base.png
+../../BubbleBobble/textures/Levels/level4/level4base.png
+../../BubbleBobble/textures/Levels/level5/level5base.png
+../../BubbleBobble/textures/Levels/level6/level6base.png
+../../BubbleBobble/textures/Levels/level7/level7base.png
+../../BubbleBobble/textures/Levels/level8/level8base.png
+../../BubbleBobble/textures/Levels/level9/level9base.png
+../../BubbleBobble/textures/Levels/level10/level10base.png

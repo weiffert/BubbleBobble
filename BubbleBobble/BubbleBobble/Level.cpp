@@ -128,29 +128,4 @@ void Level::collision(GameObject *other)
 
 void Level::bitmapMaker()
 {
-	sf::Image image = texture.copyToImage();
-	int height = image.getSize().y;
-	int width = image.getSize().x;
-
-	sf::Color black = sf::Color(0, 0, 0);
-
-	for (int x = 0; x < width / 8; x++)
-	{
-		for (int y = 0; y < height / 8; y++)
-		{
-			if (image.getPixel(x * 8 + 3, y * 8 + 3) == black)
-				bitmap[x][y] = 0;
-			else
-				bitmap[x][y] = 1;
-		}
-	}
-
-	for (int x = 0; x < width / 8 - 1; x++)
-	{
-		for (int y = 0; y < height / 8 - 1; y++)
-		{
-			if (bitmap[x][y] == 0 && bitmap[x][y + 1] == 1)
-				bitmap[x][y] = 2;
-		}
-	}
 }
