@@ -1,6 +1,7 @@
 #include "stdafx.h"
 #include "GameObject.h"
 #include <math.h>
+#include <iostream>
 
 
 GameObject::GameObject()

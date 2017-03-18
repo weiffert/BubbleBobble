@@ -1,9 +1,20 @@
 #include "stdafx.h"
 #include "Level.h"
+#include <iostream>
+#include <fstream>
 
 
 Level::Level()
 {
+}
+
+
+Level::Level(std::string id)
+{
+	name = id;
+	if (!texture.loadFromFile("../textures/Levels/" + name + "/" + name + "base.png"))
+		std::cout << "Failed to load " << "../textures/Levels/" << name << "/" << name << "base.png";
+	bitmapMaker();
 }
 
 
@@ -128,4 +139,25 @@ void Level::collision(GameObject *other)
 
 void Level::bitmapMaker()
 {
+	std::fstream input;
+	input.open("../textures/Levels/" + name + "/" + name + "base.txt");
+	if (input.is_open())
+	{
+		int incrementX = 0;
+		int incrementY = 0;
+		while (!input.eof() && incrementX < BITMAP_WIDTH)
+		{
+			input >> bitmap[incrementX][incrementY];
+			incrementY++;
+			if (incrementY >= BITMAP_HEIGHT)
+			{
+				incrementX++;
+				incrementY = 0;
+			}
+		}
+	}
+	else
+	{
+		std::cout << "Failed to load " << "../textures/Levels/" << name << "/" << name << "base.txt";
+	}
 }
