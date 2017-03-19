@@ -47,14 +47,16 @@ int _tmain(int argc, _TCHAR* argv[])
 				sf::Color black = sf::Color(0, 0, 0);
 
 				for (int x = 0; x < width; x++)
+				{
 					for (int y = 0; y < height; y++)
 					{
 						int positionX = std::floor(x / 8);
 						int positionY = std::floor(y / 8);
 						if (bitmap.at(positionX).at(positionY) == 0)
-							if (image.getPixel(positionX, positionY) != black)
+							if (image.getPixel(x, y) != black)
 								bitmap.at(positionX).at(positionY) = 1;
 					}
+				}
 
 				for (int x = 0; x < bitmap.size(); x++)
 				{
@@ -73,7 +75,7 @@ int _tmain(int argc, _TCHAR* argv[])
 				{
 					for (int x = 0; x < bitmap.size(); x++)
 					{
-						for (int y = 0; y < bitmap.at(x).size() - 1; y++)
+						for (int y = 0; y < bitmap.at(x).size(); y++)
 						{
 							output << bitmap.at(x).at(y) << std::endl;
 						}
@@ -84,6 +86,19 @@ int _tmain(int argc, _TCHAR* argv[])
 					std::cout << "Failed to open " + file + ".txt" << std::endl;
 				}
 				output.close();
+
+				/*
+				for (int y = 0; y < bitmap.at(1).size(); y++)
+				{
+					for (int x = 0; x < bitmap.size(); x++)
+					{
+						std::cout << bitmap.at(x).at(y);
+					}
+					std::cout << std::endl;
+				}
+
+				system("pause");
+				*/
 			}
 		}
 	}
