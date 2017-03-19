@@ -96,6 +96,8 @@
     <ClInclude Include="Monster.h" />
     <ClInclude Include="Pickup.h" />
     <ClInclude Include="Player.h" />
+    <ClInclude Include="PointText.h" />
+    <ClInclude Include="Projectile.h" />
     <ClInclude Include="SplashScreenState.h" />
     <ClInclude Include="StateManager.h" />
     <ClInclude Include="stdafx.h" />
@@ -113,6 +115,8 @@
     <ClCompile Include="Monster.cpp" />
     <ClCompile Include="Pickup.cpp" />
     <ClCompile Include="Player.cpp" />
+    <ClCompile Include="PointText.cpp" />
+    <ClCompile Include="Projectile.cpp" />
     <ClCompile Include="SplashScreenState.cpp" />
     <ClCompile Include="StateManager.cpp" />
     <ClCompile Include="stdafx.cpp">

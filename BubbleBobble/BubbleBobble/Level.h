@@ -15,6 +15,7 @@ public:
 	virtual void update();
 	virtual void timeLimitPassed();
 	virtual void distanceLimitPassed();
+	virtual void levelTransition();
 	void bitmapMaker();
 
 private:
@@ -22,6 +23,6 @@ private:
 	const int BITMAP_HEIGHT = 28;
 	int bitmap[32][28];
 	void enemyCheck();
-	void levelTransition();
+	void startLevel();
 };
 

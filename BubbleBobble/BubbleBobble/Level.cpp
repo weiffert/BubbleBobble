@@ -24,6 +24,7 @@ Level::~Level()
 
 void Level::update()
 {
+	enemyCheck();
 	time();
 	distance();
 }
@@ -32,12 +33,16 @@ void Level::timeLimitPassed()
 {
 	levelTransition();
 	//get next level. call levelTransition.
+	//get players. call levelTransition.
 }
 
 void Level::distanceLimitPassed()
 {
 	if (offTop())
+	{
 		death();
+		//get next level. call startLevel();
+	}
 }
 
 void Level::levelTransition()
@@ -45,6 +50,11 @@ void Level::levelTransition()
 	setVelocity(0, -1);
 	setPedometerLimit(window->getSize().y);
 	startPedometer();
+}
+
+void Level::startLevel()
+{
+
 }
 
 void Level::collision(GameObject *other)

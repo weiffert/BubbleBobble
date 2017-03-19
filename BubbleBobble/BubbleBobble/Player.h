@@ -6,5 +6,6 @@ class Player :
 public:
 	Player();
 	~Player();
+	virtual void levelTransition();
 };
 

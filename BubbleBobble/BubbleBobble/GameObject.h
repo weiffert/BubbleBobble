@@ -14,16 +14,18 @@ public:
 	virtual void collision(GameObject *);
 	void time();
 	void distance();
-	void render();
+	virtual void render();
 
 	//Updates every step.
 	virtual void update();
+	virtual void updateVelocity();
 
 	//Specific event type functions.
 	virtual void collided();
 	virtual void timeLimitPassed();
 	virtual void distanceLimitPassed();
 	virtual void death();
+	virtual void levelTransition();
 
 	std::string getName();
 	sf::Time getTimeElapsed();
@@ -40,6 +42,7 @@ public:
 	void velocityToNextGridLine(bool);
 	void setRenderWindow(sf::RenderWindow *);
 	void setAnimation(std::string);
+	void setPosition(float, float);
 
 	void startClock();
 	void startPedometer();

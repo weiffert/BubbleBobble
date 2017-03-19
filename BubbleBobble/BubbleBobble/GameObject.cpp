@@ -10,15 +10,22 @@ GameObject::GameObject()
 
 }
 
-
 GameObject::~GameObject()
 {
 }
 
+
 void GameObject::update()
 {
+	updateVelocity();
 	time();
 	distance();
+}
+
+void GameObject::updateVelocity()
+{
+	//any change. then...
+	rectangle.move(velocity);
 }
 
 //Game Logic
@@ -75,11 +82,11 @@ void GameObject::death()
 }
 void GameObject::timeLimitPassed()
 {
-
+	death();
 }
 void GameObject::distanceLimitPassed()
 {
-
+	death();
 }
 
 //get variables.
@@ -160,6 +167,10 @@ void GameObject::setAnimation(std::string type)
 	{
 		animations.push_back(Animation(&texture, sf::Vector2u(1,0), 0, 0));
 	}
+}
+void GameObject::setPosition(float x, float y)
+{
+	rectangle.setPosition(x, y);
 }
 
 void GameObject::startClock()

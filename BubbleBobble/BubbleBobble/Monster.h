@@ -6,5 +6,6 @@ class Monster :
 public:
 	Monster();
 	~Monster();
+	virtual void death();
 };
 
