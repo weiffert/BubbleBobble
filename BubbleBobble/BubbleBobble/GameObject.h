@@ -36,6 +36,7 @@ public:
 	void setTimeLimit(sf::Time);
 	void setPedometerLimit(float);
 	void setVelocity(sf::Vector2f);
+	void velocityToNextGridLine(bool);
 	void setRenderWindow(sf::RenderWindow *);
 	void setAnimation(std::string);
 

@@ -123,6 +123,23 @@ void GameObject::setVelocity(sf::Vector2f set)
 {
 	velocity = set;
 }
+void GameObject::velocityToNextGridLine(bool horizontal)
+{
+	if (horizontal)
+	{
+		sf::Vector2f newVelocity;
+		newVelocity.x = std::floor(rectangle.getPosition().x / 8) * 8 - rectangle.getPosition().x;
+		newVelocity.y = getVelocity().y;
+		setVelocity(newVelocity);
+	}
+	else
+	{
+		sf::Vector2f newVelocity;
+		newVelocity.y = std::floor(rectangle.getPosition().y / 8) * 8 - rectangle.getPosition().y;
+		newVelocity.x = getVelocity().x;
+		setVelocity(newVelocity);
+	}
+}
 void GameObject::setTimeLimit(sf::Time set)
 {
 	timeLimit = set;

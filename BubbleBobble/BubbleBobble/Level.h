@@ -1,5 +1,7 @@
 #pragma once
 #include "GameObject.h"
+#include "Player.h"
+#include "Monster.h"
 #include <string>
 
 class Level :

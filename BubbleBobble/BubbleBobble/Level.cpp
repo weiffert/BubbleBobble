@@ -77,8 +77,7 @@ void Level::collision(GameObject *other)
 
 	if (velocity.x || velocity.y)
 	{
-		int horizontal = 0;
-		int vertical = 0;
+		std::vector<int> horizontal, vertical;
 
 		int multiplierX, multiplierY = 1;
 		sf::RectangleShape rect = other->getRectangle();
@@ -103,33 +102,42 @@ void Level::collision(GameObject *other)
 
 		if (std::floor(moving.getPosition().x / 8) != std::floor(rect.getPosition().x / 8))
 		{
-			int increment = 0;
-			do
+			for (int i = 0; i < height / 8; i++)
 			{
-				horizontal = bitmap[corner.x][corner.y + multiplierY * increment];
-				increment++;
-			} while (horizontal == 0 && increment < height / 8);
+				horizontal.push_back(bitmap[corner.x][corner.y + multiplierY * i]);
+			}
 		}
 
 		if (std::floor(moving.getPosition().y / 8) != std::floor(rect.getPosition().y / 8))
 		{
-			int increment = 0;
-			do
+			for (int i = 0; i < height / 8; i++)
 			{
-				vertical = bitmap[corner.x + -1 * multiplierX * increment][corner.y];
-				increment++;
-			} while (vertical == 0 && increment < width / 8);
+				vertical.push_back(bitmap[corner.x + -1 * multiplierX * i][corner.y]);
+			}
 		}
 
-		if (other->getName().find("player"))
+		//Interpret.
+		for (int i = 0; i < horizontal.size(); i++)
 		{
-
+			enum type { Wall = 1 };
+			switch (horizontal.at(i))
+			{
+			case Wall:
+				other->velocityToNextGridLine(true);
+			}
 		}
-		else if (other->getName().find("monster"))
+		for (int i = 0; i < vertical.size(); i++)
 		{
-
+			enum type { Floor = 2 };
+			switch (horizontal.at(i))
+			{
+			case Floor:
+				if (other->getVelocity().y < 0)
+					other->velocityToNextGridLine(false);
+			}
 		}
-		else
+
+		if (other->getName().find("monster"))
 		{
 
 		}
