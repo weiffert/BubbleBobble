@@ -22,6 +22,31 @@ Level::~Level()
 {
 }
 
+void Level::update()
+{
+	time();
+	distance();
+}
+
+void Level::timeLimitPassed()
+{
+	levelTransition();
+	//get next level. call levelTransition.
+}
+
+void Level::distanceLimitPassed()
+{
+	if (offTop())
+		death();
+}
+
+void Level::levelTransition()
+{
+	setVelocity(0, -1);
+	setPedometerLimit(window->getSize().y);
+	startPedometer();
+}
+
 void Level::collision(GameObject *other)
 {
 	/*if (velocity.x != 0 && velocity.y != 0)
@@ -167,5 +192,15 @@ void Level::bitmapMaker()
 	else
 	{
 		std::cout << "Failed to load " << "../textures/Levels/" << name << "/" << name << "base.txt";
+	}
+}
+
+void Level::enemyCheck()
+{
+	//if no enemies left
+	if (true)
+	{
+		setTimeLimit(sf::seconds(5));
+		startClock();
 	}
 }

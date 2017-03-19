@@ -17,14 +17,8 @@ GameObject::~GameObject()
 
 void GameObject::update()
 {
-	if (trackingTime)
-	{
-		time();
-	}
-	if (trackingDistance)
-	{
-		distance();
-	}
+	time();
+	distance();
 }
 
 //Game Logic
@@ -41,7 +35,7 @@ void GameObject::collision(GameObject *other)
 //Returns true and stops the timer 
 void GameObject::time()
 {
-	if (clock.getElapsedTime() > timeLimit)
+	if (trackingTime && clock.getElapsedTime() > timeLimit)
 	{
 		stopClock();
 		timeLimitPassed();
@@ -52,12 +46,15 @@ void GameObject::time()
 hypotnuse from the velocity.*/
 void GameObject::distance()
 {
-	pedometer += std::abs(std::sqrt(velocity.x * velocity.x + velocity.y * velocity.y));
-	
-	if (pedometer > distanceLimit)
+	if (trackingDistance)
 	{
-		stopPedometer();
-		distanceLimitPassed();
+		pedometer += std::abs(std::sqrt(velocity.x * velocity.x + velocity.y * velocity.y));
+
+		if (pedometer > distanceLimit)
+		{
+			stopPedometer();
+			distanceLimitPassed();
+		}
 	}
 }
 
@@ -74,7 +71,7 @@ void GameObject::collided()
 }
 void GameObject::death()
 {
-
+	//add to delete list in whatever is running this.
 }
 void GameObject::timeLimitPassed()
 {
@@ -122,6 +119,11 @@ void GameObject::setName(std::string set)
 void GameObject::setVelocity(sf::Vector2f set)
 {
 	velocity = set;
+}
+void GameObject::setVelocity(float x, float y)
+{
+	velocity.x = x;
+	velocity.y = y;
 }
 void GameObject::velocityToNextGridLine(bool horizontal)
 {
@@ -180,4 +182,17 @@ double GameObject::stopPedometer()
 {
 	trackingDistance = false;
 	return pedometer;
+}
+
+bool GameObject::offTop()
+{
+	if (rectangle.getGlobalBounds().top + rectangle.getGlobalBounds().height < 0)
+		return true;
+	return false;
+}
+bool GameObject::offBottom()
+{
+	if (rectangle.getGlobalBounds().top > window->getSize().y)
+		return true;
+	return false;
 }
