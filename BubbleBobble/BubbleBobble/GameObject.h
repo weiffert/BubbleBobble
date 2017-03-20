@@ -17,7 +17,7 @@ public:
 	virtual void render();
 
 	//Updates every step.
-	virtual void update();
+	virtual bool update();
 	virtual void updateVelocity();
 
 	//Specific event type functions.
@@ -72,6 +72,7 @@ protected:
 	std::vector<Animation> animations;
 	std::string name;
 	std::vector<double> data;
+	bool life;
 	sf::RenderWindow *window;
 };
 

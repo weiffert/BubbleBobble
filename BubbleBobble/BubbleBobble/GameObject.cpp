@@ -15,11 +15,12 @@ GameObject::~GameObject()
 }
 
 
-void GameObject::update()
+bool GameObject::update()
 {
 	updateVelocity();
 	time();
 	distance();
+	return life;
 }
 
 void GameObject::updateVelocity()
@@ -78,7 +79,7 @@ void GameObject::collided()
 }
 void GameObject::death()
 {
-	//add to delete list in whatever is running this.
+	life = false;
 }
 void GameObject::timeLimitPassed()
 {
