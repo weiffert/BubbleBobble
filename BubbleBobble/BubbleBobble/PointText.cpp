@@ -24,3 +24,6 @@ PointText::PointText(std::string str, GameObject *creator)
 PointText::~PointText()
 {
 }
+
+
+void PointText::rend

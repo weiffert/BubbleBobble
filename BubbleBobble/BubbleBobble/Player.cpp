@@ -16,3 +16,5 @@ void Player::levelTransition()
 	//change animation.
 	//move to respective corner.
 }
+
+//player.pickup()
