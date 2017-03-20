@@ -168,7 +168,7 @@ void Level::collision(GameObject *other)
 			{
 			case Floor:
 				if (other->getVelocity().y < 0)
-					other->velocityToNextGridLine(false);
+					other->velocityToNextGridLine(false); 
 			}
 		}
 

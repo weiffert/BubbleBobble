@@ -44,8 +44,6 @@ int _tmain(int argc, _TCHAR* argv[])
 				}
 				
 
-				sf::Color black = sf::Color(0, 0, 0);
-
 				for (int x = 0; x < width; x++)
 				{
 					for (int y = 0; y < height; y++)
@@ -53,7 +51,7 @@ int _tmain(int argc, _TCHAR* argv[])
 						int positionX = std::floor(x / 8);
 						int positionY = std::floor(y / 8);
 						if (bitmap.at(positionX).at(positionY) == 0)
-							if (image.getPixel(x, y) != black)
+							if (image.getPixel(x, y) != sf::Color::Black)
 								bitmap.at(positionX).at(positionY) = 1;
 					}
 				}
@@ -87,7 +85,6 @@ int _tmain(int argc, _TCHAR* argv[])
 				}
 				output.close();
 
-				/*
 				for (int y = 0; y < bitmap.at(1).size(); y++)
 				{
 					for (int x = 0; x < bitmap.size(); x++)
@@ -98,7 +95,6 @@ int _tmain(int argc, _TCHAR* argv[])
 				}
 
 				system("pause");
-				*/
 			}
 		}
 	}
