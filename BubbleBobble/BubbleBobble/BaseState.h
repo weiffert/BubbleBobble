@@ -37,6 +37,8 @@ class BaseState
         std::string folder;
         //Handles all the input that is detected in the Game class and returns which keys were pressed to the state
         InputManager inputManager;
+		//Game objects are organized into vectors according to importance
+		//Index 0 = Level, Index 1 = Player, Index 2 = Monster, Index 3 = Pickup
         std::vector< std::vector<GameObject*> > objectVector;
 };
 #endif // BASESTATE_H

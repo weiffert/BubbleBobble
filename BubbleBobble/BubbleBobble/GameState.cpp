@@ -86,7 +86,7 @@ void GameState::draw(sf::RenderWindow & window)
     {
 		for (int r = 0; r < objectVector.at(i).size(); r++)
 		{
-			window.draw(objectVector.at(i).at(r)->render());
+			window.draw(objectVector.at(i).at(r)->getRectangle());
 		}
     }
 }
