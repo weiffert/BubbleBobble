@@ -143,7 +143,7 @@ void Level::collision(GameObject *other)
 		corner.x = center.x + multiplierX * width / 2;
 		corner.y = center.y + multiplierY * height / 2;
 
-		if (std::floor(moving.getPosition().x / 8) != std::floor(rect.getPosition().x / 8))
+		if (std::floor(moving.getGlobalBounds().left / 8) != std::floor(rect.getGlobalBounds().left / 8))
 		{
 			for (int i = 0; i < height / 8; i++)
 			{
@@ -151,7 +151,7 @@ void Level::collision(GameObject *other)
 			}
 		}
 
-		if (std::floor(moving.getPosition().y / 8) != std::floor(rect.getPosition().y / 8))
+		if (std::floor(moving.getGlobalBounds().top / 8) != std::floor(rect.getGlobalBounds().top / 8))
 		{
 			for (int i = 0; i < height / 8; i++)
 			{
