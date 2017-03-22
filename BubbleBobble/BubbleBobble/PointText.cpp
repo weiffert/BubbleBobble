@@ -9,10 +9,14 @@ PointText::PointText()
 
 PointText::PointText(std::string str, GameObject *creator)
 {
-	sf::FloatRect creatorRect = creator->getRectangle().getGlobalBounds();
-	rectangle.setPosition(creatorRect.left, creatorRect.top);
+	rectangle.setSize(sf::Vector2f(8 * 6, 8 * 2));
+	rectangle.setOrigin(rectangle.getLocalBounds().width / 2, rectangle.getLocalBounds().height / 2);
+
 	//texture.loadFromFile();
 	//rectangle.setTexture(texture);
+
+	sf::FloatRect creatorRect = creator->getRectangle().getGlobalBounds();
+	rectangle.setPosition(creatorRect.left, creatorRect.top);
 	setVelocity(0, -1);
 	setPedometerLimit(40);
 	startPedometer();
