@@ -88,6 +88,7 @@
     <ClInclude Include="Animation.h" />
     <ClInclude Include="BaseState.h" />
     <ClInclude Include="Game.h" />
+    <ClInclude Include="GameData.h" />
     <ClInclude Include="GameObject.h" />
     <ClInclude Include="GameState.h" />
     <ClInclude Include="InputManager.h" />
@@ -108,6 +109,7 @@
     <ClCompile Include="BaseState.cpp" />
     <ClCompile Include="BubbleBobble.cpp" />
     <ClCompile Include="Game.cpp" />
+    <ClCompile Include="GameData.cpp" />
     <ClCompile Include="GameObject.cpp" />
     <ClCompile Include="GameState.cpp" />
     <ClCompile Include="Level.cpp" />
