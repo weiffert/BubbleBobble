@@ -179,3 +179,7 @@ void GameState::collide(Entity& entity)
 }
 
 
+GameData * GameState::getGameDataPTR()
+{
+	return gameData;
+}
