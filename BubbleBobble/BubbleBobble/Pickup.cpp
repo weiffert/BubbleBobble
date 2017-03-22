@@ -23,7 +23,5 @@ void Pickup::death()
 	
 	GameObject *temp = new PointText(/*value*/ "100", this);
 	gameData->add(5, temp);
+	//Add points to player total.
 }
-//Add points to player total.
-//make new PointText object.
-//Add to vector of objects. 5th column.
