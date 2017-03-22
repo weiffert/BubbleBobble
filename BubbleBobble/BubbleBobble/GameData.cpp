@@ -5,6 +5,12 @@
 
 GameData::GameData()
 {
+	std::vector<GameObject *> newList;
+	for (int i = 0; i < 6; i++)
+	{
+		gameObjects.push_back(newList);
+		killList.push_back(newList);
+	}
 }
 
 
@@ -13,6 +19,20 @@ GameData::~GameData()
 }
 
 
+void GameData::kill()
+{
+	int increment1 = 0;
+	int increment2 = 0;
+	for(int i = 0; i < 6; i++)
+	{
+		while (!killList.at(i).empty())
+		{
+			GameObject *temp = killList.at(i).at(0);
+			killList.at(i).erase(killList.at(i).begin());
+			remove(i, temp);
+		}
+	}
+}
 std::vector<std::vector<GameObject *>> GameData::getAll()
 {
 	return gameObjects;
@@ -41,6 +61,20 @@ void GameData::add(unsigned int index, GameObject *other)
 		std::vector<GameObject*> newInformation;
 		newInformation.push_back(other);
 		gameObjects.push_back(newInformation);
+	}
+}
+void GameData::addToKillList(unsigned int index, GameObject *other)
+{
+	if (index < killList.size())
+	{
+		killList.at(index).push_back(other);
+	}
+	else
+	{
+		std::cout << "Out of bounds. Pushing to new vector." << std::endl;
+		std::vector<GameObject*> newInformation;
+		newInformation.push_back(other);
+		killList.push_back(newInformation);
 	}
 }
 void GameData::remove(unsigned int index, GameObject *other)

@@ -6,5 +6,6 @@ class Pickup :
 public:
 	Pickup();
 	~Pickup();
+	virtual void death();
 };
 

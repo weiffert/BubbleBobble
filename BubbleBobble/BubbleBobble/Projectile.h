@@ -12,6 +12,7 @@ class Projectile :
 public:
 	Projectile();
 	~Projectile();
+	virtual void death();
 private:
 	bool friendly;
 };

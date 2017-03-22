@@ -18,3 +18,9 @@ void Player::levelTransition()
 }
 
 //player.pickup()
+void Player::death()
+{
+	life = false;
+	GameObject *temp = this;
+	gameData->addToKillList(1, temp);
+}

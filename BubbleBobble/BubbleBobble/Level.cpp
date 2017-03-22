@@ -22,11 +22,12 @@ Level::~Level()
 {
 }
 
-void Level::update()
+bool Level::update()
 {
 	enemyCheck();
 	time();
 	distance();
+	return life;
 }
 
 void Level::timeLimitPassed()
@@ -55,6 +56,13 @@ void Level::levelTransition()
 void Level::startLevel()
 {
 
+}
+
+void Level::death()
+{
+	life = false;
+	GameObject *temp = this;
+	gameData->addToKillList(0, temp);
 }
 
 void Level::collision(GameObject *other)

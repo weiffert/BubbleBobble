@@ -7,5 +7,6 @@ public:
 	Player();
 	~Player();
 	virtual void levelTransition();
+	virtual void death();
 };
 

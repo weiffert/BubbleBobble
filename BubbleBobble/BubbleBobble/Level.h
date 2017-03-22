@@ -12,10 +12,11 @@ public:
 	Level(std::string);
 	~Level();
 	virtual void collision(GameObject *);
-	virtual void update();
+	virtual bool update();
 	virtual void timeLimitPassed();
 	virtual void distanceLimitPassed();
 	virtual void levelTransition();
+	virtual void death();
 	void bitmapMaker();
 
 private:

@@ -12,9 +12,6 @@ public:
 	PointText();
 	PointText(std::string, GameObject *);
 	~PointText();
-	virtual void render();
-private:
-	sf::Text text;
-	sf::Color color;
+	virtual void death();
 };
 

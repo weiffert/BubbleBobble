@@ -4,6 +4,7 @@
 #include "SFML\System.hpp"
 #include "SFML\Graphics.hpp"
 #include "Animation.h"
+#include "GameData.h"
 
 class GameObject
 {
@@ -43,6 +44,7 @@ public:
 	void setRenderWindow(sf::RenderWindow *);
 	void setAnimation(std::string);
 	void setPosition(float, float);
+	void setGameDataPTR(GameData *);
 
 	void startClock();
 	void startPedometer();
@@ -74,5 +76,7 @@ protected:
 	std::vector<double> data;
 	bool life;
 	sf::RenderWindow *window;
+
+	GameData *gameData;
 };
 

@@ -7,7 +7,24 @@
 GameObject::GameObject()
 {
 	//add instance variables
+	gameData = nullptr;
+	window = nullptr; 
+	velocity.x = 0;
+	velocity.y = 0;
 
+	//Clock variables.
+	timeElapsed = sf::seconds(0);
+	timeLimit = sf::seconds(0);
+	trackingTime = false;
+
+	//Distance variables.
+	pedometer = 0;
+	distanceElapsed = 0;
+	distanceLimit = 0;
+	trackingDistance = false;
+
+	name = "none";
+	life = false;
 }
 
 GameObject::~GameObject()
@@ -80,6 +97,8 @@ void GameObject::collided()
 void GameObject::death()
 {
 	life = false;
+	GameObject *temp = this;
+	gameData->addToKillList(0, temp);
 }
 void GameObject::timeLimitPassed()
 {
@@ -217,4 +236,9 @@ bool GameObject::offBottom()
 	if (rectangle.getGlobalBounds().top > window->getSize().y)
 		return true;
 	return false;
+}
+
+void GameObject::setGameDataPTR(GameData *set)
+{
+	gameData = set;
 }
