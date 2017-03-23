@@ -6,6 +6,9 @@
 #include "Animation.h"
 #include "GameData.h"
 
+//Will: I don't know why this removes some errors, but it does.
+class GameData;
+
 class GameObject
 {
 public:
@@ -76,7 +79,6 @@ protected:
 	std::vector<double> data;
 	bool life;
 	sf::RenderWindow *window;
-
 	GameData *gameData;
 };
 

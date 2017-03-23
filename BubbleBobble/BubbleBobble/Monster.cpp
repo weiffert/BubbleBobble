@@ -21,6 +21,6 @@ void Monster::death()
 
 	//pickup creation
 	//something like...
-	GameObject *temp = new Pickup();
+	temp = new Pickup();
 	gameData->add(5, temp);
 }

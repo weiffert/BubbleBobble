@@ -1,139 +1,133 @@
-﻿Build started 3/20/2017 3:00:48 PM.
-     1>Project "C:\Users\17wbe01\Documents\GitHub\BubbleBobble\BubbleBobble\BubbleBobble\BubbleBobble.vcxproj" on node 2 (Build target(s)).
+﻿Build started 3/22/2017 9:36:01 PM.
+     1>Project "C:\Users\administrator\Documents\GitHub\BubbleBobble\BubbleBobble\BubbleBobble\BubbleBobble.vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /IC:\SFML\include /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D SFML_STATIC /D WIN32 /D _DEBUG /D _CONSOLE /D _LIB /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Yu"stdafx.h" /Fp"Debug\BubbleBobble.pch" /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt BaseState.cpp BubbleBobble.cpp Game.cpp GameObject.cpp GameState.cpp Level.cpp MenuState.cpp Monster.cpp Pickup.cpp Player.cpp PointText.cpp Projectile.cpp SplashScreenState.cpp StateManager.cpp
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /IC:\SFML\include /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D SFML_STATIC /D WIN32 /D _DEBUG /D _CONSOLE /D _LIB /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Yu"stdafx.h" /Fp"Debug\BubbleBobble.pch" /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt BaseState.cpp BubbleBobble.cpp Game.cpp GameData.cpp GameObject.cpp GameState.cpp Level.cpp MenuState.cpp Monster.cpp Pickup.cpp Player.cpp PointText.cpp Projectile.cpp SplashScreenState.cpp StateManager.cpp
+         GameState.cpp
+     1>c:\users\administrator\documents\github\bubblebobble\bubblebobble\bubblebobble\gamestate.cpp(27): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\administrator\documents\github\bubblebobble\bubblebobble\bubblebobble\gamestate.cpp(30): error C2819: type 'std::vector<GameObject *,std::allocator<_Ty>>' does not have an overloaded member 'operator ->'
+                 with
+                 [
+                     _Ty=GameObject *
+                 ]
+                 did you intend to use '.' instead?
+     1>c:\users\administrator\documents\github\bubblebobble\bubblebobble\bubblebobble\gamestate.cpp(30): error C2039: 'getID' : is not a member of 'std::vector<GameObject *,std::allocator<_Ty>>'
+                 with
+                 [
+                     _Ty=GameObject *
+                 ]
+     1>c:\users\administrator\documents\github\bubblebobble\bubblebobble\bubblebobble\gamestate.cpp(30): error C2228: left of '.size' must have class/struct/union
+     1>c:\users\administrator\documents\github\bubblebobble\bubblebobble\bubblebobble\gamestate.cpp(32): error C2819: type 'std::vector<GameObject *,std::allocator<_Ty>>' does not have an overloaded member 'operator ->'
+                 with
+                 [
+                     _Ty=GameObject *
+                 ]
+                 did you intend to use '.' instead?
+     1>c:\users\administrator\documents\github\bubblebobble\bubblebobble\bubblebobble\gamestate.cpp(32): error C2039: 'getID' : is not a member of 'std::vector<GameObject *,std::allocator<_Ty>>'
+                 with
+                 [
+                     _Ty=GameObject *
+                 ]
+     1>c:\users\administrator\documents\github\bubblebobble\bubblebobble\bubblebobble\gamestate.cpp(32): error C2228: left of '.at' must have class/struct/union
+     1>c:\users\administrator\documents\github\bubblebobble\bubblebobble\bubblebobble\gamestate.cpp(34): error C2100: illegal indirection
+     1>c:\users\administrator\documents\github\bubblebobble\bubblebobble\bubblebobble\gamestate.cpp(43): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\administrator\documents\github\bubblebobble\bubblebobble\bubblebobble\gamestate.cpp(46): error C2819: type 'std::vector<GameObject *,std::allocator<_Ty>>' does not have an overloaded member 'operator ->'
+                 with
+                 [
+                     _Ty=GameObject *
+                 ]
+                 did you intend to use '.' instead?
+     1>c:\users\administrator\documents\github\bubblebobble\bubblebobble\bubblebobble\gamestate.cpp(46): error C2039: 'getID' : is not a member of 'std::vector<GameObject *,std::allocator<_Ty>>'
+                 with
+                 [
+                     _Ty=GameObject *
+                 ]
+     1>c:\users\administrator\documents\github\bubblebobble\bubblebobble\bubblebobble\gamestate.cpp(46): error C2228: left of '.size' must have class/struct/union
+     1>c:\users\administrator\documents\github\bubblebobble\bubblebobble\bubblebobble\gamestate.cpp(49): error C2819: type 'std::vector<GameObject *,std::allocator<_Ty>>' does not have an overloaded member 'operator ->'
+                 with
+                 [
+                     _Ty=GameObject *
+                 ]
+                 did you intend to use '.' instead?
+     1>c:\users\administrator\documents\github\bubblebobble\bubblebobble\bubblebobble\gamestate.cpp(49): error C2039: 'getID' : is not a member of 'std::vector<GameObject *,std::allocator<_Ty>>'
+                 with
+                 [
+                     _Ty=GameObject *
+                 ]
+     1>c:\users\administrator\documents\github\bubblebobble\bubblebobble\bubblebobble\gamestate.cpp(49): error C2228: left of '.at' must have class/struct/union
+     1>c:\users\administrator\documents\github\bubblebobble\bubblebobble\bubblebobble\gamestate.cpp(51): error C2100: illegal indirection
+     1>c:\users\administrator\documents\github\bubblebobble\bubblebobble\bubblebobble\gamestate.cpp(54): error C2819: type 'std::vector<GameObject *,std::allocator<_Ty>>' does not have an overloaded member 'operator ->'
+                 with
+                 [
+                     _Ty=GameObject *
+                 ]
+                 did you intend to use '.' instead?
+     1>c:\users\administrator\documents\github\bubblebobble\bubblebobble\bubblebobble\gamestate.cpp(54): error C2039: 'getID' : is not a member of 'std::vector<GameObject *,std::allocator<_Ty>>'
+                 with
+                 [
+                     _Ty=GameObject *
+                 ]
+     1>c:\users\administrator\documents\github\bubblebobble\bubblebobble\bubblebobble\gamestate.cpp(54): error C2228: left of '.at' must have class/struct/union
+     1>c:\users\administrator\documents\github\bubblebobble\bubblebobble\bubblebobble\gamestate.cpp(56): error C2100: illegal indirection
+     1>c:\users\administrator\documents\github\bubblebobble\bubblebobble\bubblebobble\gamestate.cpp(58): error C2819: type 'std::vector<GameObject *,std::allocator<_Ty>>' does not have an overloaded member 'operator ->'
+                 with
+                 [
+                     _Ty=GameObject *
+                 ]
+                 did you intend to use '.' instead?
+     1>c:\users\administrator\documents\github\bubblebobble\bubblebobble\bubblebobble\gamestate.cpp(58): error C2039: 'getID' : is not a member of 'std::vector<GameObject *,std::allocator<_Ty>>'
+                 with
+                 [
+                     _Ty=GameObject *
+                 ]
+     1>c:\users\administrator\documents\github\bubblebobble\bubblebobble\bubblebobble\gamestate.cpp(58): error C2228: left of '.at' must have class/struct/union
+     1>c:\users\administrator\documents\github\bubblebobble\bubblebobble\bubblebobble\gamestate.cpp(60): error C2100: illegal indirection
+     1>c:\users\administrator\documents\github\bubblebobble\bubblebobble\bubblebobble\gamestate.cpp(75): error C2065: 'Entity' : undeclared identifier
+     1>c:\users\administrator\documents\github\bubblebobble\bubblebobble\bubblebobble\gamestate.cpp(75): error C2065: 'player' : undeclared identifier
+     1>c:\users\administrator\documents\github\bubblebobble\bubblebobble\bubblebobble\gamestate.cpp(75): error C2065: 'event' : undeclared identifier
+     1>c:\users\administrator\documents\github\bubblebobble\bubblebobble\bubblebobble\gamestate.cpp(75): error C2275: 'sf::Event' : illegal use of this type as an expression
+     1>c:\users\administrator\documents\github\bubblebobble\bubblebobble\bubblebobble\gamestate.cpp(76): error C2448: 'GameState::PlayerEvents' : function-style initializer appears to be a function definition
+     1>c:\users\administrator\documents\github\bubblebobble\bubblebobble\bubblebobble\gamestate.cpp(85): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\administrator\documents\github\bubblebobble\bubblebobble\bubblebobble\gamestate.cpp(87): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\administrator\documents\github\bubblebobble\bubblebobble\bubblebobble\gamestate.cpp(96): error C2065: 'killList' : undeclared identifier
+     1>c:\users\administrator\documents\github\bubblebobble\bubblebobble\bubblebobble\gamestate.cpp(96): error C2228: left of '.size' must have class/struct/union
+                 type is 'unknown-type'
+     1>c:\users\administrator\documents\github\bubblebobble\bubblebobble\bubblebobble\gamestate.cpp(98): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\administrator\documents\github\bubblebobble\bubblebobble\bubblebobble\gamestate.cpp(100): error C2065: 'killList' : undeclared identifier
+     1>c:\users\administrator\documents\github\bubblebobble\bubblebobble\bubblebobble\gamestate.cpp(100): error C2228: left of '.at' must have class/struct/union
+                 type is 'unknown-type'
+     1>c:\users\administrator\documents\github\bubblebobble\bubblebobble\bubblebobble\gamestate.cpp(106): error C2065: 'Entity' : undeclared identifier
+     1>c:\users\administrator\documents\github\bubblebobble\bubblebobble\bubblebobble\gamestate.cpp(106): error C2065: 'entity' : undeclared identifier
+     1>c:\users\administrator\documents\github\bubblebobble\bubblebobble\bubblebobble\gamestate.cpp(107): error C2448: 'GameState::collide' : function-style initializer appears to be a function definition
+         GameData.cpp
+     1>c:\users\administrator\documents\github\bubblebobble\bubblebobble\bubblebobble\gamedata.cpp(109): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\administrator\documents\github\bubblebobble\bubblebobble\bubblebobble\gamedata.cpp(111): warning C4018: '<' : signed/unsigned mismatch
+         Generating Code...
+         Compiling...
          StateManager.cpp
          SplashScreenState.cpp
-     1>c:\users\17wbe01\documents\github\bubblebobble\bubblebobble\bubblebobble\splashscreenstate.cpp(39): warning C4018: '<' : signed/unsigned mismatch
-     1>c:\users\17wbe01\documents\github\bubblebobble\bubblebobble\bubblebobble\splashscreenstate.cpp(41): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\administrator\documents\github\bubblebobble\bubblebobble\bubblebobble\splashscreenstate.cpp(39): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\administrator\documents\github\bubblebobble\bubblebobble\bubblebobble\splashscreenstate.cpp(41): warning C4018: '<' : signed/unsigned mismatch
          Projectile.cpp
          PointText.cpp
          Player.cpp
          Pickup.cpp
          Monster.cpp
          MenuState.cpp
-     1>c:\users\17wbe01\documents\github\bubblebobble\bubblebobble\bubblebobble\menustate.cpp(43): warning C4018: '<' : signed/unsigned mismatch
-     1>c:\users\17wbe01\documents\github\bubblebobble\bubblebobble\bubblebobble\menustate.cpp(45): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\administrator\documents\github\bubblebobble\bubblebobble\bubblebobble\menustate.cpp(43): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\administrator\documents\github\bubblebobble\bubblebobble\bubblebobble\menustate.cpp(45): warning C4018: '<' : signed/unsigned mismatch
          Level.cpp
-     1>c:\users\17wbe01\documents\github\bubblebobble\bubblebobble\bubblebobble\level.cpp(51): warning C4244: 'argument' : conversion from 'unsigned int' to 'float', possible loss of data
-     1>c:\users\17wbe01\documents\github\bubblebobble\bubblebobble\bubblebobble\level.cpp(135): warning C4244: '=' : conversion from 'float' to 'int', possible loss of data
-     1>c:\users\17wbe01\documents\github\bubblebobble\bubblebobble\bubblebobble\level.cpp(136): warning C4244: '=' : conversion from 'float' to 'int', possible loss of data
-     1>c:\users\17wbe01\documents\github\bubblebobble\bubblebobble\bubblebobble\level.cpp(155): warning C4018: '<' : signed/unsigned mismatch
-     1>c:\users\17wbe01\documents\github\bubblebobble\bubblebobble\bubblebobble\level.cpp(164): warning C4018: '<' : signed/unsigned mismatch
-         GameState.cpp
-     1>c:\users\17wbe01\documents\github\bubblebobble\bubblebobble\bubblebobble\gamestate.cpp(27): warning C4018: '<' : signed/unsigned mismatch
-     1>c:\users\17wbe01\documents\github\bubblebobble\bubblebobble\bubblebobble\gamestate.cpp(30): error C2819: type 'std::vector<GameObject *,std::allocator<_Ty>>' does not have an overloaded member 'operator ->'
-                 with
-                 [
-                     _Ty=GameObject *
-                 ]
-                 did you intend to use '.' instead?
-     1>c:\users\17wbe01\documents\github\bubblebobble\bubblebobble\bubblebobble\gamestate.cpp(30): error C2039: 'getID' : is not a member of 'std::vector<GameObject *,std::allocator<_Ty>>'
-                 with
-                 [
-                     _Ty=GameObject *
-                 ]
-     1>c:\users\17wbe01\documents\github\bubblebobble\bubblebobble\bubblebobble\gamestate.cpp(30): error C2228: left of '.size' must have class/struct/union
-     1>c:\users\17wbe01\documents\github\bubblebobble\bubblebobble\bubblebobble\gamestate.cpp(32): error C2819: type 'std::vector<GameObject *,std::allocator<_Ty>>' does not have an overloaded member 'operator ->'
-                 with
-                 [
-                     _Ty=GameObject *
-                 ]
-                 did you intend to use '.' instead?
-     1>c:\users\17wbe01\documents\github\bubblebobble\bubblebobble\bubblebobble\gamestate.cpp(32): error C2039: 'getID' : is not a member of 'std::vector<GameObject *,std::allocator<_Ty>>'
-                 with
-                 [
-                     _Ty=GameObject *
-                 ]
-     1>c:\users\17wbe01\documents\github\bubblebobble\bubblebobble\bubblebobble\gamestate.cpp(32): error C2228: left of '.at' must have class/struct/union
-     1>c:\users\17wbe01\documents\github\bubblebobble\bubblebobble\bubblebobble\gamestate.cpp(34): error C2100: illegal indirection
-     1>c:\users\17wbe01\documents\github\bubblebobble\bubblebobble\bubblebobble\gamestate.cpp(43): warning C4018: '<' : signed/unsigned mismatch
-     1>c:\users\17wbe01\documents\github\bubblebobble\bubblebobble\bubblebobble\gamestate.cpp(46): error C2819: type 'std::vector<GameObject *,std::allocator<_Ty>>' does not have an overloaded member 'operator ->'
-                 with
-                 [
-                     _Ty=GameObject *
-                 ]
-                 did you intend to use '.' instead?
-     1>c:\users\17wbe01\documents\github\bubblebobble\bubblebobble\bubblebobble\gamestate.cpp(46): error C2039: 'getID' : is not a member of 'std::vector<GameObject *,std::allocator<_Ty>>'
-                 with
-                 [
-                     _Ty=GameObject *
-                 ]
-     1>c:\users\17wbe01\documents\github\bubblebobble\bubblebobble\bubblebobble\gamestate.cpp(46): error C2228: left of '.size' must have class/struct/union
-     1>c:\users\17wbe01\documents\github\bubblebobble\bubblebobble\bubblebobble\gamestate.cpp(49): error C2819: type 'std::vector<GameObject *,std::allocator<_Ty>>' does not have an overloaded member 'operator ->'
-                 with
-                 [
-                     _Ty=GameObject *
-                 ]
-                 did you intend to use '.' instead?
-     1>c:\users\17wbe01\documents\github\bubblebobble\bubblebobble\bubblebobble\gamestate.cpp(49): error C2039: 'getID' : is not a member of 'std::vector<GameObject *,std::allocator<_Ty>>'
-                 with
-                 [
-                     _Ty=GameObject *
-                 ]
-     1>c:\users\17wbe01\documents\github\bubblebobble\bubblebobble\bubblebobble\gamestate.cpp(49): error C2228: left of '.at' must have class/struct/union
-     1>c:\users\17wbe01\documents\github\bubblebobble\bubblebobble\bubblebobble\gamestate.cpp(51): error C2100: illegal indirection
-     1>c:\users\17wbe01\documents\github\bubblebobble\bubblebobble\bubblebobble\gamestate.cpp(54): error C2819: type 'std::vector<GameObject *,std::allocator<_Ty>>' does not have an overloaded member 'operator ->'
-                 with
-                 [
-                     _Ty=GameObject *
-                 ]
-                 did you intend to use '.' instead?
-     1>c:\users\17wbe01\documents\github\bubblebobble\bubblebobble\bubblebobble\gamestate.cpp(54): error C2039: 'getID' : is not a member of 'std::vector<GameObject *,std::allocator<_Ty>>'
-                 with
-                 [
-                     _Ty=GameObject *
-                 ]
-     1>c:\users\17wbe01\documents\github\bubblebobble\bubblebobble\bubblebobble\gamestate.cpp(54): error C2228: left of '.at' must have class/struct/union
-     1>c:\users\17wbe01\documents\github\bubblebobble\bubblebobble\bubblebobble\gamestate.cpp(56): error C2100: illegal indirection
-     1>c:\users\17wbe01\documents\github\bubblebobble\bubblebobble\bubblebobble\gamestate.cpp(58): error C2819: type 'std::vector<GameObject *,std::allocator<_Ty>>' does not have an overloaded member 'operator ->'
-                 with
-                 [
-                     _Ty=GameObject *
-                 ]
-                 did you intend to use '.' instead?
-     1>c:\users\17wbe01\documents\github\bubblebobble\bubblebobble\bubblebobble\gamestate.cpp(58): error C2039: 'getID' : is not a member of 'std::vector<GameObject *,std::allocator<_Ty>>'
-                 with
-                 [
-                     _Ty=GameObject *
-                 ]
-     1>c:\users\17wbe01\documents\github\bubblebobble\bubblebobble\bubblebobble\gamestate.cpp(58): error C2228: left of '.at' must have class/struct/union
-     1>c:\users\17wbe01\documents\github\bubblebobble\bubblebobble\bubblebobble\gamestate.cpp(60): error C2100: illegal indirection
-     1>c:\users\17wbe01\documents\github\bubblebobble\bubblebobble\bubblebobble\gamestate.cpp(75): error C2065: 'Entity' : undeclared identifier
-     1>c:\users\17wbe01\documents\github\bubblebobble\bubblebobble\bubblebobble\gamestate.cpp(75): error C2065: 'player' : undeclared identifier
-     1>c:\users\17wbe01\documents\github\bubblebobble\bubblebobble\bubblebobble\gamestate.cpp(75): error C2065: 'event' : undeclared identifier
-     1>c:\users\17wbe01\documents\github\bubblebobble\bubblebobble\bubblebobble\gamestate.cpp(75): error C2275: 'sf::Event' : illegal use of this type as an expression
-     1>c:\users\17wbe01\documents\github\bubblebobble\bubblebobble\bubblebobble\gamestate.cpp(76): error C2448: 'GameState::PlayerEvents' : function-style initializer appears to be a function definition
-     1>c:\users\17wbe01\documents\github\bubblebobble\bubblebobble\bubblebobble\gamestate.cpp(85): warning C4018: '<' : signed/unsigned mismatch
-     1>c:\users\17wbe01\documents\github\bubblebobble\bubblebobble\bubblebobble\gamestate.cpp(87): warning C4018: '<' : signed/unsigned mismatch
-     1>c:\users\17wbe01\documents\github\bubblebobble\bubblebobble\bubblebobble\gamestate.cpp(96): warning C4018: '<' : signed/unsigned mismatch
-     1>c:\users\17wbe01\documents\github\bubblebobble\bubblebobble\bubblebobble\gamestate.cpp(98): warning C4018: '<' : signed/unsigned mismatch
-     1>c:\users\17wbe01\documents\github\bubblebobble\bubblebobble\bubblebobble\gamestate.cpp(100): error C2678: binary '==' : no operator found which takes a left-hand operand of type 'std::vector<GameObject *,std::allocator<_Ty>>' (or there is no acceptable conversion)
-                 with
-                 [
-                     _Ty=GameObject *
-                 ]
-                 c:\program files (x86)\microsoft visual studio 12.0\vc\include\exception(497): could be 'bool std::operator ==(const std::exception_ptr &,const std::exception_ptr &)' [found using argument-dependent lookup]
-                 c:\program files (x86)\microsoft visual studio 12.0\vc\include\exception(502): or       'bool std::operator ==(std::nullptr_t,const std::exception_ptr &)' [found using argument-dependent lookup]
-                 c:\program files (x86)\microsoft visual studio 12.0\vc\include\exception(507): or       'bool std::operator ==(const std::exception_ptr &,std::nullptr_t)' [found using argument-dependent lookup]
-                 c:\program files (x86)\microsoft visual studio 12.0\vc\include\system_error(402): or       'bool std::operator ==(const std::error_code &,const std::error_condition &) throw()' [found using argument-dependent lookup]
-                 c:\program files (x86)\microsoft visual studio 12.0\vc\include\system_error(410): or       'bool std::operator ==(const std::error_condition &,const std::error_code &) throw()' [found using argument-dependent lookup]
-                 while trying to match the argument list '(std::vector<GameObject *,std::allocator<_Ty>>, GameObject *)'
-                 with
-                 [
-                     _Ty=GameObject *
-                 ]
-     1>c:\users\17wbe01\documents\github\bubblebobble\bubblebobble\bubblebobble\gamestate.cpp(106): error C2065: 'Entity' : undeclared identifier
-     1>c:\users\17wbe01\documents\github\bubblebobble\bubblebobble\bubblebobble\gamestate.cpp(106): error C2065: 'entity' : undeclared identifier
-     1>c:\users\17wbe01\documents\github\bubblebobble\bubblebobble\bubblebobble\gamestate.cpp(107): error C2448: 'GameState::collide' : function-style initializer appears to be a function definition
+     1>c:\users\administrator\documents\github\bubblebobble\bubblebobble\bubblebobble\level.cpp(52): warning C4244: 'argument' : conversion from 'unsigned int' to 'float', possible loss of data
+     1>c:\users\administrator\documents\github\bubblebobble\bubblebobble\bubblebobble\level.cpp(143): warning C4244: '=' : conversion from 'float' to 'int', possible loss of data
+     1>c:\users\administrator\documents\github\bubblebobble\bubblebobble\bubblebobble\level.cpp(144): warning C4244: '=' : conversion from 'float' to 'int', possible loss of data
+     1>c:\users\administrator\documents\github\bubblebobble\bubblebobble\bubblebobble\level.cpp(163): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\administrator\documents\github\bubblebobble\bubblebobble\bubblebobble\level.cpp(172): warning C4018: '<' : signed/unsigned mismatch
          GameObject.cpp
          Game.cpp
          BubbleBobble.cpp
-         Generating Code...
-         Skipping... (no relevant changes detected)
          BaseState.cpp
-     1>Done Building Project "C:\Users\17wbe01\Documents\GitHub\BubbleBobble\BubbleBobble\BubbleBobble\BubbleBobble.vcxproj" (Build target(s)) -- FAILED.
+         Generating Code...
+     1>Done Building Project "C:\Users\administrator\Documents\GitHub\BubbleBobble\BubbleBobble\BubbleBobble\BubbleBobble.vcxproj" (Build target(s)) -- FAILED.
 
 Build FAILED.
 
-Time Elapsed 00:00:06.96
+Time Elapsed 00:00:09.44

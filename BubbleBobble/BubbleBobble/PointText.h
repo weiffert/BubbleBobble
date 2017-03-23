@@ -10,7 +10,7 @@ class PointText :
 {
 public:
 	PointText();
-	PointText(std::string, GameObject *);
+	PointText(GameObject *, unsigned int, bool);
 	~PointText();
 	virtual void death();
 };

@@ -1,19 +1,34 @@
 #include "stdafx.h"
 #include "PointText.h"
-
+#include <iostream>
 
 PointText::PointText()
 {
 }
 
 
-PointText::PointText(std::string str, GameObject *creator)
+PointText::PointText(GameObject *creator, unsigned int value, bool big)
 {
 	rectangle.setSize(sf::Vector2f(8 * 6, 8 * 2));
 	rectangle.setOrigin(rectangle.getLocalBounds().width / 2, rectangle.getLocalBounds().height / 2);
 
-	//texture.loadFromFile();
-	//rectangle.setTexture(texture);
+	std::string fileName = "../textures/PointText/" + value;
+	if (big)
+		fileName += "-big";
+
+	if (creator->getName() == "Bubblun")
+		fileName += "-green";
+	else
+		fileName += "-blue";
+	fileName += "-points.png";
+
+	if (!texture.loadFromFile(fileName))
+	{
+		std::cout << "Failed to load " << fileName;
+		rectangle.setFillColor(sf::Color::Cyan);
+	}
+	else
+		rectangle.setTexture(&texture);
 
 	sf::FloatRect creatorRect = creator->getRectangle().getGlobalBounds();
 	rectangle.setPosition(creatorRect.left, creatorRect.top);
