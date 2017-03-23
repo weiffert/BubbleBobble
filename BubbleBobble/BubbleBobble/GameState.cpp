@@ -79,7 +79,7 @@ void GameState::PlayerEvents(Entity& player, sf::Event& event)
 
 void GameState::draw(sf::RenderWindow & window)
 {
-
+	/*
     window.setView(camera);
     //Loops through all entities
     for(int i = 0; i < objectVector.size(); i++)
@@ -89,10 +89,40 @@ void GameState::draw(sf::RenderWindow & window)
 			window.draw(objectVector.at(i).at(r)->getRectangle());
 		}
     }
+	*/
+
+	window.clear();
+
+	std::vector<std::vector<GameObject *>> data = gameData->getAll();
+
+	data.at(0).at(0)->render();
+
+	if (data.at(0).at(0)->isTransitioningLevels())
+	{
+		data.at(0).at(1)->render();
+
+		for (int i = 0; i < data.at(1).size(); i++)
+		{
+			data.at(1).at(i)->render();
+		}
+	}
+	else
+	{
+		for (int i = 1; i < data.size(); i++)
+		{
+			for (int j = 0; j < data.at(i).size(); i++)
+			{
+				data.at(i).at(j)->render();
+			}
+		}
+	}
+
+	window.display();
 }
 
 void GameState::Cleanup()
 {
+	/*
     for(int i = 0; i < killList.size(); i++)
     {
         for(int x = 0; x < objectVector.size(); x++)
@@ -101,8 +131,11 @@ void GameState::Cleanup()
 				objectVector.erase(objectVector.begin() + x);
         }
     }
+	*/
+	gameData->kill();
 }
 
+/*
 void GameState::collide(Entity& entity)
 {
     int meme;
@@ -177,7 +210,7 @@ void GameState::collide(Entity& entity)
         }
     }
 }
-
+*/
 
 GameData * GameState::getGameDataPTR()
 {

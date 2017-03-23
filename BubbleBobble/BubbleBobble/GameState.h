@@ -23,7 +23,7 @@ class GameState : public BaseState
         void PlayerMovement(GameObject&);
         void PlayerEvents(GameObject&, sf::Event &);
         void gravity(GameObject&);
-        sf::View camera;
+        //sf::View camera;
 		GameData *gameData;
 };
 
