@@ -12,10 +12,28 @@ Player::~Player()
 {
 }
 
-void Player::levelTransition()
+void Player::updateVelocity()
 {
+	if (levelTransition)
+	{
+		//move to the corner
+	}
+	else
+	{
+		//standard keyboard input.
+	}
+}
+
+void Player::levelEnd()
+{
+	levelTransition = true;
 	//change animation.
-	//move to respective corner.
+}
+
+void Player::levelStart()
+{
+	levelTransition = false;
+	//change animation.
 }
 
 //player.pickup()

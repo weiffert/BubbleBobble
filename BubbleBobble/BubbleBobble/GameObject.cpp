@@ -25,6 +25,7 @@ GameObject::GameObject()
 
 	name = "none";
 	life = false;
+	levelTransition = false;
 }
 
 GameObject::~GameObject()
@@ -100,6 +101,17 @@ void GameObject::death()
 	GameObject *temp = this;
 	gameData->addToKillList(0, temp);
 }
+
+void GameObject::levelEnd()
+{
+	levelTransition = true;
+}
+
+void GameObject::levelStart()
+{
+	levelTransition = false;
+}
+
 void GameObject::timeLimitPassed()
 {
 	death();
@@ -135,6 +147,10 @@ sf::RectangleShape GameObject::getRectangle()
 sf::Texture GameObject::getTexture()
 {
 	return texture;
+}
+bool GameObject::isTransitioningLevels()
+{
+	return levelTransition;
 }
 
 

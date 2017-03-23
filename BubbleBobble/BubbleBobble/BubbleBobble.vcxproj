@@ -86,45 +86,63 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Animation.h" />
+    <ClInclude Include="Banebou.h" />
     <ClInclude Include="BaseState.h" />
+    <ClInclude Include="Drunk.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="GameData.h" />
     <ClInclude Include="GameObject.h" />
     <ClInclude Include="GameState.h" />
+    <ClInclude Include="Hidegons.h" />
     <ClInclude Include="InputManager.h" />
+    <ClInclude Include="Invader.h" />
     <ClInclude Include="Level.h" />
     <ClInclude Include="MenuState.h" />
+    <ClInclude Include="Mighta.h" />
+    <ClInclude Include="Monsta.h" />
     <ClInclude Include="Monster.h" />
     <ClInclude Include="Pickup.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="PointText.h" />
     <ClInclude Include="Projectile.h" />
+    <ClInclude Include="Pulpul.h" />
+    <ClInclude Include="Rascal.h" />
     <ClInclude Include="SplashScreenState.h" />
     <ClInclude Include="StateManager.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
+    <ClInclude Include="Zenchan.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Animation.cpp" />
+    <ClCompile Include="Banebou.cpp" />
     <ClCompile Include="BaseState.cpp" />
     <ClCompile Include="BubbleBobble.cpp" />
+    <ClCompile Include="Drunk.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="GameData.cpp" />
     <ClCompile Include="GameObject.cpp" />
     <ClCompile Include="GameState.cpp" />
+    <ClCompile Include="Hidegons.cpp" />
+    <ClCompile Include="Invader.cpp" />
     <ClCompile Include="Level.cpp" />
     <ClCompile Include="MenuState.cpp" />
+    <ClCompile Include="Mighta.cpp" />
+    <ClCompile Include="Monsta.cpp" />
     <ClCompile Include="Monster.cpp" />
     <ClCompile Include="Pickup.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="PointText.cpp" />
     <ClCompile Include="Projectile.cpp" />
+    <ClCompile Include="Pulpul.cpp" />
+    <ClCompile Include="Rascal.cpp" />
     <ClCompile Include="SplashScreenState.cpp" />
     <ClCompile Include="StateManager.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="Zenchan.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

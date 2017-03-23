@@ -15,7 +15,8 @@ public:
 	virtual bool update();
 	virtual void timeLimitPassed();
 	virtual void distanceLimitPassed();
-	virtual void levelTransition();
+	virtual void levelEnd();
+	virtual void levelStart();
 	virtual void death();
 	void bitmapMaker();
 

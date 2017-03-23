@@ -72,6 +72,33 @@
     <ClInclude Include="GameData.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Zenchan.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Mighta.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Monsta.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Pulpul.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Banebou.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Invader.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Hidegons.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Drunk.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Rascal.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -123,6 +150,33 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="GameData.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Zenchan.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Mighta.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Monsta.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Pulpul.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Banebou.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Invader.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Hidegons.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Drunk.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Rascal.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

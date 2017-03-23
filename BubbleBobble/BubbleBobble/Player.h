@@ -6,7 +6,9 @@ class Player :
 public:
 	Player();
 	~Player();
-	virtual void levelTransition();
+	virtual void updateVelocity();
+	virtual void levelEnd();
+	virtual void levelStart();
 	virtual void death();
 };
 

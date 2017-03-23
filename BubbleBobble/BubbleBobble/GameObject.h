@@ -29,7 +29,8 @@ public:
 	virtual void timeLimitPassed();
 	virtual void distanceLimitPassed();
 	virtual void death();
-	virtual void levelTransition();
+	virtual void levelEnd();
+	virtual void levelStart();
 
 	std::string getName();
 	sf::Time getTimeElapsed();
@@ -37,6 +38,7 @@ public:
 	sf::Vector2f getVelocity();
 	sf::RectangleShape getRectangle();
 	sf::Texture getTexture();
+	bool isTransitioningLevels();
 
 	void setName(std::string);
 	void setTimeLimit(sf::Time);
@@ -58,6 +60,8 @@ public:
 	bool offBottom();
 
 protected:
+	bool levelTransition;
+
 	sf::Vector2f velocity;
 
 	//Clock variables.
