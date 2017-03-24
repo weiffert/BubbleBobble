@@ -7,10 +7,21 @@
 #include <iostream>
 #include <vector>
 
+void levelBase();
+void enemySpawn();
+
 int _tmain(int argc, _TCHAR* argv[])
 {
+	levelBase();
+	enemySpawn();
+	return 0;
+}
+
+
+void levelBase()
+{
 	std::ifstream input;
-	input.open("imageFileNames.txt");
+	input.open("levelBaseFileNames.txt");
 	if (input.is_open())
 	{
 		std::string temp;
@@ -42,7 +53,7 @@ int _tmain(int argc, _TCHAR* argv[])
 				{
 					bitmap.push_back(populator);
 				}
-				
+
 
 				for (int x = 0; x < width; x++)
 				{
@@ -64,7 +75,7 @@ int _tmain(int argc, _TCHAR* argv[])
 							bitmap.at(x).at(y + 1) = 2;
 					}
 				}
-				
+
 				for (int x = 0; x < bitmap.size(); x++)
 				{
 					for (int y = 0; y < bitmap.at(x).size() - 5; y++)
@@ -118,6 +129,112 @@ int _tmain(int argc, _TCHAR* argv[])
 		std::cout << "Failed to open imageFileNames.txt" << std::endl;
 	}
 	system("pause");
-	return 0;
+
 }
 
+void enemySpawn()
+{
+	std::ifstream input;
+	input.open("levelSpawnFileNames.txt");
+	if (input.is_open())
+	{
+		std::string temp;
+		std::vector<std::string> fileNames;
+		while (!input.eof())
+		{
+			input >> temp;
+			fileNames.push_back(temp);
+		}
+		input.close();
+
+		for (int i = 0; i < fileNames.size(); i++)
+		{
+			sf::Image image;
+			if (image.loadFromFile(fileNames.at(i)))
+			{
+				int width = image.getSize().x;
+				int height = image.getSize().y;
+
+				std::vector<std::vector<int>> bitmap;
+
+
+				std::vector<int> populator;
+				for (int y = 0; y < height / 8; y++)
+				{
+					populator.push_back(0);
+				}
+				for (int x = 0; x < width / 8; x++)
+				{
+					bitmap.push_back(populator);
+				}
+
+
+				for (int x = 0; x < width; x++)
+				{
+					for (int y = 0; y < height; y++)
+					{
+						int positionX = std::floor(x / 8);
+						int positionY = std::floor(y / 8);
+						if (bitmap.at(positionX).at(positionY) == 0)
+						{
+							if (image.getPixel(x, y) == sf::Color(1, 1, 1))
+								bitmap.at(positionX).at(positionY) = 1;
+							if (image.getPixel(x, y) == sf::Color(2, 2, 2))
+								bitmap.at(positionX).at(positionY) = 2;
+							if (image.getPixel(x, y) == sf::Color(3, 3, 3))
+								bitmap.at(positionX).at(positionY) = 3;
+							if (image.getPixel(x, y) == sf::Color(4, 4, 4))
+								bitmap.at(positionX).at(positionY) = 4;
+							if (image.getPixel(x, y) == sf::Color(5, 5, 5))
+								bitmap.at(positionX).at(positionY) = 5;
+							if (image.getPixel(x, y) == sf::Color(6, 6, 6))
+								bitmap.at(positionX).at(positionY) = 6;
+							if (image.getPixel(x, y) == sf::Color(7, 7, 7))
+								bitmap.at(positionX).at(positionY) = 7;
+							if (image.getPixel(x, y) == sf::Color(8, 8, 8))
+								bitmap.at(positionX).at(positionY) = 8;
+							if (image.getPixel(x, y) == sf::Color(9, 9, 9))
+								bitmap.at(positionX).at(positionY) = 9;
+						}
+					}
+				}
+
+				std::ofstream output;
+				std::string file = fileNames.at(i);
+				file = file.substr(0, file.find_last_of("."));
+				output.open(file + ".txt", std::ios_base::trunc);
+				if (output.is_open())
+				{
+					for (int x = 0; x < bitmap.size(); x++)
+					{
+						for (int y = 0; y < bitmap.at(x).size(); y++)
+						{
+							output << bitmap.at(x).at(y) << std::endl;
+						}
+					}
+				}
+				else
+				{
+					std::cout << "Failed to open " + file + ".txt" << std::endl;
+				}
+				output.close();
+				///*
+				for (int y = 0; y < bitmap.at(1).size(); y++)
+				{
+					for (int x = 0; x < bitmap.size(); x++)
+					{
+						std::cout << bitmap.at(x).at(y);
+					}
+					std::cout << std::endl;
+				}
+
+				system("pause");//*/
+			}
+		}
+	}
+	else
+	{
+		std::cout << "Failed to open imageFileNames.txt" << std::endl;
+	}
+	system("pause");
+}
