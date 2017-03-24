@@ -56,6 +56,13 @@ void Level::levelEnd()
 	setVelocity(0, -1);
 	setPedometerLimit(window->getSize().y);
 	startPedometer();
+
+	std::string newName = name.substr(0, 4);
+	int newNumber = std::stoi(name.substr(5)) + 1;
+	newName += newNumber;
+
+	GameObject *nextLevel = new Level(newName);
+	gameData->add(0, nextLevel);
 }
 
 void Level::levelStart()

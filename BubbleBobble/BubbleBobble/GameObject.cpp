@@ -28,6 +28,11 @@ GameObject::GameObject()
 	levelTransition = false;
 }
 
+GameObject::GameObject(std::string set)
+{
+	name = set;
+}
+
 GameObject::~GameObject()
 {
 }

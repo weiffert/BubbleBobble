@@ -13,6 +13,7 @@ class GameObject
 {
 public:
 	GameObject();
+	GameObject(std::string);
 	~GameObject();
 	//Game Logic
 	virtual void collision(GameObject *);
