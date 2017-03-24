@@ -96,9 +96,6 @@
     <ClInclude Include="Drunk.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Rascal.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -174,9 +171,6 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Drunk.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Rascal.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

@@ -64,6 +64,21 @@ int _tmain(int argc, _TCHAR* argv[])
 							bitmap.at(x).at(y + 1) = 2;
 					}
 				}
+				
+				for (int x = 0; x < bitmap.size(); x++)
+				{
+					for (int y = 0; y < bitmap.at(x).size() - 5; y++)
+					{
+						if (bitmap.at(x).at(y) == 2 || bitmap.at(x).at(y) == 3)
+						{
+							for (int increment = 1; increment <= 5; increment++)
+							{
+								if (bitmap.at(x).at(y + increment) == 2)
+									bitmap.at(x).at(y + increment) = 3;
+							}
+						}
+					}
+				}
 
 				std::ofstream output;
 				std::string file = fileNames.at(i);
@@ -84,7 +99,7 @@ int _tmain(int argc, _TCHAR* argv[])
 					std::cout << "Failed to open " + file + ".txt" << std::endl;
 				}
 				output.close();
-
+				///*
 				for (int y = 0; y < bitmap.at(1).size(); y++)
 				{
 					for (int x = 0; x < bitmap.size(); x++)
@@ -94,7 +109,7 @@ int _tmain(int argc, _TCHAR* argv[])
 					std::cout << std::endl;
 				}
 
-				system("pause");
+				system("pause");//*/
 			}
 		}
 	}

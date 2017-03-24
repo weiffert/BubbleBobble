@@ -39,7 +39,8 @@ void GameState::processEvents(sf::RenderWindow &window, sf::Event event)
 
 void GameState::process(sf::RenderWindow &window)
 {
-    //Loops through all entities
+    
+	/*//Loops through all entities
     for(int i = 0; i < objectVector.size(); ++i)
     {
         //Loops through entities ID's
@@ -61,59 +62,53 @@ void GameState::process(sf::RenderWindow &window)
             }
         }
     }
+	*/
+
+	//level
+	//pointtext
+	//pickup
+	//projectile
+	//monster
+	//player
+
     Cleanup();
 }
+/*
 void GameState::gravity(GameObject& entity)
 {
 }
-
 //Moves the player based on keyboard input
 void GameState::PlayerMovement(GameObject& player)
 {
 }
-
 void GameState::PlayerEvents(Entity& player, sf::Event& event)
 {
   
 }
-
+*/
 void GameState::draw(sf::RenderWindow & window)
 {
 	/*
-    window.setView(camera);
-    //Loops through all entities
-    for(int i = 0; i < objectVector.size(); i++)
-    {
-		for (int r = 0; r < objectVector.at(i).size(); r++)
-		{
-			window.draw(objectVector.at(i).at(r)->getRectangle());
-		}
-    }
+	window.setView(camera);
+	//Loops through all entities
+	for(int i = 0; i < objectVector.size(); i++)
+	{
+	for (int r = 0; r < objectVector.at(i).size(); r++)
+	{
+	window.draw(objectVector.at(i).at(r)->getRectangle());
+	}
+	}
 	*/
 
 	window.clear();
 
 	std::vector<std::vector<GameObject *>> data = gameData->getAll();
 
-	data.at(0).at(0)->render();
-
-	if (data.at(0).at(0)->isTransitioningLevels())
+	for (int i = 0; i < data.size(); i++)
 	{
-		data.at(0).at(1)->render();
-
-		for (int i = 0; i < data.at(1).size(); i++)
+		for (int j = 0; j < data.at(i).size(); i++)
 		{
-			data.at(1).at(i)->render();
-		}
-	}
-	else
-	{
-		for (int i = 1; i < data.size(); i++)
-		{
-			for (int j = 0; j < data.at(i).size(); i++)
-			{
-				data.at(i).at(j)->render();
-			}
+			data.at(i).at(j)->render();
 		}
 	}
 
