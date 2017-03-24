@@ -7,7 +7,7 @@ public:
 	Monster();
 	~Monster();
 	virtual void death();
-	virtual void levelStart();
+	virtual void updateVelocity();
 	virtual void distanceLimitPassed();
 
 private:

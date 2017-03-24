@@ -6,11 +6,24 @@
 Monster::Monster()
 {
 	noLevelCollision = true;
+	setVelocity(0, 1);
 }
 
 
 Monster::~Monster()
 {
+}
+
+void Monster::updateVelocity()
+{
+	if (!noLevelCollision)
+	{
+		//any change.
+		//check for collision.
+		gameData->getList(0).at(0)->collision(this);
+		//move.
+		rectangle.move(velocity);
+	}
 }
 
 void Monster::death()

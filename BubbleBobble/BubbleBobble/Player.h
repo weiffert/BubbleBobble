@@ -10,5 +10,6 @@ public:
 	virtual void levelEnd();
 	virtual void levelStart();
 	virtual void death();
+	virtual void timeLimitPassed();
 };
 

@@ -106,6 +106,7 @@
     <ClInclude Include="PointText.h" />
     <ClInclude Include="Projectile.h" />
     <ClInclude Include="Pulpul.h" />
+    <ClInclude Include="Skel_Monsta.h" />
     <ClInclude Include="SplashScreenState.h" />
     <ClInclude Include="StateManager.h" />
     <ClInclude Include="stdafx.h" />
@@ -135,6 +136,7 @@
     <ClCompile Include="PointText.cpp" />
     <ClCompile Include="Projectile.cpp" />
     <ClCompile Include="Pulpul.cpp" />
+    <ClCompile Include="Skel_Monsta.cpp" />
     <ClCompile Include="SplashScreenState.cpp" />
     <ClCompile Include="StateManager.cpp" />
     <ClCompile Include="stdafx.cpp">
