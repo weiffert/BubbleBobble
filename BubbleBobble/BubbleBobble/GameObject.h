@@ -24,6 +24,9 @@ public:
 	//Updates every step.
 	virtual void update();
 	virtual void updateVelocity();
+	//controls what collides with what. Level collision is NOT handled in here. That is done in update velocity. 
+	//What object that has precedence over what it is colliding with calls the collision function.
+	virtual void collideWith();
 
 	//Specific event type functions.
 	virtual void collided();

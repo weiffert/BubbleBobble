@@ -43,6 +43,7 @@ void GameObject::update()
 	updateVelocity();
 	time();
 	distance();
+	collideWith();
 }
 
 void GameObject::updateVelocity()

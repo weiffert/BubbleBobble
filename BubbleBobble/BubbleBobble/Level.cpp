@@ -38,6 +38,7 @@ void Level::update()
 	updateVelocity();
 	time();
 	distance();
+	collideWith();
 }
 
 void Level::timeLimitPassed()

@@ -6,6 +6,7 @@ class Player :
 public:
 	Player();
 	~Player();
+	virtual void collideWith();
 	virtual void updateVelocity();
 	virtual void levelEnd();
 	virtual void levelStart();

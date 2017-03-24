@@ -14,6 +14,14 @@ Monster::~Monster()
 {
 }
 
+void Monster::collideWith()
+{
+	//projectiles
+	std::vector<GameObject*> data = gameData->getList(4);
+	for (int i = 0; i < data.size(); i++)
+		collision(data.at(i));
+}
+
 void Monster::updateVelocity()
 {
 	if (!noLevelCollision)

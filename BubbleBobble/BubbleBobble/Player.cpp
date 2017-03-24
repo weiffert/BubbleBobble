@@ -13,6 +13,22 @@ Player::~Player()
 {
 }
 
+void Player::collideWith()
+{
+	//projectiles
+	std::vector<GameObject*> data = gameData->getList(4);
+	for (int i = 0; i < data.size(); i++)
+		collision(data.at(i));
+	//monsters
+	data = gameData->getList(2);
+	for (int i = 0; i < data.size(); i++)
+		collision(data.at(i));
+	//pickups
+	data = gameData->getList(3);
+	for (int i = 0; i < data.size(); i++)
+		collision(data.at(i));
+}
+
 void Player::updateVelocity()
 {
 	if (levelTransition)
