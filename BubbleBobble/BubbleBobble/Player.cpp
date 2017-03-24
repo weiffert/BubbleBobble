@@ -17,7 +17,25 @@ void Player::updateVelocity()
 {
 	if (levelTransition)
 	{
-		//move to the corner
+		//move to corner
+		sf::Vector2f corner;
+
+		corner.y = 8 * 23;
+		if (name == "Player2")
+			corner.x = 8 * 29;
+		else
+			corner.x = 8;
+
+		sf::Vector2f player;
+		player.x = rectangle.getGlobalBounds().left;
+		player.y = rectangle.getGlobalBounds().top;
+		float differenceX = player.x - corner.x;
+		float differenceY = player.y - corner.y;
+
+		float angle = std::atan(differenceY / differenceX);
+
+		velocity.x = cos(angle) * 2;
+		velocity.y = sin(angle) * 2;
 	}
 	else
 	{
