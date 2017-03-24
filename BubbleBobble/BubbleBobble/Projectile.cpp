@@ -11,7 +11,6 @@ Projectile::~Projectile()
 {
 }
 
-
 void Projectile::death()
 {
 	life = false;

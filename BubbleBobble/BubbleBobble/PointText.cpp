@@ -42,7 +42,6 @@ PointText::~PointText()
 {
 }
 
-
 void PointText::death()
 {
 	life = false;

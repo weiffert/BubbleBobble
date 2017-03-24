@@ -12,7 +12,7 @@ public:
 	Level(std::string);
 	~Level();
 	virtual void collision(GameObject *);
-	virtual bool update();
+	virtual void update();
 	virtual void timeLimitPassed();
 	virtual void distanceLimitPassed();
 	virtual void levelEnd();
@@ -25,6 +25,7 @@ private:
 	const int BITMAP_WIDTH = 32;
 	const int BITMAP_HEIGHT = 26;
 	int bitmap[32][26];
+	int monsterSpawns[32][26];
 	void enemyCheck();
 	void startLevel();
 };

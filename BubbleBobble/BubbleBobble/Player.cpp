@@ -20,7 +20,9 @@ void Player::updateVelocity()
 	}
 	else
 	{
-		//standard keyboard input.
+		//standard update.
+		gameData->getList(0).at(0)->collision(this);
+		rectangle.move(velocity);
 	}
 }
 

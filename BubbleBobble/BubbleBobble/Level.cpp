@@ -2,6 +2,15 @@
 #include "Level.h"
 #include <iostream>
 #include <fstream>
+#include "Zenchan.h"
+#include "Mighta.h"
+#include "Monsta.h"
+#include "Pulpul.h"
+#include "Banebou.h"
+#include "Hidegons.h"
+#include "Drunk.h"
+#include "Invader.h"
+#include "SuperDrunk.h"
 
 
 Level::Level()
@@ -22,12 +31,13 @@ Level::~Level()
 {
 }
 
-bool Level::update()
+void Level::update()
 {
-	enemyCheck();
+	if(!trackingTime)
+		enemyCheck();
+	updateVelocity();
 	time();
 	distance();
-	return life;
 }
 
 void Level::timeLimitPassed()
@@ -40,6 +50,11 @@ void Level::timeLimitPassed()
 	{
 		players.at(i)->levelEnd();
 	}
+
+	gameData->clear(2);
+	gameData->clear(3);
+	gameData->clear(4);
+	gameData->clear(5);
 }
 
 void Level::distanceLimitPassed()
@@ -73,6 +88,55 @@ void Level::levelStart()
 	{
 		players.at(i)->levelStart();
 	}
+
+	for (int i = 0; i < BITMAP_WIDTH; i++)
+	{
+		for (int j = 0; j < BITMAP_HEIGHT; j++)
+		{
+			GameObject *newMonster = nullptr;
+			enum monsterTypes {ZENCHAN = 1, MIGHTA, MONSTA, PULPUL, BANEBOU, HIDEGONS, DRUNK, INVADER, SUPER_DRUNK};
+			switch (monsterSpawns[i][j])
+			{
+			case ZENCHAN:
+				newMonster = new Zenchan();
+				break;
+			case MIGHTA:
+				newMonster = new Mighta();
+				break;
+			case MONSTA:
+				newMonster = new Monsta();
+				break;
+			case PULPUL:
+				newMonster = new Pulpul();
+				break;
+			case BANEBOU:
+				newMonster = new Banebou();
+				break;
+			case HIDEGONS:
+				newMonster = new Hidegons();
+				break;
+			case DRUNK:
+				newMonster = new Drunk();
+				break;
+			case INVADER:
+				newMonster = new Invader();
+				break;
+			case SUPER_DRUNK:
+				newMonster = new SuperDrunk();
+				break;
+			}
+
+			if (newMonster != nullptr)
+			{
+				newMonster->levelStart();
+				newMonster->setPosition(i * 8, 0 - newMonster->getRectangle().getLocalBounds().height);
+				newMonster->setPedometerLimit(j * 8);
+
+				gameData->add(2, newMonster);
+			}
+		}
+	}
+
 }
 
 void Level::death()
@@ -175,8 +239,31 @@ void Level::bitmapMaker()
 	}
 	else
 	{
-		std::cout << "Failed to load " << "../textures/Levels/" << name << "/" << name << "base.txt";
+		std::cout << "Failed to load " << "../textures/Levels/" << name << "/" << name << "base.txt" << std::endl;;
 	}
+	input.close();
+
+	input.open("../textures/Levels/" + name + "/" + "Monster-Spawns.txt");
+	if (input.is_open())
+	{
+		int incrementX = 0;
+		int incrementY = 0;
+		while (!input.eof() && incrementX < BITMAP_WIDTH)
+		{
+			input >> monsterSpawns[incrementX][incrementY];
+			incrementY++;
+			if (incrementY >= BITMAP_HEIGHT)
+			{
+				incrementX++;
+				incrementY = 0;
+			}
+		}
+	}
+	else
+	{
+		std::cout << "Failed to load " << "../textures/Levels/" << name << "/" << "Monster-Spawns.txt" << std::endl;;
+	}
+	input.close();
 }
 
 void Level::enemyCheck()

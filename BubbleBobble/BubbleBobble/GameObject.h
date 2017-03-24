@@ -22,7 +22,7 @@ public:
 	virtual void render();
 
 	//Updates every step.
-	virtual bool update();
+	virtual void update();
 	virtual void updateVelocity();
 
 	//Specific event type functions.

@@ -13,8 +13,6 @@ Pickup::~Pickup()
 {
 }
 
-//pickup death
-
 void Pickup::death()
 {
 	life = false;

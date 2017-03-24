@@ -5,13 +5,13 @@
 
 Monster::Monster()
 {
+	noLevelCollision = true;
 }
 
 
 Monster::~Monster()
 {
 }
-
 
 void Monster::death()
 {
@@ -23,4 +23,9 @@ void Monster::death()
 	//something like...
 	temp = new Pickup();
 	gameData->add(5, temp);
+}
+
+void Monster::distanceLimitPassed()
+{
+	noLevelCollision = false;
 }

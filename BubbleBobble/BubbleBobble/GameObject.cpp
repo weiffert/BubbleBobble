@@ -38,17 +38,19 @@ GameObject::~GameObject()
 }
 
 
-bool GameObject::update()
+void GameObject::update()
 {
 	updateVelocity();
 	time();
 	distance();
-	return life;
 }
 
 void GameObject::updateVelocity()
 {
-	//any change. then...
+	//any change.
+	//check for collision.
+	gameData->getList(0).at(0)->collision(this);
+	//move.
 	rectangle.move(velocity);
 }
 
