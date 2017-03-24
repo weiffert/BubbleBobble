@@ -21,9 +21,10 @@ public:
 	void bitmapMaker();
 
 private:
+	//MAKE SURE THIS IS CORRECT!!!!
 	const int BITMAP_WIDTH = 32;
-	const int BITMAP_HEIGHT = 28;
-	int bitmap[32][28];
+	const int BITMAP_HEIGHT = 26;
+	int bitmap[32][26];
 	void enemyCheck();
 	void startLevel();
 };
