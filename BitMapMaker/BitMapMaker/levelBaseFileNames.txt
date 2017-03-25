@@ -1,3 +1,4 @@
+../../BubbleBobble/textures/Levels/level0/level0base.png
 ../../BubbleBobble/textures/Levels/level1/level1base.png
 ../../BubbleBobble/textures/Levels/level2/level2base.png
 ../../BubbleBobble/textures/Levels/level3/level3base.png

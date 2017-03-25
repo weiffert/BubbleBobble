@@ -21,8 +21,8 @@ Level::Level()
 Level::Level(std::string id)
 {
 	name = id;
-	if (!texture.loadFromFile("../textures/Levels/" + name + "/" + name + "base.png"))
-		std::cout << "Failed to load " << "../textures/Levels/" << name << "/" << name << "base.png";
+	if (!texture.loadFromFile("../textures/Levels/" + name + "/" + name + ".png"))
+		std::cout << "Failed to load " << "../textures/Levels/" << name << "/" << name << ".png";
 	bitmapMaker();
 }
 
