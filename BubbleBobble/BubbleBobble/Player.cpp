@@ -7,6 +7,10 @@ Player::Player()
 {
 
 }
+Player::Player(std::string set)
+{
+	setName(set);
+}
 
 
 Player::~Player()

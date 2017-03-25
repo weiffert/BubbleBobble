@@ -46,6 +46,13 @@ void GameObject::update()
 	collideWith();
 }
 
+
+void GameObject::collideWith()
+{
+
+}
+
+
 void GameObject::updateVelocity()
 {
 	//any change.

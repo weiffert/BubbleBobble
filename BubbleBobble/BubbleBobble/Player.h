@@ -5,6 +5,7 @@ class Player :
 {
 public:
 	Player();
+	Player(std::string);
 	~Player();
 	virtual void collideWith();
 	virtual void updateVelocity();

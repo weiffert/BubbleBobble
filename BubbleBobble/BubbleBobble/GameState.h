@@ -8,7 +8,7 @@
 class GameState : public BaseState
 {
     public:
-        GameState(std::string  = "Level_1");
+        GameState(bool);
         ~GameState();
         void pause();
         void processEvents(sf::RenderWindow &, sf::Event);
@@ -19,7 +19,6 @@ class GameState : public BaseState
         sf::Vector2f playerPOS;
         //std::vector<GameObject *> killList; No longer necessary. See GameData class. just run the kill function in the game state.
         void Cleanup();
-        void collide(GameObject&);
         void PlayerMovement(GameObject&);
         void PlayerEvents(GameObject&, sf::Event &);
         void gravity(GameObject&);
