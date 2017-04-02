@@ -1,8 +1,8 @@
-﻿Build started 4/2/2017 5:50:42 PM.
+﻿Build started 4/2/2017 6:21:25 PM.
      1>Project "C:\Users\administrator\Documents\GitHub\BubbleBobble\BubbleBobble\BubbleBobble\BubbleBobble.vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /IC:\SFML\include /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D SFML_STATIC /D WIN32 /D _DEBUG /D _CONSOLE /D _LIB /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Yu"stdafx.h" /Fp"Debug\BubbleBobble.pch" /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt SplashScreenState.cpp
-         SplashScreenState.cpp
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /IC:\SFML\include /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D SFML_STATIC /D WIN32 /D _DEBUG /D _CONSOLE /D _LIB /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Yu"stdafx.h" /Fp"Debug\BubbleBobble.pch" /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt Game.cpp
+         Game.cpp
        Link:
          C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\administrator\Documents\GitHub\BubbleBobble\BubbleBobble\Debug\BubbleBobble.exe" /INCREMENTAL /NOLOGO /LIBPATH:C:\SFML\lib "sfml-graphics-s-d.lib" "sfml-window-s-d.lib" "sfml-system-s-d.lib" opengl32.lib freetype.lib jpeg.lib winmm.lib gdi32.lib "sfml-audio-s-d.lib" openal32.lib flac.lib vorbisenc.lib vorbisfile.lib vorbis.lib ogg.lib "sfml-network-s-d.lib" ws2_32.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\administrator\Documents\GitHub\BubbleBobble\BubbleBobble\Debug\BubbleBobble.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\administrator\Documents\GitHub\BubbleBobble\BubbleBobble\Debug\BubbleBobble.lib" /MACHINE:X86 Debug\Animation.obj
          Debug\Banebou.obj
@@ -14,6 +14,7 @@
          Debug\GameObject.obj
          Debug\GameState.obj
          Debug\Hidegons.obj
+         Debug\InputManager.obj
          Debug\Invader.obj
          Debug\Level.obj
          Debug\MenuState.obj
@@ -31,17 +32,9 @@
          Debug\stdafx.obj
          Debug\SuperDrunk.obj
          Debug\Zenchan.obj
-     1>BaseState.obj : error LNK2019: unresolved external symbol "public: __thiscall InputManager::InputManager(void)" (??0InputManager@@QAE@XZ) referenced in function "public: __thiscall BaseState::BaseState(void)" (??0BaseState@@QAE@XZ)
-     1>BaseState.obj : error LNK2019: unresolved external symbol "public: __thiscall InputManager::~InputManager(void)" (??1InputManager@@QAE@XZ) referenced in function __unwindfunclet$??0BaseState@@QAE@XZ$2
-     1>GameState.obj : error LNK2019: unresolved external symbol "public: void __thiscall InputManager::update(class sf::Event)" (?update@InputManager@@QAEXVEvent@sf@@@Z) referenced in function "public: virtual void __thiscall GameState::processEvents(class sf::RenderWindow &,class sf::Event)" (?processEvents@GameState@@UAEXAAVRenderWindow@sf@@VEvent@3@@Z)
-     1>MenuState.obj : error LNK2001: unresolved external symbol "public: void __thiscall InputManager::update(class sf::Event)" (?update@InputManager@@QAEXVEvent@sf@@@Z)
-     1>SplashScreenState.obj : error LNK2001: unresolved external symbol "public: void __thiscall InputManager::update(class sf::Event)" (?update@InputManager@@QAEXVEvent@sf@@@Z)
-     1>GameState.obj : error LNK2019: unresolved external symbol "public: bool __thiscall InputManager::keyReleased(enum sf::Keyboard::Key)" (?keyReleased@InputManager@@QAE_NW4Key@Keyboard@sf@@@Z) referenced in function "public: virtual void __thiscall GameState::processEvents(class sf::RenderWindow &,class sf::Event)" (?processEvents@GameState@@UAEXAAVRenderWindow@sf@@VEvent@3@@Z)
-     1>MenuState.obj : error LNK2001: unresolved external symbol "public: bool __thiscall InputManager::keyReleased(enum sf::Keyboard::Key)" (?keyReleased@InputManager@@QAE_NW4Key@Keyboard@sf@@@Z)
-     1>SplashScreenState.obj : error LNK2019: unresolved external symbol "public: bool __thiscall InputManager::keyPressed(enum sf::Keyboard::Key)" (?keyPressed@InputManager@@QAE_NW4Key@Keyboard@sf@@@Z) referenced in function "public: virtual void __thiscall SplashScreenState::processEvents(class sf::RenderWindow &,class sf::Event)" (?processEvents@SplashScreenState@@UAEXAAVRenderWindow@sf@@VEvent@3@@Z)
-     1>C:\Users\administrator\Documents\GitHub\BubbleBobble\BubbleBobble\Debug\BubbleBobble.exe : fatal error LNK1120: 5 unresolved externals
-     1>Done Building Project "C:\Users\administrator\Documents\GitHub\BubbleBobble\BubbleBobble\BubbleBobble\BubbleBobble.vcxproj" (Build target(s)) -- FAILED.
+         BubbleBobble.vcxproj -> C:\Users\administrator\Documents\GitHub\BubbleBobble\BubbleBobble\Debug\BubbleBobble.exe
+     1>Done Building Project "C:\Users\administrator\Documents\GitHub\BubbleBobble\BubbleBobble\BubbleBobble\BubbleBobble.vcxproj" (Build target(s)).
 
-Build FAILED.
+Build succeeded.
 
-Time Elapsed 00:00:01.14
+Time Elapsed 00:00:01.20

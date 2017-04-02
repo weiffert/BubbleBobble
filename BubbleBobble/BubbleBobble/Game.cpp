@@ -7,7 +7,7 @@ Game::Game()
     FPS_m = 60;
     screenDimensions.x = 800;
     screenDimensions.y = 800;
-    window.create(sf::VideoMode(screenDimensions.x, screenDimensions.y), "Ghosts N' Goblins");
+    window.create(sf::VideoMode(screenDimensions.x, screenDimensions.y), "Bubble Bobble");
     window.setFramerateLimit(FPS_m);
     stateManager.push_State(new SplashScreenState);
 }
@@ -17,7 +17,7 @@ Game::Game(int FPS = 60, int screenHeight = 800, int screenWidth = 800)
     FPS_m = FPS;
     screenDimensions.x = screenHeight;
     screenDimensions.y = screenWidth;
-    window.create(sf::VideoMode(screenDimensions.x, screenDimensions.y), "Ghosts N' Goblins");
+    window.create(sf::VideoMode(screenDimensions.x, screenDimensions.y), "Bubble Bobble");
     //window.setFramerateLimit(FPS_m);
 }
 

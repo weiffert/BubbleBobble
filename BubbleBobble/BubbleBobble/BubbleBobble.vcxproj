@@ -125,6 +125,7 @@
     <ClCompile Include="GameObject.cpp" />
     <ClCompile Include="GameState.cpp" />
     <ClCompile Include="Hidegons.cpp" />
+    <ClCompile Include="InputManager.cpp" />
     <ClCompile Include="Invader.cpp" />
     <ClCompile Include="Level.cpp" />
     <ClCompile Include="MenuState.cpp" />

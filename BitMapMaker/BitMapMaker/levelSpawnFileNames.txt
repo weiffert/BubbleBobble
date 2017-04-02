@@ -1,0 +1,11 @@
+../../BubbleBobble/textures/Levels/level0/level0spawns.png
+../../BubbleBobble/textures/Levels/level1/level1spawns.png
+../../BubbleBobble/textures/Levels/level2/level2spawns.png
+../../BubbleBobble/textures/Levels/level3/level3spawns.png
+../../BubbleBobble/textures/Levels/level4/level4spawns.png
+../../BubbleBobble/textures/Levels/level5/level5spawns.png
+../../BubbleBobble/textures/Levels/level6/level6spawns.png
+../../BubbleBobble/textures/Levels/level7/level7spawns.png
+../../BubbleBobble/textures/Levels/level8/level8spawns.png
+../../BubbleBobble/textures/Levels/level9/level9spawns.png
+../../BubbleBobble/textures/Levels/level10/level10spawns.png

@@ -16,20 +16,30 @@ GameData::GameData()
 
 GameData::~GameData()
 {
+	for (int i = 0; i < gameObjects.size(); i++)
+	{
+		clear(i);
+	}
 }
 
 
+//Precondition: everything is properly sorted;
 void GameData::kill()
 {
-	int increment1 = 0;
-	int increment2 = 0;
 	for(int i = 0; i < 6; i++)
 	{
+		int increment1 = 0;
+		int increment2 = 0;
 		while (!killList.at(i).empty())
 		{
-			GameObject *temp = killList.at(i).at(0);
-			killList.at(i).erase(killList.at(i).begin());
-			remove(i, temp);
+			if (killList.at(i).at(increment1) == gameObjects.at(i).at(increment2))
+			{
+				GameObject *temp = killList.at(i).at(0);
+				killList.at(i).erase(killList.at(i).begin());
+				remove(i, temp);
+				increment1++;
+			}
+			increment2++;
 		}
 	}
 }
