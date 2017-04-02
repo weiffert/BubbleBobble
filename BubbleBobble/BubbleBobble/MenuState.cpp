@@ -40,9 +40,5 @@ void MenuState::process(sf::RenderWindow &window)
 void MenuState::draw(sf::RenderWindow &window)
 {
 	window.setView(centered);
-	for (int i = 0; i < objectVector.size(); i++)
-	{
-		for (int n = 0; n < objectVector.at(i).size(); n++)
-			window.draw(objectVector.at(i).at(n)->getRectangle());
-	}
+	//gameData stuff.
 }

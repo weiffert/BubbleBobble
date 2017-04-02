@@ -40,6 +40,11 @@ std::string BaseState::nextState()
     return nextStateS;
 }
 
+GameData * BaseState::getGameDataPTR()
+{
+	return gameData;
+}
+
 BaseState::~BaseState()
 {
     //dtor

@@ -2,7 +2,7 @@
 #define BASESTATE_H
 
 #include <string>
-#include <SFML/Graphics.hpp>
+#include "SFML/Graphics.hpp"
 #include "GameObject.h"
 #include "InputManager.h"
 
@@ -25,7 +25,8 @@ class BaseState
         //Deletes everything that the fileManager has loaded
         bool switchTrue();
         std::string nextState();
-        void unload();
+		void unload();
+		GameData * getGameDataPTR();
 
     protected:
         bool stateSwitch;
@@ -36,9 +37,7 @@ class BaseState
         //If the GameState calls on the FileManager it also needs to include a number for the level it needs to load.
         std::string folder;
         //Handles all the input that is detected in the Game class and returns which keys were pressed to the state
-        InputManager inputManager;
-		//Game objects are organized into vectors according to importance
-		//Index 0 = Level, Index 1 = Player, Index 2 = Monster, Index 3 = Pickup
-        std::vector< std::vector<GameObject*> > objectVector;
+		InputManager inputManager;
+		GameData *gameData;
 };
 #endif // BASESTATE_H

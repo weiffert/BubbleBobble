@@ -2,8 +2,8 @@
 #define INPUTMANAGER_H
 
 
-#include<vector>
-#include<SFML/Graphics.hpp>
+#include <vector>
+#include "SFML/Graphics.hpp"
 
 class InputManager
 {

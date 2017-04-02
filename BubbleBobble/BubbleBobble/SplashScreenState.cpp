@@ -36,11 +36,7 @@ void SplashScreenState::process(sf::RenderWindow &window)
 void SplashScreenState::draw(sf::RenderWindow &window)
 {
     window.setView(centered);
-	for (int i = 0; i < objectVector.size(); i++)
-	{
-		for(int n = 0; n < objectVector.at(i).size(); n++)
-			window.draw(objectVector.at(i).at(n)->getRectangle());
-	}
+	//GameData Drawing.
 }
 
 //Does nothing in SplashScreenState
