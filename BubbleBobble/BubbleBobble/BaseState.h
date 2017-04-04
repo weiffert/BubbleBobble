@@ -9,19 +9,20 @@
 
 class BaseState
 {
-    public:
-        BaseState();
+	public:
+		BaseState();
+        BaseState(sf::RenderWindow *);
         ~BaseState();
         //Allows states to stop and switch between each other.
         //Planned to be use to stop GameState and switch to MenuState.
         virtual void pause();
         //Processes keyboard events, handles Entities, DynamicEnvironment,
         //StaticEnvironment, and collisionDetection for every state
-        virtual void processEvents(sf::RenderWindow &, sf::Event);
+        virtual void processEvents(sf::Event);
         //Processes game logic not dependent on events
-        virtual void process(sf::RenderWindow &);
+        virtual void process();
         //Draws all objects to the window
-        virtual void draw(sf::RenderWindow &);
+        virtual void draw();
         //Deletes everything that the fileManager has loaded
         bool switchTrue();
         std::string nextState();
@@ -39,5 +40,6 @@ class BaseState
         //Handles all the input that is detected in the Game class and returns which keys were pressed to the state
 		InputManager inputManager;
 		GameData *gameData;
+		sf::RenderWindow *window;
 };
 #endif // BASESTATE_H

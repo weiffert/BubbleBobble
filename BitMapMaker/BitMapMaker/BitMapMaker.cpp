@@ -12,7 +12,7 @@ void enemySpawn();
 
 int _tmain(int argc, _TCHAR* argv[])
 {
-	levelBase();
+	//levelBase();
 	enemySpawn();
 	return 0;
 }
@@ -136,6 +136,7 @@ void enemySpawn()
 {
 	std::ifstream input;
 	input.open("levelSpawnFileNames.txt");
+	int levelNumber = 0;
 	if (input.is_open())
 	{
 		std::string temp;
@@ -227,6 +228,9 @@ void enemySpawn()
 					}
 					std::cout << std::endl;
 				}
+				std::cout << levelNumber << std::endl;
+
+				levelNumber++;
 
 				system("pause");//*/
 			}

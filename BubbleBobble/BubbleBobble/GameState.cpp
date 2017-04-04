@@ -3,46 +3,63 @@
 #include "Level.h"
 #include "Player.h"
 
+
 GameState::GameState()
 {
-	//create the level.
-	gameData = new GameData();
-	GameObject *level = new Level("Level0");
-
-	//create the players.
-	gameData->add(0, level);
-	GameObject *player1 = new Player("Player1");
-	gameData->add(1, player1);
+	window = nullptr;
+	initialize(false);
 }
 
-GameState::GameState(bool twoPlayer)
+
+GameState::GameState(sf::RenderWindow *win)
+{
+	window = win;
+	initialize(false);
+}
+
+
+GameState::GameState(sf::RenderWindow *win, bool twoPlayer)
+{
+	window = win;
+	initialize(false);
+}
+
+
+GameState::~GameState()
+{
+	delete gameData;
+    //dtor
+}
+
+
+void GameState::initialize(bool twoPlayer)
 {
 	//create the level.
 	gameData = new GameData();
 	GameObject *level = new Level("Level0");
+	level->initialize(window, gameData);
 
 	//create the players.
 	gameData->add(0, level);
 	GameObject *player1 = new Player("Player1");
 	gameData->add(1, player1);
+	player1->initialize(window, gameData);
 	if (twoPlayer)
 	{
 		GameObject *player2 = new Player("Player2");
 		gameData->add(1, player2);
+		player2->initialize(window, gameData);
 	}
 }
 
-GameState::~GameState()
-{
-    //dtor
-}
 
 void GameState::pause()
 {
 
 }
 
-void GameState::processEvents(sf::RenderWindow &window, sf::Event event)
+
+void GameState::processEvents(sf::Event event)
 {
     inputManager.update(event);
     if(inputManager.keyReleased(sf::Keyboard::Escape))
@@ -50,43 +67,11 @@ void GameState::processEvents(sf::RenderWindow &window, sf::Event event)
         stateSwitch = true;
         nextStateS = "MenuState";
     }
-	/*
-    //Loops through all entities
-    for(int i = 0; i < objectVector.size(); i++)
-    {	
-		enum player {2};
-		if (objectVector.at(player).at(i)->update() == false)
-			killist.push_back(objectVector.at(player).at(i));
-    }
-	*/
  }
 
-void GameState::process(sf::RenderWindow &window)
+
+void GameState::process()
 {
-	/*//Loops through all entities
-    for(int i = 0; i < objectVector.size(); ++i)
-    {
-        //Loops through entities ID's
-        for(int r = 0; r < objectVector.at(i)->getID().size(); r++ )
-        {
-            //Handles Entities with playerMovement ID
-            if( objectVector.at(i)->getID().at(r) == "playerMovement")
-            {
-                PlayerMovement(*objectVector.at(i));
-
-            }
-            if( objectVector.at(i)->getID().at(r) == "gravity")
-            {
-                gravity(*objectVector.at(i));
-            }
-            if(objectVector.at(i)->getID().at(r) == "moves")
-            {
-                collide(*objectVector.at(i));
-            }
-        }
-    }
-	*/
-
 	//level .at(0)
 	processIndividual(0);
 	//pointtext .at(5)
@@ -103,6 +88,7 @@ void GameState::process(sf::RenderWindow &window)
     Cleanup();
 }
 
+
 //Functional decomposition for general processing.
 void GameState::processIndividual(unsigned int index)
 {
@@ -113,17 +99,10 @@ void GameState::processIndividual(unsigned int index)
 	}
 }
 
-//Moves the player based on keyboard input
-void GameState::PlayerMovement(GameObject& player)
+
+void GameState::draw()
 {
-}
-void GameState::PlayerEvents(GameObject& player, sf::Event& event)
-{
-  
-}
-void GameState::draw(sf::RenderWindow & window)
-{
-	window.clear();
+	window->clear();
 
 	std::vector<std::vector<GameObject *>> data = gameData->getAll();
 
@@ -135,7 +114,7 @@ void GameState::draw(sf::RenderWindow & window)
 		}
 	}
 
-	window.display();
+	window->display();
 }
 
 void GameState::Cleanup()

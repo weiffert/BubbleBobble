@@ -3,22 +3,30 @@
 
 BaseState::BaseState()
 {
-    folder = "empty";
+	folder = "empty";
+	window = nullptr;
+}
+
+
+BaseState::BaseState(sf::RenderWindow* win)
+{
+	folder = "empty";
+	window = win;
 }
 
 void BaseState::pause()
 {
 }
 
-void BaseState::processEvents(sf::RenderWindow &window, sf::Event event)
+void BaseState::processEvents(sf::Event event)
 {
 }
 
-void BaseState::process(sf::RenderWindow &window)
+void BaseState::process()
 {
 }
 
-void BaseState::draw(sf::RenderWindow &window)
+void BaseState::draw()
 {
 }
 

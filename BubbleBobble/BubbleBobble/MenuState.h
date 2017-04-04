@@ -10,11 +10,12 @@ class MenuState : public BaseState
 {
     public:
         MenuState();
+		MenuState(sf::RenderWindow*);
         ~MenuState();
         void pause();
-        void processEvents(sf::RenderWindow &, sf::Event);
-        void process(sf::RenderWindow &);
-        void draw(sf::RenderWindow &);
+        void processEvents(sf::Event);
+        void process();
+        void draw();
 
     private:
         sf::View centered;

@@ -15,6 +15,7 @@ public:
 	GameObject();
 	GameObject(std::string);
 	~GameObject();
+	void initialize(sf::RenderWindow *, GameData *);
 	//Game Logic
 	virtual void collision(GameObject *);
 	void time();

@@ -15,11 +15,11 @@ class StateManager
         StateManager();
 
         //Processes events for the state currently at the top of the stack.
-        void processEvents(sf::RenderWindow &, sf::Event);
+        void processEvents(sf::RenderWindow *, sf::Event);
         //Processes game logic not dependent on events
-        void process(sf::RenderWindow &);
+        void process();
         //calls on the state at the top of the stack to draw
-        void draw(sf::RenderWindow &);
+        void draw();
         //Allows you to add a BaseState onto the top of the stack of BaseStates
         void push_State(BaseState *);
         //Allows you to pop a BaseState off the top of the stack of BaseStates

@@ -8,7 +8,7 @@ GameObject::GameObject()
 {
 	//add instance variables
 	gameData = nullptr;
-	window = nullptr; 
+	window = nullptr;
 	velocity.x = 0;
 	velocity.y = 0;
 
@@ -30,11 +30,36 @@ GameObject::GameObject()
 
 GameObject::GameObject(std::string set)
 {
+	gameData = nullptr;
+	window = nullptr;
+	velocity.x = 0;
+	velocity.y = 0;
+
+	//Clock variables.
+	timeElapsed = sf::seconds(0);
+	timeLimit = sf::seconds(0);
+	trackingTime = false;
+
+	//Distance variables.
+	pedometer = 0;
+	distanceElapsed = 0;
+	distanceLimit = 0;
+	trackingDistance = false;
+
 	name = set;
+	life = false;
+	levelTransition = false;
 }
 
 GameObject::~GameObject()
 {
+}
+
+
+void GameObject::initialize(sf::RenderWindow *win, GameData *data)
+{
+	window = win;
+	gameData = data;
 }
 
 

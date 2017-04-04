@@ -23,6 +23,14 @@ Level::Level(std::string id)
 	name = id;
 	if (!texture.loadFromFile("../textures/Levels/" + name + "/" + name + ".png"))
 		std::cout << "Failed to load " << "../textures/Levels/" << name << "/" << name << ".png";
+	else
+	{
+		rectangle.setTexture(&texture);
+		sf::Vector2f vec;
+		vec.x = texture.getSize().x;
+		vec.y = texture.getSize().y;
+		rectangle.setSize(vec);
+	}
 	bitmapMaker();
 }
 
@@ -200,7 +208,7 @@ void Level::collision(GameObject *other)
 				other->velocityToNextGridLine(true);
 			}
 		}
-		for (int i = 0; i < vertical.size(); i++)
+		for (int i = 0; i < vertical.size(); i++) 
 		{
 			enum type { Floor = 2 };
 			switch (horizontal.at(i))
@@ -244,7 +252,7 @@ void Level::bitmapMaker()
 	}
 	input.close();
 
-	input.open("../textures/Levels/" + name + "/" + "Monster-Spawns.txt");
+	input.open("../textures/Levels/" + name + "/" + name + "spawns.txt");
 	if (input.is_open())
 	{
 		int incrementX = 0;
@@ -262,7 +270,7 @@ void Level::bitmapMaker()
 	}
 	else
 	{
-		std::cout << "Failed to load " << "../textures/Levels/" << name << "/" << "Monster-Spawns.txt" << std::endl;;
+		std::cout << "Failed to load " << "../textures/Levels/" << name << "/" << name << "spawns.txt" << std::endl;;
 	}
 	input.close();
 }
