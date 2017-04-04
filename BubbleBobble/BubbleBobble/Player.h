@@ -13,5 +13,10 @@ public:
 	virtual void levelStart();
 	virtual void death();
 	virtual void timeLimitPassed();
+	virtual void moveLeft(float);
+	virtual void moveRight(float);
+	virtual void jump();
+	virtual void stopXMovement();
+	virtual void stopYMovement();
 };
 

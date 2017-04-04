@@ -50,6 +50,7 @@ void GameState::processEvents(sf::RenderWindow &window, sf::Event event)
         stateSwitch = true;
         nextStateS = "MenuState";
     }
+	
 	/*
     //Loops through all entities
     for(int i = 0; i < objectVector.size(); i++)
@@ -116,6 +117,7 @@ void GameState::processIndividual(unsigned int index)
 //Moves the player based on keyboard input
 void GameState::PlayerMovement(GameObject& player)
 {
+
 }
 void GameState::PlayerEvents(GameObject& player, sf::Event& event)
 {
