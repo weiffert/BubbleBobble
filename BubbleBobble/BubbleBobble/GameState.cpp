@@ -67,6 +67,19 @@ void GameState::processEvents(sf::Event event)
         stateSwitch = true;
         nextStateS = "MenuState";
     }
+<<<<<<< HEAD
+=======
+	
+	/*
+    //Loops through all entities
+    for(int i = 0; i < objectVector.size(); i++)
+    {	
+		enum player {2};
+		if (objectVector.at(player).at(i)->update() == false)
+			killist.push_back(objectVector.at(player).at(i));
+    }
+	*/
+>>>>>>> origin/master
  }
 
 
@@ -99,8 +112,21 @@ void GameState::processIndividual(unsigned int index)
 	}
 }
 
+<<<<<<< HEAD
 
 void GameState::draw()
+=======
+//Moves the player based on keyboard input
+void GameState::PlayerMovement(GameObject& player)
+{
+
+}
+void GameState::PlayerEvents(GameObject& player, sf::Event& event)
+{
+  
+}
+void GameState::draw(sf::RenderWindow & window)
+>>>>>>> origin/master
 {
 	window->clear();
 

@@ -7,6 +7,8 @@ Player::Player()
 {
 
 }
+
+
 Player::Player(std::string set)
 {
 	setName(set);
@@ -16,6 +18,7 @@ Player::Player(std::string set)
 Player::~Player()
 {
 }
+
 
 void Player::collideWith()
 {
@@ -32,6 +35,7 @@ void Player::collideWith()
 	for (int i = 0; i < data.size(); i++)
 		collision(data.at(i));
 }
+
 
 void Player::updateVelocity()
 {
@@ -65,11 +69,13 @@ void Player::updateVelocity()
 	}
 }
 
+
 void Player::levelEnd()
 {
 	levelTransition = true;
 	//change animation.
 }
+
 
 void Player::levelStart()
 {
@@ -79,6 +85,7 @@ void Player::levelStart()
 	//change animation.
 }
 
+
 void Player::timeLimitPassed()
 {
 	//Show hurry up text?
@@ -87,10 +94,41 @@ void Player::timeLimitPassed()
 	gameData->add(2, skelMonsta);
 }
 
+
 //player.pickup()
 void Player::death()
 {
 	life = false;
 	GameObject *temp = this;
 	gameData->addToKillList(1, temp);
+}
+
+
+void Player::moveLeft(float rate)
+{
+	setVelocity((rate * -1), getVelocity().y);
+}
+
+
+void Player::moveRight(float rate)
+{
+	setVelocity(rate, getVelocity().y);
+}
+
+
+void Player::jump()
+{
+
+}
+
+
+void Player::stopXMovement()
+{
+	setVelocity(0, getVelocity().y);
+}
+
+
+void Player::stopYMovement()
+{
+	setVelocity(getVelocity().x, 0);
 }
