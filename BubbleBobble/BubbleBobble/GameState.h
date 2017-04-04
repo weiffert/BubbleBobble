@@ -16,6 +16,7 @@ class GameState : public BaseState
         void process(sf::RenderWindow &);
         void draw(sf::RenderWindow &);
     private:
+
         sf::Vector2f playerPOS;
         //std::vector<GameObject *> killList; No longer necessary. See GameData class. just run the kill function in the game state.
         void Cleanup();

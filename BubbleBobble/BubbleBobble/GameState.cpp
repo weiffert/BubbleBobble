@@ -53,15 +53,10 @@ void GameState::processEvents(sf::RenderWindow &window, sf::Event event)
 	/*
     //Loops through all entities
     for(int i = 0; i < objectVector.size(); i++)
-    {
-        //Loops through entities ID's
-        for(int r = 0; r < objectVector.at(i)->getID().size(); r++ )
-        {
-            if( objectVector.at(i)->getID().at(r) == "playerEvents")
-            {
-                PlayerEvents(*objectVector.at(i), event);
-            }
-        }
+    {	
+		enum player {2};
+		if (objectVector.at(player).at(i)->update() == false)
+			killist.push_back(objectVector.at(player).at(i));
     }
 	*/
  }
