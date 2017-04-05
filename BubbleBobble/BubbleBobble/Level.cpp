@@ -22,7 +22,7 @@ Level::Level(std::string id)
 {
 	name = id;
 	if (!texture.loadFromFile("../textures/Levels/" + name + "/" + name + ".png"))
-		std::cout << "Failed to load " << "../textures/Levels/" << name << "/" << name << ".png";
+		std::cout << "Failed to load " << "../textures/Levels/" << name << "/" << name << ".png" << std::endl;
 	else
 	{
 		rectangle.setTexture(&texture);
@@ -30,6 +30,7 @@ Level::Level(std::string id)
 		vec.x = texture.getSize().x;
 		vec.y = texture.getSize().y;
 		rectangle.setSize(vec);
+		rectangle.setPosition(0, 16);
 	}
 	bitmapMaker();
 }
@@ -37,22 +38,43 @@ Level::Level(std::string id)
 
 Level::~Level()
 {
+	std::cout << "Deconstructing Level" << std::endl;
 }
 
 void Level::update()
 {
-	if(!trackingTime)
-		enemyCheck();
-	updateVelocity();
-	time();
+	if (!transition)
+		levelPlay();
+	else
+		levelTransition();
 	distance();
-	collideWith();
+	//collideWith();
+}
+
+
+void Level::levelPlay()
+{
+	if (!trackingTime)
+		enemyCheck();
+	time();
+}
+
+
+void Level::levelTransition()
+{
+	rectangle.move(velocity);
 }
 
 void Level::timeLimitPassed()
 {
+	std::cout << "Transitioning Level From " << name << std::endl;
 	levelEnd();
-	gameData->getList(0).at(1)->levelEnd();
+
+	GameObject *nextLevel = new Level("Level" + std::to_string((std::stoi(name.substr(name.find_last_of("l") + 1)) + 1)));
+	nextLevel->initialize(window, gameData);
+	nextLevel->setPosition(0, rectangle.getGlobalBounds().top + rectangle.getGlobalBounds().height);
+	nextLevel->levelEnd();
+	gameData->add(0, nextLevel);
 
 	std::vector<GameObject *> players = gameData->getList(1);
 	for (int i = 0; i < players.size(); i++)
@@ -77,21 +99,17 @@ void Level::distanceLimitPassed()
 
 void Level::levelEnd()
 {
-	setVelocity(0, -1);
-	setPedometerLimit(window->getSize().y);
+	transition = true;
+	setVelocity(0, 1);
+	setPedometerLimit(window->getSize().y / 4);
 	startPedometer();
-
-	std::string newName = name.substr(0, 4);
-	int newNumber = std::stoi(name.substr(5)) + 1;
-	newName += newNumber;
-
-	GameObject *nextLevel = new Level(newName);
-	gameData->add(0, nextLevel);
 }
 
 void Level::levelStart()
 {
+	transition = false;
 	setVelocity(0, 0); 
+
 	std::vector<GameObject *> players = gameData->getList(1);
 	for (int i = 0; i < players.size(); i++)
 	{
@@ -161,7 +179,7 @@ void Level::collision(GameObject *other)
 	{
 		std::vector<int> horizontal, vertical;
 
-		int multiplierX, multiplierY = 1;
+		int multiplierX = 1, multiplierY = 1;
 		sf::RectangleShape rect = other->getRectangle();
 		sf::RectangleShape moving = rect;
 		moving.move(other->getVelocity());
@@ -211,7 +229,7 @@ void Level::collision(GameObject *other)
 		for (int i = 0; i < vertical.size(); i++) 
 		{
 			enum type { Floor = 2 };
-			switch (horizontal.at(i))
+			switch (vertical.at(i))
 			{
 			case Floor:
 				if (other->getVelocity().y < 0)
@@ -278,8 +296,9 @@ void Level::bitmapMaker()
 void Level::enemyCheck()
 {
 	//if no enemies left
-	if (gameData->exist(3))
+	if (!(gameData->exist(3)))
 	{
+		std::cout << "Starting Level Transition Clock" << std::endl;
 		setTimeLimit(sf::seconds(5));
 		startClock();
 	}

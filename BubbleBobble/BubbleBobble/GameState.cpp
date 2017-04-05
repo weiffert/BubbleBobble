@@ -2,6 +2,7 @@
 #include "GameState.h"
 #include "Level.h"
 #include "Player.h"
+#include <iostream>
 
 
 GameState::GameState()
@@ -27,8 +28,13 @@ GameState::GameState(sf::RenderWindow *win, bool twoPlayer)
 
 GameState::~GameState()
 {
-	delete gameData;
-    //dtor
+	std::cout << "Deconstructing GameState" << std::endl;
+	if (gameData != nullptr)
+	{
+		std::cout << "Deleting GameData" << std::endl;
+		delete gameData;
+		gameData = nullptr;
+	}
 }
 
 
@@ -38,9 +44,9 @@ void GameState::initialize(bool twoPlayer)
 	gameData = new GameData();
 	GameObject *level = new Level("Level0");
 	level->initialize(window, gameData);
+	gameData->add(0, level);
 
 	//create the players.
-	gameData->add(0, level);
 	GameObject *player1 = new Player("Player1");
 	gameData->add(1, player1);
 	player1->initialize(window, gameData);
@@ -67,19 +73,44 @@ void GameState::processEvents(sf::Event event)
         stateSwitch = true;
         nextStateS = "MenuState";
     }
-<<<<<<< HEAD
-=======
-	
-	/*
-    //Loops through all entities
-    for(int i = 0; i < objectVector.size(); i++)
-    {	
-		enum player {2};
-		if (objectVector.at(player).at(i)->update() == false)
-			killist.push_back(objectVector.at(player).at(i));
-    }
-	*/
->>>>>>> origin/master
+	std::vector<GameObject *> players = gameData->getList(1);
+	Player *player = dynamic_cast<Player *>(players.at(0));
+	if (inputManager.keyDown(sf::Keyboard::Left))
+	{
+		player->moveLeft();
+	}
+	if (inputManager.keyDown(sf::Keyboard::Right))
+	{
+		player->moveRight();
+	}
+	if (inputManager.keyReleased(sf::Keyboard::Left) || inputManager.keyReleased(sf::Keyboard::Right))
+	{
+		player->stopHorizontalVelocity();
+	}
+	if (inputManager.keyReleased(sf::Keyboard::Up))
+	{
+		player->jump();
+	}
+	if (players.size() > 1)
+	{
+		Player *player = dynamic_cast<Player *>(players.at(1));
+		if (inputManager.keyDown(sf::Keyboard::A))
+		{
+			player->moveLeft();
+		}
+		if (inputManager.keyDown(sf::Keyboard::D))
+		{
+			player->moveRight();
+		}
+		if (inputManager.keyReleased(sf::Keyboard::A) || inputManager.keyReleased(sf::Keyboard::D))
+		{
+			player->stopHorizontalVelocity();
+		}
+		if (inputManager.keyReleased(sf::Keyboard::W))
+		{
+			player->jump();
+		}
+	}
  }
 
 
@@ -112,24 +143,9 @@ void GameState::processIndividual(unsigned int index)
 	}
 }
 
-<<<<<<< HEAD
 
 void GameState::draw()
-=======
-//Moves the player based on keyboard input
-void GameState::PlayerMovement(GameObject& player)
 {
-
-}
-void GameState::PlayerEvents(GameObject& player, sf::Event& event)
-{
-  
-}
-void GameState::draw(sf::RenderWindow & window)
->>>>>>> origin/master
-{
-	window->clear();
-
 	std::vector<std::vector<GameObject *>> data = gameData->getAll();
 
 	for (int i = 0; i < data.size(); i++)
@@ -139,8 +155,6 @@ void GameState::draw(sf::RenderWindow & window)
 			data.at(i).at(j)->render();
 		}
 	}
-
-	window->display();
 }
 
 void GameState::Cleanup()

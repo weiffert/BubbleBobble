@@ -1,22 +1,26 @@
 #include "stdafx.h"
 #include "Player.h"
 #include "Skel_Monsta.h"
+#include <iostream>
 
 
 Player::Player()
 {
-
+	
 }
 
 
 Player::Player(std::string set)
 {
 	setName(set);
+	rectangle.setSize(sf::Vector2f(16, 16));
+	rectangle.setFillColor(sf::Color::Green);
 }
 
 
 Player::~Player()
 {
+	std::cout << "Deconstructing Player" << std::endl;
 }
 
 
@@ -37,49 +41,50 @@ void Player::collideWith()
 }
 
 
-void Player::updateVelocity()
+void Player::levelPlay()
 {
-	if (levelTransition)
-	{
-		//move to corner
-		sf::Vector2f corner;
+	//standard update.
+	gameData->getList(0).at(0)->collision(this);
+	rectangle.move(velocity);
+}
 
-		corner.y = 8 * 23;
-		if (name == "Player2")
-			corner.x = 8 * 29;
-		else
-			corner.x = 8;
 
-		sf::Vector2f player;
-		player.x = rectangle.getGlobalBounds().left;
-		player.y = rectangle.getGlobalBounds().top;
-		float differenceX = player.x - corner.x;
-		float differenceY = player.y - corner.y;
+void Player::levelTransition()
+{
+	//move to corner
+	sf::Vector2f corner;
 
-		float angle = std::atan(differenceY / differenceX);
-
-		velocity.x = cos(angle) * 2;
-		velocity.y = sin(angle) * 2;
-	}
+	corner.y = 8 * 23;
+	if (name == "Player2")
+		corner.x = 8 * 29;
 	else
-	{
-		//standard update.
-		gameData->getList(0).at(0)->collision(this);
-		rectangle.move(velocity);
-	}
+		corner.x = 8;
+
+	sf::Vector2f player;
+	player.x = rectangle.getGlobalBounds().left;
+	player.y = rectangle.getGlobalBounds().top;
+	float differenceX = player.x - corner.x;
+	float differenceY = player.y - corner.y;
+
+	float angle = std::atan(differenceY / differenceX);
+
+	velocity.x = cos(angle) * -1;
+	velocity.y = sin(angle) * -1;
+
+	rectangle.move(velocity);
 }
 
 
 void Player::levelEnd()
 {
-	levelTransition = true;
+	transition = true;
 	//change animation.
 }
 
 
 void Player::levelStart()
 {
-	levelTransition = false;
+	transition = false;
 	setTimeLimit(sf::seconds(30));
 	startClock();
 	//change animation.
@@ -104,17 +109,22 @@ void Player::death()
 }
 
 
-void Player::moveLeft(float rate)
+void Player::moveLeft()
 {
-	setVelocity((rate * -1), getVelocity().y);
+	setVelocity((1 * -1), velocity.y);
 }
 
 
-void Player::moveRight(float rate)
+void Player::moveRight()
 {
-	setVelocity(rate, getVelocity().y);
+	setVelocity(1, velocity.y);
 }
 
+
+void Player::stopHorizontalVelocity()
+{
+	setVelocity(0, velocity.y);
+}
 
 void Player::jump()
 {

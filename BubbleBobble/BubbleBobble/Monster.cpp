@@ -1,10 +1,14 @@
 #include "stdafx.h"
 #include "Monster.h"
 #include "Pickup.h"
+#include <iostream>
 
 
 Monster::Monster()
 {
+	rectangle.setSize(sf::Vector2f(16, 16));
+	rectangle.setFillColor(sf::Color::Red);
+	rectangle.setPosition(500, 100);
 	noLevelCollision = true;
 	setVelocity(0, 1);
 }
@@ -12,6 +16,7 @@ Monster::Monster()
 
 Monster::~Monster()
 {
+	std::cout << "Deconstructing Monster" << std::endl;
 }
 
 void Monster::collideWith()

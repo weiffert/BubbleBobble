@@ -24,7 +24,6 @@ public:
 
 	//Updates every step.
 	virtual void update();
-	virtual void updateVelocity();
 	//controls what collides with what. Level collision is NOT handled in here. That is done in update velocity. 
 	//What object that has precedence over what it is colliding with calls the collision function.
 	virtual void collideWith();
@@ -34,8 +33,12 @@ public:
 	virtual void timeLimitPassed();
 	virtual void distanceLimitPassed();
 	virtual void death();
-	virtual void levelEnd();
+	//Performs changes to the game object based on level changing.
 	virtual void levelStart();
+	virtual void levelEnd();
+	//Controls the behavior.
+	virtual void levelPlay();
+	virtual void levelTransition();
 
 	std::string getName();
 	sf::Time getTimeElapsed();
@@ -65,7 +68,7 @@ public:
 	bool offBottom();
 
 protected:
-	bool levelTransition;
+	bool transition;
 
 	sf::Vector2f velocity;
 

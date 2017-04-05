@@ -1,10 +1,12 @@
 #include "stdafx.h"
 #include "BaseState.h"
+#include <iostream>
 
 BaseState::BaseState()
 {
 	folder = "empty";
 	window = nullptr;
+	gameData = nullptr;
 }
 
 
@@ -12,6 +14,18 @@ BaseState::BaseState(sf::RenderWindow* win)
 {
 	folder = "empty";
 	window = win;
+	gameData = nullptr;
+}
+
+BaseState::~BaseState()
+{
+	std::cout << "Deconstructing BaseState" << std::endl;
+	if (gameData != nullptr)
+	{
+		std::cout << "Deleting GameData" << std::endl;
+		delete gameData;
+		gameData = nullptr;
+	}
 }
 
 void BaseState::pause()
@@ -51,9 +65,4 @@ std::string BaseState::nextState()
 GameData * BaseState::getGameDataPTR()
 {
 	return gameData;
-}
-
-BaseState::~BaseState()
-{
-    //dtor
 }

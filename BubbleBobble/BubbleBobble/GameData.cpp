@@ -16,6 +16,7 @@ GameData::GameData()
 
 GameData::~GameData()
 {
+	std::cout << "Deconstructing GameData" << std::endl;
 	for (int i = 0; i < gameObjects.size(); i++)
 	{
 		clear(i);

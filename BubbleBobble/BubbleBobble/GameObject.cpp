@@ -25,7 +25,7 @@ GameObject::GameObject()
 
 	name = "none";
 	life = false;
-	levelTransition = false;
+	transition = false;
 }
 
 GameObject::GameObject(std::string set)
@@ -48,11 +48,12 @@ GameObject::GameObject(std::string set)
 
 	name = set;
 	life = false;
-	levelTransition = false;
+	transition = false;
 }
 
 GameObject::~GameObject()
 {
+	std::cout << "Deconstructing GameObject" << std::endl;
 }
 
 
@@ -65,7 +66,10 @@ void GameObject::initialize(sf::RenderWindow *win, GameData *data)
 
 void GameObject::update()
 {
-	updateVelocity();
+	if (!transition)
+		levelPlay();
+	else
+		levelTransition();
 	time();
 	distance();
 	collideWith();
@@ -78,13 +82,28 @@ void GameObject::collideWith()
 }
 
 
-void GameObject::updateVelocity()
+void GameObject::levelEnd()
 {
-	//any change.
-	//check for collision.
-	gameData->getList(0).at(0)->collision(this);
+	transition = true;
+}
+
+
+void GameObject::levelStart()
+{
+	transition = false;
+}
+
+
+void GameObject::levelPlay()
+{
 	//move.
 	rectangle.move(velocity);
+}
+
+
+void GameObject::levelTransition()
+{
+	//Do nothing.
 }
 
 //Game Logic
@@ -104,6 +123,7 @@ void GameObject::time()
 	if (trackingTime && clock.getElapsedTime() > timeLimit)
 	{
 		stopClock();
+		trackingTime = false;
 		timeLimitPassed();
 	}
 }
@@ -119,6 +139,7 @@ void GameObject::distance()
 		if (pedometer > distanceLimit)
 		{
 			stopPedometer();
+			trackingDistance = false;
 			distanceLimitPassed();
 		}
 	}
@@ -126,6 +147,7 @@ void GameObject::distance()
 
 void GameObject::render()
 {
+	std::cout << "Rendering " << name << std::endl;
 	window->draw(rectangle);
 }
 
@@ -140,16 +162,6 @@ void GameObject::death()
 	life = false;
 	GameObject *temp = this;
 	gameData->addToKillList(0, temp);
-}
-
-void GameObject::levelEnd()
-{
-	levelTransition = true;
-}
-
-void GameObject::levelStart()
-{
-	levelTransition = false;
 }
 
 void GameObject::timeLimitPassed()
@@ -190,7 +202,7 @@ sf::Texture GameObject::getTexture()
 }
 bool GameObject::isTransitioningLevels()
 {
-	return levelTransition;
+	return transition;
 }
 
 

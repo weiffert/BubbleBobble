@@ -1,15 +1,21 @@
 #include "stdafx.h"
 #include "StateManager.h"
+#include <iostream>
 
 StateManager::StateManager()
 {
-    //ctor
+
 }
 
 
 StateManager::~StateManager()
 {
-    //dtor
+	std::cout << "Deconstructing StateManager" << std::endl;
+	while (!states.empty())
+	{
+		delete states.at(0);
+		states.erase(states.begin());
+	}
 }
 
 void StateManager::processEvents(sf::RenderWindow *window, sf::Event event)
@@ -52,9 +58,10 @@ void StateManager::push_State(BaseState *newState )
 
 void StateManager::pop_State()
 {
-   //this->unload();
-   states.back()->unload();
-   delete states.back();
+	//this->unload();
+	delete states.back();
+	states.back()->unload();
+	states.erase(states.begin() + states.size() - 1);
 }
 
 void StateManager::unload()
