@@ -31,7 +31,7 @@ void GameData::kill()
 	{
 		int increment1 = 0;
 		int increment2 = 0;
-		while (!killList.at(i).empty())
+		while (!killList.at(i).empty() && increment1 < killList.at(i).size() && increment2 < gameObjects.at(i).size())
 		{
 			if (killList.at(i).at(increment1) == gameObjects.at(i).at(increment2))
 			{

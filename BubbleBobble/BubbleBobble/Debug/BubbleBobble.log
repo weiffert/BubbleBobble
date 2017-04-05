@@ -1,11 +1,12 @@
-﻿Build started 4/5/2017 4:27:55 PM.
+﻿Build started 4/5/2017 4:51:02 PM.
      1>Project "C:\Users\administrator\Documents\GitHub\BubbleBobble\BubbleBobble\BubbleBobble\BubbleBobble.vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /IC:\SFML\include /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D SFML_STATIC /D WIN32 /D _DEBUG /D _CONSOLE /D _LIB /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Yu"stdafx.h" /Fp"Debug\BubbleBobble.pch" /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt Animation.cpp InputManager.cpp Player.cpp
-         Player.cpp
-     1>c:\users\administrator\documents\github\bubblebobble\bubblebobble\bubblebobble\player.cpp(31): warning C4018: '<' : signed/unsigned mismatch
-     1>c:\users\administrator\documents\github\bubblebobble\bubblebobble\bubblebobble\player.cpp(35): warning C4018: '<' : signed/unsigned mismatch
-     1>c:\users\administrator\documents\github\bubblebobble\bubblebobble\bubblebobble\player.cpp(39): warning C4018: '<' : signed/unsigned mismatch
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /IC:\SFML\include /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D SFML_STATIC /D WIN32 /D _DEBUG /D _CONSOLE /D _LIB /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Yu"stdafx.h" /Fp"Debug\BubbleBobble.pch" /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt Animation.cpp GameData.cpp InputManager.cpp
+         GameData.cpp
+     1>c:\users\administrator\documents\github\bubblebobble\bubblebobble\bubblebobble\gamedata.cpp(20): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\administrator\documents\github\bubblebobble\bubblebobble\bubblebobble\gamedata.cpp(34): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\administrator\documents\github\bubblebobble\bubblebobble\bubblebobble\gamedata.cpp(130): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\administrator\documents\github\bubblebobble\bubblebobble\bubblebobble\gamedata.cpp(132): warning C4018: '<' : signed/unsigned mismatch
          Generating Code...
          Skipping... (no relevant changes detected)
          InputManager.cpp
@@ -44,4 +45,4 @@
 
 Build succeeded.
 
-Time Elapsed 00:00:01.15
+Time Elapsed 00:00:01.19

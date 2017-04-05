@@ -47,8 +47,6 @@ void Level::update()
 		levelPlay();
 	else
 		levelTransition();
-	distance();
-	//collideWith();
 }
 
 
@@ -62,6 +60,7 @@ void Level::levelPlay()
 
 void Level::levelTransition()
 {
+	distance();
 	rectangle.move(velocity);
 }
 
@@ -91,16 +90,15 @@ void Level::timeLimitPassed()
 void Level::distanceLimitPassed()
 {
 	if (offTop())
-	{
 		death();
-		gameData->getList(0).at(1)->levelStart();
-	}
+	else
+		levelStart();
 }
 
 void Level::levelEnd()
 {
 	transition = true;
-	setVelocity(0, 1);
+	setVelocity(0, -1);
 	setPedometerLimit(window->getSize().y / 4);
 	startPedometer();
 }
@@ -158,7 +156,7 @@ void Level::levelStart()
 				newMonster->levelStart();
 				newMonster->setPosition(i * 8, 0 - newMonster->getRectangle().getLocalBounds().height);
 				newMonster->setPedometerLimit(j * 8);
-
+				newMonster->initialize(window, gameData);
 				gameData->add(2, newMonster);
 			}
 		}

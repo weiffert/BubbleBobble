@@ -58,18 +58,27 @@ void Player::levelTransition()
 	if (name == "Player2")
 		corner.x = 8 * 29;
 	else
-		corner.x = 8;
+		corner.x = 8 * 3;
 
 	sf::Vector2f player;
 	player.x = rectangle.getGlobalBounds().left;
 	player.y = rectangle.getGlobalBounds().top;
-	float differenceX = player.x - corner.x;
-	float differenceY = player.y - corner.y;
+	float differenceX = corner.x - player.x;
+	float differenceY = corner.y - player.y;
 
-	float angle = std::atan(differenceY / differenceX);
+	if (differenceX < 0)
+		velocity.x = -1;
+	else if (differenceX == 0)
+		velocity.x = 0;
+	else
+		velocity.x = 1;
 
-	velocity.x = cos(angle) * -1;
-	velocity.y = sin(angle) * -1;
+	if (differenceY < 0)
+		velocity.y = -1;
+	else if (differenceY == 0)
+		velocity.y = 0;
+	else
+		velocity.y = 1;
 
 	rectangle.move(velocity);
 }

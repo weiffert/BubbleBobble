@@ -150,7 +150,7 @@ void GameState::draw()
 
 	for (int i = 0; i < data.size(); i++)
 	{
-		for (int j = 0; j < data.at(i).size(); i++)
+		for (int j = 0; j < data.at(i).size(); j++)
 		{
 			data.at(i).at(j)->render();
 		}

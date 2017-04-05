@@ -120,10 +120,9 @@ void GameObject::collision(GameObject *other)
 //Returns true and stops the timer 
 void GameObject::time()
 {
-	if (trackingTime && clock.getElapsedTime() > timeLimit)
+	if (trackingTime && clock.getElapsedTime() >= timeLimit)
 	{
 		stopClock();
-		trackingTime = false;
 		timeLimitPassed();
 	}
 }
@@ -136,10 +135,9 @@ void GameObject::distance()
 	{
 		pedometer += std::abs(std::sqrt(velocity.x * velocity.x + velocity.y * velocity.y));
 
-		if (pedometer > distanceLimit)
+		if (pedometer >= distanceLimit)
 		{
 			stopPedometer();
-			trackingDistance = false;
 			distanceLimitPassed();
 		}
 	}
@@ -290,6 +288,7 @@ sf::Time GameObject::stopClock()
 double GameObject::stopPedometer()
 {
 	trackingDistance = false;
+	distanceElapsed = pedometer;
 	return pedometer;
 }
 
