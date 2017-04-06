@@ -55,7 +55,10 @@ public:
 	void setVelocity(float, float);
 	void velocityToNextGridLine(bool);
 	void setRenderWindow(sf::RenderWindow *);
-	void setAnimation(std::string);
+	void setAnimation(std::string); 
+	void setTexture(sf::Texture);
+	void setTexture(std::string);
+	void setTexture();
 	void setPosition(float, float);
 	void setGameDataPTR(GameData *);
 
@@ -68,6 +71,7 @@ public:
 	bool offBottom();
 
 protected:
+	std::string name;
 	bool transition;
 
 	sf::Vector2f velocity;
@@ -87,7 +91,6 @@ protected:
 	sf::RectangleShape rectangle;
 	sf::Texture texture;
 	std::vector<Animation> animations;
-	std::string name;
 	std::vector<double> data;
 	bool life;
 	sf::RenderWindow *window;

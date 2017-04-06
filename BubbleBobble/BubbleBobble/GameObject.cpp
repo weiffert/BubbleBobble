@@ -247,6 +247,27 @@ void GameObject::setAnimation(std::string type)
 		animations.push_back(Animation(&texture, sf::Vector2u(1,0), 0, 0));
 	}
 }
+void GameObject::setTexture(std::string fileName)
+{
+	if (!texture.loadFromFile(fileName))
+		std::cout << fileName << std::endl;
+	else
+	{
+		setTexture();
+	}
+}
+void GameObject::setTexture(sf::Texture set)
+{
+	texture = set;
+}
+void GameObject::setTexture()
+{
+	rectangle.setTexture(&texture);
+	sf::Vector2f vec;
+	vec.x = texture.getSize().x;
+	vec.y = texture.getSize().y;
+	rectangle.setSize(vec);
+}
 void GameObject::setPosition(float x, float y)
 {
 	rectangle.setPosition(x, y);

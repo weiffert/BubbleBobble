@@ -21,16 +21,7 @@ Level::Level()
 Level::Level(std::string id)
 {
 	name = id;
-	if (!texture.loadFromFile("../textures/Levels/" + name + "/" + name + ".png"))
-		std::cout << "Failed to load " << "../textures/Levels/" << name << "/" << name << ".png" << std::endl;
-	else
-	{
-		rectangle.setTexture(&texture);
-		sf::Vector2f vec;
-		vec.x = texture.getSize().x;
-		vec.y = texture.getSize().y;
-		rectangle.setSize(vec);
-	}
+	setTexture("../textures/Levels/" + name + "/" + name + ".png");
 	bitmapMaker();
 }
 
@@ -77,7 +68,7 @@ void Level::timeLimitPassed()
 		int i = 0;
 
 	nextLevel->initialize(window, gameData);
-	nextLevel->setPosition(0, window->getSize().y / 4);
+	nextLevel->setPosition(0, window->getSize().y / 4 * 2 - nextLevel->getRectangle().getLocalBounds().height);
 	nextLevel->levelEnd();
 	gameData->add(0, nextLevel);
 
