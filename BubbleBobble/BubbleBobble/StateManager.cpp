@@ -28,7 +28,7 @@ void StateManager::processEvents(sf::RenderWindow *window, sf::Event event)
             this->pop_State();
             this->push_State(new SplashScreenState(window));
         }
-        else if(states.back()->nextState() == "MenuState")
+        else if(states.back()->nextState() == "MenuState" && states.back()->)
         {
             this->pop_State();
             this->push_State(new MenuState(window));
@@ -39,6 +39,24 @@ void StateManager::processEvents(sf::RenderWindow *window, sf::Event event)
             this->push_State(new GameState(window));
         }
     }
+	else if (states.back()->pause())
+	{
+		if (states.back()->nextState() == "SplashScreenState")
+		{
+			this->pop_State();
+			this->push_State(new SplashScreenState(window));
+		}
+		else if (states.back()->nextState() == "MenuState" && states.back()->)
+		{
+			this->pop_State();
+			this->push_State(new MenuState(window));
+		}
+		else if (states.back()->nextState() == "GameState")
+		{
+			this->pop_State();
+			this->push_State(new GameState(window));
+		}
+	}
 }
 
 void StateManager::process()
@@ -58,7 +76,6 @@ void StateManager::push_State(BaseState *newState )
 
 void StateManager::pop_State()
 {
-	//this->unload();
 	delete states.back();
 	states.back()->unload();
 	states.erase(states.begin() + states.size() - 1);
