@@ -20,5 +20,8 @@ public:
 	void jump();
 	void stopXMovement();
 	void stopYMovement();
+	int getDirection();
+private: 
+	int direction;
 };
 
