@@ -6,10 +6,11 @@ class Monster :
 public:
 	Monster();
 	~Monster();
-	virtual void collideWith();
-	virtual void death();
-	virtual void updateVelocity();
-	virtual void distanceLimitPassed();
+	void collideWith();
+	void death();
+	void levelStart();
+	void levelPlay();
+	void distanceLimitPassed();
 
 private:
 	bool noLevelCollision;

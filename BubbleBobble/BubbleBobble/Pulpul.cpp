@@ -4,6 +4,7 @@
 
 Pulpul::Pulpul()
 {
+	name = "Pulpul";
 }
 
 

@@ -2,47 +2,70 @@
 #include "GameState.h"
 #include "Level.h"
 #include "Player.h"
+#include <iostream>
+
 
 GameState::GameState()
 {
-	//create the level.
-	gameData = new GameData();
-	GameObject *level = new Level("Level0");
-
-	//create the players.
-	gameData->add(0, level);
-	GameObject *player1 = new Player("Player1");
-	gameData->add(1, player1);
+	window = nullptr;
+	initialize(false);
 }
 
-GameState::GameState(bool twoPlayer)
+
+GameState::GameState(sf::RenderWindow *win)
+{
+	window = win;
+	initialize(false);
+}
+
+
+GameState::GameState(sf::RenderWindow *win, bool twoPlayer)
+{
+	window = win;
+	initialize(false);
+}
+
+
+GameState::~GameState()
+{
+	std::cout << "Deconstructing GameState" << std::endl;
+	if (gameData != nullptr)
+	{
+		std::cout << "Deleting GameData" << std::endl;
+		delete gameData;
+		gameData = nullptr;
+	}
+}
+
+
+void GameState::initialize(bool twoPlayer)
 {
 	//create the level.
 	gameData = new GameData();
 	GameObject *level = new Level("Level0");
+	level->initialize(window, gameData);
+	gameData->add(0, level);
 
 	//create the players.
-	gameData->add(0, level);
 	GameObject *player1 = new Player("Player1");
+	player1->initialize(window, gameData);
 	gameData->add(1, player1);
 	if (twoPlayer)
 	{
 		GameObject *player2 = new Player("Player2");
+		player2->initialize(window, gameData);
 		gameData->add(1, player2);
 	}
 }
 
-GameState::~GameState()
-{
-    //dtor
-}
 
 void GameState::pause()
 {
 
 }
 
-void GameState::processEvents(sf::RenderWindow &window, sf::Event event)
+
+void GameState::processEvents(sf::Event event)
 {
     inputManager.update(event);
     if(inputManager.keyReleased(sf::Keyboard::Escape))
@@ -50,43 +73,49 @@ void GameState::processEvents(sf::RenderWindow &window, sf::Event event)
         stateSwitch = true;
         nextStateS = "MenuState";
     }
-	/*
-    //Loops through all entities
-    for(int i = 0; i < objectVector.size(); i++)
-    {	
-		enum player {2};
-		if (objectVector.at(player).at(i)->update() == false)
-			killist.push_back(objectVector.at(player).at(i));
-    }
-	*/
+	std::vector<GameObject *> players = gameData->getList(1);
+	Player *player = dynamic_cast<Player *>(players.at(0));
+	if (inputManager.keyDown(sf::Keyboard::Left))
+	{
+		player->moveLeft();
+	}
+	if (inputManager.keyDown(sf::Keyboard::Right))
+	{
+		player->moveRight();
+	}
+	if (inputManager.keyReleased(sf::Keyboard::Left) || inputManager.keyReleased(sf::Keyboard::Right))
+	{
+		player->stopHorizontalVelocity();
+	}
+	if (inputManager.keyReleased(sf::Keyboard::Up))
+	{
+		player->jump();
+	}
+	if (players.size() > 1)
+	{
+		Player *player = dynamic_cast<Player *>(players.at(1));
+		if (inputManager.keyDown(sf::Keyboard::A))
+		{
+			player->moveLeft();
+		}
+		if (inputManager.keyDown(sf::Keyboard::D))
+		{
+			player->moveRight();
+		}
+		if (inputManager.keyReleased(sf::Keyboard::A) || inputManager.keyReleased(sf::Keyboard::D))
+		{
+			player->stopHorizontalVelocity();
+		}
+		if (inputManager.keyReleased(sf::Keyboard::W))
+		{
+			player->jump();
+		}
+	}
  }
 
-void GameState::process(sf::RenderWindow &window)
+
+void GameState::process()
 {
-	/*//Loops through all entities
-    for(int i = 0; i < objectVector.size(); ++i)
-    {
-        //Loops through entities ID's
-        for(int r = 0; r < objectVector.at(i)->getID().size(); r++ )
-        {
-            //Handles Entities with playerMovement ID
-            if( objectVector.at(i)->getID().at(r) == "playerMovement")
-            {
-                PlayerMovement(*objectVector.at(i));
-
-            }
-            if( objectVector.at(i)->getID().at(r) == "gravity")
-            {
-                gravity(*objectVector.at(i));
-            }
-            if(objectVector.at(i)->getID().at(r) == "moves")
-            {
-                collide(*objectVector.at(i));
-            }
-        }
-    }
-	*/
-
 	//level .at(0)
 	processIndividual(0);
 	//pointtext .at(5)
@@ -103,6 +132,7 @@ void GameState::process(sf::RenderWindow &window)
     Cleanup();
 }
 
+
 //Functional decomposition for general processing.
 void GameState::processIndividual(unsigned int index)
 {
@@ -113,29 +143,18 @@ void GameState::processIndividual(unsigned int index)
 	}
 }
 
-//Moves the player based on keyboard input
-void GameState::PlayerMovement(GameObject& player)
-{
-}
-void GameState::PlayerEvents(GameObject& player, sf::Event& event)
-{
-  
-}
-void GameState::draw(sf::RenderWindow & window)
-{
-	window.clear();
 
+void GameState::draw()
+{
 	std::vector<std::vector<GameObject *>> data = gameData->getAll();
 
 	for (int i = 0; i < data.size(); i++)
 	{
-		for (int j = 0; j < data.at(i).size(); i++)
+		for (int j = 0; j < data.at(i).size(); j++)
 		{
 			data.at(i).at(j)->render();
 		}
 	}
-
-	window.display();
 }
 
 void GameState::Cleanup()

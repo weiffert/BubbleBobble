@@ -3,13 +3,24 @@
 
 MenuState::MenuState()
 {
-    //Push back game objects you want 
+	//Push back game objects you want 
 	//initially for the state here
 
 	//Prevents stateManager from
 	//switching the state
-    stateSwitch = false;
+	stateSwitch = false;
+	window = nullptr;
+}
 
+MenuState::MenuState(sf::RenderWindow *win)
+{
+	//Push back game objects you want 
+	//initially for the state here
+
+	//Prevents stateManager from
+	//switching the state
+	stateSwitch = false;
+	window = win;
 }
 
 MenuState::~MenuState()
@@ -21,7 +32,7 @@ void MenuState::pause()
 {
 }
 
-void MenuState::processEvents(sf::RenderWindow &window, sf::Event event)
+void MenuState::processEvents(sf::Event event)
 {
 	//Change state to GameState when the escape key is pressed
     inputManager.update(event);
@@ -33,12 +44,12 @@ void MenuState::processEvents(sf::RenderWindow &window, sf::Event event)
 
 }
 
-void MenuState::process(sf::RenderWindow &window)
+void MenuState::process()
 {
 }
 
-void MenuState::draw(sf::RenderWindow &window)
+void MenuState::draw()
 {
-	window.setView(centered);
+	window->setView(centered);
 	//gameData stuff.
 }

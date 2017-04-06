@@ -20,6 +20,7 @@ void Pickup::death()
 	gameData->addToKillList(3, temp);
 	
 	temp = new PointText(this, 100, false);
+	temp->initialize(window, gameData);
 	gameData->add(5, temp);
 	//Add points to player total.
 }

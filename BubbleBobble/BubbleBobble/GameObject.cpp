@@ -8,7 +8,28 @@ GameObject::GameObject()
 {
 	//add instance variables
 	gameData = nullptr;
-	window = nullptr; 
+	window = nullptr;
+	name = "none";
+}
+
+GameObject::GameObject(std::string set)
+{
+	gameData = nullptr;
+	window = nullptr;
+	name = set;
+}
+
+GameObject::~GameObject()
+{
+	std::cout << "Deconstructing GameObject " << name << std::endl;
+}
+
+
+void GameObject::initialize(sf::RenderWindow *win, GameData *data)
+{
+	window = win;
+	gameData = data;
+
 	velocity.x = 0;
 	velocity.y = 0;
 
@@ -22,25 +43,17 @@ GameObject::GameObject()
 	distanceElapsed = 0;
 	distanceLimit = 0;
 	trackingDistance = false;
-
-	name = "none";
 	life = false;
-	levelTransition = false;
-}
-
-GameObject::GameObject(std::string set)
-{
-	name = set;
-}
-
-GameObject::~GameObject()
-{
+	transition = false;
 }
 
 
 void GameObject::update()
 {
-	updateVelocity();
+	if (!transition)
+		levelPlay();
+	else
+		levelTransition();
 	time();
 	distance();
 	collideWith();
@@ -53,13 +66,28 @@ void GameObject::collideWith()
 }
 
 
-void GameObject::updateVelocity()
+void GameObject::levelEnd()
 {
-	//any change.
-	//check for collision.
-	gameData->getList(0).at(0)->collision(this);
+	transition = true;
+}
+
+
+void GameObject::levelStart()
+{
+	transition = false;
+}
+
+
+void GameObject::levelPlay()
+{
 	//move.
 	rectangle.move(velocity);
+}
+
+
+void GameObject::levelTransition()
+{
+	//Do nothing.
 }
 
 //Game Logic
@@ -76,7 +104,7 @@ void GameObject::collision(GameObject *other)
 //Returns true and stops the timer 
 void GameObject::time()
 {
-	if (trackingTime && clock.getElapsedTime() > timeLimit)
+	if (trackingTime && clock.getElapsedTime() >= timeLimit)
 	{
 		stopClock();
 		timeLimitPassed();
@@ -91,7 +119,7 @@ void GameObject::distance()
 	{
 		pedometer += std::abs(std::sqrt(velocity.x * velocity.x + velocity.y * velocity.y));
 
-		if (pedometer > distanceLimit)
+		if (pedometer >= distanceLimit)
 		{
 			stopPedometer();
 			distanceLimitPassed();
@@ -115,16 +143,6 @@ void GameObject::death()
 	life = false;
 	GameObject *temp = this;
 	gameData->addToKillList(0, temp);
-}
-
-void GameObject::levelEnd()
-{
-	levelTransition = true;
-}
-
-void GameObject::levelStart()
-{
-	levelTransition = false;
 }
 
 void GameObject::timeLimitPassed()
@@ -165,7 +183,7 @@ sf::Texture GameObject::getTexture()
 }
 bool GameObject::isTransitioningLevels()
 {
-	return levelTransition;
+	return transition;
 }
 
 
@@ -229,6 +247,27 @@ void GameObject::setAnimation(std::string type)
 		animations.push_back(Animation(&texture, sf::Vector2u(1,0), 0, 0));
 	}
 }
+void GameObject::setTexture(std::string fileName)
+{
+	if (!texture.loadFromFile(fileName))
+		std::cout << fileName << std::endl;
+	else
+	{
+		setTexture();
+	}
+}
+void GameObject::setTexture(sf::Texture set)
+{
+	texture = set;
+}
+void GameObject::setTexture()
+{
+	rectangle.setTexture(&texture);
+	sf::Vector2f vec;
+	vec.x = texture.getSize().x;
+	vec.y = texture.getSize().y;
+	rectangle.setSize(vec);
+}
 void GameObject::setPosition(float x, float y)
 {
 	rectangle.setPosition(x, y);
@@ -253,18 +292,19 @@ sf::Time GameObject::stopClock()
 double GameObject::stopPedometer()
 {
 	trackingDistance = false;
+	distanceElapsed = pedometer;
 	return pedometer;
 }
 
 bool GameObject::offTop()
 {
-	if (rectangle.getGlobalBounds().top + rectangle.getGlobalBounds().height < 0)
+	if (rectangle.getGlobalBounds().top + rectangle.getGlobalBounds().height <= 0)
 		return true;
 	return false;
 }
 bool GameObject::offBottom()
 {
-	if (rectangle.getGlobalBounds().top > window->getSize().y)
+	if (rectangle.getGlobalBounds().top >= window->getSize().y)
 		return true;
 	return false;
 }

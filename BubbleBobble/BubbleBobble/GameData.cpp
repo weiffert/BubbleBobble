@@ -16,6 +16,7 @@ GameData::GameData()
 
 GameData::~GameData()
 {
+	std::cout << "Deconstructing GameData" << std::endl;
 	for (int i = 0; i < gameObjects.size(); i++)
 	{
 		clear(i);
@@ -30,7 +31,7 @@ void GameData::kill()
 	{
 		int increment1 = 0;
 		int increment2 = 0;
-		while (!killList.at(i).empty())
+		while (!killList.at(i).empty() && increment1 < killList.at(i).size() && increment2 < gameObjects.at(i).size())
 		{
 			if (killList.at(i).at(increment1) == gameObjects.at(i).at(increment2))
 			{
@@ -43,10 +44,14 @@ void GameData::kill()
 		}
 	}
 }
+
+
 std::vector<std::vector<GameObject *>> GameData::getAll()
 {
 	return gameObjects;
 }
+
+
 std::vector<GameObject *> GameData::getList(unsigned int index)
 {
 	if (index < gameObjects.size())
@@ -59,6 +64,8 @@ std::vector<GameObject *> GameData::getList(unsigned int index)
 		return gameObjects.at(0);
 	}
 }
+
+
 void GameData::add(unsigned int index, GameObject *other)
 {
 	if (index < gameObjects.size())
@@ -73,6 +80,8 @@ void GameData::add(unsigned int index, GameObject *other)
 		gameObjects.push_back(newInformation);
 	}
 }
+
+
 void GameData::addToKillList(unsigned int index, GameObject *other)
 {
 	if (index < killList.size())
@@ -87,6 +96,8 @@ void GameData::addToKillList(unsigned int index, GameObject *other)
 		killList.push_back(newInformation);
 	}
 }
+
+
 void GameData::remove(unsigned int index, GameObject *other)
 {
 	if (index < gameObjects.size())
@@ -136,6 +147,8 @@ void GameData::remove(unsigned int index, GameObject *other)
 		}
 	}
 }
+
+
 void GameData::remove(unsigned int index1, unsigned int index2)
 {
 	bool failed = true;
@@ -153,6 +166,8 @@ void GameData::remove(unsigned int index1, unsigned int index2)
 		std::cout << "Failed to delete anything" << std::endl;
 	}
 }
+
+
 void GameData::clear(unsigned int index)
 {
 	if (index < gameObjects.size())
@@ -168,6 +183,8 @@ void GameData::clear(unsigned int index)
 		std::cout << "Out of bounds. Failed to delete anything" << std::endl;
 	}
 }
+
+
 bool GameData::exist(unsigned int index)
 {
 	if (index < gameObjects.size())

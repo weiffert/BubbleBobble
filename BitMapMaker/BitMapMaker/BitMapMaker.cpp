@@ -91,6 +91,17 @@ void levelBase()
 					}
 				}
 
+				for (int x = 1; x < bitmap.size() - 1; x++)
+				{
+					for (int y = 0; y < bitmap.at(x).size() - 5; y++)
+					{
+						if ((bitmap.at(x).at(y) == 2 || bitmap.at(x).at(y) == 3) && bitmap.at(x - 1).at(y) == 0 || (bitmap.at(x).at(y) == 2 || bitmap.at(x).at(y) == 3) && bitmap.at(x + 1).at(y) == 0)
+						{
+							bitmap.at(x).at(y) = 4;
+						}
+					}
+				}
+
 				std::ofstream output;
 				std::string file = fileNames.at(i);
 				file = file.substr(0, file.find_last_of("."));
@@ -136,6 +147,7 @@ void enemySpawn()
 {
 	std::ifstream input;
 	input.open("levelSpawnFileNames.txt");
+	int levelNumber = 0;
 	if (input.is_open())
 	{
 		std::string temp;
@@ -227,6 +239,9 @@ void enemySpawn()
 					}
 					std::cout << std::endl;
 				}
+				std::cout << levelNumber << std::endl;
+
+				levelNumber++;
 
 				system("pause");//*/
 			}

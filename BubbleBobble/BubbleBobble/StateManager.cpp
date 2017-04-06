@@ -1,60 +1,67 @@
 #include "stdafx.h"
 #include "StateManager.h"
+#include <iostream>
 
 StateManager::StateManager()
 {
-    //ctor
+
 }
 
 
 StateManager::~StateManager()
 {
-    //dtor
+	std::cout << "Deconstructing StateManager" << std::endl;
+	while (!states.empty())
+	{
+		delete states.at(0);
+		states.erase(states.begin());
+	}
 }
 
-void StateManager::processEvents(sf::RenderWindow &window, sf::Event event)
+void StateManager::processEvents(sf::RenderWindow *window, sf::Event event)
 {
-    states.back()->processEvents( window, event );
+    states.back()->processEvents(event);
     if(states.back()->switchTrue())
     {
         if(states.back()->nextState() == "SplashScreenState")
         {
             this->pop_State();
-            this->push_State(new SplashScreenState);
+            this->push_State(new SplashScreenState(window));
         }
         else if(states.back()->nextState() == "MenuState")
         {
             this->pop_State();
-            this->push_State(new MenuState);
+            this->push_State(new MenuState(window));
         }
         else if(states.back()->nextState() == "GameState")
         {
             this->pop_State();
-            this->push_State(new GameState);
+            this->push_State(new GameState(window));
         }
     }
 }
 
-void StateManager::process(sf::RenderWindow &window)
+void StateManager::process()
 {
-    states.back()->process(window);
+    states.back()->process();
 }
 
-void StateManager::draw(sf::RenderWindow &window)
+void StateManager::draw()
 {
-    states.back()->draw( window );
+    states.back()->draw();
 }
 
-void StateManager::push_State( BaseState *newState )
+void StateManager::push_State(BaseState *newState )
 {
     states.push_back(newState);
 }
 
 void StateManager::pop_State()
 {
-   //this->unload();
-   states.back()->unload();
-   delete states.back();
+	//this->unload();
+	delete states.back();
+	states.back()->unload();
+	states.erase(states.begin() + states.size() - 1);
 }
 
 void StateManager::unload()

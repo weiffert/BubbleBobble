@@ -21,8 +21,7 @@ Level::Level()
 Level::Level(std::string id)
 {
 	name = id;
-	if (!texture.loadFromFile("../textures/Levels/" + name + "/" + name + ".png"))
-		std::cout << "Failed to load " << "../textures/Levels/" << name << "/" << name << ".png";
+	setTexture("../textures/Levels/" + name + "/" + name + ".png");
 	bitmapMaker();
 }
 
@@ -33,18 +32,45 @@ Level::~Level()
 
 void Level::update()
 {
-	if(!trackingTime)
+	if (!transition)
+		levelPlay();
+	else
+		levelTransition();
+}
+
+
+void Level::levelPlay()
+{
+	if (!trackingTime)
 		enemyCheck();
-	updateVelocity();
 	time();
+}
+
+
+void Level::levelTransition()
+{
+	rectangle.move(velocity);
 	distance();
-	collideWith();
 }
 
 void Level::timeLimitPassed()
 {
+	std::cout << "Transitioning Level From " << name << std::endl;
 	levelEnd();
-	gameData->getList(0).at(1)->levelEnd();
+
+	GameObject *nextLevel = nullptr;
+	int nextLevelNumber = std::stoi(name.substr(name.find_last_of("l") + 1)) + 1;
+
+	if (nextLevelNumber <= 8)
+		nextLevel = new Level("Level" + std::to_string(nextLevelNumber));
+	else
+		//Quit game.
+		int i = 0;
+
+	nextLevel->initialize(window, gameData);
+	nextLevel->setPosition(0, window->getSize().y / 4 * 2 - nextLevel->getRectangle().getLocalBounds().height);
+	nextLevel->levelEnd();
+	gameData->add(0, nextLevel);
 
 	std::vector<GameObject *> players = gameData->getList(1);
 	for (int i = 0; i < players.size(); i++)
@@ -61,29 +87,24 @@ void Level::timeLimitPassed()
 void Level::distanceLimitPassed()
 {
 	if (offTop())
-	{
 		death();
-		gameData->getList(0).at(1)->levelStart();
-	}
+	else
+		levelStart();
 }
 
 void Level::levelEnd()
 {
+	transition = true;
 	setVelocity(0, -1);
-	setPedometerLimit(window->getSize().y);
+	setPedometerLimit(window->getSize().y / 4);
 	startPedometer();
-
-	std::string newName = name.substr(0, 4);
-	int newNumber = std::stoi(name.substr(5)) + 1;
-	newName += newNumber;
-
-	GameObject *nextLevel = new Level(newName);
-	gameData->add(0, nextLevel);
 }
 
 void Level::levelStart()
 {
+	transition = false;
 	setVelocity(0, 0); 
+
 	std::vector<GameObject *> players = gameData->getList(1);
 	for (int i = 0; i < players.size(); i++)
 	{
@@ -129,10 +150,11 @@ void Level::levelStart()
 
 			if (newMonster != nullptr)
 			{
-				newMonster->levelStart();
+				newMonster->initialize(window, gameData);
 				newMonster->setPosition(i * 8, 0 - newMonster->getRectangle().getLocalBounds().height);
 				newMonster->setPedometerLimit(j * 8);
-
+				newMonster->startPedometer();
+				newMonster->levelStart();
 				gameData->add(2, newMonster);
 			}
 		}
@@ -153,7 +175,7 @@ void Level::collision(GameObject *other)
 	{
 		std::vector<int> horizontal, vertical;
 
-		int multiplierX, multiplierY = 1;
+		int multiplierX = 1, multiplierY = 1;
 		sf::RectangleShape rect = other->getRectangle();
 		sf::RectangleShape moving = rect;
 		moving.move(other->getVelocity());
@@ -200,10 +222,10 @@ void Level::collision(GameObject *other)
 				other->velocityToNextGridLine(true);
 			}
 		}
-		for (int i = 0; i < vertical.size(); i++)
+		for (int i = 0; i < vertical.size(); i++) 
 		{
 			enum type { Floor = 2 };
-			switch (horizontal.at(i))
+			switch (vertical.at(i))
 			{
 			case Floor:
 				if (other->getVelocity().y < 0)
@@ -244,7 +266,7 @@ void Level::bitmapMaker()
 	}
 	input.close();
 
-	input.open("../textures/Levels/" + name + "/" + "Monster-Spawns.txt");
+	input.open("../textures/Levels/" + name + "/" + name + "spawns.txt");
 	if (input.is_open())
 	{
 		int incrementX = 0;
@@ -262,7 +284,7 @@ void Level::bitmapMaker()
 	}
 	else
 	{
-		std::cout << "Failed to load " << "../textures/Levels/" << name << "/" << "Monster-Spawns.txt" << std::endl;;
+		std::cout << "Failed to load " << "../textures/Levels/" << name << "/" << name << "spawns.txt" << std::endl;;
 	}
 	input.close();
 }
@@ -270,8 +292,9 @@ void Level::bitmapMaker()
 void Level::enemyCheck()
 {
 	//if no enemies left
-	if (gameData->exist(3))
+	if (!(gameData->exist(3)))
 	{
+		std::cout << "Starting Level Transition Clock" << std::endl;
 		setTimeLimit(sf::seconds(5));
 		startClock();
 	}

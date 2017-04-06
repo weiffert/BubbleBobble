@@ -7,5 +7,4 @@
 ../../BubbleBobble/textures/Levels/level6/level6spawns.png
 ../../BubbleBobble/textures/Levels/level7/level7spawns.png
 ../../BubbleBobble/textures/Levels/level8/level8spawns.png
-../../BubbleBobble/textures/Levels/level9/level9spawns.png
 ../../BubbleBobble/textures/Levels/level10/level10spawns.png

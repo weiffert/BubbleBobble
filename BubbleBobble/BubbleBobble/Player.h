@@ -7,11 +7,18 @@ public:
 	Player();
 	Player(std::string);
 	~Player();
-	virtual void collideWith();
-	virtual void updateVelocity();
-	virtual void levelEnd();
-	virtual void levelStart();
-	virtual void death();
-	virtual void timeLimitPassed();
+	void collideWith();
+	void levelEnd();
+	void levelStart();
+	void levelPlay();
+	void levelTransition();
+	void death();
+	void timeLimitPassed();
+	void moveLeft();
+	void moveRight();
+	void stopHorizontalVelocity();
+	void jump();
+	void stopXMovement();
+	void stopYMovement();
 };
 
