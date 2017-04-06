@@ -45,6 +45,7 @@ void GameObject::initialize(sf::RenderWindow *win, GameData *data)
 	trackingDistance = false;
 	life = false;
 	transition = false;
+	friendly = true;
 }
 
 
@@ -62,7 +63,7 @@ void GameObject::update()
 
 void GameObject::collideWith()
 {
-
+	
 }
 
 
@@ -81,6 +82,7 @@ void GameObject::levelStart()
 void GameObject::levelPlay()
 {
 	//move.
+	collideWith();
 	rectangle.move(velocity);
 }
 
@@ -96,8 +98,8 @@ void GameObject::collision(GameObject *other)
 {
 	if (rectangle.getGlobalBounds().intersects(other->getRectangle().getGlobalBounds()))
 	{
-		collided();
-		other->collided();
+		collided(other);
+		other->collided(this);
 	}
 }
 
@@ -134,7 +136,7 @@ void GameObject::render()
 
 
 //Specific event type functions.
-void GameObject::collided()
+void GameObject::collided(GameObject *)
 {
 
 }
@@ -184,6 +186,10 @@ sf::Texture GameObject::getTexture()
 bool GameObject::isTransitioningLevels()
 {
 	return transition;
+}
+bool GameObject::isFriendly()
+{
+	return friendly;
 }
 
 
@@ -264,8 +270,8 @@ void GameObject::setTexture()
 {
 	rectangle.setTexture(&texture);
 	sf::Vector2f vec;
-	vec.x = texture.getSize().x;
-	vec.y = texture.getSize().y;
+	vec.x = texture.getSize().x * 4;
+	vec.y = texture.getSize().y * 4;
 	rectangle.setSize(vec);
 }
 void GameObject::setPosition(float x, float y)

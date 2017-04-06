@@ -6,6 +6,8 @@ class Pickup :
 public:
 	Pickup();
 	~Pickup();
-	virtual void death();
+	void collideWith();
+	void collided(GameObject *);
+	void death();
 };
 

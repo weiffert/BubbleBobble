@@ -29,7 +29,7 @@ public:
 	virtual void collideWith();
 
 	//Specific event type functions.
-	virtual void collided();
+	virtual void collided(GameObject *);
 	virtual void timeLimitPassed();
 	virtual void distanceLimitPassed();
 	virtual void death();
@@ -47,6 +47,7 @@ public:
 	sf::RectangleShape getRectangle();
 	sf::Texture getTexture();
 	bool isTransitioningLevels();
+	bool isFriendly();
 
 	void setName(std::string);
 	void setTimeLimit(sf::Time);
@@ -72,6 +73,7 @@ public:
 
 protected:
 	std::string name;
+	bool friendly;
 	bool transition;
 
 	sf::Vector2f velocity;

@@ -7,6 +7,8 @@ public:
 	Monster();
 	~Monster();
 	void collideWith();
+	void collided(GameObject *);
+	void captured(GameObject *);
 	void death();
 	void levelStart();
 	void levelPlay();
@@ -14,5 +16,6 @@ public:
 
 private:
 	bool noLevelCollision;
+	bool contained;
 };
 

@@ -13,6 +13,24 @@ Pickup::~Pickup()
 {
 }
 
+
+void Pickup::collideWith()
+{
+	std::vector<GameObject*> data;
+	//level
+	data = gameData->getList(0);
+	data.at(0)->collision(this);
+}
+
+
+void Pickup::collided(GameObject *other)
+{
+	std::string otherName = other->getName();
+	if (otherName.find("Player"))
+		death();
+}
+
+
 void Pickup::death()
 {
 	life = false;

@@ -68,7 +68,7 @@ void Level::timeLimitPassed()
 		int i = 0;
 
 	nextLevel->initialize(window, gameData);
-	nextLevel->setPosition(0, window->getSize().y / 4 * 2 - nextLevel->getRectangle().getLocalBounds().height);
+	nextLevel->setPosition(0, window->getSize().y * 2 - nextLevel->getRectangle().getLocalBounds().height);
 	nextLevel->levelEnd();
 	gameData->add(0, nextLevel);
 
@@ -95,8 +95,8 @@ void Level::distanceLimitPassed()
 void Level::levelEnd()
 {
 	transition = true;
-	setVelocity(0, -1);
-	setPedometerLimit(window->getSize().y / 4);
+	setVelocity(0, -4);
+	setPedometerLimit(window->getSize().y);
 	startPedometer();
 }
 
@@ -152,7 +152,7 @@ void Level::levelStart()
 			{
 				newMonster->initialize(window, gameData);
 				newMonster->setPosition(i * 8, 0 - newMonster->getRectangle().getLocalBounds().height);
-				newMonster->setPedometerLimit(j * 8);
+				newMonster->setPedometerLimit((j + 1) * 8 + window->getSize().y - rectangle.getLocalBounds().height);
 				newMonster->startPedometer();
 				newMonster->levelStart();
 				gameData->add(2, newMonster);
@@ -224,18 +224,15 @@ void Level::collision(GameObject *other)
 		}
 		for (int i = 0; i < vertical.size(); i++) 
 		{
-			enum type { Floor = 2 };
+			enum type { Floor = 2, MonsterFloor, EdgeFloor };
 			switch (vertical.at(i))
 			{
 			case Floor:
+			case MonsterFloor:
+			case EdgeFloor:
 				if (other->getVelocity().y < 0)
 					other->velocityToNextGridLine(false); 
 			}
-		}
-
-		if (other->getName().find("monster"))
-		{
-
 		}
 
 	}
@@ -292,7 +289,7 @@ void Level::bitmapMaker()
 void Level::enemyCheck()
 {
 	//if no enemies left
-	if (!(gameData->exist(3)))
+	if (!(gameData->exist(2)))
 	{
 		std::cout << "Starting Level Transition Clock" << std::endl;
 		setTimeLimit(sf::seconds(5));

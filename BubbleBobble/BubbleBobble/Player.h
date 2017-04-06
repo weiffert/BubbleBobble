@@ -8,6 +8,8 @@ public:
 	Player(std::string);
 	~Player();
 	void collideWith();
+	void collided(GameObject *);
+	void pickedUp(GameObject *);
 	void levelEnd();
 	void levelStart();
 	void levelPlay();

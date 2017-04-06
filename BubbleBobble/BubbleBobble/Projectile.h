@@ -12,7 +12,9 @@ class Projectile :
 public:
 	Projectile();
 	~Projectile();
-	virtual void death();
+	void collideWith();
+	void collided(GameObject *);
+	void death();
 private:
 	bool friendly;
 };

@@ -15,7 +15,7 @@ class BaseState
         ~BaseState();
         //Allows states to stop and switch between each other.
         //Planned to be use to stop GameState and switch to MenuState.
-        virtual void pause();
+        bool pause();
         //Processes keyboard events, handles Entities, DynamicEnvironment,
         //StaticEnvironment, and collisionDetection for every state
         virtual void processEvents(sf::Event);
@@ -32,7 +32,7 @@ class BaseState
     protected:
         bool stateSwitch;
         std::string nextStateS;
-		bool pause;
+		bool pause_m;
         //Contains the address of a text file that includes all the files needed for the state.
         //This string is passed to the FileManager which goes to the text file and grabs all the files
         //that the text file asks for.

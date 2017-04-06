@@ -10,6 +10,8 @@ Monster::Monster()
 	rectangle.setFillColor(sf::Color::Red);
 	rectangle.setPosition(500, 100);
 	noLevelCollision = true;
+	friendly = false;
+	contained = false;
 }
 
 
@@ -19,15 +21,38 @@ Monster::~Monster()
 
 void Monster::collideWith()
 {
-	//projectiles
-	std::vector<GameObject*> data = gameData->getList(4);
+	std::vector<GameObject*> data;
+	//level
+	data = gameData->getList(0);
+	data.at(0)->collision(this);
+	//projectile
+	data = gameData->getList(4);
 	for (int i = 0; i < data.size(); i++)
 		collision(data.at(i));
 }
 
+
+void Monster::collided(GameObject *other)
+{
+	std::string otherName = other->getName();
+	if (other->isFriendly())
+	{
+		if (otherName.find("Projectile"))
+			captured(other);
+	}
+}
+
+
+void Monster::captured(GameObject *other)
+{
+	//change animation and behavior.
+	contained = true;
+}
+
+
 void Monster::levelStart()
 {
-	setVelocity(0, 1);
+	setVelocity(0, 4);
 }
 
 void Monster::levelPlay()
@@ -42,6 +67,7 @@ void Monster::levelPlay()
 	}
 	else
 	{
+		collideWith();
 		rectangle.move(velocity);
 		distance();
 	}

@@ -25,26 +25,57 @@ Player::~Player()
 
 void Player::collideWith()
 {
-	//projectiles
-	std::vector<GameObject*> data = gameData->getList(4);
+	std::vector<GameObject*> data;
+	//level
+	data = gameData->getList(0);
+	data.at(0)->collision(this);
+	//pickups
+	data = gameData->getList(3);
+	for (int i = 0; i < data.size(); i++)
+		collision(data.at(i));
+	//projectile
+	data = gameData->getList(4);
 	for (int i = 0; i < data.size(); i++)
 		collision(data.at(i));
 	//monsters
 	data = gameData->getList(2);
 	for (int i = 0; i < data.size(); i++)
 		collision(data.at(i));
-	//pickups
-	data = gameData->getList(3);
-	for (int i = 0; i < data.size(); i++)
-		collision(data.at(i));
+}
+
+
+void Player::collided(GameObject *other)
+{
+	std::string otherName = other->getName();
+	if (other->isFriendly())
+	{
+		if (otherName == "Projectile")
+			//do different stuff for top and bottom.
+			int i = 0;
+		if (otherName == "Pickup")
+			pickedUp(other);
+	}
+	else
+	{
+		death();
+	}
+}
+
+
+void Player::pickedUp(GameObject *other)
+{
+	//add to score.
+	//any powerups?
 }
 
 
 void Player::levelPlay()
 {
 	//standard update.
-	gameData->getList(0).at(0)->collision(this);
+	collideWith();
 	rectangle.move(velocity);
+	time();
+	distance();
 }
 
 
@@ -53,31 +84,31 @@ void Player::levelTransition()
 	//move to corner
 	sf::Vector2f corner;
 
-	corner.y = 8 * 25;
+	corner.y = 8 * 25 * 4;
 	if (name == "Player2")
-		corner.x = 8 * 29;
+		corner.x = 8 * 29 * 4;
 	else
-		corner.x = 8 * 3;
+		corner.x = 8 * 3 * 4;
 
 	sf::Vector2f player;
-	player.x = rectangle.getGlobalBounds().left;
-	player.y = rectangle.getGlobalBounds().top;
+	player.x = rectangle.getGlobalBounds().left * 4;
+	player.y = rectangle.getGlobalBounds().top * 4;
 	float differenceX = corner.x - player.x;
 	float differenceY = corner.y - player.y;
 
 	if (differenceX < 0)
-		velocity.x = -1;
+		velocity.x = -4;
 	else if (differenceX == 0)
 		velocity.x = 0;
 	else
-		velocity.x = 1;
+		velocity.x = 4;
 
 	if (differenceY < 0)
-		velocity.y = -1;
+		velocity.y = -4;
 	else if (differenceY == 0)
 		velocity.y = 0;
 	else
-		velocity.y = 1;
+		velocity.y = 4;
 
 	rectangle.move(velocity);
 }
@@ -120,13 +151,13 @@ void Player::death()
 
 void Player::moveLeft()
 {
-	setVelocity((1 * -1), velocity.y);
+	setVelocity((4 * -1), velocity.y);
 }
 
 
 void Player::moveRight()
 {
-	setVelocity(1, velocity.y);
+	setVelocity(4, velocity.y);
 }
 
 
