@@ -4,6 +4,7 @@
 
 Drunk::Drunk()
 {
+	name = "Drunk";
 }
 
 

@@ -48,13 +48,13 @@ void GameState::initialize(bool twoPlayer)
 
 	//create the players.
 	GameObject *player1 = new Player("Player1");
-	gameData->add(1, player1);
 	player1->initialize(window, gameData);
+	gameData->add(1, player1);
 	if (twoPlayer)
 	{
 		GameObject *player2 = new Player("Player2");
-		gameData->add(1, player2);
 		player2->initialize(window, gameData);
+		gameData->add(1, player2);
 	}
 }
 

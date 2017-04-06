@@ -4,6 +4,7 @@
 
 Hidegons::Hidegons()
 {
+	name = "Hidegons";
 }
 
 

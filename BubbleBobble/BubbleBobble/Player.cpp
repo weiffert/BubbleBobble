@@ -20,7 +20,6 @@ Player::Player(std::string set)
 
 Player::~Player()
 {
-	std::cout << "Deconstructing Player" << std::endl;
 }
 
 
@@ -54,7 +53,7 @@ void Player::levelTransition()
 	//move to corner
 	sf::Vector2f corner;
 
-	corner.y = 8 * 23;
+	corner.y = 8 * 25;
 	if (name == "Player2")
 		corner.x = 8 * 29;
 	else
@@ -105,6 +104,7 @@ void Player::timeLimitPassed()
 	//Show hurry up text?
 	//Begin pursuit of skel monsta.
 	GameObject *skelMonsta = new Skel_Monsta();
+	skelMonsta->initialize(window, gameData);
 	gameData->add(2, skelMonsta);
 }
 

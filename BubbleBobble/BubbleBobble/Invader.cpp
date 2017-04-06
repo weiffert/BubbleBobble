@@ -4,6 +4,7 @@
 
 Invader::Invader()
 {
+	name = "Invader";
 }
 
 

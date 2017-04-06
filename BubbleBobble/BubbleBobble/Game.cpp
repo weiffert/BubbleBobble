@@ -10,23 +10,19 @@ Game::Game()
     screenDimensions.y = 224 * 4;
 	window = new sf::RenderWindow();
     window->create(sf::VideoMode(screenDimensions.x, screenDimensions.y), "Bubble Bobble");
-	//view.reset(sf::FloatRect(sf::Vector2f(0,0), sf::Vector2f(256, 224)));
-	//view.setViewport(sf::FloatRect(0.f, 0.f, .25f, .25f));
-	//window.setView(view);
+
+	/*
+	sf::View view(sf::FloatRect(0, 0, 256, 224));
+	view.setSize(256, 224);
+	view.setCenter(256 / 2, 224 / 2);
+	view.setViewport(sf::FloatRect(0.25f, 0.25f, 0.5f, 0.5f));
+	view.setRotation(45);
+	window->setView(view);
+	*/
+
     window->setFramerateLimit(FPS_m);
     stateManager.push_State(new SplashScreenState(window));
 }
-
-/*
-Game::Game(int FPS = 60, int screenHeight = 256, int screenWidth = 224)
-{
-    FPS_m = FPS;
-    screenDimensions.x = screenHeight;
-    screenDimensions.y = screenWidth;
-    window.create(sf::VideoMode(screenDimensions.x, screenDimensions.y), "Bubble Bobble");
-    //window.setFramerateLimit(FPS_m);
-}
-*/
 
 Game::~Game()
 {

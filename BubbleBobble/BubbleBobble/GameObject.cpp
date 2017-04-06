@@ -9,51 +9,19 @@ GameObject::GameObject()
 	//add instance variables
 	gameData = nullptr;
 	window = nullptr;
-	velocity.x = 0;
-	velocity.y = 0;
-
-	//Clock variables.
-	timeElapsed = sf::seconds(0);
-	timeLimit = sf::seconds(0);
-	trackingTime = false;
-
-	//Distance variables.
-	pedometer = 0;
-	distanceElapsed = 0;
-	distanceLimit = 0;
-	trackingDistance = false;
-
 	name = "none";
-	life = false;
-	transition = false;
 }
 
 GameObject::GameObject(std::string set)
 {
 	gameData = nullptr;
 	window = nullptr;
-	velocity.x = 0;
-	velocity.y = 0;
-
-	//Clock variables.
-	timeElapsed = sf::seconds(0);
-	timeLimit = sf::seconds(0);
-	trackingTime = false;
-
-	//Distance variables.
-	pedometer = 0;
-	distanceElapsed = 0;
-	distanceLimit = 0;
-	trackingDistance = false;
-
 	name = set;
-	life = false;
-	transition = false;
 }
 
 GameObject::~GameObject()
 {
-	std::cout << "Deconstructing GameObject" << std::endl;
+	std::cout << "Deconstructing GameObject " << name << std::endl;
 }
 
 
@@ -61,6 +29,22 @@ void GameObject::initialize(sf::RenderWindow *win, GameData *data)
 {
 	window = win;
 	gameData = data;
+
+	velocity.x = 0;
+	velocity.y = 0;
+
+	//Clock variables.
+	timeElapsed = sf::seconds(0);
+	timeLimit = sf::seconds(0);
+	trackingTime = false;
+
+	//Distance variables.
+	pedometer = 0;
+	distanceElapsed = 0;
+	distanceLimit = 0;
+	trackingDistance = false;
+	life = false;
+	transition = false;
 }
 
 
@@ -145,7 +129,6 @@ void GameObject::distance()
 
 void GameObject::render()
 {
-	std::cout << "Rendering " << name << std::endl;
 	window->draw(rectangle);
 }
 
@@ -294,13 +277,13 @@ double GameObject::stopPedometer()
 
 bool GameObject::offTop()
 {
-	if (rectangle.getGlobalBounds().top + rectangle.getGlobalBounds().height < 0)
+	if (rectangle.getGlobalBounds().top + rectangle.getGlobalBounds().height <= 0)
 		return true;
 	return false;
 }
 bool GameObject::offBottom()
 {
-	if (rectangle.getGlobalBounds().top > window->getSize().y)
+	if (rectangle.getGlobalBounds().top >= window->getSize().y)
 		return true;
 	return false;
 }

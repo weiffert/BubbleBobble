@@ -12,7 +12,7 @@ void enemySpawn();
 
 int _tmain(int argc, _TCHAR* argv[])
 {
-	//levelBase();
+	levelBase();
 	enemySpawn();
 	return 0;
 }
@@ -87,6 +87,17 @@ void levelBase()
 								if (bitmap.at(x).at(y + increment) == 2)
 									bitmap.at(x).at(y + increment) = 3;
 							}
+						}
+					}
+				}
+
+				for (int x = 1; x < bitmap.size() - 1; x++)
+				{
+					for (int y = 0; y < bitmap.at(x).size() - 5; y++)
+					{
+						if ((bitmap.at(x).at(y) == 2 || bitmap.at(x).at(y) == 3) && bitmap.at(x - 1).at(y) == 0 || (bitmap.at(x).at(y) == 2 || bitmap.at(x).at(y) == 3) && bitmap.at(x + 1).at(y) == 0)
+						{
+							bitmap.at(x).at(y) = 4;
 						}
 					}
 				}

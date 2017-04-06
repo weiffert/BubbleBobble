@@ -30,7 +30,6 @@ Level::Level(std::string id)
 		vec.x = texture.getSize().x;
 		vec.y = texture.getSize().y;
 		rectangle.setSize(vec);
-		rectangle.setPosition(0, 16);
 	}
 	bitmapMaker();
 }
@@ -38,7 +37,6 @@ Level::Level(std::string id)
 
 Level::~Level()
 {
-	std::cout << "Deconstructing Level" << std::endl;
 }
 
 void Level::update()
@@ -60,8 +58,8 @@ void Level::levelPlay()
 
 void Level::levelTransition()
 {
-	distance();
 	rectangle.move(velocity);
+	distance();
 }
 
 void Level::timeLimitPassed()
@@ -69,9 +67,17 @@ void Level::timeLimitPassed()
 	std::cout << "Transitioning Level From " << name << std::endl;
 	levelEnd();
 
-	GameObject *nextLevel = new Level("Level" + std::to_string((std::stoi(name.substr(name.find_last_of("l") + 1)) + 1)));
+	GameObject *nextLevel = nullptr;
+	int nextLevelNumber = std::stoi(name.substr(name.find_last_of("l") + 1)) + 1;
+
+	if (nextLevelNumber <= 8)
+		nextLevel = new Level("Level" + std::to_string(nextLevelNumber));
+	else
+		//Quit game.
+		int i = 0;
+
 	nextLevel->initialize(window, gameData);
-	nextLevel->setPosition(0, rectangle.getGlobalBounds().top + rectangle.getGlobalBounds().height);
+	nextLevel->setPosition(0, window->getSize().y / 4);
 	nextLevel->levelEnd();
 	gameData->add(0, nextLevel);
 
@@ -153,10 +159,11 @@ void Level::levelStart()
 
 			if (newMonster != nullptr)
 			{
-				newMonster->levelStart();
+				newMonster->initialize(window, gameData);
 				newMonster->setPosition(i * 8, 0 - newMonster->getRectangle().getLocalBounds().height);
 				newMonster->setPedometerLimit(j * 8);
-				newMonster->initialize(window, gameData);
+				newMonster->startPedometer();
+				newMonster->levelStart();
 				gameData->add(2, newMonster);
 			}
 		}

@@ -4,6 +4,7 @@
 
 Zenchan::Zenchan()
 {
+	name = "Zenchan";
 }
 
 

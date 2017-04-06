@@ -10,13 +10,11 @@ Monster::Monster()
 	rectangle.setFillColor(sf::Color::Red);
 	rectangle.setPosition(500, 100);
 	noLevelCollision = true;
-	setVelocity(0, 1);
 }
 
 
 Monster::~Monster()
 {
-	std::cout << "Deconstructing Monster" << std::endl;
 }
 
 void Monster::collideWith()
@@ -27,7 +25,12 @@ void Monster::collideWith()
 		collision(data.at(i));
 }
 
-void Monster::updateVelocity()
+void Monster::levelStart()
+{
+	setVelocity(0, 1);
+}
+
+void Monster::levelPlay()
 {
 	if (!noLevelCollision)
 	{
@@ -36,6 +39,11 @@ void Monster::updateVelocity()
 		gameData->getList(0).at(0)->collision(this);
 		//move.
 		rectangle.move(velocity);
+	}
+	else
+	{
+		rectangle.move(velocity);
+		distance();
 	}
 }
 
@@ -48,10 +56,12 @@ void Monster::death()
 	//pickup creation
 	//something like...
 	temp = new Pickup();
+	temp->initialize(window, gameData);
 	gameData->add(5, temp);
 }
 
 void Monster::distanceLimitPassed()
 {
 	noLevelCollision = false;
+	velocity.y = 0;
 }

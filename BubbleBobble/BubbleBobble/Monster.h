@@ -7,8 +7,9 @@ public:
 	Monster();
 	~Monster();
 	void collideWith();
-	virtual void death();
-	virtual void updateVelocity();
+	void death();
+	void levelStart();
+	void levelPlay();
 	void distanceLimitPassed();
 
 private:

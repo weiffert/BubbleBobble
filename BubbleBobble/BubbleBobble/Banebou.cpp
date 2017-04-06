@@ -4,6 +4,7 @@
 
 Banebou::Banebou()
 {
+	name = "Banebou";
 }
 
 

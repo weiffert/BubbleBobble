@@ -23,7 +23,6 @@ class Game
         sf::RenderWindow *window;
         sf::Vector2<int> screenDimensions;
         StateManager stateManager;
-		sf::View view;
 
 };
 

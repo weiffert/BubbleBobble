@@ -4,6 +4,7 @@
 
 Monsta::Monsta()
 {
+	name = "Monsta";
 }
 
 

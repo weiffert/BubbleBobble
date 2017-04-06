@@ -4,6 +4,7 @@
 
 SuperDrunk::SuperDrunk()
 {
+	name = "SuperDrunk";
 }
 
 

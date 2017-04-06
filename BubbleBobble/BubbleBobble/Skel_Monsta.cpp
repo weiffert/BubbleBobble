@@ -4,6 +4,7 @@
 
 Skel_Monsta::Skel_Monsta()
 {
+	name = "Skel_Monsta";
 }
 
 
