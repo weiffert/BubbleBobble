@@ -6,7 +6,7 @@
 
 Player::Player()
 {
-	
+	direction = 1;//facing towards positive x
 }
 
 
@@ -151,13 +151,23 @@ void Player::death()
 
 void Player::moveLeft()
 {
+<<<<<<< HEAD
 	setVelocity((4 * -1), velocity.y);
+=======
+	setVelocity((1 * -1), velocity.y);
+	direction = -1;//move towards negative x
+>>>>>>> origin/master
 }
 
 
 void Player::moveRight()
 {
+<<<<<<< HEAD
 	setVelocity(4, velocity.y);
+=======
+	setVelocity(1, velocity.y);
+	direction = 1;//move towards positive x
+>>>>>>> origin/master
 }
 
 
@@ -168,7 +178,7 @@ void Player::stopHorizontalVelocity()
 
 void Player::jump()
 {
-
+	setVelocity(getVelocity().x, 1);
 }
 
 
@@ -181,4 +191,9 @@ void Player::stopXMovement()
 void Player::stopYMovement()
 {
 	setVelocity(getVelocity().x, 0);
+}
+
+int Player::getDirection()
+{
+	return direction;
 }
