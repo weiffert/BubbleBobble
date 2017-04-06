@@ -70,7 +70,7 @@ void GameState::processEvents(sf::Event event)
     inputManager.update(event);
     if(inputManager.keyReleased(sf::Keyboard::Escape))
     {
-        stateSwitch = true;
+        pause = true;
         nextStateS = "MenuState";
     }
 	std::vector<GameObject *> players = gameData->getList(1);

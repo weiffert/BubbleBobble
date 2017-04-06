@@ -30,6 +30,10 @@ BaseState::~BaseState()
 
 void BaseState::pause()
 {
+	if (pause)
+		return true;
+	else
+		return false;
 }
 
 void BaseState::processEvents(sf::Event event)

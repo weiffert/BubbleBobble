@@ -32,6 +32,7 @@ class BaseState
     protected:
         bool stateSwitch;
         std::string nextStateS;
+		bool pause;
         //Contains the address of a text file that includes all the files needed for the state.
         //This string is passed to the FileManager which goes to the text file and grabs all the files
         //that the text file asks for.
