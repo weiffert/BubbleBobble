@@ -6,7 +6,7 @@
 
 Player::Player()
 {
-	direction = 1;//moving towards positive x
+	direction = 1;//facing towards positive x
 }
 
 
@@ -139,7 +139,7 @@ void Player::stopHorizontalVelocity()
 
 void Player::jump()
 {
-
+	setVelocity(getVelocity().x, 1);
 }
 
 
