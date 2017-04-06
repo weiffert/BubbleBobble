@@ -28,7 +28,7 @@ void StateManager::processEvents(sf::RenderWindow *window, sf::Event event)
             this->pop_State();
             this->push_State(new SplashScreenState(window));
         }
-        else if(states.back()->nextState() == "MenuState" && states.back()->)
+        else if(states.back()->nextState() == "MenuState")
         {
             this->pop_State();
             this->push_State(new MenuState(window));
@@ -45,7 +45,7 @@ void StateManager::processEvents(sf::RenderWindow *window, sf::Event event)
 		{
 			this->push_State(new SplashScreenState(window));
 		}
-		else if (states.back()->nextState() == "MenuState" && states.back()->)
+		else if (states.back()->nextState() == "MenuState")
 		{
 			this->push_State(new MenuState(window));
 		}

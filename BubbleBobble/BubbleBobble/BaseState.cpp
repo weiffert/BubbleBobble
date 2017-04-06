@@ -28,9 +28,9 @@ BaseState::~BaseState()
 	}
 }
 
-void BaseState::pause()
+bool BaseState::pause()
 {
-	if (pause)
+	if (pause_m)
 		return true;
 	else
 		return false;
