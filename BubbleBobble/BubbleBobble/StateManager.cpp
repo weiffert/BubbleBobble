@@ -43,17 +43,14 @@ void StateManager::processEvents(sf::RenderWindow *window, sf::Event event)
 	{
 		if (states.back()->nextState() == "SplashScreenState")
 		{
-			this->pop_State();
 			this->push_State(new SplashScreenState(window));
 		}
 		else if (states.back()->nextState() == "MenuState" && states.back()->)
 		{
-			this->pop_State();
 			this->push_State(new MenuState(window));
 		}
 		else if (states.back()->nextState() == "GameState")
 		{
-			this->pop_State();
 			this->push_State(new GameState(window));
 		}
 	}
