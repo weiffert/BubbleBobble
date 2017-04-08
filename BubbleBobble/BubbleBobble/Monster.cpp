@@ -6,12 +6,14 @@
 
 Monster::Monster()
 {
+	std::cout << "Constructing Monster" << std::endl;
 	rectangle.setSize(sf::Vector2f(16, 16));
 	rectangle.setFillColor(sf::Color::Red);
 	rectangle.setPosition(500, 100);
 	noLevelCollision = true;
 	friendly = false;
 	contained = false;
+	name = "Monster";
 }
 
 
@@ -37,6 +39,7 @@ void Monster::collided(GameObject *other)
 	std::string otherName = other->getName();
 	if (other->isFriendly())
 	{
+		death();
 		if (otherName.find("Projectile"))
 			captured(other);
 	}
@@ -52,7 +55,7 @@ void Monster::captured(GameObject *other)
 
 void Monster::levelStart()
 {
-	setVelocity(0, 4);
+	setVelocity(0, SCREEN_MULTIPLIER);
 }
 
 void Monster::levelPlay()

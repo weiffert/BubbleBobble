@@ -6,15 +6,16 @@
 
 Player::Player()
 {
+	std::cout << "Constructing Player" << std::endl;
 	direction = 1;//facing towards positive x
 }
 
 
 Player::Player(std::string set)
 {
+	std::cout << "Constructing Player" << std::endl;
 	setName(set);
-	rectangle.setSize(sf::Vector2f(16, 16));
-	rectangle.setFillColor(sf::Color::Green);
+	setTexture("../textures/bubblun.png");
 }
 
 
@@ -22,6 +23,14 @@ Player::~Player()
 {
 }
 
+
+void Player::update()
+{
+	if (!transition)
+		levelPlay();
+	else
+		levelTransition();
+}
 
 void Player::collideWith()
 {
@@ -57,7 +66,7 @@ void Player::collided(GameObject *other)
 	}
 	else
 	{
-		death();
+		std::cout << "PLAYER IS DEAD!" << std::endl;
 	}
 }
 
@@ -84,31 +93,31 @@ void Player::levelTransition()
 	//move to corner
 	sf::Vector2f corner;
 
-	corner.y = 8 * 25 * 4;
+	corner.y = 8 * 25 * SCREEN_MULTIPLIER;
 	if (name == "Player2")
-		corner.x = 8 * 29 * 4;
+		corner.x = 8 * 29 * SCREEN_MULTIPLIER;
 	else
-		corner.x = 8 * 3 * 4;
+		corner.x = 8 * 3 * SCREEN_MULTIPLIER;
 
 	sf::Vector2f player;
-	player.x = rectangle.getGlobalBounds().left * 4;
-	player.y = rectangle.getGlobalBounds().top * 4;
+	player.x = rectangle.getGlobalBounds().left;
+	player.y = rectangle.getGlobalBounds().top;
 	float differenceX = corner.x - player.x;
 	float differenceY = corner.y - player.y;
 
 	if (differenceX < 0)
-		velocity.x = -4;
+		velocity.x = -1 * SCREEN_MULTIPLIER;
 	else if (differenceX == 0)
 		velocity.x = 0;
 	else
-		velocity.x = 4;
+		velocity.x = SCREEN_MULTIPLIER;
 
 	if (differenceY < 0)
-		velocity.y = -4;
+		velocity.y = -1 * SCREEN_MULTIPLIER;
 	else if (differenceY == 0)
 		velocity.y = 0;
 	else
-		velocity.y = 4;
+		velocity.y = SCREEN_MULTIPLIER;
 
 	rectangle.move(velocity);
 }
@@ -124,8 +133,13 @@ void Player::levelEnd()
 void Player::levelStart()
 {
 	transition = false;
-	setTimeLimit(sf::seconds(30));
-	startClock();
+	//Skel_Monsta time limit.
+	startClock(sf::seconds(30));
+
+	//Velocity set.
+	setVelocity(0, 0);
+	gravity();
+
 	//change animation.
 }
 
@@ -151,23 +165,15 @@ void Player::death()
 
 void Player::moveLeft()
 {
-<<<<<<< HEAD
-	setVelocity((4 * -1), velocity.y);
-=======
-	setVelocity((1 * -1), velocity.y);
+	setVelocity(-1 * SCREEN_MULTIPLIER, velocity.y);
 	direction = -1;//move towards negative x
->>>>>>> origin/master
 }
 
 
 void Player::moveRight()
 {
-<<<<<<< HEAD
-	setVelocity(4, velocity.y);
-=======
-	setVelocity(1, velocity.y);
+	setVelocity(SCREEN_MULTIPLIER, velocity.y);
 	direction = 1;//move towards positive x
->>>>>>> origin/master
 }
 
 
@@ -176,21 +182,14 @@ void Player::stopHorizontalVelocity()
 	setVelocity(0, velocity.y);
 }
 
-void Player::jump()
-{
-	setVelocity(getVelocity().x, 1);
-}
-
-
-void Player::stopXMovement()
-{
-	setVelocity(0, getVelocity().y);
-}
-
-
-void Player::stopYMovement()
+void Player::stopVerticalVelocity()
 {
 	setVelocity(getVelocity().x, 0);
+}
+
+void Player::jump()
+{
+	setVelocity(getVelocity().x, -1 * SCREEN_MULTIPLIER);
 }
 
 int Player::getDirection()

@@ -40,6 +40,8 @@ public:
 	virtual void levelPlay();
 	virtual void levelTransition();
 
+	void gravity();
+
 	std::string getName();
 	sf::Time getTimeElapsed();
 	float getDistanceElapsed();
@@ -50,8 +52,6 @@ public:
 	bool isFriendly();
 
 	void setName(std::string);
-	void setTimeLimit(sf::Time);
-	void setPedometerLimit(float);
 	void setVelocity(sf::Vector2f);
 	void setVelocity(float, float);
 	void velocityToNextGridLine(bool);
@@ -63,9 +63,14 @@ public:
 	void setPosition(float, float);
 	void setGameDataPTR(GameData *);
 
+	void setTimeLimit(sf::Time);
+	void startClock(sf::Time);
 	void startClock();
-	void startPedometer();
 	sf::Time stopClock();
+
+	void setPedometerLimit(float);
+	void startPedometer(float);
+	void startPedometer();
 	double stopPedometer();
 
 	bool offTop();
@@ -75,6 +80,8 @@ protected:
 	std::string name;
 	bool friendly;
 	bool transition;
+
+	const int SCREEN_MULTIPLIER = 3;
 
 	sf::Vector2f velocity;
 

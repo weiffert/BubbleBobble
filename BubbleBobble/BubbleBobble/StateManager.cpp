@@ -39,6 +39,8 @@ void StateManager::processEvents(sf::RenderWindow *window, sf::Event event)
             this->push_State(new GameState(window));
         }
     }
+	//This just keeps on making new game states. Commenting out for safety.
+	/*
 	else if (states.back()->pause())
 	{
 		if (states.back()->nextState() == "SplashScreenState")
@@ -54,6 +56,7 @@ void StateManager::processEvents(sf::RenderWindow *window, sf::Event event)
 			this->push_State(new GameState(window));
 		}
 	}
+	*/
 }
 
 void StateManager::process()

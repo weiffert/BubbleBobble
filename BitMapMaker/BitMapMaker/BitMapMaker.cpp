@@ -124,9 +124,10 @@ void levelBase()
 				///*
 				for (int y = 0; y < bitmap.at(1).size(); y++)
 				{
+					std::cout << y << "::";
 					for (int x = 0; x < bitmap.size(); x++)
 					{
-						std::cout << bitmap.at(x).at(y);
+						std::cout << x << ":" << bitmap.at(x).at(y) << " ";
 					}
 					std::cout << std::endl;
 				}

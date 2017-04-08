@@ -70,7 +70,9 @@ void GameState::processEvents(sf::Event event)
     inputManager.update(event);
     if(inputManager.keyReleased(sf::Keyboard::Escape))
     {
-        pause_m = true;
+		//CHanged.
+        pause_m = false;
+		stateSwitch = true;
         nextStateS = "MenuState";
     }
 	std::vector<GameObject *> players = gameData->getList(1);
@@ -91,6 +93,10 @@ void GameState::processEvents(sf::Event event)
 	{
 		player->jump();
 	}
+	else
+	{
+		player->gravity();
+	}
 	if (players.size() > 1)
 	{
 		Player *player = dynamic_cast<Player *>(players.at(1));
@@ -109,6 +115,10 @@ void GameState::processEvents(sf::Event event)
 		if (inputManager.keyReleased(sf::Keyboard::W))
 		{
 			player->jump();
+		}
+		else
+		{
+			player->gravity();
 		}
 	}
  }

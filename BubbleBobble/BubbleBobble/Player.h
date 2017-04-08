@@ -7,6 +7,7 @@ public:
 	Player();
 	Player(std::string);
 	~Player();
+	void update();
 	void collideWith();
 	void collided(GameObject *);
 	void pickedUp(GameObject *);
@@ -19,9 +20,8 @@ public:
 	void moveLeft();
 	void moveRight();
 	void stopHorizontalVelocity();
+	void stopVerticalVelocity();
 	void jump();
-	void stopXMovement();
-	void stopYMovement();
 	int getDirection();
 private: 
 	int direction;

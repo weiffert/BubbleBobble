@@ -32,9 +32,8 @@ PointText::PointText(GameObject *creator, unsigned int value, bool big)
 
 	sf::FloatRect creatorRect = creator->getRectangle().getGlobalBounds();
 	rectangle.setPosition(creatorRect.left, creatorRect.top);
-	setVelocity(0, -4);
-	setPedometerLimit(40);
-	startPedometer();
+	setVelocity(0, -1 * SCREEN_MULTIPLIER);
+	startPedometer(40);
 }
 
 

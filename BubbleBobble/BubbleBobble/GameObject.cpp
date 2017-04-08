@@ -6,29 +6,11 @@
 
 GameObject::GameObject()
 {
+	std::cout << "Constructing GameObject" << std::endl;
 	//add instance variables
 	gameData = nullptr;
 	window = nullptr;
 	name = "none";
-}
-
-GameObject::GameObject(std::string set)
-{
-	gameData = nullptr;
-	window = nullptr;
-	name = set;
-}
-
-GameObject::~GameObject()
-{
-	std::cout << "Deconstructing GameObject " << name << std::endl;
-}
-
-
-void GameObject::initialize(sf::RenderWindow *win, GameData *data)
-{
-	window = win;
-	gameData = data;
 
 	velocity.x = 0;
 	velocity.y = 0;
@@ -43,9 +25,47 @@ void GameObject::initialize(sf::RenderWindow *win, GameData *data)
 	distanceElapsed = 0;
 	distanceLimit = 0;
 	trackingDistance = false;
-	life = false;
+	life = true;
 	transition = false;
 	friendly = true;
+}
+
+GameObject::GameObject(std::string set)
+{
+	std::cout << "Constructing GameObject" << std::endl;
+	gameData = nullptr;
+	window = nullptr;
+
+	name = set;
+
+	velocity.x = 0;
+	velocity.y = 0;
+
+	//Clock variables.
+	timeElapsed = sf::seconds(0);
+	timeLimit = sf::seconds(0);
+	trackingTime = false;
+
+	//Distance variables.
+	pedometer = 0;
+	distanceElapsed = 0;
+	distanceLimit = 0;
+	trackingDistance = false;
+	life = true;
+	transition = false;
+	friendly = true;
+}
+
+GameObject::~GameObject()
+{
+	std::cout << "Deconstructing GameObject " << name << std::endl;
+}
+
+
+void GameObject::initialize(sf::RenderWindow *win, GameData *data)
+{
+	window = win;
+	gameData = data;
 }
 
 
@@ -76,6 +96,7 @@ void GameObject::levelEnd()
 void GameObject::levelStart()
 {
 	transition = false;
+	gravity();
 }
 
 
@@ -84,6 +105,12 @@ void GameObject::levelPlay()
 	//move.
 	collideWith();
 	rectangle.move(velocity);
+}
+
+
+void GameObject::gravity()
+{
+	velocity.y = 1 * SCREEN_MULTIPLIER;
 }
 
 
@@ -220,7 +247,7 @@ void GameObject::velocityToNextGridLine(bool horizontal)
 			newVelocity.x = forwards;
 		else
 			newVelocity.x = backwards;
-		newVelocity.y = getVelocity().y;
+		velocity.x = 0;
 	}
 	else
 	{
@@ -230,17 +257,9 @@ void GameObject::velocityToNextGridLine(bool horizontal)
 			newVelocity.y = forwards;
 		else
 			newVelocity.y = backwards; 
-		newVelocity.x = getVelocity().x;
+		velocity.y = 0;
 	}
-	setVelocity(newVelocity);
-}
-void GameObject::setTimeLimit(sf::Time set)
-{
-	timeLimit = set;
-}
-void GameObject::setPedometerLimit(float set)
-{
-	distanceLimit = set;
+	//setVelocity(newVelocity);
 }
 void GameObject::setRenderWindow(sf::RenderWindow *set)
 {
@@ -265,35 +284,63 @@ void GameObject::setTexture(std::string fileName)
 void GameObject::setTexture(sf::Texture set)
 {
 	texture = set;
+	setTexture();
 }
 void GameObject::setTexture()
 {
 	rectangle.setTexture(&texture);
 	sf::Vector2f vec;
-	vec.x = texture.getSize().x * 4;
-	vec.y = texture.getSize().y * 4;
+	vec.x = texture.getSize().x * SCREEN_MULTIPLIER;
+	vec.y = texture.getSize().y * SCREEN_MULTIPLIER;
 	rectangle.setSize(vec);
 }
 void GameObject::setPosition(float x, float y)
 {
 	rectangle.setPosition(x, y);
 }
+void GameObject::setGameDataPTR(GameData *set)
+{
+	gameData = set;
+}
 
+//Clock
+void GameObject::setTimeLimit(sf::Time set)
+{
+	timeLimit = set;
+}
+void GameObject::startClock(sf::Time set)
+{
+	timeLimit = set;
+	trackingTime = true;
+	clock.restart();
+}
 void GameObject::startClock()
 {
 	trackingTime = true;
 	clock.restart();
-}
-void GameObject::startPedometer()
-{
-	trackingDistance = true;
-	pedometer = 0;
 }
 sf::Time GameObject::stopClock()
 {
 	trackingTime = false;
 	timeElapsed = clock.getElapsedTime();
 	return timeElapsed;
+}
+
+//Pedometer
+void GameObject::setPedometerLimit(float set)
+{
+	distanceLimit = set;
+}
+void GameObject::startPedometer(float set)
+{
+	distanceLimit = set;
+	trackingDistance = true;
+	pedometer = 0;
+}
+void GameObject::startPedometer()
+{
+	trackingDistance = true;
+	pedometer = 0;
 }
 double GameObject::stopPedometer()
 {
@@ -313,9 +360,4 @@ bool GameObject::offBottom()
 	if (rectangle.getGlobalBounds().top >= window->getSize().y)
 		return true;
 	return false;
-}
-
-void GameObject::setGameDataPTR(GameData *set)
-{
-	gameData = set;
 }
