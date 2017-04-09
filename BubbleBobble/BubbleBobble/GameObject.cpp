@@ -236,30 +236,83 @@ void GameObject::setVelocity(float x, float y)
 }
 void GameObject::velocityToNextGridLine(bool horizontal)
 {
-	sf::Vector2f newVelocity;
-	float forwards, backwards;
-
+	sf::Vector2f newPosition;
+	float forwards, zero, multiplierX, multiplierY;
+	int edge;
+	const int CONVERTER = 8 * SCREEN_MULTIPLIER;
+	/*
 	if (horizontal)
 	{
-		forwards = std::floor(rectangle.getPosition().x / 8) * 8 - rectangle.getPosition().x;
-		backwards = (std::floor(rectangle.getPosition().x / 8) + 1) * 8 - rectangle.getPosition().x;
-		if (backwards > forwards)
-			newVelocity.x = forwards;
+		if (velocity.x < 0)
+			multiplierX = -1;
 		else
-			newVelocity.x = backwards;
+			multiplierX = 1;
+
+		/*
+		zero = rectangle.getPosition().x;
+		forwards = std::floor(rectangle.getPosition().x / CONVERTER) * CONVERTER;
+		//zero = std::floor(rectangle.getPosition().x / CONVERTER) * CONVERTER;
+		//forwards = (std::floor(rectangle.getPosition().x / CONVERTER) + multiplierX) * CONVERTER;
+
+
+		if(std::abs(forwards - edge) < std::abs(zero - edge))
+			newPosition.x = forwards;
+		else
+			newPosition.x = zero;
+
+		edge = rectangle.getGlobalBounds().left + rectangle.getSize().x / 2 + multiplierX * rectangle.getSize().x;
+
+		int posX = rectangle.getPosition().x;
+		int integerVelX;
+		integerVelX = velocity.x;
+		if ((edge - integerVelX) % CONVERTER < CONVERTER / 2)
+			newPosition.x = posX + multiplierX * (integerVelX % CONVERTER);
+		else
+			newPosition.x = posX + -1 * multiplierX * ((CONVERTER - integerVelX) % CONVERTER);
+
+		newPosition.y = rectangle.getPosition().y;
 		velocity.x = 0;
 	}
 	else
 	{
-		forwards = std::floor(rectangle.getPosition().y / 8) * 8 - rectangle.getPosition().y;
-		backwards = (std::floor(rectangle.getPosition().y / 8) + 1) * 8 - rectangle.getPosition().y;
-		if (backwards > forwards)
-			newVelocity.y = forwards;
+		if (velocity.y < 0)
+			multiplierY = -1;
 		else
-			newVelocity.y = backwards; 
+			multiplierY = 1;
+		/*
+		zero = std::floor(rectangle.getPosition().y / CONVERTER) * CONVERTER + 1;
+		forwards = std::floor(rectangle.getPosition().y / CONVERTER) * CONVERTER;
+		//zero = std::floor(rectangle.getPosition().y / CONVERTER) * CONVERTER;
+		//forwards = (std::floor(rectangle.getPosition().y / CONVERTER) + multiplierY) * CONVERTER;
+
+		edge = rectangle.getGlobalBounds().top + rectangle.getSize().y;
+
+		if (std::abs(forwards - edge) < std::abs(zero - edge))
+			newPosition.y = forwards;
+		else
+			newPosition.y = zero;
+
+		int posY = rectangle.getPosition().y;
+		int integerVelY;
+		integerVelY = velocity.x;
+		if ((posY - integerVelY) % CONVERTER < CONVERTER / 2)
+			newPosition.y = posY + multiplierY * (integerVelY % CONVERTER);
+		else
+			newPosition.y = posY - (CONVERTER - (CONVERTER - integerVelY) % CONVERTER);
+
+
+		newPosition.x = rectangle.getPosition().x;
 		velocity.y = 0;
 	}
-	//setVelocity(newVelocity);
+	setPosition(newPosition.x, newPosition.y);
+	*/
+
+	if (horizontal)
+		velocity.x = 0;
+	else
+		velocity.y = 0;
+
+
 }
 void GameObject::setRenderWindow(sf::RenderWindow *set)
 {
@@ -360,4 +413,9 @@ bool GameObject::offBottom()
 	if (rectangle.getGlobalBounds().top >= window->getSize().y)
 		return true;
 	return false;
+}
+
+void GameObject::changePositionVertical(float distance)
+{
+	setPosition(rectangle.getPosition().x, rectangle.getPosition().y + distance);
 }

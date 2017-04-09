@@ -76,6 +76,8 @@ public:
 	bool offTop();
 	bool offBottom();
 
+	void changePositionVertical(float);
+
 protected:
 	std::string name;
 	bool friendly;

@@ -197,39 +197,40 @@ void Level::collision(GameObject *other)
 		corner.x = center.x + multiplierX * width / 2;
 		corner.y = center.y + multiplierY * height / 2;
 
-		int xval = corner.x;
-		int yval = corner.y;
+		//int xval = corner.x;
+		//int yval = corner.y;
 		corner.x /= CONVERTER;
 		corner.y /= CONVERTER; 
 		
-		std::cout << "(" << corner.x << ", " << corner.y << ") : " << std::endl << std::endl;
+		//std::cout << "(" << corner.x << ", " << corner.y << ") : " << std::endl << std::endl;
 
 		if (std::floor(moving.getGlobalBounds().left / CONVERTER) != std::floor(rect.getGlobalBounds().left / CONVERTER))
 		{
-			std::cout << "HORIZONTAL: " << std::endl;
+			//std::cout << "HORIZONTAL: " << std::endl;
 			for (int i = 0; i <= height / CONVERTER; i++)
 			{
-				std::cout << "(" << corner.x << ", " << corner.y + -1 * multiplierY * i << ") : " <<
-					bitmap[corner.x][corner.y + -1 * multiplierY * i] << std::endl;
+				//std::cout << "(" << corner.x << ", " << corner.y + -1 * multiplierY * i << ") : " << bitmap[corner.x][corner.y + -1 * multiplierY * i] << std::endl;
 				horizontal.push_back(bitmap[corner.x][corner.y + -1 * multiplierY * i]);
 			}
-			std::cout << std::endl;
+			//std::cout << std::endl;
 		}
 
 		if (std::floor(moving.getGlobalBounds().top / CONVERTER) != std::floor(rect.getGlobalBounds().top / CONVERTER))
 		{
-			std::cout << "VERTICAL: " << std::endl;
+			//std::cout << "VERTICAL: " << std::endl;
 			for (int i = 0; i <= width / CONVERTER; i++)
 			{
-				std::cout << "(" << corner.x + -1 * multiplierX * i << ", " << corner.y << ") : "
-					<< bitmap[corner.x + -1 * multiplierX * i][corner.y] << std::endl;
+				//std::cout << "(" << corner.x + -1 * multiplierX * i << ", " << corner.y << ") : "	<< bitmap[corner.x + -1 * multiplierX * i][corner.y] << std::endl;
 				vertical.push_back(bitmap[corner.x + -1 * multiplierX * i][corner.y]);
 			}
-			std::cout << std::endl;
+			//std::cout << std::endl;
 		}
+
+		bool verticalCollision = false;
 
 		if (other->isFriendly())
 		{
+			/*
 			window->clear();
 
 			window->draw(rectangle);
@@ -255,6 +256,7 @@ void Level::collision(GameObject *other)
 			window->draw(cornerONE);
 
 			window->display();
+			*/
 
 			//Interpret.
 			for (int i = 0; i < horizontal.size(); i++)
@@ -275,9 +277,20 @@ void Level::collision(GameObject *other)
 				case MonsterFloor:
 				case EdgeFloor:
 					if (other->getVelocity().y > 0)
+					{
+						verticalCollision = true;
 						other->velocityToNextGridLine(false);
+					}
 				}
 			}
+		}
+
+		if (!verticalCollision)
+		{
+			if (center.y - height / 2 > rectangle.getGlobalBounds().top + rectangle.getLocalBounds().height)
+				other->changePositionVertical(-1 * rectangle.getLocalBounds().height - height);
+			else if (center.y + height / 2 < rectangle.getGlobalBounds().top)
+				other->changePositionVertical(rectangle.getLocalBounds().height);
 		}
 
 	}

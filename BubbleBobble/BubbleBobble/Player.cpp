@@ -93,7 +93,7 @@ void Player::levelTransition()
 	//move to corner
 	sf::Vector2f corner;
 
-	corner.y = 8 * 25 * SCREEN_MULTIPLIER;
+	corner.y = 8 * 23 * SCREEN_MULTIPLIER;
 	if (name == "Player2")
 		corner.x = 8 * 29 * SCREEN_MULTIPLIER;
 	else

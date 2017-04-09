@@ -1,20 +1,16 @@
-﻿Build started 4/7/2017 9:04:22 PM.
+﻿Build started 4/8/2017 9:43:09 PM.
      1>Project "C:\Users\administrator\Documents\GitHub\BubbleBobble\BubbleBobble\BubbleBobble\BubbleBobble.vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /IC:\SFML\include /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D SFML_STATIC /D WIN32 /D _DEBUG /D _CONSOLE /D _LIB /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Yu"stdafx.h" /Fp"Debug\BubbleBobble.pch" /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt Level.cpp
-         Level.cpp
-     1>c:\users\administrator\documents\github\bubblebobble\bubblebobble\bubblebobble\level.cpp(72): warning C4244: 'argument' : conversion from 'unsigned int' to 'float', possible loss of data
-     1>c:\users\administrator\documents\github\bubblebobble\bubblebobble\bubblebobble\level.cpp(77): warning C4018: '<' : signed/unsigned mismatch
-     1>c:\users\administrator\documents\github\bubblebobble\bubblebobble\bubblebobble\level.cpp(99): warning C4244: 'argument' : conversion from 'const int' to 'float', possible loss of data
-     1>c:\users\administrator\documents\github\bubblebobble\bubblebobble\bubblebobble\level.cpp(100): warning C4244: 'argument' : conversion from 'unsigned int' to 'float', possible loss of data
-     1>c:\users\administrator\documents\github\bubblebobble\bubblebobble\bubblebobble\level.cpp(109): warning C4018: '<' : signed/unsigned mismatch
-     1>c:\users\administrator\documents\github\bubblebobble\bubblebobble\bubblebobble\level.cpp(154): warning C4244: 'argument' : conversion from 'const int' to 'float', possible loss of data
-     1>c:\users\administrator\documents\github\bubblebobble\bubblebobble\bubblebobble\level.cpp(197): warning C4244: '=' : conversion from 'float' to 'int', possible loss of data
-     1>c:\users\administrator\documents\github\bubblebobble\bubblebobble\bubblebobble\level.cpp(198): warning C4244: '=' : conversion from 'float' to 'int', possible loss of data
-     1>c:\users\administrator\documents\github\bubblebobble\bubblebobble\bubblebobble\level.cpp(243): warning C4244: '=' : conversion from 'int' to 'float', possible loss of data
-     1>c:\users\administrator\documents\github\bubblebobble\bubblebobble\bubblebobble\level.cpp(244): warning C4244: '=' : conversion from 'int' to 'float', possible loss of data
-     1>c:\users\administrator\documents\github\bubblebobble\bubblebobble\bubblebobble\level.cpp(260): warning C4018: '<' : signed/unsigned mismatch
-     1>c:\users\administrator\documents\github\bubblebobble\bubblebobble\bubblebobble\level.cpp(269): warning C4018: '<' : signed/unsigned mismatch
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /IC:\SFML\include /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D SFML_STATIC /D WIN32 /D _DEBUG /D _CONSOLE /D _LIB /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Yu"stdafx.h" /Fp"Debug\BubbleBobble.pch" /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt GameObject.cpp
+         GameObject.cpp
+     1>c:\users\administrator\documents\github\bubblebobble\bubblebobble\bubblebobble\gameobject.cpp(113): warning C4244: '=' : conversion from 'const int' to 'float', possible loss of data
+     1>c:\users\administrator\documents\github\bubblebobble\bubblebobble\bubblebobble\gameobject.cpp(240): warning C4101: 'multiplierY' : unreferenced local variable
+     1>c:\users\administrator\documents\github\bubblebobble\bubblebobble\bubblebobble\gameobject.cpp(240): warning C4101: 'forwards' : unreferenced local variable
+     1>c:\users\administrator\documents\github\bubblebobble\bubblebobble\bubblebobble\gameobject.cpp(241): warning C4101: 'edge' : unreferenced local variable
+     1>c:\users\administrator\documents\github\bubblebobble\bubblebobble\bubblebobble\gameobject.cpp(240): warning C4101: 'zero' : unreferenced local variable
+     1>c:\users\administrator\documents\github\bubblebobble\bubblebobble\bubblebobble\gameobject.cpp(240): warning C4101: 'multiplierX' : unreferenced local variable
+     1>c:\users\administrator\documents\github\bubblebobble\bubblebobble\bubblebobble\gameobject.cpp(346): warning C4244: '=' : conversion from 'unsigned int' to 'float', possible loss of data
+     1>c:\users\administrator\documents\github\bubblebobble\bubblebobble\bubblebobble\gameobject.cpp(347): warning C4244: '=' : conversion from 'unsigned int' to 'float', possible loss of data
        Link:
          C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\administrator\Documents\GitHub\BubbleBobble\BubbleBobble\Debug\BubbleBobble.exe" /INCREMENTAL /NOLOGO /LIBPATH:C:\SFML\lib "sfml-graphics-s-d.lib" "sfml-window-s-d.lib" "sfml-system-s-d.lib" opengl32.lib freetype.lib jpeg.lib winmm.lib gdi32.lib "sfml-audio-s-d.lib" openal32.lib flac.lib vorbisenc.lib vorbisfile.lib vorbis.lib ogg.lib "sfml-network-s-d.lib" ws2_32.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\administrator\Documents\GitHub\BubbleBobble\BubbleBobble\Debug\BubbleBobble.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\administrator\Documents\GitHub\BubbleBobble\BubbleBobble\Debug\BubbleBobble.lib" /MACHINE:X86 Debug\Animation.obj
          Debug\Banebou.obj
@@ -49,4 +45,4 @@
 
 Build succeeded.
 
-Time Elapsed 00:00:01.26
+Time Elapsed 00:00:01.62
