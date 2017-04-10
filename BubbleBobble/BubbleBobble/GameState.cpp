@@ -89,13 +89,14 @@ void GameState::processEvents(sf::Event event)
 	{
 		player->stopHorizontalVelocity();
 	}
-	if (inputManager.keyReleased(sf::Keyboard::Up))
+	if (inputManager.keyPressed(sf::Keyboard::Up))
 	{
 		player->jump();
 	}
 	else
 	{
 		player->gravity();
+		player->jumping();
 	}
 	if (players.size() > 1)
 	{
@@ -115,10 +116,6 @@ void GameState::processEvents(sf::Event event)
 		if (inputManager.keyReleased(sf::Keyboard::W))
 		{
 			player->jump();
-		}
-		else
-		{
-			player->gravity();
 		}
 	}
  }

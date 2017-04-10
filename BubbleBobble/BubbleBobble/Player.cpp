@@ -8,6 +8,7 @@ Player::Player()
 {
 	std::cout << "Constructing Player" << std::endl;
 	direction = 1;//facing towards positive x
+	jump_m = false;
 }
 
 
@@ -16,6 +17,7 @@ Player::Player(std::string set)
 	std::cout << "Constructing Player" << std::endl;
 	setName(set);
 	setTexture("../textures/bubblun.png");
+	jump_m = false;
 }
 
 
@@ -30,6 +32,8 @@ void Player::update()
 		levelPlay();
 	else
 		levelTransition();
+	gravity();
+	jumping();
 }
 
 void Player::collideWith()
@@ -189,9 +193,28 @@ void Player::stopVerticalVelocity()
 
 void Player::jump()
 {
-	setVelocity(getVelocity().x, -1 * SCREEN_MULTIPLIER);
+	if (jump_m == false)
+	{
+		jump_m = true;
+		setVelocity(getVelocity().x, -1 * SCREEN_MULTIPLIER);
+		jumpTimer.restart();
+	}
 }
 
+void Player::jumping()
+{
+	if (jump_m == true)
+	{
+		if(jumpTimer.getElapsedTime() < sf::seconds(0.6))
+			setVelocity(getVelocity().x, -1 * SCREEN_MULTIPLIER);
+		else
+		{
+			jump_m = false;
+			setVelocity(getVelocity().x, 0);
+		}
+
+	}
+}
 int Player::getDirection()
 {
 	return direction;
