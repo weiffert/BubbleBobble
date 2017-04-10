@@ -170,6 +170,15 @@ void Player::death()
 void Player::moveLeft()
 {
 	setVelocity(-1 * SCREEN_MULTIPLIER, velocity.y);
+
+	if (direction == 1)
+	{
+		if (getName() == "Player1")
+			setTexture("../textures/bubblun.png");
+		else if (getName() == "Player2")
+			setTexture("../textures/bobblun.png");
+	}
+
 	direction = -1;//move towards negative x
 }
 
@@ -177,6 +186,20 @@ void Player::moveLeft()
 void Player::moveRight()
 {
 	setVelocity(SCREEN_MULTIPLIER, velocity.y);
+
+	if (direction == -1)
+	{
+		sf::Image newTexture;
+
+		if (getName() == "Player1")
+			newTexture.loadFromFile("../textures/bubblun.png");
+		else if (getName() == "Player2")
+			newTexture.loadFromFile("../textures/bobblun.png");
+
+		newTexture.flipHorizontally();
+		texture.loadFromImage(newTexture);
+	}
+
 	direction = 1;//move towards positive x
 }
 

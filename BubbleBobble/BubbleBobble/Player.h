@@ -29,4 +29,3 @@ private:
 	bool jump_m;
 	int direction;
 };
-
