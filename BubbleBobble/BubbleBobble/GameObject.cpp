@@ -24,6 +24,8 @@ GameObject::GameObject()
 	pedometer = 0;
 	distanceElapsed = 0;
 	distanceLimit = 0;
+	verticalAcceleration = 0;
+	direction = 1;
 	trackingDistance = false;
 	life = true;
 	transition = false;
@@ -50,6 +52,8 @@ GameObject::GameObject(std::string set)
 	pedometer = 0;
 	distanceElapsed = 0;
 	distanceLimit = 0;
+	verticalAcceleration = 0;
+	direction = 1;
 	trackingDistance = false;
 	life = true;
 	transition = false;
@@ -103,6 +107,7 @@ void GameObject::levelStart()
 void GameObject::levelPlay()
 {
 	//move.
+	gravity();
 	collideWith();
 	rectangle.move(velocity);
 }
@@ -110,7 +115,13 @@ void GameObject::levelPlay()
 
 void GameObject::gravity()
 {
-	velocity.y = 1 * SCREEN_MULTIPLIER;
+	if (verticalAcceleration < 0)
+	{
+		velocity.y = -1 * SCREEN_MULTIPLIER;
+		verticalAcceleration++;
+	}
+	else
+		velocity.y = 1 * SCREEN_MULTIPLIER;
 }
 
 
@@ -418,4 +429,64 @@ bool GameObject::offBottom()
 void GameObject::changePositionVertical(float distance)
 {
 	setPosition(rectangle.getPosition().x, rectangle.getPosition().y + distance);
+}
+
+void GameObject::moveLeft()
+{
+	setVelocity(-1 * SCREEN_MULTIPLIER, velocity.y);
+
+	if (direction == 1)
+	{
+		if (getName() == "Player1")
+			setTexture("../textures/bubblun.png");
+		else if (getName() == "Player2")
+			setTexture("../textures/bobblun.png");
+	}
+
+	direction = -1;//move towards negative x
+}
+
+void GameObject::moveRight()
+{
+	setVelocity(SCREEN_MULTIPLIER, velocity.y);
+
+	if (direction == -1)
+	{
+		sf::Image newTexture;
+
+		if (getName() == "Player1")
+			newTexture.loadFromFile("../textures/bubblun.png");
+		else if (getName() == "Player2")
+			newTexture.loadFromFile("../textures/bobblun.png");
+
+		newTexture.flipHorizontally();
+		texture.loadFromImage(newTexture);
+	}
+
+	direction = 1;//move towards positive x
+}
+
+void GameObject::stopHorizontalVelocity()
+{
+	setVelocity(0, velocity.y);
+}
+
+void GameObject::stopVerticalVelocity()
+{
+	setVelocity(getVelocity().x, 0);
+}
+
+void GameObject::jump()
+{
+	verticalAcceleration = -5 * 8;
+}
+
+int GameObject::getDirection()
+{
+	return direction;
+}
+
+int GameObject::getVerticalAcceleration()
+{
+	return verticalAcceleration;
 }

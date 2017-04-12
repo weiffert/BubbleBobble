@@ -73,6 +73,14 @@ public:
 	void startPedometer();
 	double stopPedometer();
 
+	void moveLeft();
+	void moveRight();
+	void stopHorizontalVelocity();
+	void stopVerticalVelocity();
+	void jump();
+	int getDirection();
+	int getVerticalAcceleration();
+
 	bool offTop();
 	bool offBottom();
 
@@ -99,10 +107,12 @@ protected:
 	float distanceLimit;
 	bool trackingDistance;
 
+	int verticalAcceleration;
+	int direction;
+
 	sf::RectangleShape rectangle;
 	sf::Texture texture;
 	std::vector<Animation> animations;
-	std::vector<double> data;
 	bool life;
 	sf::RenderWindow *window;
 	GameData *gameData;

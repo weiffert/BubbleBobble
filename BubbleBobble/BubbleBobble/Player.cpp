@@ -8,7 +8,6 @@ Player::Player()
 {
 	std::cout << "Constructing Player" << std::endl;
 	direction = 1;//facing towards positive x
-	jump_m = false;
 }
 
 
@@ -17,7 +16,6 @@ Player::Player(std::string set)
 	std::cout << "Constructing Player" << std::endl;
 	setName(set);
 	setTexture("../textures/bubblun.png");
-	jump_m = false;
 }
 
 
@@ -32,8 +30,6 @@ void Player::update()
 		levelPlay();
 	else
 		levelTransition();
-	gravity();
-	jumping();
 }
 
 void Player::collideWith()
@@ -85,6 +81,7 @@ void Player::pickedUp(GameObject *other)
 void Player::levelPlay()
 {
 	//standard update.
+	gravity();
 	collideWith();
 	rectangle.move(velocity);
 	time();
@@ -164,81 +161,4 @@ void Player::death()
 	life = false;
 	GameObject *temp = this;
 	gameData->addToKillList(1, temp);
-}
-
-
-void Player::moveLeft()
-{
-	setVelocity(-1 * SCREEN_MULTIPLIER, velocity.y);
-
-	if (direction == 1)
-	{
-		if (getName() == "Player1")
-			setTexture("../textures/bubblun.png");
-		else if (getName() == "Player2")
-			setTexture("../textures/bobblun.png");
-	}
-
-	direction = -1;//move towards negative x
-}
-
-
-void Player::moveRight()
-{
-	setVelocity(SCREEN_MULTIPLIER, velocity.y);
-
-	if (direction == -1)
-	{
-		sf::Image newTexture;
-
-		if (getName() == "Player1")
-			newTexture.loadFromFile("../textures/bubblun.png");
-		else if (getName() == "Player2")
-			newTexture.loadFromFile("../textures/bobblun.png");
-
-		newTexture.flipHorizontally();
-		texture.loadFromImage(newTexture);
-	}
-
-	direction = 1;//move towards positive x
-}
-
-
-void Player::stopHorizontalVelocity()
-{
-	setVelocity(0, velocity.y);
-}
-
-void Player::stopVerticalVelocity()
-{
-	setVelocity(getVelocity().x, 0);
-}
-
-void Player::jump()
-{
-	if (jump_m == false)
-	{
-		jump_m = true;
-		setVelocity(getVelocity().x, -1 * SCREEN_MULTIPLIER);
-		jumpTimer.restart();
-	}
-}
-
-void Player::jumping()
-{
-	if (jump_m == true)
-	{
-		if(jumpTimer.getElapsedTime() < sf::seconds(0.6))
-			setVelocity(getVelocity().x, -1 * SCREEN_MULTIPLIER);
-		else
-		{
-			jump_m = false;
-			setVelocity(getVelocity().x, 0);
-		}
-
-	}
-}
-int Player::getDirection()
-{
-	return direction;
 }
