@@ -26,7 +26,6 @@ Game::~Game()
 
 void Game::loop()
 {
-
     while(window->isOpen())
     {
         //Checks for any events that occur while the window is open

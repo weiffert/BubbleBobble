@@ -93,7 +93,7 @@ void GameState::processEvents(sf::Event event)
 	}
 	if (players.size() > 1)
 	{
-		Player *player = dynamic_cast<Player *>(players.at(1));
+		player = players.at(1);
 		if (inputManager.keyDown(sf::Keyboard::A))
 		{
 			player->moveLeft();
@@ -157,6 +157,7 @@ void GameState::draw()
 		}
 	}
 }
+
 
 void GameState::Cleanup()
 {

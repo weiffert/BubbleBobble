@@ -45,7 +45,8 @@ void Monster::collideWith()
 	//projectile
 	data = gameData->getList(4);
 	for (int i = 0; i < data.size(); i++)
-		collision(data.at(i));
+		if (data.at(i)->isFriendly())
+			collision(data.at(i));
 }
 
 
