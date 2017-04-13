@@ -16,7 +16,5 @@ public:
 	void collideWith();
 	void collided(GameObject *);
 	void death();
-private:
-	bool friendly;
 };
 

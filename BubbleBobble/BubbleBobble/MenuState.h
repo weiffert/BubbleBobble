@@ -8,17 +8,11 @@
 
 class MenuState : public BaseState
 {
-    public:
-        MenuState();
-		MenuState(sf::RenderWindow*);
-        ~MenuState();
-        void pause();
-        void processEvents(sf::Event);
-        void process();
-        void draw();
-
-    private:
-        sf::View centered;
+public:
+	MenuState();
+	MenuState(sf::RenderWindow*);
+	~MenuState();
+	void processEvents(sf::Event);
 };
 
 #endif // MENUSTATE_H

@@ -28,10 +28,6 @@ MenuState::~MenuState()
     //dtor
 }
 
-void MenuState::pause()
-{
-}
-
 void MenuState::processEvents(sf::Event event)
 {
 	//Change state to GameState when the escape key is pressed
@@ -42,14 +38,4 @@ void MenuState::processEvents(sf::Event event)
         nextStateS = "GameState";
     }
 
-}
-
-void MenuState::process()
-{
-}
-
-void MenuState::draw()
-{
-	window->setView(centered);
-	//gameData stuff.
 }

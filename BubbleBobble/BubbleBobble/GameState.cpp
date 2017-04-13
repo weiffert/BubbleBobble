@@ -130,7 +130,8 @@ void GameState::process()
 	//player .at(1)
 	processIndividual(1);
 
-    Cleanup();
+	//Delete the now dead objects.
+	gameData->kill();
 }
 
 
@@ -156,10 +157,4 @@ void GameState::draw()
 			data.at(i).at(j)->render();
 		}
 	}
-}
-
-
-void GameState::Cleanup()
-{
-	gameData->kill();
 }

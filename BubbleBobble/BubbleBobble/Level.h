@@ -20,9 +20,9 @@ public:
 	void levelPlay();
 	void levelEnd();
 	void death();
-	void bitmapMaker();
 
 private:
+	void bitmapMaker();
 	//MAKE SURE THIS IS CORRECT!!!!
 	const int BITMAP_WIDTH = 32;
 	const int BITMAP_HEIGHT = 26;

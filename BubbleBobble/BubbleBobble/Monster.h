@@ -15,7 +15,7 @@ public:
 	void levelPlay();
 	void distanceLimitPassed();
 
-private:
+protected:
 	bool noLevelCollision;
 	bool contained;
 };

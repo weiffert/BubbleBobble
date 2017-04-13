@@ -7,20 +7,18 @@
 
 class GameState : public BaseState
 {
-    public:
-		GameState();
-		GameState(sf::RenderWindow *);
-		GameState(sf::RenderWindow *, bool);
-        ~GameState();
-        void pause();
-        void processEvents(sf::Event);
-        void process();
-        void draw();
-    private:
-		void initialize(bool);
-        sf::Vector2f playerPOS;
-        void Cleanup();
-		void processIndividual(unsigned int);
+public:
+	GameState();
+	GameState(sf::RenderWindow *);
+	GameState(sf::RenderWindow *, bool);
+	~GameState();
+	void pause();
+	void processEvents(sf::Event);
+	void process();
+	void draw();
+private:
+	void initialize(bool);
+	void processIndividual(unsigned int);
 };
 
 #endif // GAMESTATE_H
