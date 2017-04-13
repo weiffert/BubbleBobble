@@ -5,8 +5,17 @@
 
 Zenchan::Zenchan()
 {
-	std::cout << "Constructing Zenchan" << std::endl;
 	name = "Zenchan";
+	window = nullptr;
+	gameData = nullptr;
+}
+
+
+Zenchan::Zenchan(sf::RenderWindow *win, GameData *data)
+{
+	name = "Zenchan";
+	window = win;
+	gameData = data;
 }
 
 

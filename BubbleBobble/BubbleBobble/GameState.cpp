@@ -42,18 +42,15 @@ void GameState::initialize(bool twoPlayer)
 {
 	//create the level.
 	gameData = new GameData();
-	GameObject *level = new Level("Level0");
-	level->initialize(window, gameData);
+	GameObject *level = new Level("Level0", window, gameData);
 	gameData->add(0, level);
 
 	//create the players.
-	GameObject *player1 = new Player("Player1");
-	player1->initialize(window, gameData);
+	GameObject *player1 = new Player("Player1", window, gameData);
 	gameData->add(1, player1);
 	if (twoPlayer)
 	{
-		GameObject *player2 = new Player("Player2");
-		player2->initialize(window, gameData);
+		GameObject *player2 = new Player("Player2", window, gameData);
 		gameData->add(1, player2);
 	}
 }
@@ -89,9 +86,9 @@ void GameState::processEvents(sf::Event event)
 	{
 		player->stopHorizontalVelocity();
 	}
-	if (inputManager.keyPressed(sf::Keyboard::Up))
+	if (inputManager.keyReleased(sf::Keyboard::Up))
 	{
-		if (player->getVerticalAcceleration() >= 0)
+		if (player->getVerticalAcceleration() >= window->getSize().y)
 			player->jump();
 	}
 	if (players.size() > 1)
@@ -111,7 +108,7 @@ void GameState::processEvents(sf::Event event)
 		}
 		if (inputManager.keyReleased(sf::Keyboard::W))
 		{
-			if (player->getVerticalAcceleration() >= 0)
+			if (player->getVerticalAcceleration() >= window->getSize().y)
 				player->jump();
 		}
 	}

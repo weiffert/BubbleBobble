@@ -5,7 +5,7 @@ class Player :
 {
 public:
 	Player();
-	Player(std::string);
+	Player(std::string, sf::RenderWindow *, GameData *);
 	~Player();
 	void update();
 	void collideWith();

@@ -5,6 +5,7 @@ class Pickup :
 {
 public:
 	Pickup();
+	Pickup(sf::RenderWindow *, GameData *);
 	~Pickup();
 	void collideWith();
 	void collided(GameObject *);

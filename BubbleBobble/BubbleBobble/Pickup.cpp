@@ -6,6 +6,17 @@
 
 Pickup::Pickup()
 {
+	name = "Pickup";
+	window = nullptr;
+	gameData = nullptr;
+}
+
+
+Pickup::Pickup(sf::RenderWindow *win, GameData *data)
+{
+	name = "Pickup";
+	window = win;
+	gameData = data;
 }
 
 
@@ -37,8 +48,7 @@ void Pickup::death()
 	GameObject *temp = this;
 	gameData->addToKillList(3, temp);
 	
-	temp = new PointText(this, 100, false);
-	temp->initialize(window, gameData);
+	temp = new PointText(window, gameData, this, 100, false);
 	gameData->add(5, temp);
 	//Add points to player total.
 }

@@ -5,6 +5,7 @@ class Drunk :
 {
 public:
 	Drunk();
+	Drunk(sf::RenderWindow *, GameData *);
 	~Drunk();
 };
 

@@ -10,7 +10,7 @@ class PointText :
 {
 public:
 	PointText();
-	PointText(GameObject *, unsigned int, bool);
+	PointText(sf::RenderWindow *, GameData *, GameObject *, unsigned int, bool);
 	~PointText();
 	virtual void death();
 };

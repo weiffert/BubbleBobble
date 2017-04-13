@@ -5,6 +5,7 @@ class Skel_Monsta :
 {
 public:
 	Skel_Monsta();
+	Skel_Monsta(sf::RenderWindow *, GameData *);
 	~Skel_Monsta();
 };
 

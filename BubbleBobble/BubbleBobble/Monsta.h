@@ -5,6 +5,7 @@ class Monsta :
 {
 public:
 	Monsta();
+	Monsta(sf::RenderWindow *, GameData *);
 	~Monsta();
 };
 

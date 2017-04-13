@@ -5,6 +5,7 @@ class SuperDrunk :
 {
 public:
 	SuperDrunk();
+	SuperDrunk(sf::RenderWindow *, GameData *);
 	~SuperDrunk();
 };
 

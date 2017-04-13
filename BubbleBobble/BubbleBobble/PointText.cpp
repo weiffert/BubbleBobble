@@ -4,11 +4,17 @@
 
 PointText::PointText()
 {
+	name = "PointText";
+	window = nullptr;
+	gameData = nullptr;
 }
 
 
-PointText::PointText(GameObject *creator, unsigned int value, bool big)
+PointText::PointText(sf::RenderWindow *win, GameData *data,  GameObject *creator, unsigned int value, bool big)
 {
+	window = win;
+	gameData = data;
+
 	rectangle.setSize(sf::Vector2f(8 * 6, 8 * 2));
 	rectangle.setOrigin(rectangle.getLocalBounds().width / 2, rectangle.getLocalBounds().height / 2);
 
@@ -21,6 +27,7 @@ PointText::PointText(GameObject *creator, unsigned int value, bool big)
 	else
 		fileName += "-blue";
 	fileName += "-points.png";
+	name = fileName;
 
 	if (!texture.loadFromFile(fileName))
 	{

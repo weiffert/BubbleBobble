@@ -6,14 +6,29 @@
 
 Monster::Monster()
 {
-	std::cout << "Constructing Monster" << std::endl;
+	window = nullptr;
+	gameData = nullptr;
+	name = "Monster";
 	rectangle.setSize(sf::Vector2f(16, 16));
 	rectangle.setFillColor(sf::Color::Red);
 	rectangle.setPosition(500, 100);
 	noLevelCollision = true;
 	friendly = false;
 	contained = false;
+}
+
+
+Monster::Monster(sf::RenderWindow *win, GameData *data)
+{
+	window = win;
+	gameData = data;
 	name = "Monster";
+	rectangle.setSize(sf::Vector2f(16, 16));
+	rectangle.setFillColor(sf::Color::Red);
+	rectangle.setPosition(500, 100);
+	noLevelCollision = true;
+	friendly = false;
+	contained = false;
 }
 
 
@@ -84,8 +99,7 @@ void Monster::death()
 
 	//pickup creation
 	//something like...
-	temp = new Pickup();
-	temp->initialize(window, gameData);
+	temp = new Pickup(window, gameData);
 	gameData->add(5, temp);
 }
 

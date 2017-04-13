@@ -5,6 +5,7 @@ class Pulpul :
 {
 public:
 	Pulpul();
+	Pulpul(sf::RenderWindow *, GameData *);
 	~Pulpul();
 };
 

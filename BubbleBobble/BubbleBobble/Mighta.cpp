@@ -5,6 +5,16 @@
 Mighta::Mighta()
 {
 	name = "Mighta";
+	window = nullptr;
+	gameData = nullptr;
+}
+
+
+Mighta::Mighta(sf::RenderWindow *win, GameData *data)
+{
+	name = "Mighta";
+	window = win;
+	gameData = data;
 }
 
 

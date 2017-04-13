@@ -5,6 +5,7 @@ class Mighta :
 {
 public:
 	Mighta();
+	Mighta(sf::RenderWindow *, GameData *);
 	~Mighta();
 };
 

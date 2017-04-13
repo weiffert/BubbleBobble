@@ -5,6 +5,7 @@ class Zenchan :
 {
 public:
 	Zenchan();
+	Zenchan(sf::RenderWindow *, GameData *);
 	~Zenchan();
 };
 

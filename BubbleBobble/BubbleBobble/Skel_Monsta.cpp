@@ -5,6 +5,16 @@
 Skel_Monsta::Skel_Monsta()
 {
 	name = "Skel_Monsta";
+	window = nullptr;
+	gameData = nullptr;
+}
+
+
+Skel_Monsta::Skel_Monsta(sf::RenderWindow *win, GameData *data)
+{
+	name = "Skel_Monsta";
+	window = win;
+	gameData = data;
 }
 
 

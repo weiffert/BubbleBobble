@@ -6,15 +6,17 @@
 
 Player::Player()
 {
-	std::cout << "Constructing Player" << std::endl;
-	direction = 1;//facing towards positive x
+	name = "Player";
+	window = nullptr;
+	gameData = nullptr;
 }
 
 
-Player::Player(std::string set)
+Player::Player(std::string set, sf::RenderWindow *win, GameData *data)
 {
-	std::cout << "Constructing Player" << std::endl;
 	setName(set);
+	window = win;
+	gameData = data;
 	setTexture("../textures/bubblun.png");
 }
 
@@ -149,8 +151,7 @@ void Player::timeLimitPassed()
 {
 	//Show hurry up text?
 	//Begin pursuit of skel monsta.
-	GameObject *skelMonsta = new Skel_Monsta();
-	skelMonsta->initialize(window, gameData);
+	GameObject *skelMonsta = new Skel_Monsta(window, gameData);
 	gameData->add(2, skelMonsta);
 }
 

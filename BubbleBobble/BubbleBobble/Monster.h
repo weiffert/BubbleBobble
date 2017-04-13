@@ -5,6 +5,7 @@ class Monster :
 {
 public:
 	Monster();
+	Monster(sf::RenderWindow *, GameData *);
 	~Monster();
 	void collideWith();
 	void collided(GameObject *);

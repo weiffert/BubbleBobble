@@ -9,7 +9,7 @@ class Level :
 {
 public:
 	Level();
-	Level(std::string);
+	Level(std::string, sf::RenderWindow *, GameData *);
 	~Level();
 	void collision(GameObject *);
 	void update();

@@ -5,6 +5,7 @@ class Hidegons :
 {
 public:
 	Hidegons();
+	Hidegons(sf::RenderWindow *, GameData *);
 	~Hidegons();
 };
 

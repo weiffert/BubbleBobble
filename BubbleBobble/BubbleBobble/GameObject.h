@@ -12,87 +12,113 @@ class GameData;
 class GameObject
 {
 public:
+	//Constructors.
 	GameObject();
-	GameObject(std::string);
+	GameObject(std::string, sf::RenderWindow *, GameData *);
 	~GameObject();
-	void initialize(sf::RenderWindow *, GameData *);
+
 	//Game Logic
-	virtual void collision(GameObject *);
-	void time();
-	void distance();
-	virtual void render();
-
-	//Updates every step.
+	//Updates every step. Determines whether levelPlay or levelTransition is called.
 	virtual void update();
-	//controls what collides with what. Level collision is NOT handled in here. That is done in update velocity. 
-	//What object that has precedence over what it is colliding with calls the collision function.
-	virtual void collideWith();
 
-	//Specific event type functions.
-	virtual void collided(GameObject *);
-	virtual void timeLimitPassed();
-	virtual void distanceLimitPassed();
-	virtual void death();
-	//Performs changes to the game object based on level changing.
-	virtual void levelStart();
-	virtual void levelEnd();
-	//Controls the behavior.
+	//Controls most of the object behavior.
 	virtual void levelPlay();
 	virtual void levelTransition();
 
-	void gravity();
+	//Performs changes to the game object based on level changing.
+	virtual void levelStart();
+	virtual void levelEnd();
 
-	std::string getName();
-	sf::Time getTimeElapsed();
-	float getDistanceElapsed();
-	sf::Vector2f getVelocity();
-	sf::RectangleShape getRectangle();
-	sf::Texture getTexture();
-	bool isTransitioningLevels();
-	bool isFriendly();
+	//Collision for basic collision.
+	virtual void collision(GameObject *);
 
-	void setName(std::string);
-	void setVelocity(sf::Vector2f);
-	void setVelocity(float, float);
-	void velocityToNextGridLine(bool);
-	void setRenderWindow(sf::RenderWindow *);
-	void setAnimation(std::string); 
-	void setTexture(sf::Texture);
-	void setTexture(std::string);
-	void setTexture();
-	void setPosition(float, float);
-	void setGameDataPTR(GameData *);
+	//controls what collides with what. 
+	virtual void collideWith();
 
+	//Reaction to collision.
+	virtual void collided(GameObject *);
+
+	//Function for general time testing.
+	void time();
 	void setTimeLimit(sf::Time);
 	void startClock(sf::Time);
 	void startClock();
 	sf::Time stopClock();
+	virtual void timeLimitPassed();
+	sf::Time getTimeElapsed();
 
+	//Function for general distance (pedometer) testing.
+	void distance();
 	void setPedometerLimit(float);
 	void startPedometer(float);
 	void startPedometer();
 	double stopPedometer();
+	virtual void distanceLimitPassed();
+	float getDistanceElapsed();
 
+	//Positioning editing.
 	void moveLeft();
 	void moveRight();
 	void stopHorizontalVelocity();
 	void stopVerticalVelocity();
 	void jump();
-	int getDirection();
 	int getVerticalAcceleration();
+	void changePositionVertical(float);
+	void setPosition(float, float);
 
+	//Get the direction the object is facing.
+	int getDirection();
+
+	//Testing if off screen.
 	bool offTop();
 	bool offBottom();
 
-	void changePositionVertical(float);
+	//Function for general rendering.
+	virtual void render();
+
+	//Kill the object.
+	virtual void death();
+
+	//Perform gravity functions.
+	void gravity();
+
+	//General value getting and setting.
+	void setName(std::string);
+	std::string getName();
+
+	void setVelocity(sf::Vector2f);
+	void setVelocity(float, float);
+	void velocityToNextGridLine(bool);
+	sf::Vector2f getVelocity();
+
+	void setTexture(sf::Texture);
+	void setTexture(std::string);
+	void setTexture();
+	sf::Texture getTexture();
+
+	sf::RectangleShape getRectangle();
+
+	void setAnimation(std::string);
+
+	bool isTransitioningLevels();
+
+	bool isFriendly();
+
+	void setRenderWindow(sf::RenderWindow *);
+	void setGameDataPTR(GameData *);
+
+	
 
 protected:
+	const int SCREEN_MULTIPLIER = 3;
+	const int BITMAP_CONVERTER = SCREEN_MULTIPLIER * 8;
+
 	std::string name;
+	sf::RenderWindow *window;
+	GameData *gameData;
+
 	bool friendly;
 	bool transition;
-
-	const int SCREEN_MULTIPLIER = 3;
-
 	sf::Vector2f velocity;
 
 	//Clock variables.
@@ -114,7 +140,5 @@ protected:
 	sf::Texture texture;
 	std::vector<Animation> animations;
 	bool life;
-	sf::RenderWindow *window;
-	GameData *gameData;
 };
 

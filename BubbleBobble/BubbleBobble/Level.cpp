@@ -15,13 +15,17 @@
 
 Level::Level()
 {
+	name = "Level";
+	window = nullptr;
+	gameData = nullptr;
 }
 
 
-Level::Level(std::string id)
+Level::Level(std::string id, sf::RenderWindow *win, GameData *data)
 {
-	std::cout << "Constructing Level" << std::endl;
 	name = id;
+	window = win;
+	gameData = data;
 	setTexture("../textures/Levels/" + name + "/" + name + ".png");
 	bitmapMaker();
 }
@@ -63,12 +67,10 @@ void Level::timeLimitPassed()
 	int nextLevelNumber = std::stoi(name.substr(name.find_last_of("l") + 1)) + 1;
 
 	if (nextLevelNumber <= 8)
-		nextLevel = new Level("Level" + std::to_string(nextLevelNumber));
+		nextLevel = new Level("Level" + std::to_string(nextLevelNumber), window, gameData);
 	else
 		//Quit game.
 		int i = 0;
-
-	nextLevel->initialize(window, gameData);
 	nextLevel->setPosition(0, window->getSize().y );// - nextLevel->getRectangle().getLocalBounds().height);
 	nextLevel->levelEnd();
 	gameData->add(0, nextLevel);
@@ -120,37 +122,36 @@ void Level::levelStart()
 			switch (monsterSpawns[i][j])
 			{
 			case ZENCHAN:
-				newMonster = new Zenchan();
+				newMonster = new Zenchan(window, gameData);
 				break;
 			case MIGHTA:
-				newMonster = new Mighta();
+				newMonster = new Mighta(window, gameData);
 				break;
 			case MONSTA:
-				newMonster = new Monsta();
+				newMonster = new Monsta(window, gameData);
 				break;
 			case PULPUL:
-				newMonster = new Pulpul();
+				newMonster = new Pulpul(window, gameData);
 				break;
 			case BANEBOU:
-				newMonster = new Banebou();
+				newMonster = new Banebou(window, gameData);
 				break;
 			case HIDEGONS:
-				newMonster = new Hidegons();
+				newMonster = new Hidegons(window, gameData);
 				break;
 			case DRUNK:
-				newMonster = new Drunk();
+				newMonster = new Drunk(window, gameData);
 				break;
 			case INVADER:
-				newMonster = new Invader();
+				newMonster = new Invader(window, gameData);
 				break;
 			case SUPER_DRUNK:
-				newMonster = new SuperDrunk();
+				newMonster = new SuperDrunk(window, gameData);
 				break;
 			}
 
 			if (newMonster != nullptr)
 			{
-				newMonster->initialize(window, gameData);
 				newMonster->setPosition(i * 8 * SCREEN_MULTIPLIER, 0 - newMonster->getRectangle().getLocalBounds().height);
 				newMonster->startPedometer((j + 1) * 8 * SCREEN_MULTIPLIER + window->getSize().y - rectangle.getLocalBounds().height);
 				newMonster->levelStart();
@@ -170,10 +171,11 @@ void Level::death()
 
 void Level::collision(GameObject *other)
 {
+	//Only check if there is velocity.
 	if (other->getVelocity().x != 0 || other->getVelocity().y != 0)
 	{
+		//Create the vectors to store values.
 		std::vector<int> horizontal, vertical;
-		const int CONVERTER = 8 * SCREEN_MULTIPLIER;
 
 		int multiplierX = 1, multiplierY = 1;
 		sf::RectangleShape rect = other->getRectangle();
@@ -199,15 +201,15 @@ void Level::collision(GameObject *other)
 
 		//int xval = corner.x;
 		//int yval = corner.y;
-		corner.x /= CONVERTER;
-		corner.y /= CONVERTER; 
+		corner.x /= BITMAP_CONVERTER;
+		corner.y /= BITMAP_CONVERTER; 
 		
 		//std::cout << "(" << corner.x << ", " << corner.y << ") : " << std::endl << std::endl;
 
-		if (std::floor(moving.getGlobalBounds().left / CONVERTER) != std::floor(rect.getGlobalBounds().left / CONVERTER))
+		if (std::floor(moving.getGlobalBounds().left / BITMAP_CONVERTER) != std::floor(rect.getGlobalBounds().left / BITMAP_CONVERTER))
 		{
 			//std::cout << "HORIZONTAL: " << std::endl;
-			for (int i = 0; i <= height / CONVERTER; i++)
+			for (int i = 0; i <= height / BITMAP_CONVERTER; i++)
 			{
 				//std::cout << "(" << corner.x << ", " << corner.y + -1 * multiplierY * i << ") : " << bitmap[corner.x][corner.y + -1 * multiplierY * i] << std::endl;
 				horizontal.push_back(bitmap[corner.x][corner.y + -1 * multiplierY * i]);
@@ -215,10 +217,10 @@ void Level::collision(GameObject *other)
 			//std::cout << std::endl;
 		}
 
-		if (std::floor(moving.getGlobalBounds().top / CONVERTER) != std::floor(rect.getGlobalBounds().top / CONVERTER))
+		if (std::floor(moving.getGlobalBounds().top / BITMAP_CONVERTER) != std::floor(rect.getGlobalBounds().top / BITMAP_CONVERTER))
 		{
 			//std::cout << "VERTICAL: " << std::endl;
-			for (int i = 0; i <= width / CONVERTER; i++)
+			for (int i = 0; i <= width / BITMAP_CONVERTER; i++)
 			{
 				//std::cout << "(" << corner.x + -1 * multiplierX * i << ", " << corner.y << ") : "	<< bitmap[corner.x + -1 * multiplierX * i][corner.y] << std::endl;
 				vertical.push_back(bitmap[corner.x + -1 * multiplierX * i][corner.y]);
@@ -259,15 +261,19 @@ void Level::collision(GameObject *other)
 			*/
 
 			//Interpret.
+			bool wallCollision = false;
 			for (int i = 0; i < horizontal.size(); i++)
 			{
 				enum type { Wall = 1 };
 				switch (horizontal.at(i))
 				{
 				case Wall:
-					other->velocityToNextGridLine(true);
+					wallCollision = true;
 				}
 			}
+			if (wallCollision)
+				other->velocityToNextGridLine(true);
+
 			for (int i = 0; i < vertical.size(); i++)
 			{
 				enum type { Floor = 2, MonsterFloor, EdgeFloor };

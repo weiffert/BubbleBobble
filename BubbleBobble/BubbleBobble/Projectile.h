@@ -11,6 +11,7 @@ class Projectile :
 {
 public:
 	Projectile();
+	Projectile(sf::RenderWindow *, GameData *);
 	~Projectile();
 	void collideWith();
 	void collided(GameObject *);

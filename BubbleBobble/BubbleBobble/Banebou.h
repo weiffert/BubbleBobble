@@ -5,6 +5,7 @@ class Banebou :
 {
 public:
 	Banebou();
+	Banebou(sf::RenderWindow *, GameData *);
 	~Banebou();
 };
 

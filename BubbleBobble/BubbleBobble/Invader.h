@@ -5,6 +5,7 @@ class Invader :
 {
 public:
 	Invader();
+	Invader(sf::RenderWindow *, GameData *);
 	~Invader();
 };
 

@@ -4,6 +4,17 @@
 
 Projectile::Projectile()
 {
+	name = "Projectile";
+	window = nullptr;
+	gameData = nullptr;
+}
+
+
+Projectile::Projectile(sf::RenderWindow *win, GameData *data)
+{
+	name = "Projectile";
+	window = win;
+	gameData = data;
 }
 
 
