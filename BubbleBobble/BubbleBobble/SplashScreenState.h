@@ -6,22 +6,15 @@
 
 class SplashScreenState : public BaseState
 {
-    public:
-        //Constructor initializes file directory, keyList, and loads
-		SplashScreenState();
-		SplashScreenState(sf::RenderWindow *);
-        ~SplashScreenState();
-        //pause does Nothing in splash screen
-        void pause();
-        //Checks if any key is pressed. If a key is pressed go to menu state
-        void processEvents(sf::Event);
-        void process();
-        //Draws the background for the splash screen
-        void draw();
-
-    private:
-        sf::View centered;
-        sf::Clock c1;
+public:
+	//Constructor initializes file directory, keyList, and loads
+	SplashScreenState();
+	SplashScreenState(sf::RenderWindow *);
+	~SplashScreenState();
+	//Checks if any key is pressed. If a key is pressed go to menu state
+	void processEvents(sf::Event);
+	//Draws the background for the splash screen
+	void draw();
 
 };
 

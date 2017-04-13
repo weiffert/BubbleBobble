@@ -14,6 +14,7 @@ Game::Game()
     stateManager.push_State(new SplashScreenState(window));
 }
 
+
 Game::~Game()
 {
 	std::cout << "Deconstructing Game" << std::endl;
@@ -21,8 +22,10 @@ Game::~Game()
 	{
 		std::cout << "Deleting Window" << std::endl;
 		delete window;
+		window = nullptr;
 	}
 }
+
 
 void Game::loop()
 {

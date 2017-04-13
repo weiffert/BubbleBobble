@@ -19,7 +19,7 @@ GameData::~GameData()
 	std::cout << "Deconstructing GameData" << std::endl;
 	for (int i = 0; i < gameObjects.size(); i++)
 	{
-		clear(i);
+		remove(i);
 	}
 }
 
@@ -98,6 +98,36 @@ void GameData::addToKillList(unsigned int index, GameObject *other)
 }
 
 
+void GameData::clear(unsigned int index)
+{
+	if (index < gameObjects.size())
+	{
+		for (int i = 0; i < gameObjects.at(index).size(); i++)
+		{
+			addToKillList(i, gameObjects.at(index).at(i));
+		}
+	}
+	else
+	{
+		std::cout << "Out of bounds. Failed to delete anything" << std::endl;
+	}
+}
+
+
+bool GameData::exist(unsigned int index)
+{
+	if (index < gameObjects.size())
+	{
+		return (!gameObjects.at(index).empty());
+	}
+	else
+	{
+		std::cout << "Out of bounds. Returning false." << std::endl;
+		return false;
+	}
+}
+
+
 void GameData::remove(unsigned int index, GameObject *other)
 {
 	if (index < gameObjects.size())
@@ -168,7 +198,7 @@ void GameData::remove(unsigned int index1, unsigned int index2)
 }
 
 
-void GameData::clear(unsigned int index)
+void GameData::remove(unsigned int index)
 {
 	if (index < gameObjects.size())
 	{
@@ -181,19 +211,5 @@ void GameData::clear(unsigned int index)
 	else
 	{
 		std::cout << "Out of bounds. Failed to delete anything" << std::endl;
-	}
-}
-
-
-bool GameData::exist(unsigned int index)
-{
-	if (index < gameObjects.size())
-	{
-		return (!gameObjects.at(index).empty());
-	}
-	else
-	{
-		std::cout << "Out of bounds. Returning false." << std::endl;
-		return false;
 	}
 }

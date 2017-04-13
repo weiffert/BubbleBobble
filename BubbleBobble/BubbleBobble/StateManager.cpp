@@ -77,13 +77,5 @@ void StateManager::push_State(BaseState *newState )
 void StateManager::pop_State()
 {
 	delete states.back();
-	states.back()->unload();
 	states.erase(states.begin() + states.size() - 1);
 }
-
-void StateManager::unload()
-{
-    states.back()->unload();
-}
-
-

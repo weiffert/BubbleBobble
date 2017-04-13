@@ -1,21 +1,16 @@
-﻿Build started 4/12/2017 9:03:45 PM.
+﻿Build started 4/13/2017 7:42:49 AM.
      1>Project "C:\Users\administrator\Documents\GitHub\BubbleBobble\BubbleBobble\BubbleBobble\BubbleBobble.vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /IC:\SFML\include /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D SFML_STATIC /D WIN32 /D _DEBUG /D _CONSOLE /D _LIB /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Yu"stdafx.h" /Fp"Debug\BubbleBobble.pch" /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt Animation.cpp BaseState.cpp Game.cpp GameState.cpp InputManager.cpp MenuState.cpp SplashScreenState.cpp StateManager.cpp
-         GameState.cpp
-     1>c:\users\administrator\documents\github\bubblebobble\bubblebobble\bubblebobble\gamestate.cpp(91): warning C4018: '>=' : signed/unsigned mismatch
-     1>c:\users\administrator\documents\github\bubblebobble\bubblebobble\bubblebobble\gamestate.cpp(111): warning C4018: '>=' : signed/unsigned mismatch
-     1>c:\users\administrator\documents\github\bubblebobble\bubblebobble\bubblebobble\gamestate.cpp(141): warning C4018: '<' : signed/unsigned mismatch
-     1>c:\users\administrator\documents\github\bubblebobble\bubblebobble\bubblebobble\gamestate.cpp(152): warning C4018: '<' : signed/unsigned mismatch
-     1>c:\users\administrator\documents\github\bubblebobble\bubblebobble\bubblebobble\gamestate.cpp(154): warning C4018: '<' : signed/unsigned mismatch
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /IC:\SFML\include /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D SFML_STATIC /D WIN32 /D _DEBUG /D _CONSOLE /D _LIB /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Yu"stdafx.h" /Fp"Debug\BubbleBobble.pch" /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt Animation.cpp GameData.cpp InputManager.cpp
+         GameData.cpp
+     1>c:\users\administrator\documents\github\bubblebobble\bubblebobble\bubblebobble\gamedata.cpp(20): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\administrator\documents\github\bubblebobble\bubblebobble\bubblebobble\gamedata.cpp(34): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\administrator\documents\github\bubblebobble\bubblebobble\bubblebobble\gamedata.cpp(105): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\administrator\documents\github\bubblebobble\bubblebobble\bubblebobble\gamedata.cpp(160): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\administrator\documents\github\bubblebobble\bubblebobble\bubblebobble\gamedata.cpp(162): warning C4018: '<' : signed/unsigned mismatch
          Generating Code...
          Skipping... (no relevant changes detected)
-         StateManager.cpp
-         SplashScreenState.cpp
-         MenuState.cpp
          InputManager.cpp
-         Game.cpp
-         BaseState.cpp
          Animation.cpp
        Link:
          C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\administrator\Documents\GitHub\BubbleBobble\BubbleBobble\Debug\BubbleBobble.exe" /INCREMENTAL /NOLOGO /LIBPATH:C:\SFML\lib "sfml-graphics-s-d.lib" "sfml-window-s-d.lib" "sfml-system-s-d.lib" opengl32.lib freetype.lib jpeg.lib winmm.lib gdi32.lib "sfml-audio-s-d.lib" openal32.lib flac.lib vorbisenc.lib vorbisfile.lib vorbis.lib ogg.lib "sfml-network-s-d.lib" ws2_32.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\administrator\Documents\GitHub\BubbleBobble\BubbleBobble\Debug\BubbleBobble.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\administrator\Documents\GitHub\BubbleBobble\BubbleBobble\Debug\BubbleBobble.lib" /MACHINE:X86 Debug\Animation.obj
@@ -51,4 +46,4 @@
 
 Build succeeded.
 
-Time Elapsed 00:00:01.19
+Time Elapsed 00:00:01.18

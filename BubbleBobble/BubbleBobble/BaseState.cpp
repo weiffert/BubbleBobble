@@ -4,7 +4,6 @@
 
 BaseState::BaseState()
 {
-	folder = "empty";
 	window = nullptr;
 	gameData = nullptr;
 }
@@ -12,7 +11,6 @@ BaseState::BaseState()
 
 BaseState::BaseState(sf::RenderWindow* win)
 {
-	folder = "empty";
 	window = win;
 	gameData = nullptr;
 }
@@ -26,6 +24,7 @@ BaseState::~BaseState()
 		delete gameData;
 		gameData = nullptr;
 	}
+	//Window is not deleted here. It is deleted in Game.
 }
 
 bool BaseState::pause()
@@ -46,11 +45,6 @@ void BaseState::process()
 
 void BaseState::draw()
 {
-}
-
-void BaseState::unload()
-{
-    //files.unload();
 }
 
 bool BaseState::switchTrue()

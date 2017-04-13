@@ -10,7 +10,6 @@ SplashScreenState::SplashScreenState()
 	//from switching to the menustate
 	stateSwitch = false;
 	window = nullptr;
-	c1.restart();
 }
 
 
@@ -23,13 +22,14 @@ SplashScreenState::SplashScreenState(sf::RenderWindow *win)
 	//from switching to the menustate
 	stateSwitch = false;
 	window = win;
-	c1.restart();
 }
+
 
 SplashScreenState::~SplashScreenState()
 {
     //dtor
 }
+
 
 void SplashScreenState::processEvents(sf::Event event)
 {
@@ -42,19 +42,9 @@ void SplashScreenState::processEvents(sf::Event event)
     }
 }
 
-void SplashScreenState::process()
-{
-
-}
 
 void SplashScreenState::draw()
 {
     //window->setView(centered);
 	//GameData Drawing.
-}
-
-//Does nothing in SplashScreenState
-void SplashScreenState::pause()
-{
-
 }

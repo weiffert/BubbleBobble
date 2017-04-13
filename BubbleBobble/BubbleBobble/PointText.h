@@ -12,6 +12,6 @@ public:
 	PointText();
 	PointText(sf::RenderWindow *, GameData *, GameObject *, unsigned int, bool);
 	~PointText();
-	virtual void death();
+	void death();
 };
 
