@@ -29,6 +29,5 @@ private:
 	int bitmap[32][26];
 	int monsterSpawns[32][26];
 	void enemyCheck();
-	void startLevel();
 };
 

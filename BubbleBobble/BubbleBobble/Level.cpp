@@ -48,7 +48,8 @@ void Level::levelPlay()
 {
 	if (!trackingTime)
 		enemyCheck();
-	time();
+	else
+		time();
 }
 
 
