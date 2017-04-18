@@ -105,8 +105,8 @@ void Player::levelTransition()
 	sf::Vector2f player;
 	player.x = rectangle.getGlobalBounds().left;
 	player.y = rectangle.getGlobalBounds().top;
-	float differenceX = corner.x - player.x;
-	float differenceY = corner.y - player.y;
+	int differenceX = std::floor((corner.x - player.x) / BITMAP_CONVERTER) * BITMAP_CONVERTER;
+	int differenceY = std::floor((corner.y - player.y) / BITMAP_CONVERTER) * BITMAP_CONVERTER;
 
 	if (differenceX < 0)
 		velocity.x = -1 * SCREEN_MULTIPLIER;

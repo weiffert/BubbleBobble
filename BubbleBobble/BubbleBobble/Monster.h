@@ -14,9 +14,14 @@ public:
 	void levelStart();
 	void levelPlay();
 	void distanceLimitPassed();
+	//bool getUpMovement();
+	//bool getLeftMovement();
 
 protected:
+	//virtual void path();
 	bool noLevelCollision;
 	bool contained;
+	//bool upMovement;
+	//bool leftMovement;
 };
 

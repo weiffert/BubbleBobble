@@ -61,6 +61,8 @@ public:
 	void moveRight();
 	void stopHorizontalVelocity();
 	void stopVerticalVelocity();
+	void reverseDirectionHorizontal();
+	void reverseDirectionVertical();
 	void jump();
 	int getVerticalAcceleration();
 	void changePositionVertical(float);

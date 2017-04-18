@@ -80,13 +80,12 @@ void Monster::levelPlay()
 	{
 		//any change.
 		//check for collision.
-		gameData->getList(0).at(0)->collision(this);
+		collideWith();
 		//move.
 		rectangle.move(velocity);
 	}
 	else
 	{
-		collideWith();
 		rectangle.move(velocity);
 		distance();
 	}
@@ -107,5 +106,30 @@ void Monster::death()
 void Monster::distanceLimitPassed()
 {
 	noLevelCollision = false;
-	velocity.y = 0;
+	velocity.y = 1 * SCREEN_MULTIPLIER;
+	velocity.x = 1 * SCREEN_MULTIPLIER;
 }
+
+
+/*
+void Monster::path()
+{
+	if (gameData->getList(1).size() > 0)
+	{
+		GameObject *player = gameData->getList(1).at(0);
+		sf::Vector2f playerPosition;
+		sf::RectangleShape playerRect = player->getRectangle();
+		playerPosition.x = playerRect.getGlobalBounds().left + playerRect.getSize().x / 2;
+		playerPosition.y = playerRect.getGlobalBounds().top + playerRect.getSize().y;
+
+		if (playerPosition.y > rectangle.getGlobalBounds().top + rectangle.getSize().y)
+			upMovement = true;
+		else
+			upMovement = false;
+		if (playerPosition.x < rectangle.getGlobalBounds().left + rectangle.getSize().x / 2)
+			leftMovement = true;
+		else
+			leftMovement = false;
+	}
+}
+*/

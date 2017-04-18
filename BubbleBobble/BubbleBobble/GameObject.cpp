@@ -279,6 +279,16 @@ void GameObject::stopVerticalVelocity()
 	setVelocity(getVelocity().x, 0);
 }
 
+void GameObject::reverseDirectionHorizontal()
+{
+	velocity.x *= -1;
+}
+
+void GameObject::reverseDirectionVertical()
+{
+	velocity.y *= -1;
+}
+
 void GameObject::jump()
 {
 	verticalAcceleration = -5 * 8;

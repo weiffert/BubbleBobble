@@ -189,7 +189,7 @@ void Level::collision(GameObject *other)
 		float width, height;
 		width = moving.getLocalBounds().width;
 		height = moving.getLocalBounds().height;
- 		center.x = moving.getGlobalBounds().left + width / 2;
+		center.x = moving.getGlobalBounds().left + width / 2;
 		center.y = moving.getGlobalBounds().top + height / 2;
 
 		if (other->getVelocity().x < 0)
@@ -203,8 +203,8 @@ void Level::collision(GameObject *other)
 		//int xval = corner.x;
 		//int yval = corner.y;
 		corner.x /= BITMAP_CONVERTER;
-		corner.y /= BITMAP_CONVERTER; 
-		
+		corner.y /= BITMAP_CONVERTER;
+
 		//std::cout << "(" << corner.x << ", " << corner.y << ") : " << std::endl << std::endl;
 
 		if (std::floor(moving.getGlobalBounds().left / BITMAP_CONVERTER) != std::floor(rect.getGlobalBounds().left / BITMAP_CONVERTER))
@@ -231,73 +231,58 @@ void Level::collision(GameObject *other)
 
 		bool verticalCollision = false;
 
-		if (other->isFriendly())
+		//Interpret.
+		bool wallCollision = false;
+		for (int i = 0; i < horizontal.size(); i++)
 		{
-			/*
-			window->clear();
-
-			window->draw(rectangle);
-			window->draw(rect);
-			window->draw(moving);
-
-			sf::RectangleShape cornerONE;
-			cornerONE.setSize(sf::Vector2f(4, 4));
-			cornerONE.setOrigin(2, 2);
-			sf::Vector2f vector;
-			vector.x = xval;
-			vector.y = yval;
-			cornerONE.setPosition(vector);
-			cornerONE.setFillColor(sf::Color::Magenta);
-			window->draw(cornerONE);
-
-			cornerONE.setSize(sf::Vector2f(4, 4));
-			cornerONE.setOrigin(2, 2);
-			vector.x = center.x;
-			vector.y = center.y;
-			cornerONE.setPosition(vector);
-			cornerONE.setFillColor(sf::Color::Blue);
-			window->draw(cornerONE);
-
-			window->display();
-			*/
-
-			//Interpret.
-			bool wallCollision = false;
-			for (int i = 0; i < horizontal.size(); i++)
+			enum type { Wall = 1 };
+			switch (horizontal.at(i))
 			{
-				enum type { Wall = 1 };
-				switch (horizontal.at(i))
-				{
-				case Wall:
-					wallCollision = true;
-				}
+			case Wall:
+				wallCollision = true;
 			}
-			if (wallCollision)
+		}
+		if (wallCollision)
+		{
+			if (other->isFriendly())
 				other->velocityToNextGridLine(true);
+			else
+				other->reverseDirectionHorizontal();
+		}
 
-			for (int i = 0; i < vertical.size(); i++)
+		for (int i = 0; i < vertical.size(); i++)
+		{
+			enum type { Floor = 2, MonsterFloor, EdgeFloor };
+			switch (vertical.at(i))
 			{
-				enum type { Floor = 2, MonsterFloor, EdgeFloor };
-				switch (vertical.at(i))
-				{
-				case Floor:
-				case MonsterFloor:
-				case EdgeFloor:
-					if (other->getVelocity().y > 0)
-					{
-						verticalCollision = true;
-						other->velocityToNextGridLine(false);
-					}
-				}
+			case Floor:
+			case MonsterFloor:
+			case EdgeFloor:
+				verticalCollision = true;
 			}
 		}
 
+		//Switch the position on the screen.
 		if (!verticalCollision)
 		{
 			if (center.y - height / 2 > rectangle.getGlobalBounds().top + rectangle.getLocalBounds().height)
 				other->changePositionVertical(-1 * rectangle.getLocalBounds().height - height);
 			else if (center.y + height / 2 < rectangle.getGlobalBounds().top)
 				other->changePositionVertical(rectangle.getLocalBounds().height);
+		}
+		else
+		{
+			if (other->isFriendly())
+			{
+				if (other->getVelocity().y > 0)
+				{
+					other->velocityToNextGridLine(false);
+				}
+			}
+			else
+			{
+				other->reverseDirectionVertical();
+			}
 		}
 
 	}
