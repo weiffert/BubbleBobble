@@ -294,6 +294,17 @@ void GameObject::jump()
 	verticalAcceleration = -5 * 8;
 }
 
+//Perform gravity functions.
+void GameObject::gravity()
+{
+	if (verticalAcceleration < 0)
+		velocity.y = -1 * SCREEN_MULTIPLIER;
+	else
+		velocity.y = 1 * SCREEN_MULTIPLIER;
+
+	verticalAcceleration++;
+}
+
 int GameObject::getVerticalAcceleration()
 {
 	return verticalAcceleration;
@@ -346,18 +357,6 @@ void GameObject::death()
 	life = false;
 	GameObject *temp = this;
 	gameData->addToKillList(0, temp);
-}
-
-
-//Perform gravity functions.
-void GameObject::gravity()
-{
-	if (verticalAcceleration < 0)
-		velocity.y = -1 * SCREEN_MULTIPLIER;
-	else
-		velocity.y = 1 * SCREEN_MULTIPLIER;
-
-	verticalAcceleration++;
 }
 
 
@@ -441,9 +440,11 @@ void GameObject::setTexture(sf::Texture set)
 	setTexture();
 }
 
+//Applies the current texture.
 void GameObject::setTexture()
 {
 	rectangle.setTexture(&texture);
+	//Sets the rectangle to be the texture's size.
 	sf::Vector2f vec;
 	vec.x = texture.getSize().x * SCREEN_MULTIPLIER;
 	vec.y = texture.getSize().y * SCREEN_MULTIPLIER;

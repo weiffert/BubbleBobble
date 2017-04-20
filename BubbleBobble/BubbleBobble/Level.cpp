@@ -26,6 +26,7 @@ Level::Level(std::string id, sf::RenderWindow *win, GameData *data)
 	name = id;
 	window = win;
 	gameData = data;
+	//Load the texture and bitmap according to the level name.
 	setTexture("../textures/Levels/" + name + "/" + name + ".png");
 	bitmapMaker();
 }
@@ -59,9 +60,11 @@ void Level::levelTransition()
 	distance();
 }
 
+
+//Is called when the level transition clock is finished.
+//Starts the transition sequence.
 void Level::timeLimitPassed()
 {
-	std::cout << "Transitioning Level From " << name << std::endl;
 	levelEnd();
 
 	GameObject *nextLevel = nullptr;
@@ -72,7 +75,7 @@ void Level::timeLimitPassed()
 	else
 		//Quit game.
 		int i = 0;
-	nextLevel->setPosition(0, window->getSize().y );// - nextLevel->getRectangle().getLocalBounds().height);
+	nextLevel->setPosition(0, window->getSize().y );
 	nextLevel->levelEnd();
 	gameData->add(0, nextLevel);
 
@@ -96,6 +99,7 @@ void Level::distanceLimitPassed()
 		levelStart();
 }
 
+//Performs level ending functions for level only.
 void Level::levelEnd()
 {
 	transition = true;
@@ -103,17 +107,20 @@ void Level::levelEnd()
 	startPedometer(window->getSize().y);
 }
 
+//Primes the level for starting.
 void Level::levelStart()
 {
 	transition = false;
 	setVelocity(0, 0); 
 
+	//Prime the players for starting.
 	std::vector<GameObject *> players = gameData->getList(1);
 	for (int i = 0; i < players.size(); i++)
 	{
 		players.at(i)->levelStart();
 	}
 
+	//Spawn the monsters.
 	for (int i = 0; i < BITMAP_WIDTH; i++)
 	{
 		for (int j = 0; j < BITMAP_HEIGHT; j++)
@@ -170,6 +177,7 @@ void Level::death()
 	gameData->addToKillList(0, temp);
 }
 
+//Checks other against the level's bitmap.
 void Level::collision(GameObject *other)
 {
 	//Only check if there is velocity.
@@ -200,33 +208,23 @@ void Level::collision(GameObject *other)
 		corner.x = center.x + multiplierX * width / 2;
 		corner.y = center.y + multiplierY * height / 2;
 
-		//int xval = corner.x;
-		//int yval = corner.y;
 		corner.x /= BITMAP_CONVERTER;
 		corner.y /= BITMAP_CONVERTER;
 
-		//std::cout << "(" << corner.x << ", " << corner.y << ") : " << std::endl << std::endl;
-
 		if (std::floor(moving.getGlobalBounds().left / BITMAP_CONVERTER) != std::floor(rect.getGlobalBounds().left / BITMAP_CONVERTER))
 		{
-			//std::cout << "HORIZONTAL: " << std::endl;
 			for (int i = 0; i <= height / BITMAP_CONVERTER; i++)
 			{
-				//std::cout << "(" << corner.x << ", " << corner.y + -1 * multiplierY * i << ") : " << bitmap[corner.x][corner.y + -1 * multiplierY * i] << std::endl;
 				horizontal.push_back(bitmap[corner.x][corner.y + -1 * multiplierY * i]);
 			}
-			//std::cout << std::endl;
 		}
 
 		if (std::floor(moving.getGlobalBounds().top / BITMAP_CONVERTER) != std::floor(rect.getGlobalBounds().top / BITMAP_CONVERTER))
 		{
-			//std::cout << "VERTICAL: " << std::endl;
 			for (int i = 0; i <= width / BITMAP_CONVERTER; i++)
 			{
-				//std::cout << "(" << corner.x + -1 * multiplierX * i << ", " << corner.y << ") : "	<< bitmap[corner.x + -1 * multiplierX * i][corner.y] << std::endl;
 				vertical.push_back(bitmap[corner.x + -1 * multiplierX * i][corner.y]);
 			}
-			//std::cout << std::endl;
 		}
 
 		bool verticalCollision = false;
@@ -247,6 +245,7 @@ void Level::collision(GameObject *other)
 			if (other->isFriendly())
 				other->velocityToNextGridLine(true);
 			else
+				//Monster behavior.
 				other->reverseDirectionHorizontal();
 		}
 
@@ -288,9 +287,11 @@ void Level::collision(GameObject *other)
 	}
 }
 
+//Loads the bitmaps from files. 
 void Level::bitmapMaker()
 {
 	std::fstream input;
+	//Load the level bitmap.
 	input.open("../textures/Levels/" + name + "/" + name + "base.txt");
 	if (input.is_open())
 	{
@@ -313,6 +314,7 @@ void Level::bitmapMaker()
 	}
 	input.close();
 
+	//Load the monster spawns bitmap.
 	input.open("../textures/Levels/" + name + "/" + name + "spawns.txt");
 	if (input.is_open())
 	{
@@ -336,9 +338,9 @@ void Level::bitmapMaker()
 	input.close();
 }
 
+//Check if any enemies are left. If there 
 void Level::enemyCheck()
 {
-	//if no enemies left
 	if (!(gameData->exist(2)))
 	{
 		std::cout << "Starting Level Transition Clock" << std::endl;
