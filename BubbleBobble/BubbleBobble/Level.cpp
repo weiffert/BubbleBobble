@@ -11,6 +11,7 @@
 #include "Drunk.h"
 #include "Invader.h"
 #include "SuperDrunk.h"
+#include <Windows.h>
 
 
 Level::Level()
@@ -65,30 +66,46 @@ void Level::levelTransition()
 //Starts the transition sequence.
 void Level::timeLimitPassed()
 {
-	levelEnd();
-
-	GameObject *nextLevel = nullptr;
-	int nextLevelNumber = std::stoi(name.substr(name.find_last_of("l") + 1)) + 1;
-
-	if (nextLevelNumber <= 8)
-		nextLevel = new Level("Level" + std::to_string(nextLevelNumber), window, gameData);
-	else
-		//Quit game.
-		int i = 0;
-	nextLevel->setPosition(0, window->getSize().y );
-	nextLevel->levelEnd();
-	gameData->add(0, nextLevel);
-
-	std::vector<GameObject *> players = gameData->getList(1);
-	for (int i = 0; i < players.size(); i++)
+	if (name != "LevelEnd")
 	{
-		players.at(i)->levelEnd();
-	}
+		levelEnd();
 
-	gameData->clear(2);
-	gameData->clear(3);
-	gameData->clear(4);
-	gameData->clear(5);
+		GameObject *nextLevel = nullptr;
+		int nextLevelNumber = std::stoi(name.substr(name.find_last_of("l") + 1)) + 1;
+
+		if (nextLevelNumber <= 8)
+			nextLevel = new Level("Level" + std::to_string(nextLevelNumber), window, gameData);
+		else
+			nextLevel = new Level("LevelEnd", window, gameData);
+
+		nextLevel->setPosition(0, window->getSize().y);
+		nextLevel->levelEnd();
+		gameData->add(0, nextLevel);
+
+		std::vector<GameObject *> players = gameData->getList(1);
+		for (int i = 0; i < players.size(); i++)
+		{
+			players.at(i)->levelEnd();
+		}
+
+		gameData->clear(2);
+		gameData->clear(3);
+		gameData->clear(4);
+		gameData->clear(5);
+	}
+	else
+	{
+		INPUT ip;
+		ip.type = INPUT_KEYBOARD;
+		ip.ki.wScan = 0; // hardware scan code for key
+		ip.ki.time = 0;
+		ip.ki.dwExtraInfo = 0;
+
+		// Press the "ESC" key
+		ip.ki.wVk = 0x1B; // virtual-key code for the "ESC" key
+		ip.ki.dwFlags = 0; // 0 for key press
+		SendInput(1, &ip, sizeof(INPUT));
+	}
 }
 
 void Level::distanceLimitPassed()
