@@ -67,8 +67,6 @@ public:
 	int getVerticalAcceleration();
 	void changePositionVertical(float);
 	void setPosition(float, float);
-
-	//Get the direction the object is facing.
 	int getDirection();
 
 	//Testing if off screen.
@@ -109,7 +107,12 @@ public:
 	void setRenderWindow(sf::RenderWindow *);
 	void setGameDataPTR(GameData *);
 
-	
+	void flipTexture();
+
+	void setLives(int = 1);
+	int getLivesRemaining();
+
+	GameObject * fireProjectile();
 
 protected:
 	const int SCREEN_MULTIPLIER = 3;
@@ -141,6 +144,7 @@ protected:
 	sf::RectangleShape rectangle;
 	sf::Texture texture;
 	std::vector<Animation> animations;
+	std::string textureSource;
 	bool life;
+	int livesRemaining;
 };
-

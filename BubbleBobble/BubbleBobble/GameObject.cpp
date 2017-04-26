@@ -30,6 +30,8 @@ GameObject::GameObject()
 	life = true;
 	transition = false;
 	friendly = true;
+
+	setLives();
 }
 
 GameObject::GameObject(std::string set, sf::RenderWindow *win, GameData *data)
@@ -129,7 +131,7 @@ void GameObject::collideWith()
 //Reaction to collision.
 void GameObject::collided(GameObject *)
 {
-
+	
 }
 
 
@@ -237,36 +239,15 @@ float GameObject::getDistanceElapsed()
 void GameObject::moveLeft()
 {
 	setVelocity(-1 * SCREEN_MULTIPLIER, velocity.y);
-
-	if (direction == 1)
-	{
-		if (getName() == "Player1")
-			setTexture("../textures/bubblun.png");
-		else if (getName() == "Player2")
-			setTexture("../textures/bobblun.png");
-	}
-
 	direction = -1;//move towards negative x
+	flipTexture();//flip the texture if needed
 }
 
 void GameObject::moveRight()
 {
 	setVelocity(SCREEN_MULTIPLIER, velocity.y);
-
-	if (direction == -1)
-	{
-		sf::Image newTexture;
-
-		if (getName() == "Player1")
-			newTexture.loadFromFile("../textures/bubblun.png");
-		else if (getName() == "Player2")
-			newTexture.loadFromFile("../textures/bobblun.png");
-
-		newTexture.flipHorizontally();
-		texture.loadFromImage(newTexture);
-	}
-
 	direction = 1;//move towards positive x
+	flipTexture();//flip the texture if needed
 }
 
 void GameObject::stopHorizontalVelocity()
@@ -282,6 +263,8 @@ void GameObject::stopVerticalVelocity()
 void GameObject::reverseDirectionHorizontal()
 {
 	velocity.x *= -1;
+	direction *= -1;//set texture to oppsite direction
+	flipTexture();//flip the texture if necessary
 }
 
 void GameObject::reverseDirectionVertical()
@@ -431,6 +414,7 @@ void GameObject::setTexture(std::string fileName)
 	else
 	{
 		setTexture();
+		textureSource = fileName;
 	}
 }
 
@@ -484,4 +468,42 @@ void GameObject::setRenderWindow(sf::RenderWindow *set)
 void GameObject::setGameDataPTR(GameData *set)
 {
 	gameData = set;
+}
+
+void GameObject::flipTexture()
+{
+	if (direction == -1)
+	{
+		texture.loadFromFile(textureSource);
+	}
+	else
+	{
+		sf::Image newTexture;
+		newTexture.loadFromFile(textureSource);
+		newTexture.flipHorizontally();
+		texture.loadFromImage(newTexture);
+	}
+}
+
+
+void GameObject::setLives(int lives)
+{
+	livesRemaining = lives;
+}
+
+
+int GameObject::getLivesRemaining()
+{
+	return livesRemaining;
+}
+
+
+GameObject * GameObject::fireProjectile()
+{
+	GameObject * bubble = new GameObject("Bubble", window, gameData);
+	bubble->setTexture("../textures/Projectile/bubble.png");
+	bubble->setPosition(getRectangle().getPosition().x, getRectangle().getPosition().y);
+	bubble->startPedometer(50);
+	bubble->setVelocity(SCREEN_MULTIPLIER, 0);
+	return bubble;
 }

@@ -10,11 +10,12 @@ Monster::Monster()
 	gameData = nullptr;
 	name = "Monster";
 	rectangle.setSize(sf::Vector2f(16, 16));
-	rectangle.setFillColor(sf::Color::Red);
+	//rectangle.setFillColor(sf::Color::Red);
 	rectangle.setPosition(500, 100);
 	noLevelCollision = true;
 	friendly = false;
 	contained = false;
+	direction = -1;//move towards negative x
 }
 
 
@@ -24,17 +25,20 @@ Monster::Monster(sf::RenderWindow *win, GameData *data)
 	gameData = data;
 	name = "Monster";
 	rectangle.setSize(sf::Vector2f(16, 16));
-	rectangle.setFillColor(sf::Color::Red);
+	//rectangle.setFillColor(sf::Color::Red);
 	rectangle.setPosition(500, 100);
 	noLevelCollision = true;
 	friendly = false;
 	contained = false;
+	direction = -1;//move towards negative x
 }
 
 
 Monster::~Monster()
 {
+	std::cout << name << " died" << std::endl;
 }
+
 
 void Monster::collideWith()
 {
@@ -73,6 +77,7 @@ void Monster::levelStart()
 {
 	setVelocity(0, SCREEN_MULTIPLIER);
 }
+
 
 void Monster::levelPlay()
 {

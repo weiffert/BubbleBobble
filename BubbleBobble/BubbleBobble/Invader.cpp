@@ -15,6 +15,8 @@ Invader::Invader(sf::RenderWindow *win, GameData *data)
 	name = "Invader";
 	window = win;
 	gameData = data;
+	setTexture("../texture/Character/invader.png");
+	flipTexture();
 }
 
 

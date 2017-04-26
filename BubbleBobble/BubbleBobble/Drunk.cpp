@@ -15,6 +15,8 @@ Drunk::Drunk(sf::RenderWindow *win, GameData *data)
 	name = "Drunk";
 	window = win;
 	gameData = data;
+	setTexture("../textures/Characters/drunk.png");
+	flipTexture();
 }
 
 

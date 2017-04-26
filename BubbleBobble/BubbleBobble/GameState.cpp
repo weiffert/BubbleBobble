@@ -64,52 +64,82 @@ void GameState::pause()
 
 void GameState::processEvents(sf::Event event)
 {
-    inputManager.update(event);
+    
+	GameObject *player = nullptr;
+	inputManager.update(event);
+
     if(inputManager.keyReleased(sf::Keyboard::Escape))
     {
-		//CHanged.
+		//Changed.
         pause_m = false;
 		stateSwitch = true;
         nextStateS = "MenuState";
     }
+
 	std::vector<GameObject *> players = gameData->getList(1);
-	GameObject *player = players.at(0);
-	if (inputManager.keyDown(sf::Keyboard::Left))
+
+	if (players.size() > 0)
 	{
-		player->moveLeft();
+		player = players.at(0);
+
+		//process controls
+		//key left to move left
+		if (inputManager.keyDown(sf::Keyboard::Left))
+		{
+			player->moveLeft();
+		}
+		//key right to move right
+		else if (inputManager.keyDown(sf::Keyboard::Right))
+		{
+			player->moveRight();
+		}
+		//if neither control is down no movement
+		else
+		{
+			player->stopHorizontalVelocity();
+		}
+
+		//key up to jump
+		if (inputManager.keyPressed(sf::Keyboard::Up))
+		{
+			if (player->getVerticalAcceleration() >= window->getSize().y)
+				if(player->getVelocity().y == 0)
+					player->jump();
+		}
+
+		if (inputManager.keyPressed(sf::Keyboard::Numpad0))
+		{
+			player->fireProjectile();
+		}
+
 	}
-	if (inputManager.keyDown(sf::Keyboard::Right))
+
+	if (players.size() > 1)//if two player
 	{
-		player->moveRight();
-	}
-	if (inputManager.keyReleased(sf::Keyboard::Left) || inputManager.keyReleased(sf::Keyboard::Right))
-	{
-		player->stopHorizontalVelocity();
-	}
-	if (inputManager.keyReleased(sf::Keyboard::Up))
-	{
-		if (player->getVerticalAcceleration() >= window->getSize().y)
-			player->jump();
-	}
-	if (players.size() > 1)
-	{
-		player = players.at(1);
+		player = players.at(1);//player is player 2
+		//process controls
+		//key a to move left
 		if (inputManager.keyDown(sf::Keyboard::A))
 		{
 			player->moveLeft();
 		}
-		if (inputManager.keyDown(sf::Keyboard::D))
+		//key d to move right
+		else if (inputManager.keyDown(sf::Keyboard::D))
 		{
 			player->moveRight();
 		}
-		if (inputManager.keyReleased(sf::Keyboard::A) || inputManager.keyReleased(sf::Keyboard::D))
+		//if neither control is down no movement
+		else
 		{
 			player->stopHorizontalVelocity();
 		}
-		if (inputManager.keyReleased(sf::Keyboard::W))
+
+		//key w to jump
+		if (inputManager.keyPressed(sf::Keyboard::W))
 		{
 			if (player->getVerticalAcceleration() >= window->getSize().y)
-				player->jump();
+				if (player->getVelocity().y == 0)
+					player->jump();
 		}
 	}
  }

@@ -15,6 +15,8 @@ Hidegons::Hidegons(sf::RenderWindow *win, GameData *data)
 	name = "Hidegons";
 	window = win;
 	gameData = data;
+	setTexture("../textures/Characters/hidegon.png");
+	flipTexture();
 }
 
 

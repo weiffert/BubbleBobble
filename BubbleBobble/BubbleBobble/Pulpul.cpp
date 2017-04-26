@@ -15,6 +15,8 @@ Pulpul::Pulpul(sf::RenderWindow *win, GameData *data)
 	name = "Pulpul";
 	window = win;
 	gameData = data;
+	setTexture("../textures/Characters/pulpul.png");
+	flipTexture();
 }
 
 

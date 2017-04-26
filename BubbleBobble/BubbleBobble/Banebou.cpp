@@ -12,9 +12,11 @@ Banebou::Banebou()
 
 Banebou::Banebou(sf::RenderWindow *win, GameData *data)
 {
-	name = "";
+	name = "Banebou";
 	window = win;
 	gameData = data;
+	setTexture("../textures/Characters/banebou.png");
+	flipTexture();
 }
 
 

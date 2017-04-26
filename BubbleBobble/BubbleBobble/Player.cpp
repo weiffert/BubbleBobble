@@ -6,6 +6,7 @@
 
 Player::Player()
 {
+	setLives(3);
 	name = "Player";
 	window = nullptr;
 	gameData = nullptr;
@@ -14,10 +15,20 @@ Player::Player()
 
 Player::Player(std::string set, sf::RenderWindow *win, GameData *data)
 {
-	setName(set);
-	window = win;
-	gameData = data;
-	setTexture("../textures/bubblun.png");
+	//assign instance variables values
+	setName(set);//player name
+	window = win;//render window reference
+	gameData = data;//reference to other game data
+
+	setLives(3);//players have 3 lives
+
+	//set the corresponsing texture to player
+	if (set == "Player1")
+		setTexture("../textures/Characters/bubblun.png");
+	else if (set == "Player2")
+		setTexture("../textures/Characters/bobblun.png");
+
+	flipTexture();//init texture flip to face the correct way
 }
 
 
@@ -28,10 +39,14 @@ Player::~Player()
 
 void Player::update()
 {
-	if (!transition)
-		levelPlay();
-	else
-		levelTransition();
+	if (!transition)//if player not in transition
+		levelPlay();//trigger player update events
+	else//otherwise
+		levelTransition();//player is in transition
+
+	if (getLivesRemaining() <= 0)//if player has no remaining lives
+		gameData->addToKillList(1, this);//kill player
+
 }
 
 void Player::collideWith()
@@ -58,6 +73,7 @@ void Player::collideWith()
 void Player::collided(GameObject *other)
 {
 	std::string otherName = other->getName();
+	//collision with friendly
 	if (other->isFriendly())
 	{
 		if (otherName == "Projectile")
@@ -66,9 +82,18 @@ void Player::collided(GameObject *other)
 		if (otherName == "Pickup")
 			pickedUp(other);
 	}
+	//collision with hostile
 	else
 	{
-		std::cout << "PLAYER IS DEAD!" << std::endl;
+		setLives(getLivesRemaining() - 1);
+		std::cout << "Lives remaining : " << getLivesRemaining() << std::endl;
+
+		//kill player if there is no lives left
+		if (getLivesRemaining() <= 0)
+		{
+			life = false;
+			std::cout << "PLAYER IS DEAD!" << std::endl;
+		}
 	}
 }
 
@@ -138,6 +163,7 @@ void Player::levelStart()
 	transition = false;
 	//Skel_Monsta time limit.
 	startClock(sf::seconds(30));
+	direction = 1;
 
 	//Velocity set.
 	setVelocity(0, 0);
@@ -163,3 +189,4 @@ void Player::death()
 	GameObject *temp = this;
 	gameData->addToKillList(1, temp);
 }
+
