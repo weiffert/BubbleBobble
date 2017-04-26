@@ -25,24 +25,15 @@ SplashScreenState::SplashScreenState(sf::RenderWindow *win)
 	stateSwitch = false;
 	window = win;
 
-	sf::Vector2f winSize;
-	winSize.x = window->getSize().x;
-	winSize.y = window->getSize().y;
-
-	titleScreen = new sf::RectangleShape(winSize);
-	
-	sf::Texture titleScreenImage;
-
-	titleScreenImage.loadFromFile("../textures/titleScreen.png");
-
-	titleScreen->setTexture(&titleScreenImage);
+	titleScreenTexture.loadFromFile("../textures/titleScreen.png");
+	titleScreen.setSize(sf::Vector2f(window->getSize()));
+	titleScreen.setTexture(&titleScreenTexture);
 }
 
 
 SplashScreenState::~SplashScreenState()
 {
     //dtor
-	delete titleScreen;
 	std::cout << "Deconstructing title screen" << std::endl;
 }
 
@@ -63,4 +54,5 @@ void SplashScreenState::draw()
 {
     //window->setView(centered);
 	//GameData Drawing.
+	window->draw(titleScreen);
 }

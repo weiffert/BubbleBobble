@@ -15,8 +15,9 @@ public:
 	void processEvents(sf::Event);
 	//Draws the background for the splash screen
 	void draw();
-private:\
-	sf::RectangleShape * titleScreen;
+private:
+	sf::RectangleShape titleScreen;
+	sf::Texture titleScreenTexture;
 };
 
 #endif // SPLASHSCREENSTATE_H
