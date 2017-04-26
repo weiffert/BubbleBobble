@@ -109,7 +109,7 @@ public:
 
 	void flipTexture();
 
-	void setLives(int = 1);
+	void setLives(unsigned int);
 	int getLivesRemaining();
 
 	GameObject * fireProjectile();

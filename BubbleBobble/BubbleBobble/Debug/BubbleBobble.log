@@ -1,47 +1,9 @@
-﻿Build started 4/26/2017 11:56:37 AM.
-     1>Project "F:\bubble bobble - Copy (2)\BubbleBobble\BubbleBobble\BubbleBobble\BubbleBobble.vcxproj" on node 2 (Build target(s)).
-     1>ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /IC:\SFML\include /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D SFML_STATIC /D WIN32 /D _DEBUG /D _CONSOLE /D _LIB /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Yu"stdafx.h" /Fp"Debug\BubbleBobble.pch" /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt GameObject.cpp
-         GameObject.cpp
-     1>f:\bubble bobble - copy (2)\bubblebobble\bubblebobble\bubblebobble\gameobject.cpp(241): warning C4244: 'argument' : conversion from 'const int' to 'float', possible loss of data
-     1>f:\bubble bobble - copy (2)\bubblebobble\bubblebobble\bubblebobble\gameobject.cpp(248): warning C4244: 'argument' : conversion from 'const int' to 'float', possible loss of data
-     1>f:\bubble bobble - copy (2)\bubblebobble\bubblebobble\bubblebobble\gameobject.cpp(284): warning C4244: '=' : conversion from 'const int' to 'float', possible loss of data
-     1>f:\bubble bobble - copy (2)\bubblebobble\bubblebobble\bubblebobble\gameobject.cpp(286): warning C4244: '=' : conversion from 'const int' to 'float', possible loss of data
-     1>f:\bubble bobble - copy (2)\bubblebobble\bubblebobble\bubblebobble\gameobject.cpp(433): warning C4244: '=' : conversion from 'unsigned int' to 'float', possible loss of data
-     1>f:\bubble bobble - copy (2)\bubblebobble\bubblebobble\bubblebobble\gameobject.cpp(434): warning C4244: '=' : conversion from 'unsigned int' to 'float', possible loss of data
-     1>f:\bubble bobble - copy (2)\bubblebobble\bubblebobble\bubblebobble\gameobject.cpp(507): warning C4244: 'argument' : conversion from 'const int' to 'float', possible loss of data
-       Link:
-         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"F:\bubble bobble - Copy (2)\BubbleBobble\BubbleBobble\Debug\BubbleBobble.exe" /INCREMENTAL /NOLOGO /LIBPATH:C:\SFML\lib "sfml-graphics-s-d.lib" "sfml-window-s-d.lib" "sfml-system-s-d.lib" opengl32.lib freetype.lib jpeg.lib winmm.lib gdi32.lib "sfml-audio-s-d.lib" openal32.lib flac.lib vorbisenc.lib vorbisfile.lib vorbis.lib ogg.lib "sfml-network-s-d.lib" ws2_32.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"F:\bubble bobble - Copy (2)\BubbleBobble\BubbleBobble\Debug\BubbleBobble.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"F:\bubble bobble - Copy (2)\BubbleBobble\BubbleBobble\Debug\BubbleBobble.lib" /MACHINE:X86 Debug\Animation.obj
-         Debug\Banebou.obj
-         Debug\BaseState.obj
-         Debug\BubbleBobble.obj
-         Debug\Drunk.obj
-         Debug\Game.obj
-         Debug\GameData.obj
-         Debug\GameObject.obj
-         Debug\GameState.obj
-         Debug\Hidegons.obj
-         Debug\InputManager.obj
-         Debug\Invader.obj
-         Debug\Level.obj
-         Debug\MenuState.obj
-         Debug\Mighta.obj
-         Debug\Monsta.obj
-         Debug\Monster.obj
-         Debug\Pickup.obj
-         Debug\Player.obj
-         Debug\PointText.obj
-         Debug\Projectile.obj
-         Debug\Pulpul.obj
-         Debug\Skel_Monsta.obj
-         Debug\SplashScreenState.obj
-         Debug\StateManager.obj
-         Debug\stdafx.obj
-         Debug\SuperDrunk.obj
-         Debug\Zenchan.obj
-         BubbleBobble.vcxproj -> F:\bubble bobble - Copy (2)\BubbleBobble\BubbleBobble\Debug\BubbleBobble.exe
-     1>Done Building Project "F:\bubble bobble - Copy (2)\BubbleBobble\BubbleBobble\BubbleBobble\BubbleBobble.vcxproj" (Build target(s)).
+﻿Build started 4/26/2017 2:55:13 PM.
+     1>Project "C:\Users\17wbe01\Documents\GitHub\BubbleBobble\BubbleBobble\BubbleBobble\BubbleBobble.vcxproj" on node 2 (Build target(s)).
+     1>Link:
+         BubbleBobble.vcxproj -> C:\Users\17wbe01\Documents\GitHub\BubbleBobble\BubbleBobble\Debug\BubbleBobble.exe
+     1>Done Building Project "C:\Users\17wbe01\Documents\GitHub\BubbleBobble\BubbleBobble\BubbleBobble\BubbleBobble.vcxproj" (Build target(s)).
 
 Build succeeded.
 
-Time Elapsed 00:00:01.12
+Time Elapsed 00:00:00.12

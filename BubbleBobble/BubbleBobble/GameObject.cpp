@@ -31,7 +31,7 @@ GameObject::GameObject()
 	transition = false;
 	friendly = true;
 
-	setLives();
+	setLives(1);
 }
 
 GameObject::GameObject(std::string set, sf::RenderWindow *win, GameData *data)
@@ -60,6 +60,8 @@ GameObject::GameObject(std::string set, sf::RenderWindow *win, GameData *data)
 	life = true;
 	transition = false;
 	friendly = true;
+
+	setLives(1);
 }
 
 GameObject::~GameObject()
@@ -239,15 +241,19 @@ float GameObject::getDistanceElapsed()
 void GameObject::moveLeft()
 {
 	setVelocity(-1 * SCREEN_MULTIPLIER, velocity.y);
-	direction = -1;//move towards negative x
-	flipTexture();//flip the texture if needed
+	//move towards negative x
+	direction = -1;
+	//flip the texture if needed
+	flipTexture();
 }
 
 void GameObject::moveRight()
 {
 	setVelocity(SCREEN_MULTIPLIER, velocity.y);
-	direction = 1;//move towards positive x
-	flipTexture();//flip the texture if needed
+	//move towards positive x
+	direction = 1;
+	//flip the texture if needed
+	flipTexture();
 }
 
 void GameObject::stopHorizontalVelocity()
@@ -263,8 +269,10 @@ void GameObject::stopVerticalVelocity()
 void GameObject::reverseDirectionHorizontal()
 {
 	velocity.x *= -1;
-	direction *= -1;//set texture to oppsite direction
-	flipTexture();//flip the texture if necessary
+	//set texture to oppsite direction
+	direction *= -1;
+	//flip the texture if necessary
+	flipTexture();
 }
 
 void GameObject::reverseDirectionVertical()
@@ -486,7 +494,7 @@ void GameObject::flipTexture()
 }
 
 
-void GameObject::setLives(int lives)
+void GameObject::setLives(unsigned int lives)
 {
 	livesRemaining = lives;
 }
