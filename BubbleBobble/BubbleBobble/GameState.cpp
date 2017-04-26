@@ -22,7 +22,7 @@ GameState::GameState(sf::RenderWindow *win)
 GameState::GameState(sf::RenderWindow *win, bool twoPlayer)
 {
 	window = win;
-	initialize(false);
+	initialize(twoPlayer);
 }
 
 

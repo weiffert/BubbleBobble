@@ -37,5 +37,4 @@ void MenuState::processEvents(sf::Event event)
         stateSwitch = true;
         nextStateS = "GameState";
     }
-
 }
