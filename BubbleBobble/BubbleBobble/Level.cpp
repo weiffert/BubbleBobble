@@ -76,7 +76,10 @@ void Level::timeLimitPassed()
 		if (nextLevelNumber <= 8)
 			nextLevel = new Level("Level" + std::to_string(nextLevelNumber), window, gameData);
 		else
+		{
 			nextLevel = new Level("LevelEnd", window, gameData);
+			gameData->clear(1);
+		}
 
 		nextLevel->setPosition(0, window->getSize().y);
 		nextLevel->levelEnd();
@@ -95,6 +98,8 @@ void Level::timeLimitPassed()
 	}
 	else
 	{
+		/*
+		//Synthesize a keypress.
 		INPUT ip;
 		ip.type = INPUT_KEYBOARD;
 		ip.ki.wScan = 0; // hardware scan code for key
@@ -105,6 +110,8 @@ void Level::timeLimitPassed()
 		ip.ki.wVk = 0x1B; // virtual-key code for the "ESC" key
 		ip.ki.dwFlags = 0; // 0 for key press
 		SendInput(1, &ip, sizeof(INPUT));
+		*/
+		keybd_event(VK_ESCAPE, 0x1B, KEYEVENTF_EXTENDEDKEY | 0, 0);
 	}
 }
 
