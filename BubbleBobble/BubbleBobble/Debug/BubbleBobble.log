@@ -1,15 +1,1 @@
-﻿  Player.cpp
-c:\users\cassimus\documents\github\bubblebobble\bubblebobble\bubblebobble\player.cpp(32): warning C4244: 'argument': conversion from 'unsigned int' to 'float', possible loss of data
-c:\users\cassimus\documents\github\bubblebobble\bubblebobble\bubblebobble\player.cpp(63): warning C4018: '<': signed/unsigned mismatch
-c:\users\cassimus\documents\github\bubblebobble\bubblebobble\bubblebobble\player.cpp(67): warning C4018: '<': signed/unsigned mismatch
-c:\users\cassimus\documents\github\bubblebobble\bubblebobble\bubblebobble\player.cpp(71): warning C4018: '<': signed/unsigned mismatch
-c:\users\cassimus\documents\github\bubblebobble\bubblebobble\bubblebobble\player.cpp(127): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-c:\users\cassimus\documents\github\bubblebobble\bubblebobble\bubblebobble\player.cpp(129): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-c:\users\cassimus\documents\github\bubblebobble\bubblebobble\bubblebobble\player.cpp(131): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-c:\users\cassimus\documents\github\bubblebobble\bubblebobble\bubblebobble\player.cpp(136): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-c:\users\cassimus\documents\github\bubblebobble\bubblebobble\bubblebobble\player.cpp(137): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-c:\users\cassimus\documents\github\bubblebobble\bubblebobble\bubblebobble\player.cpp(140): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-c:\users\cassimus\documents\github\bubblebobble\bubblebobble\bubblebobble\player.cpp(144): warning C4244: '=': conversion from 'const int' to 'float', possible loss of data
-c:\users\cassimus\documents\github\bubblebobble\bubblebobble\bubblebobble\player.cpp(147): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-c:\users\cassimus\documents\github\bubblebobble\bubblebobble\bubblebobble\player.cpp(151): warning C4244: '=': conversion from 'const int' to 'float', possible loss of data
-  BubbleBobble.vcxproj -> C:\Users\Cassimus\Documents\GitHub\BubbleBobble\BubbleBobble\Debug\BubbleBobble.exe
+﻿  BubbleBobble.vcxproj -> C:\Users\Cassimus\Documents\GitHub\BubbleBobble\BubbleBobble\Debug\BubbleBobble.exe
