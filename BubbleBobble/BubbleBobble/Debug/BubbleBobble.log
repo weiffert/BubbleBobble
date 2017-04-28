@@ -1,1 +1,8 @@
-﻿  BubbleBobble.vcxproj -> C:\Users\Cassimus\Documents\GitHub\BubbleBobble\BubbleBobble\Debug\BubbleBobble.exe
+﻿Build started 4/28/2017 3:27:07 PM.
+     1>Project "C:\Users\17wbe01\Documents\GitHub\BubbleBobble\BubbleBobble\BubbleBobble\BubbleBobble.vcxproj" on node 2 (Build target(s)).
+     1>C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\V120\Microsoft.Cpp.Platform.targets(64,5): error MSB8020: The build tools for v140 (Platform Toolset = 'v140') cannot be found. To build using the v140 build tools, please install v140 build tools.  Alternatively, you may upgrade to the current Visual Studio tools by selecting the Project menu or right-click the solution, and then selecting "Upgrade Solution...".
+     1>Done Building Project "C:\Users\17wbe01\Documents\GitHub\BubbleBobble\BubbleBobble\BubbleBobble\BubbleBobble.vcxproj" (Build target(s)) -- FAILED.
+
+Build FAILED.
+
+Time Elapsed 00:00:00.00

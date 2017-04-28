@@ -30,6 +30,7 @@ Level::Level(std::string id, sf::RenderWindow *win, GameData *data)
 	//Load the texture and bitmap according to the level name.
 	setTexture("../textures/Levels/" + name + "/" + name + ".png");
 	bitmapMaker();
+	menuReturn = false;
 }
 
 
@@ -111,8 +112,13 @@ void Level::timeLimitPassed()
 		ip.ki.dwFlags = 0; // 0 for key press
 		SendInput(1, &ip, sizeof(INPUT));
 		*/
-		keybd_event(VK_ESCAPE, 0x1B, KEYEVENTF_EXTENDEDKEY | 0, 0);
+		menuReturn = true;
 	}
+}
+
+bool Level::returnToMenu()
+{
+	return menuReturn;
 }
 
 void Level::distanceLimitPassed()

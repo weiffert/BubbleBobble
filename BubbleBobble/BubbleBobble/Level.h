@@ -20,6 +20,7 @@ public:
 	void levelPlay();
 	void levelEnd();
 	void death();
+	bool returnToMenu();
 
 private:
 	void bitmapMaker();
@@ -29,5 +30,6 @@ private:
 	int bitmap[32][26];
 	int monsterSpawns[32][26];
 	void enemyCheck();
+	bool menuReturn;
 };
 

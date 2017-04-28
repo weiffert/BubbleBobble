@@ -173,6 +173,18 @@ void GameState::process()
 
 	//Delete the now dead objects.
 	gameData->kill();
+
+	if (gameData->getList(0).size() > 0)
+	{
+		Level *level = dynamic_cast<Level*>(gameData->getList(0).at(0));
+		if (level->returnToMenu())
+		{
+			//Return to menu. Copied from the event handling.
+			pause_m = false;
+			stateSwitch = true;
+			nextStateS = "MenuState";
+		}
+	}
 }
 
 
