@@ -13,6 +13,11 @@ public:
 	MenuState(sf::RenderWindow*);
 	~MenuState();
 	void processEvents(sf::Event);
+	void draw();
+private:
+	unsigned int selection = 0;
+	sf::RectangleShape menuScreen;
+	sf::Texture menuTexture;
 };
 
 #endif // MENUSTATE_H
