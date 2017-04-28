@@ -42,7 +42,7 @@ void GameState::initialize(bool twoPlayer)
 {
 	//create the level.
 	gameData = new GameData();
-	GameObject *level = new Level("Level0", window, gameData);
+	GameObject *level = new Level("Level8", window, gameData);
 	gameData->add(0, level);
 
 	//create the players.
@@ -78,78 +78,74 @@ void GameState::processEvents(sf::Event event)
 
 	std::vector<GameObject *> players = gameData->getList(1);
 	
-	if (players.size() > 0)
+	//for each players in player
+	for (int i = 0; i < players.size(); i++)
 	{
-		player = players.at(0);
-
+		player = players.at(i);
+		//process conrols if the player is not transitioning levels
 		if (!player->isTransitioningLevels())
 		{
-			//process controls
-			//key a to move left
-			if (inputManager.keyDown(sf::Keyboard::A))
+			if (player->getName() == "Player1")
 			{
-				player->moveLeft();
-			}
-			//key d to move right
-			else if (inputManager.keyDown(sf::Keyboard::D))
-			{
-				player->moveRight();
-			}
-			//if neither control is down no movement
-			else
-			{
-				player->stopHorizontalVelocity();
-			}
+				//key a to move left
+				if (inputManager.keyDown(sf::Keyboard::A))
+				{
+					player->moveLeft();
+				}
+				//key d to move right
+				else if (inputManager.keyDown(sf::Keyboard::D))
+				{
+					player->moveRight();
+				}
+				//if neither control is down no movement
+				else
+				{
+					player->stopHorizontalVelocity();
+				}
 
-			//key w to jump
-			if (inputManager.keyPressed(sf::Keyboard::W))
-			{
-				if (player->getVerticalAcceleration() >= window->getSize().y)
+				//key w to jump
+				if (inputManager.keyPressed(sf::Keyboard::W))
+				{
+					if (player->getVerticalAcceleration() >= window->getSize().y)
 					if (player->getVelocity().y == 0)
 						player->jump();
-			}
+				}
 
-			if (inputManager.keyPressed(sf::Keyboard::Space))
-			{
-				player->fireProjectile();
+				if (inputManager.keyPressed(sf::Keyboard::Space))
+				{
+					player->fireProjectile();
+				}
 			}
-		}
-	}
+			else if (player->getName() == "Player2")
+			{
+				//key left to move left
+				if (inputManager.keyDown(sf::Keyboard::Left))
+				{
+					player->moveLeft();
+				}
+				//key right to move right
+				else if (inputManager.keyDown(sf::Keyboard::Right))
+				{
+					player->moveRight();
+				}
+				//if neither control is down no movement
+				else
+				{
+					player->stopHorizontalVelocity();
+				}
 
-	if (players.size() > 1)//if two player
-	{
-		player = players.at(1);//player is player 2
-		
-		if (!player->isTransitioningLevels())
-		{
-			//process controls
-			//key left to move left
-			if (inputManager.keyDown(sf::Keyboard::Left))
-			{
-				player->moveLeft();
-			}
-			//key right to move right
-			else if (inputManager.keyDown(sf::Keyboard::Right))
-			{
-				player->moveRight();
-			}
-			//if neither control is down no movement
-			else
-			{
-				player->stopHorizontalVelocity();
-			}
-
-			//key up to jump
-			if (inputManager.keyPressed(sf::Keyboard::Up))
-			{
-				if (player->getVerticalAcceleration() >= window->getSize().y)
+				//key up to jump
+				if (inputManager.keyPressed(sf::Keyboard::Up))
+				{
+					if (player->getVerticalAcceleration() >= window->getSize().y)
 					if (player->getVelocity().y == 0)
 						player->jump();
-			}
+				}
 
-			if (inputManager.keyPressed(sf::Keyboard::Numpad0))
-			{
-				player->fireProjectile();
+				if (inputManager.keyPressed(sf::Keyboard::Numpad0))
+				{
+					player->fireProjectile();
+				}
 			}
 		}
 	}
