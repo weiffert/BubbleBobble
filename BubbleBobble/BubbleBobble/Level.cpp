@@ -70,48 +70,43 @@ void Level::timeLimitPassed()
 	if (name != "LevelEnd")
 	{
 		levelEnd();
-
 		GameObject *nextLevel = nullptr;
 		int nextLevelNumber = std::stoi(name.substr(name.find_last_of("l") + 1)) + 1;
 
 		if (nextLevelNumber <= 8)
+		{
 			nextLevel = new Level("Level" + std::to_string(nextLevelNumber), window, gameData);
+
+			nextLevel->setPosition(0, window->getSize().y);
+			nextLevel->levelEnd();
+			gameData->add(0, nextLevel);
+
+			std::vector<GameObject *> players = gameData->getList(1);
+			for (int i = 0; i < players.size(); i++)
+			{
+				players.at(i)->levelEnd();
+			}
+
+			gameData->clear(2);
+			gameData->clear(3);
+			gameData->clear(4);
+			gameData->clear(5);
+		}
 		else
 		{
 			nextLevel = new Level("LevelEnd", window, gameData);
+			gameData->clear(0);
 			gameData->clear(1);
+			gameData->clear(2);
+			gameData->clear(3);
+			gameData->clear(4);
+			gameData->clear(5);
+			gameData->add(0, nextLevel);
 		}
 
-		nextLevel->setPosition(0, window->getSize().y);
-		nextLevel->levelEnd();
-		gameData->add(0, nextLevel);
-
-		std::vector<GameObject *> players = gameData->getList(1);
-		for (int i = 0; i < players.size(); i++)
-		{
-			players.at(i)->levelEnd();
-		}
-
-		gameData->clear(2);
-		gameData->clear(3);
-		gameData->clear(4);
-		gameData->clear(5);
 	}
 	else
 	{
-		/*
-		//Synthesize a keypress.
-		INPUT ip;
-		ip.type = INPUT_KEYBOARD;
-		ip.ki.wScan = 0; // hardware scan code for key
-		ip.ki.time = 0;
-		ip.ki.dwExtraInfo = 0;
-
-		// Press the "ESC" key
-		ip.ki.wVk = 0x1B; // virtual-key code for the "ESC" key
-		ip.ki.dwFlags = 0; // 0 for key press
-		SendInput(1, &ip, sizeof(INPUT));
-		*/
 		menuReturn = true;
 	}
 }
@@ -202,6 +197,7 @@ void Level::levelStart()
 
 void Level::death()
 {
+	livesRemaining = 0;
 	life = false;
 	GameObject *temp = this;
 	gameData->addToKillList(0, temp);

@@ -42,7 +42,7 @@ void GameState::initialize(bool twoPlayer)
 {
 	//create the level.
 	gameData = new GameData();
-	GameObject *level = new Level("Level8", window, gameData);
+	GameObject *level = new Level("Level7", window, gameData);
 	gameData->add(0, level);
 
 	//create the players.
