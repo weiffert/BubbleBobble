@@ -506,12 +506,6 @@ int GameObject::getLivesRemaining()
 }
 
 
-GameObject * GameObject::fireProjectile()
+void GameObject::fireProjectile()
 {
-	GameObject * bubble = new GameObject("Bubble", window, gameData);
-	bubble->setTexture("../textures/Projectile/bubble.png");
-	bubble->setPosition(getRectangle().getPosition().x, getRectangle().getPosition().y);
-	bubble->startPedometer(50);
-	bubble->setVelocity(SCREEN_MULTIPLIER, 0);
-	return bubble;
 }

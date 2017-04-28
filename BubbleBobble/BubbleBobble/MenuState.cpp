@@ -78,6 +78,16 @@ void MenuState::processEvents(sf::Event event)
 	{
 		stateSwitch = true;
 		nextStateS = "GameState";
+
+		switch (selection)
+		{
+		case onePlay:
+			nextStateS = "GameStateOnePlayer";
+			break;
+		case twoPlay:
+			nextStateS = "GameStateTwoPlayer";
+			break;
+		}
 	}
 }
 

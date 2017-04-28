@@ -112,7 +112,7 @@ public:
 	void setLives(unsigned int);
 	int getLivesRemaining();
 
-	GameObject * fireProjectile();
+	void fireProjectile();
 
 protected:
 	const int SCREEN_MULTIPLIER = 3;

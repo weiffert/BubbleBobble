@@ -33,11 +33,16 @@ void StateManager::processEvents(sf::RenderWindow *window, sf::Event event)
             this->pop_State();
             this->push_State(new MenuState(window));
         }
-        else if(states.back()->nextState() == "GameState")
+        else if(states.back()->nextState() == "GameStateOnePlayer")
         {
             this->pop_State();
-            this->push_State(new GameState(window));
+            this->push_State(new GameState(window, false));
         }
+		else if (states.back()->nextState() == "GameStateTwoPlayer")
+		{
+			this->pop_State();
+			this->push_State(new GameState(window, true));
+		}
     }
 	//This just keeps on making new game states. Commenting out for safety.
 	/*

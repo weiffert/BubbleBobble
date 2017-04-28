@@ -89,7 +89,6 @@
     <ClInclude Include="Animation.h" />
     <ClInclude Include="Banebou.h" />
     <ClInclude Include="BaseState.h" />
-    <ClInclude Include="Bubble.h" />
     <ClInclude Include="Drunk.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="GameData.h" />

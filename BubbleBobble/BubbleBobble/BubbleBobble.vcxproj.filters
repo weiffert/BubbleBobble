@@ -102,9 +102,6 @@
     <ClInclude Include="Skel_Monsta.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Bubble.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">

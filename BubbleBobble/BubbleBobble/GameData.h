@@ -24,4 +24,3 @@ private:
 	std::vector<std::vector<GameObject *>> gameObjects;
 	std::vector<std::vector<GameObject *>> killList;
 };
-

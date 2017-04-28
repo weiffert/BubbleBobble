@@ -26,8 +26,11 @@ Player::Player(std::string set, sf::RenderWindow *win, GameData *data)
 	if (set == "Player1")
 		setTexture("../textures/Characters/bubblun.png");
 	else if (set == "Player2")
+	{
 		setTexture("../textures/Characters/bobblun.png");
-
+		direction = -1;
+		setPosition(window->getSize().x - (16 * SCREEN_MULTIPLIER), 0);
+	}
 	flipTexture();//init texture flip to face the correct way
 }
 
@@ -123,7 +126,7 @@ void Player::levelTransition()
 
 	corner.y = 8 * 23 * SCREEN_MULTIPLIER;
 	if (name == "Player2")
-		corner.x = 8 * 29 * SCREEN_MULTIPLIER;
+		corner.x = 8 * 28 * SCREEN_MULTIPLIER;
 	else
 		corner.x = 8 * 3 * SCREEN_MULTIPLIER;
 
@@ -155,6 +158,14 @@ void Player::levelEnd()
 {
 	transition = true;
 	//change animation.
+
+	//face the cahracter the correct way during transition
+	if (getName() == "Player1")
+		direction = 1;
+	else
+		direction = -1;
+
+	flipTexture();
 }
 
 
@@ -189,4 +200,3 @@ void Player::death()
 	GameObject *temp = this;
 	gameData->addToKillList(1, temp);
 }
-
