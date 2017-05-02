@@ -105,7 +105,7 @@ void Monster::death()
 	//pickup creation
 	//something like...
 	temp = new Pickup(window, gameData);
-	gameData->add(5, temp);
+	gameData->add(3, temp);
 }
 
 void Monster::distanceLimitPassed()

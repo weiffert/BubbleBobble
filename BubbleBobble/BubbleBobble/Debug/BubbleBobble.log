@@ -1,18 +1,27 @@
-﻿Build started 4/28/2017 3:54:27 PM.
+﻿Build started 5/2/2017 3:12:52 PM.
      1>Project "C:\Users\17wbe01\Documents\GitHub\BubbleBobble\BubbleBobble\BubbleBobble\BubbleBobble.vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /IC:\SFML\include /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D SFML_STATIC /D WIN32 /D _DEBUG /D _CONSOLE /D _LIB /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Yu"stdafx.h" /Fp"Debug\BubbleBobble.pch" /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt Animation.cpp BaseState.cpp BubbleBobble.cpp Game.cpp InputManager.cpp Level.cpp SplashScreenState.cpp
-         Level.cpp
-     1>c:\users\17wbe01\documents\github\bubblebobble\bubblebobble\bubblebobble\level.cpp(80): warning C4244: 'argument' : conversion from 'unsigned int' to 'float', possible loss of data
-     1>c:\users\17wbe01\documents\github\bubblebobble\bubblebobble\bubblebobble\level.cpp(85): warning C4018: '<' : signed/unsigned mismatch
-     1>c:\users\17wbe01\documents\github\bubblebobble\bubblebobble\bubblebobble\level.cpp(131): warning C4244: 'argument' : conversion from 'const int' to 'float', possible loss of data
-     1>c:\users\17wbe01\documents\github\bubblebobble\bubblebobble\bubblebobble\level.cpp(132): warning C4244: 'argument' : conversion from 'unsigned int' to 'float', possible loss of data
-     1>c:\users\17wbe01\documents\github\bubblebobble\bubblebobble\bubblebobble\level.cpp(143): warning C4018: '<' : signed/unsigned mismatch
-     1>c:\users\17wbe01\documents\github\bubblebobble\bubblebobble\bubblebobble\level.cpp(188): warning C4244: 'argument' : conversion from 'const int' to 'float', possible loss of data
-     1>c:\users\17wbe01\documents\github\bubblebobble\bubblebobble\bubblebobble\level.cpp(234): warning C4244: '=' : conversion from 'float' to 'int', possible loss of data
-     1>c:\users\17wbe01\documents\github\bubblebobble\bubblebobble\bubblebobble\level.cpp(235): warning C4244: '=' : conversion from 'float' to 'int', possible loss of data
-     1>c:\users\17wbe01\documents\github\bubblebobble\bubblebobble\bubblebobble\level.cpp(260): warning C4018: '<' : signed/unsigned mismatch
-     1>c:\users\17wbe01\documents\github\bubblebobble\bubblebobble\bubblebobble\level.cpp(278): warning C4018: '<' : signed/unsigned mismatch
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /IC:\SFML\include /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D SFML_STATIC /D WIN32 /D _DEBUG /D _CONSOLE /D _LIB /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Yu"stdafx.h" /Fp"Debug\BubbleBobble.pch" /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt Animation.cpp BaseState.cpp BubbleBobble.cpp Game.cpp GameData.cpp InputManager.cpp Player.cpp SplashScreenState.cpp
+         Player.cpp
+     1>c:\users\17wbe01\documents\github\bubblebobble\bubblebobble\bubblebobble\player.cpp(32): warning C4244: 'argument' : conversion from 'unsigned int' to 'float', possible loss of data
+     1>c:\users\17wbe01\documents\github\bubblebobble\bubblebobble\bubblebobble\player.cpp(62): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\17wbe01\documents\github\bubblebobble\bubblebobble\bubblebobble\player.cpp(66): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\17wbe01\documents\github\bubblebobble\bubblebobble\bubblebobble\player.cpp(70): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\17wbe01\documents\github\bubblebobble\bubblebobble\bubblebobble\player.cpp(126): warning C4244: '=' : conversion from 'int' to 'float', possible loss of data
+     1>c:\users\17wbe01\documents\github\bubblebobble\bubblebobble\bubblebobble\player.cpp(128): warning C4244: '=' : conversion from 'const int' to 'float', possible loss of data
+     1>c:\users\17wbe01\documents\github\bubblebobble\bubblebobble\bubblebobble\player.cpp(130): warning C4244: '=' : conversion from 'const int' to 'float', possible loss of data
+     1>c:\users\17wbe01\documents\github\bubblebobble\bubblebobble\bubblebobble\player.cpp(135): warning C4244: 'initializing' : conversion from 'float' to 'int', possible loss of data
+     1>c:\users\17wbe01\documents\github\bubblebobble\bubblebobble\bubblebobble\player.cpp(136): warning C4244: 'initializing' : conversion from 'float' to 'int', possible loss of data
+     1>c:\users\17wbe01\documents\github\bubblebobble\bubblebobble\bubblebobble\player.cpp(139): warning C4244: '=' : conversion from 'const int' to 'float', possible loss of data
+     1>c:\users\17wbe01\documents\github\bubblebobble\bubblebobble\bubblebobble\player.cpp(143): warning C4244: '=' : conversion from 'const int' to 'float', possible loss of data
+     1>c:\users\17wbe01\documents\github\bubblebobble\bubblebobble\bubblebobble\player.cpp(146): warning C4244: '=' : conversion from 'const int' to 'float', possible loss of data
+     1>c:\users\17wbe01\documents\github\bubblebobble\bubblebobble\bubblebobble\player.cpp(150): warning C4244: '=' : conversion from 'const int' to 'float', possible loss of data
+         GameData.cpp
+     1>c:\users\17wbe01\documents\github\bubblebobble\bubblebobble\bubblebobble\gamedata.cpp(20): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\17wbe01\documents\github\bubblebobble\bubblebobble\bubblebobble\gamedata.cpp(34): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\17wbe01\documents\github\bubblebobble\bubblebobble\bubblebobble\gamedata.cpp(105): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\17wbe01\documents\github\bubblebobble\bubblebobble\bubblebobble\gamedata.cpp(160): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\17wbe01\documents\github\bubblebobble\bubblebobble\bubblebobble\gamedata.cpp(162): warning C4018: '<' : signed/unsigned mismatch
          Generating Code...
          Skipping... (no relevant changes detected)
          SplashScreenState.cpp
@@ -55,4 +64,4 @@
 
 Build succeeded.
 
-Time Elapsed 00:00:02.52
+Time Elapsed 00:00:01.62
