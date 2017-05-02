@@ -49,8 +49,7 @@ void Player::update()
 		levelTransition();//player is in transition
 
 	if (getLivesRemaining() <= 0)//if player has no remaining lives
-		gameData->addToKillList(1, this);//kill player
-
+		death();
 }
 
 void Player::collideWith()
@@ -125,7 +124,7 @@ void Player::levelTransition()
 	//move to corner
 	sf::Vector2f corner;
 
-	corner.y = 8 * 23 * SCREEN_MULTIPLIER;
+	corner.y = 8 * 24 * SCREEN_MULTIPLIER - 1;
 	if (name == "Player2")
 		corner.x = 8 * 28 * SCREEN_MULTIPLIER;
 	else
@@ -143,7 +142,7 @@ void Player::levelTransition()
 		velocity.x = 0;
 	else
 		velocity.x = SCREEN_MULTIPLIER;
-
+	
 	if (differenceY < 0)
 		velocity.y = -1 * SCREEN_MULTIPLIER;
 	else if (differenceY == 0)

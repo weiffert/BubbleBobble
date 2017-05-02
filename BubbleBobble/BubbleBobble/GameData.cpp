@@ -104,7 +104,7 @@ void GameData::clear(unsigned int index)
 	{
 		for (int i = 0; i < gameObjects.at(index).size(); i++)
 		{
-			addToKillList(i, gameObjects.at(index).at(i));
+			addToKillList(index, gameObjects.at(index).at(i));
 		}
 	}
 	else
