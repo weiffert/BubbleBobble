@@ -1,4 +1,19 @@
+<<<<<<< HEAD
 ﻿Build started 5/2/2017 3:12:52 PM.
+=======
+<<<<<<< HEAD
+﻿Build started 4/28/2017 3:52:21 PM.
+     1>Project "C:\Users\18mac03\Desktop\bubble bobble\BubbleBobble\BubbleBobble\BubbleBobble\BubbleBobble.vcxproj" on node 2 (Build target(s)).
+     1>Link:
+         BubbleBobble.vcxproj -> C:\Users\18mac03\Desktop\bubble bobble\BubbleBobble\BubbleBobble\Debug\BubbleBobble.exe
+     1>Done Building Project "C:\Users\18mac03\Desktop\bubble bobble\BubbleBobble\BubbleBobble\BubbleBobble\BubbleBobble.vcxproj" (Build target(s)).
+
+Build succeeded.
+
+Time Elapsed 00:00:00.09
+=======
+﻿Build started 4/28/2017 3:54:27 PM.
+>>>>>>> origin/master
      1>Project "C:\Users\17wbe01\Documents\GitHub\BubbleBobble\BubbleBobble\BubbleBobble\BubbleBobble.vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
          C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /IC:\SFML\include /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D SFML_STATIC /D WIN32 /D _DEBUG /D _CONSOLE /D _LIB /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Yu"stdafx.h" /Fp"Debug\BubbleBobble.pch" /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt Animation.cpp BaseState.cpp BubbleBobble.cpp Game.cpp GameData.cpp InputManager.cpp Player.cpp SplashScreenState.cpp
@@ -64,4 +79,9 @@
 
 Build succeeded.
 
+<<<<<<< HEAD
 Time Elapsed 00:00:01.62
+=======
+Time Elapsed 00:00:02.52
+>>>>>>> origin/master
+>>>>>>> origin/master
