@@ -1,5 +1,6 @@
 #include "stdafx.h"
 #include "Projectile.h"
+#include <iostream>
 
 
 Projectile::Projectile()
@@ -48,4 +49,9 @@ void Projectile::death()
 	life = false;
 	GameObject *temp = this;
 	gameData->addToKillList(4, temp);
+}
+
+void Projectile::render()
+{
+	
 }

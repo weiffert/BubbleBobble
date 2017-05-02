@@ -2,6 +2,7 @@
 #include "Player.h"
 #include "Skel_Monsta.h"
 #include <iostream>
+#include "Bubble.h"
 
 
 Player::Player()
@@ -199,4 +200,10 @@ void Player::death()
 	life = false;
 	GameObject *temp = this;
 	gameData->addToKillList(1, temp);
+}
+
+
+void Player::fireProjectile()
+{
+	gameData->add(4, new Bubble(window, gameData, this));
 }

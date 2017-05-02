@@ -1,16 +1,20 @@
 #include "stdafx.h"
 #include "Bubble.h"
+#include <iostream>
 
 
-Bubble::Bubble(sf::RenderWindow * win, GameData * dat)
+Bubble::Bubble(sf::RenderWindow * win, GameData * dat, Player * source) : Projectile(win, dat)
 {
 	name = "Bubble";
 	gameData = dat;
 	window = win;
 	containsEnemy = false;
 
-	bubbleTexture.loadFromFile("../textures/Projectile/bubble.png");
-	bubble.setTexture(&bubbleTexture);
+	texture.loadFromFile("../textures/Projectile/bubble.png");
+	rectangle.setTexture(&texture);
+	sf::Vector2f playerPos = source->getRectangle().getPosition();
+	rectangle.setPosition(playerPos.x, playerPos.y);
+	rectangle.setFillColor(sf::Color::Green);
 }
 
 

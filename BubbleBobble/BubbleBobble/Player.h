@@ -17,4 +17,5 @@ public:
 	void levelTransition();
 	void death();
 	void timeLimitPassed();
+	void fireProjectile();
 };

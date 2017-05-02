@@ -36,7 +36,7 @@ GameObject::GameObject()
 
 GameObject::GameObject(std::string set, sf::RenderWindow *win, GameData *data)
 {
-	std::cout << "Constructing GameObject" << std::endl;
+	std::cout << "Constructing GameObject" << set << std::endl;
 	gameData = data;
 	window = win;
 

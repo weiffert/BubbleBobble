@@ -42,7 +42,7 @@ void GameState::initialize(bool twoPlayer)
 {
 	//create the level.
 	gameData = new GameData();
-	GameObject *level = new Level("Level7", window, gameData);
+	GameObject *level = new Level("Level0", window, gameData);
 	gameData->add(0, level);
 
 	//create the players.
@@ -65,7 +65,7 @@ void GameState::pause()
 void GameState::processEvents(sf::Event event)
 {
     
-	GameObject *player = nullptr;
+	Player *player = nullptr;
 	inputManager.update(event);
 
     if(inputManager.keyReleased(sf::Keyboard::Escape))
@@ -81,7 +81,7 @@ void GameState::processEvents(sf::Event event)
 	//for each players in player
 	for (int i = 0; i < players.size(); i++)
 	{
-		player = players.at(i);
+		player = dynamic_cast<Player * >(players.at(i));
 		//process conrols if the player is not transitioning levels
 		if (!player->isTransitioningLevels())
 		{
@@ -107,8 +107,8 @@ void GameState::processEvents(sf::Event event)
 				if (inputManager.keyPressed(sf::Keyboard::W))
 				{
 					if (player->getVerticalAcceleration() >= window->getSize().y)
-					if (player->getVelocity().y == 0)
-						player->jump();
+						if (player->getVelocity().y == 0)
+							player->jump();
 				}
 
 				if (inputManager.keyPressed(sf::Keyboard::Space))
@@ -138,8 +138,8 @@ void GameState::processEvents(sf::Event event)
 				if (inputManager.keyPressed(sf::Keyboard::Up))
 				{
 					if (player->getVerticalAcceleration() >= window->getSize().y)
-					if (player->getVelocity().y == 0)
-						player->jump();
+						if (player->getVelocity().y == 0)
+							player->jump();
 				}
 
 				if (inputManager.keyPressed(sf::Keyboard::Numpad0))
@@ -150,7 +150,6 @@ void GameState::processEvents(sf::Event event)
 		}
 	}
  }
-
 
 void GameState::process()
 {
