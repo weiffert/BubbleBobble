@@ -16,6 +16,7 @@ Monster::Monster()
 	friendly = false;
 	contained = false;
 	direction = -1;//move towards negative x
+	bubbleContainer - nullptr;
 }
 
 
@@ -31,6 +32,7 @@ Monster::Monster(sf::RenderWindow *win, GameData *data)
 	friendly = false;
 	contained = false;
 	direction = -1;//move towards negative x
+	bubbleContainer = nullptr;
 }
 
 
@@ -60,7 +62,7 @@ void Monster::collided(GameObject *other)
 	if (other->isFriendly())
 	{
 		death();
-		if (otherName.find("Projectile"))
+		if (otherName.find("Bubble"))
 			captured(other);
 	}
 }
@@ -69,7 +71,9 @@ void Monster::collided(GameObject *other)
 void Monster::captured(GameObject *other)
 {
 	//change animation and behavior.
-	contained = true;
+	bubbleContainer = other;
+	//Sets the rectangle to be transparent.
+	rectangle.setFillColor(sf::Color(0, 0, 0, 0));
 }
 
 
@@ -91,8 +95,11 @@ void Monster::levelPlay()
 	}
 	else
 	{
-		rectangle.move(velocity);
-		distance();
+		if (bubbleContainer == nullptr)
+		{
+			rectangle.move(velocity);
+			distance();
+		}
 	}
 }
 

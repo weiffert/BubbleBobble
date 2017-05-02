@@ -20,8 +20,9 @@ public:
 protected:
 	//virtual void path();
 	bool noLevelCollision;
-	bool contained;
 	//bool upMovement;
 	//bool leftMovement;
+
+	GameObject *bubbleContainer;
 };
 
