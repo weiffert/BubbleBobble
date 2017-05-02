@@ -51,7 +51,9 @@ void Projectile::death()
 	gameData->addToKillList(4, temp);
 }
 
-void Projectile::render()
+
+void Projectile::levelPlay()
 {
-	
+	collideWith();
+	rectangle.move(velocity);
 }

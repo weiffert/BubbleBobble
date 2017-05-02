@@ -32,4 +32,3 @@ private:
 	void enemyCheck();
 	bool menuReturn;
 };
-

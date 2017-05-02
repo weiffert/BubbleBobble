@@ -3,18 +3,18 @@
 #include <iostream>
 
 
-Bubble::Bubble(sf::RenderWindow * win, GameData * dat, Player * source) : Projectile(win, dat)
+Bubble::Bubble(sf::RenderWindow * win, GameData * dat, Player * player) : Projectile(win, dat)
 {
 	name = "Bubble";
 	gameData = dat;
 	window = win;
-	containsEnemy = false;
+	monsterContained = nullptr;
 
-	texture.loadFromFile("../textures/Projectile/bubble.png");
-	rectangle.setTexture(&texture);
-	sf::Vector2f playerPos = source->getRectangle().getPosition();
+	setTexture("../textures/Projectile/bubble.png");
+	sf::Vector2f playerPos = player->getRectangle().getPosition();
 	rectangle.setPosition(playerPos.x, playerPos.y);
-	rectangle.setFillColor(sf::Color::Green);
+	setVelocity(player->getDirection() * SCREEN_MULTIPLIER * 1.25, 0);
+	startPedometer();
 }
 
 

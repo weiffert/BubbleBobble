@@ -268,7 +268,9 @@ void Level::collision(GameObject *other)
 		}
 		if (wallCollision)
 		{
-			if (other->isFriendly())
+			if (other->getName == "Bubble")
+				other->distanceLimitPassed();
+			else if (other->isFriendly())
 				other->velocityToNextGridLine(true);
 			else
 				//Monster behavior.

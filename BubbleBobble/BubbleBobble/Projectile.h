@@ -16,5 +16,6 @@ public:
 	void collideWith();
 	void collided(GameObject *);
 	void death();
-	void render();
+	void levelPlay();
+	
 };

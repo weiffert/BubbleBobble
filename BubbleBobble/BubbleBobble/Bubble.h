@@ -9,6 +9,7 @@ class Bubble : public Projectile
 public:
 	Bubble(sf::RenderWindow *, GameData *, Player *);
 	~Bubble();
+	void bubbleUp();
 private:
-	bool containsEnemy;
+	GameObject * monsterContained;
 };
