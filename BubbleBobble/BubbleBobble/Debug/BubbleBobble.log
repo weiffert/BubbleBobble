@@ -1,7 +1,7 @@
-﻿Build started 5/2/2017 4:00:37 PM.
+﻿Build started 5/3/2017 11:31:22 AM.
      1>Project "C:\Users\18mac03\Desktop\bubble bobble\BubbleBobble\BubbleBobble\BubbleBobble\BubbleBobble.vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /IC:\SFML\include /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D SFML_STATIC /D WIN32 /D _DEBUG /D _CONSOLE /D _LIB /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Yu"stdafx.h" /Fp"Debug\BubbleBobble.pch" /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt Bubble.cpp GameState.cpp Level.cpp Player.cpp
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /IC:\SFML\include /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D SFML_STATIC /D WIN32 /D _DEBUG /D _CONSOLE /D _LIB /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Yu"stdafx.h" /Fp"Debug\BubbleBobble.pch" /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt Level.cpp
          Level.cpp
      1>c:\users\18mac03\desktop\bubble bobble\bubblebobble\bubblebobble\bubblebobble\level.cpp(80): warning C4244: 'argument' : conversion from 'unsigned int' to 'float', possible loss of data
      1>c:\users\18mac03\desktop\bubble bobble\bubblebobble\bubblebobble\bubblebobble\level.cpp(85): warning C4018: '<' : signed/unsigned mismatch
@@ -17,22 +17,8 @@
                  There is no context in which this conversion is possible
      1>c:\users\18mac03\desktop\bubble bobble\bubblebobble\bubblebobble\bubblebobble\level.cpp(271): error C2040: '==' : 'std::string (__thiscall GameObject::* )(void)' differs in levels of indirection from 'const char [7]'
      1>c:\users\18mac03\desktop\bubble bobble\bubblebobble\bubblebobble\bubblebobble\level.cpp(280): warning C4018: '<' : signed/unsigned mismatch
-         Bubble.cpp
-     1>c:\users\18mac03\desktop\bubble bobble\bubblebobble\bubblebobble\bubblebobble\bubble.cpp(16): warning C4244: 'argument' : conversion from 'double' to 'float', possible loss of data
-         Generating Code...
-         Compiling...
-         GameState.cpp
-     1>c:\users\18mac03\desktop\bubble bobble\bubblebobble\bubblebobble\bubblebobble\gamestate.cpp(82): warning C4018: '<' : signed/unsigned mismatch
-     1>c:\users\18mac03\desktop\bubble bobble\bubblebobble\bubblebobble\bubblebobble\gamestate.cpp(109): warning C4018: '>=' : signed/unsigned mismatch
-     1>c:\users\18mac03\desktop\bubble bobble\bubblebobble\bubblebobble\bubblebobble\gamestate.cpp(140): warning C4018: '>=' : signed/unsigned mismatch
-     1>c:\users\18mac03\desktop\bubble bobble\bubblebobble\bubblebobble\bubblebobble\gamestate.cpp(190): warning C4018: '<' : signed/unsigned mismatch
-     1>c:\users\18mac03\desktop\bubble bobble\bubblebobble\bubblebobble\bubblebobble\gamestate.cpp(201): warning C4018: '<' : signed/unsigned mismatch
-     1>c:\users\18mac03\desktop\bubble bobble\bubblebobble\bubblebobble\bubblebobble\gamestate.cpp(203): warning C4018: '<' : signed/unsigned mismatch
-         Generating Code...
-         Skipping... (no relevant changes detected)
-         Player.cpp
      1>Done Building Project "C:\Users\18mac03\Desktop\bubble bobble\BubbleBobble\BubbleBobble\BubbleBobble\BubbleBobble.vcxproj" (Build target(s)) -- FAILED.
 
 Build FAILED.
 
-Time Elapsed 00:00:02.69
+Time Elapsed 00:00:01.76
