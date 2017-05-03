@@ -42,7 +42,7 @@ void SplashScreenState::processEvents(sf::Event event)
 {
 	//If you press space switch to the menu state
     inputManager.update(event);
-    if(inputManager.keyPressed(sf::Keyboard::Space))
+    if(inputManager.keyPressed(sf::Keyboard::Return))
     {
         stateSwitch = true;
         nextStateS = "MenuState";

@@ -16,7 +16,7 @@ Monster::Monster()
 	friendly = false;
 	contained = false;
 	direction = -1;//move towards negative x
-	bubbleContainer - nullptr;
+	bubbleContainer = nullptr;
 }
 
 

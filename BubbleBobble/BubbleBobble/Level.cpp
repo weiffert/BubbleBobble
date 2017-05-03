@@ -268,7 +268,7 @@ void Level::collision(GameObject *other)
 		}
 		if (wallCollision)
 		{
-			if (other->getName == "Bubble")
+			if (other->getName() == "Bubble")
 				other->distanceLimitPassed();
 			else if (other->isFriendly())
 				other->velocityToNextGridLine(true);

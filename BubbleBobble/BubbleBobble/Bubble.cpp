@@ -14,10 +14,16 @@ Bubble::Bubble(sf::RenderWindow * win, GameData * dat, Player * player) : Projec
 	sf::Vector2f playerPos = player->getRectangle().getPosition();
 	rectangle.setPosition(playerPos.x, playerPos.y);
 	setVelocity(player->getDirection() * SCREEN_MULTIPLIER * 1.25, 0);
-	startPedometer();
+	startPedometer(window->getSize().x );
 }
 
 
 Bubble::~Bubble()
 {
+}
+
+
+void Bubble::distanceLimitPassed()
+{
+
 }

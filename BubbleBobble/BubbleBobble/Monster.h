@@ -22,6 +22,7 @@ protected:
 	bool noLevelCollision;
 	//bool upMovement;
 	//bool leftMovement;
+	bool contained;
 
 	GameObject *bubbleContainer;
 };

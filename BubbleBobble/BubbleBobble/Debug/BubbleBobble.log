@@ -1,24 +1,2 @@
-﻿Build started 5/3/2017 11:31:22 AM.
-     1>Project "C:\Users\18mac03\Desktop\bubble bobble\BubbleBobble\BubbleBobble\BubbleBobble\BubbleBobble.vcxproj" on node 2 (Build target(s)).
-     1>ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /IC:\SFML\include /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D SFML_STATIC /D WIN32 /D _DEBUG /D _CONSOLE /D _LIB /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Yu"stdafx.h" /Fp"Debug\BubbleBobble.pch" /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt Level.cpp
-         Level.cpp
-     1>c:\users\18mac03\desktop\bubble bobble\bubblebobble\bubblebobble\bubblebobble\level.cpp(80): warning C4244: 'argument' : conversion from 'unsigned int' to 'float', possible loss of data
-     1>c:\users\18mac03\desktop\bubble bobble\bubblebobble\bubblebobble\bubblebobble\level.cpp(85): warning C4018: '<' : signed/unsigned mismatch
-     1>c:\users\18mac03\desktop\bubble bobble\bubblebobble\bubblebobble\bubblebobble\level.cpp(131): warning C4244: 'argument' : conversion from 'const int' to 'float', possible loss of data
-     1>c:\users\18mac03\desktop\bubble bobble\bubblebobble\bubblebobble\bubblebobble\level.cpp(132): warning C4244: 'argument' : conversion from 'unsigned int' to 'float', possible loss of data
-     1>c:\users\18mac03\desktop\bubble bobble\bubblebobble\bubblebobble\bubblebobble\level.cpp(143): warning C4018: '<' : signed/unsigned mismatch
-     1>c:\users\18mac03\desktop\bubble bobble\bubblebobble\bubblebobble\bubblebobble\level.cpp(188): warning C4244: 'argument' : conversion from 'const int' to 'float', possible loss of data
-     1>c:\users\18mac03\desktop\bubble bobble\bubblebobble\bubblebobble\bubblebobble\level.cpp(234): warning C4244: '=' : conversion from 'float' to 'int', possible loss of data
-     1>c:\users\18mac03\desktop\bubble bobble\bubblebobble\bubblebobble\bubblebobble\level.cpp(235): warning C4244: '=' : conversion from 'float' to 'int', possible loss of data
-     1>c:\users\18mac03\desktop\bubble bobble\bubblebobble\bubblebobble\bubblebobble\level.cpp(260): warning C4018: '<' : signed/unsigned mismatch
-     1>c:\users\18mac03\desktop\bubble bobble\bubblebobble\bubblebobble\bubblebobble\level.cpp(271): error C3867: 'GameObject::getName': function call missing argument list; use '&GameObject::getName' to create a pointer to member
-     1>c:\users\18mac03\desktop\bubble bobble\bubblebobble\bubblebobble\bubblebobble\level.cpp(271): error C2446: '==' : no conversion from 'const char *' to 'std::string (__thiscall GameObject::* )(void)'
-                 There is no context in which this conversion is possible
-     1>c:\users\18mac03\desktop\bubble bobble\bubblebobble\bubblebobble\bubblebobble\level.cpp(271): error C2040: '==' : 'std::string (__thiscall GameObject::* )(void)' differs in levels of indirection from 'const char [7]'
-     1>c:\users\18mac03\desktop\bubble bobble\bubblebobble\bubblebobble\bubblebobble\level.cpp(280): warning C4018: '<' : signed/unsigned mismatch
-     1>Done Building Project "C:\Users\18mac03\Desktop\bubble bobble\BubbleBobble\BubbleBobble\BubbleBobble\BubbleBobble.vcxproj" (Build target(s)) -- FAILED.
-
-Build FAILED.
-
-Time Elapsed 00:00:01.76
+﻿  BubbleBobble.vcxproj -> C:\Users\18mac03\Desktop\buble bobble\BubbleBobble\BubbleBobble\Debug\BubbleBobble.exe
+  BubbleBobble.vcxproj -> C:\Users\18mac03\Desktop\buble bobble\BubbleBobble\BubbleBobble\Debug\BubbleBobble.pdb (Partial PDB)

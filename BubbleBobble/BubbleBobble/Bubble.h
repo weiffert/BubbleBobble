@@ -9,7 +9,7 @@ class Bubble : public Projectile
 public:
 	Bubble(sf::RenderWindow *, GameData *, Player *);
 	~Bubble();
-	void bubbleUp();
+	void distanceLimitPassed();
 private:
 	GameObject * monsterContained;
 };
