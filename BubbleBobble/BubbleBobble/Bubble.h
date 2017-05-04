@@ -10,6 +10,9 @@ public:
 	Bubble(sf::RenderWindow *, GameData *, Player *);
 	~Bubble();
 	void distanceLimitPassed();
+	void timeLimitPassed();
+	void collided(GameObject *);
+	void popBubble();
 private:
 	GameObject * monsterContained;
 };

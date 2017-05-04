@@ -31,3 +31,38 @@ void Bubble::distanceLimitPassed()
 		setVelocity(0, -1.25 * SCREEN_MULTIPLIER);
 	}
 }
+
+
+void Bubble::timeLimitPassed()
+{
+	return;
+}
+
+
+void Bubble::collided(GameObject * other)
+{
+	if (other->getName() == "Bubble")
+	{
+		//add to linked bubble list
+	}
+	else if (!other->isFriendly() && monsterContained == nullptr)//if monster
+	{
+		setTexture("../textures/CapturedMonsters/" + other->getName() + ".png");
+		monsterContained = other;
+	}
+	else//if player
+	{
+		//popBubble();
+	}
+}
+
+
+void Bubble::popBubble()
+{
+	
+
+	//for(int i = linkedBubbles.size() - 1; i >= 0; i--)
+		//linkedBubbles.at(i)->death();
+
+	death();//pop this bubble
+}
