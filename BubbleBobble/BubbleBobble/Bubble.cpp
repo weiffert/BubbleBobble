@@ -14,7 +14,7 @@ Bubble::Bubble(sf::RenderWindow * win, GameData * dat, Player * player) : Projec
 	sf::Vector2f playerPos = player->getRectangle().getPosition();
 	rectangle.setPosition(playerPos.x, playerPos.y);
 	setVelocity(player->getDirection() * SCREEN_MULTIPLIER * 1.25, 0);
-	startPedometer(window->getSize().x );
+	startPedometer(window->getSize().x / 6);
 }
 
 
@@ -25,5 +25,9 @@ Bubble::~Bubble()
 
 void Bubble::distanceLimitPassed()
 {
-
+	if (getVelocity().x != 0)
+	{
+		stopPedometer();
+		setVelocity(0, -1.25 * SCREEN_MULTIPLIER);
+	}
 }
