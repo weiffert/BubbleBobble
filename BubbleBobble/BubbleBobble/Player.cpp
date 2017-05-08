@@ -102,6 +102,39 @@ void Player::collided(GameObject *other)
 }
 
 
+//Perform the pathing function. Passed in are the values of the level collision.
+std::vector<bool> Player::levelPathing(std::vector<int> horizontal, std::vector<int> vertical)
+{
+	std::vector<bool> collisionOccurances;
+	collisionOccurances.push_back(false);
+	collisionOccurances.push_back(false);
+
+	for (int i = 0; i < horizontal.size(); i++)
+	{
+		if (horizontal.at(i) == 1)
+		{
+			collisionOccurances.at(0) = true;
+			moveToNextGridLine(true);
+		}
+	}
+
+	//Only check if moving down.
+	if (velocity.y > 0)
+	{
+		for (int i = 0; i < vertical.size(); i++)
+		{
+			if (vertical.at(i) == 2 || vertical.at(i) == 3 || vertical.at(i) == 4)
+			{
+				collisionOccurances.at(1) = true;
+				moveToNextGridLine(false);
+			}
+		}
+	}
+
+	return collisionOccurances;
+}
+
+
 void Player::pickedUp(GameObject *other)
 {
 	//add to score.

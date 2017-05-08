@@ -253,65 +253,17 @@ void Level::collision(GameObject *other)
 			}
 		}
 
-		bool verticalCollision = false;
-
 		//Interpret.
-		bool wallCollision = false;
-		for (int i = 0; i < horizontal.size(); i++)
-		{
-			enum type { Wall = 1 };
-			switch (horizontal.at(i))
-			{
-			case Wall:
-				wallCollision = true;
-			}
-		}
-		if (wallCollision)
-		{
-			if (other->getName() == "Bubble")
-				other->distanceLimitPassed();
-			else if (other->isFriendly())
-				other->velocityToNextGridLine(true);
-			else
-				//Monster behavior.
-				other->reverseDirectionHorizontal();
-		}
-
-		for (int i = 0; i < vertical.size(); i++)
-		{
-			enum type { Floor = 2, MonsterFloor, EdgeFloor };
-			switch (vertical.at(i))
-			{
-			case Floor:
-			case MonsterFloor:
-			case EdgeFloor:
-				verticalCollision = true;
-			}
-		}
-
-		//Switch the position on the screen.
-		if (!verticalCollision)
+		std::vector<bool> collisionOccurances = other->levelPathing(horizontal, vertical);
+		
+		//Switch the position on the screen for wrap around effect.
+		if (!collisionOccurances.at(1))
 		{
 			if (center.y - height / 2 > rectangle.getGlobalBounds().top + rectangle.getLocalBounds().height)
 				other->changePositionVertical(-1 * rectangle.getLocalBounds().height - height);
 			else if (center.y + height / 2 < rectangle.getGlobalBounds().top)
 				other->changePositionVertical(rectangle.getLocalBounds().height);
 		}
-		else
-		{
-			if (other->isFriendly())
-			{
-				if (other->getVelocity().y > 0)
-				{
-					other->velocityToNextGridLine(false);
-				}
-			}
-			else
-			{
-				other->reverseDirectionVertical();
-			}
-		}
-
 	}
 }
 

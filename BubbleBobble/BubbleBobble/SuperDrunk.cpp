@@ -4,7 +4,7 @@
 
 SuperDrunk::SuperDrunk()
 {
-	name = "SuperDrunk";
+	name = "Monster SuperDrunk";
 	window = nullptr;
 	gameData = nullptr;
 }
@@ -12,7 +12,7 @@ SuperDrunk::SuperDrunk()
 
 SuperDrunk::SuperDrunk(sf::RenderWindow *win, GameData *data)
 {
-	name = "SuperDrunk";
+	name = "Monster SuperDrunk";
 	window = win;
 	gameData = data;
 	setTexture("../textures/Characters/superDrunk.png");

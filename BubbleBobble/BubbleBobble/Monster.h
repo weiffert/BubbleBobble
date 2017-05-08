@@ -14,16 +14,9 @@ public:
 	void levelStart();
 	void levelPlay();
 	void distanceLimitPassed();
-	//bool getUpMovement();
-	//bool getLeftMovement();
 
 protected:
-	//virtual void path();
 	bool noLevelCollision;
-	//bool upMovement;
-	//bool leftMovement;
-	bool contained;
-
 	GameObject *bubbleContainer;
 };
 

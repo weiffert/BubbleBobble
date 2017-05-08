@@ -4,7 +4,7 @@
 
 Monsta::Monsta()
 {
-	name = "Monsta";
+	name = "Monster Monsta";
 	window = nullptr;
 	gameData = nullptr;
 }
@@ -12,7 +12,7 @@ Monsta::Monsta()
 
 Monsta::Monsta(sf::RenderWindow *win, GameData *data)
 {
-	name = "Monsta";
+	name = "Monster Monsta";
 	window = win;
 	gameData = data;
 	setTexture("../textures/Characters/monsta.png");

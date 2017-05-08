@@ -37,7 +37,7 @@ void Pickup::collideWith()
 void Pickup::collided(GameObject *other)
 {
 	std::string otherName = other->getName();
-	if (otherName.find("Player"))
+	if (otherName.find("Player") != std::string::npos)
 		death();
 }
 

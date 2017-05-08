@@ -4,7 +4,7 @@
 
 Banebou::Banebou()
 {
-	name = "Banebou";
+	name = "Monster Banebou";
 	window = nullptr;
 	gameData = nullptr;
 }
@@ -12,7 +12,7 @@ Banebou::Banebou()
 
 Banebou::Banebou(sf::RenderWindow *win, GameData *data)
 {
-	name = "Banebou";
+	name = "Monster Banebou";
 	window = win;
 	gameData = data;
 	setTexture("../textures/Characters/banebou.png");

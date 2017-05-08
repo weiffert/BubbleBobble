@@ -14,7 +14,6 @@ Monster::Monster()
 	rectangle.setPosition(500, 100);
 	noLevelCollision = true;
 	friendly = false;
-	contained = false;
 	direction = -1;//move towards negative x
 	bubbleContainer = nullptr;
 }
@@ -30,7 +29,6 @@ Monster::Monster(sf::RenderWindow *win, GameData *data)
 	rectangle.setPosition(500, 100);
 	noLevelCollision = true;
 	friendly = false;
-	contained = false;
 	direction = -1;//move towards negative x
 	bubbleContainer = nullptr;
 }
@@ -44,26 +42,29 @@ Monster::~Monster()
 
 void Monster::collideWith()
 {
-	std::vector<GameObject*> data;
-	//level
-	data = gameData->getList(0);
-	data.at(0)->collision(this);
-	//projectile
-	data = gameData->getList(4);
-	for (int i = 0; i < data.size(); i++)
-		if (data.at(i)->isFriendly())
-			collision(data.at(i));
+	if (bubbleContainer == nullptr)
+	{
+		std::vector<GameObject*> data;
+		//level
+		data = gameData->getList(0);
+		data.at(0)->collision(this);
+		//projectile
+		data = gameData->getList(4);
+		for (int i = 0; i < data.size(); i++)
+			if (data.at(i)->isFriendly())
+				collision(data.at(i));
+	}
 }
 
 
 void Monster::collided(GameObject *other)
 {
-	std::string otherName = other->getName();
 	if (other->isFriendly())
 	{
-		death();
-		if (otherName.find("Bubble"))
+		if (other->getName().find("Bubble") != std::string::npos)
 			captured(other);
+		else
+			death();
 	}
 }
 
@@ -72,8 +73,10 @@ void Monster::captured(GameObject *other)
 {
 	//change animation and behavior.
 	bubbleContainer = other;
+	setVelocity(0, 0);
 	//Sets the rectangle to be transparent.
-	rectangle.setFillColor(sf::Color(0, 0, 0, 0));
+	//rectangle.setFillColor(sf::Color(0, 0, 0, 0));
+	rectangle.setFillColor(sf::Color(255, 0, 255));
 }
 
 
@@ -87,19 +90,19 @@ void Monster::levelPlay()
 {
 	if (!noLevelCollision)
 	{
-		//any change.
-		//check for collision.
-		collideWith();
-		//move.
-		rectangle.move(velocity);
+		if (bubbleContainer == nullptr)
+		{
+			//any change.
+			//check for collision.
+			collideWith();
+			//move.
+			rectangle.move(velocity);
+		}
 	}
 	else
 	{
-		if (bubbleContainer == nullptr)
-		{
 			rectangle.move(velocity);
 			distance();
-		}
 	}
 }
 
@@ -109,8 +112,7 @@ void Monster::death()
 	GameObject *temp = this;
 	gameData->addToKillList(2, temp);
 
-	//pickup creation
-	//something like...
+	//pickup creation. Something like this.
 	temp = new Pickup(window, gameData);
 	gameData->add(3, temp);
 }
@@ -124,7 +126,7 @@ void Monster::distanceLimitPassed()
 
 
 /*
-void Monster::path()
+void Monster::levelPathing()
 {
 	if (gameData->getList(1).size() > 0)
 	{

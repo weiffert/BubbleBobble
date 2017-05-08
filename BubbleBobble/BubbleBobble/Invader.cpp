@@ -4,7 +4,7 @@
 
 Invader::Invader()
 {
-	name = "Invader";
+	name = "Monster Invader";
 	window = nullptr;
 	gameData = nullptr;
 }
@@ -12,7 +12,7 @@ Invader::Invader()
 
 Invader::Invader(sf::RenderWindow *win, GameData *data)
 {
-	name = "Invader";
+	name = "Monster Invader";
 	window = win;
 	gameData = data;
 	setTexture("../texture/Character/invader.png");

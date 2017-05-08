@@ -1,13 +1,91 @@
-﻿Build started 5/4/2017 3:04:20 PM.
-     1>Project "C:\Users\18mac03\Desktop\bubble bobble\BubbleBobble\BubbleBobble\BubbleBobble\BubbleBobble.vcxproj" on node 2 (Build target(s)).
+﻿Build started 5/8/2017 3:52:34 PM.
+     1>Project "C:\Users\17wbe01\Documents\GitHub\BubbleBobble\BubbleBobble\BubbleBobble\BubbleBobble.vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /IC:\SFML\include /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D SFML_STATIC /D WIN32 /D _DEBUG /D _CONSOLE /D _LIB /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Yu"stdafx.h" /Fp"Debug\BubbleBobble.pch" /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt Bubble.cpp
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /IC:\SFML\include /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D SFML_STATIC /D WIN32 /D _DEBUG /D _CONSOLE /D _LIB /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Yu"stdafx.h" /Fp"Debug\BubbleBobble.pch" /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt Banebou.cpp BaseState.cpp Bubble.cpp BubbleBobble.cpp Drunk.cpp Game.cpp GameData.cpp GameObject.cpp GameState.cpp Hidegons.cpp Invader.cpp Level.cpp MenuState.cpp Mighta.cpp Monsta.cpp Monster.cpp Pickup.cpp Player.cpp PointText.cpp Projectile.cpp Pulpul.cpp Skel_Monsta.cpp SplashScreenState.cpp StateManager.cpp SuperDrunk.cpp Zenchan.cpp
+         Zenchan.cpp
+         SuperDrunk.cpp
+         StateManager.cpp
+         SplashScreenState.cpp
+         Skel_Monsta.cpp
+         Pulpul.cpp
+         Projectile.cpp
+         PointText.cpp
+     1>c:\users\17wbe01\documents\github\bubblebobble\bubblebobble\bubblebobble\pointtext.cpp(42): warning C4244: 'argument' : conversion from 'const int' to 'float', possible loss of data
+         Player.cpp
+     1>c:\users\17wbe01\documents\github\bubblebobble\bubblebobble\bubblebobble\player.cpp(34): warning C4244: 'argument' : conversion from 'unsigned int' to 'float', possible loss of data
+     1>c:\users\17wbe01\documents\github\bubblebobble\bubblebobble\bubblebobble\player.cpp(64): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\17wbe01\documents\github\bubblebobble\bubblebobble\bubblebobble\player.cpp(68): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\17wbe01\documents\github\bubblebobble\bubblebobble\bubblebobble\player.cpp(72): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\17wbe01\documents\github\bubblebobble\bubblebobble\bubblebobble\player.cpp(112): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\17wbe01\documents\github\bubblebobble\bubblebobble\bubblebobble\player.cpp(123): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\17wbe01\documents\github\bubblebobble\bubblebobble\bubblebobble\player.cpp(160): warning C4244: '=' : conversion from 'int' to 'float', possible loss of data
+     1>c:\users\17wbe01\documents\github\bubblebobble\bubblebobble\bubblebobble\player.cpp(162): warning C4244: '=' : conversion from 'const int' to 'float', possible loss of data
+     1>c:\users\17wbe01\documents\github\bubblebobble\bubblebobble\bubblebobble\player.cpp(164): warning C4244: '=' : conversion from 'const int' to 'float', possible loss of data
+     1>c:\users\17wbe01\documents\github\bubblebobble\bubblebobble\bubblebobble\player.cpp(169): warning C4244: 'initializing' : conversion from 'float' to 'int', possible loss of data
+     1>c:\users\17wbe01\documents\github\bubblebobble\bubblebobble\bubblebobble\player.cpp(170): warning C4244: 'initializing' : conversion from 'float' to 'int', possible loss of data
+     1>c:\users\17wbe01\documents\github\bubblebobble\bubblebobble\bubblebobble\player.cpp(173): warning C4244: '=' : conversion from 'const int' to 'float', possible loss of data
+     1>c:\users\17wbe01\documents\github\bubblebobble\bubblebobble\bubblebobble\player.cpp(177): warning C4244: '=' : conversion from 'const int' to 'float', possible loss of data
+     1>c:\users\17wbe01\documents\github\bubblebobble\bubblebobble\bubblebobble\player.cpp(180): warning C4244: '=' : conversion from 'const int' to 'float', possible loss of data
+     1>c:\users\17wbe01\documents\github\bubblebobble\bubblebobble\bubblebobble\player.cpp(184): warning C4244: '=' : conversion from 'const int' to 'float', possible loss of data
+         Pickup.cpp
+         Monster.cpp
+     1>c:\users\17wbe01\documents\github\bubblebobble\bubblebobble\bubblebobble\monster.cpp(53): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\17wbe01\documents\github\bubblebobble\bubblebobble\bubblebobble\monster.cpp(85): warning C4244: 'argument' : conversion from 'const int' to 'float', possible loss of data
+     1>c:\users\17wbe01\documents\github\bubblebobble\bubblebobble\bubblebobble\monster.cpp(123): warning C4244: '=' : conversion from 'const int' to 'float', possible loss of data
+     1>c:\users\17wbe01\documents\github\bubblebobble\bubblebobble\bubblebobble\monster.cpp(124): warning C4244: '=' : conversion from 'const int' to 'float', possible loss of data
+         Monsta.cpp
+         Mighta.cpp
+         MenuState.cpp
+         Level.cpp
+     1>c:\users\17wbe01\documents\github\bubblebobble\bubblebobble\bubblebobble\level.cpp(80): warning C4244: 'argument' : conversion from 'unsigned int' to 'float', possible loss of data
+     1>c:\users\17wbe01\documents\github\bubblebobble\bubblebobble\bubblebobble\level.cpp(85): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\17wbe01\documents\github\bubblebobble\bubblebobble\bubblebobble\level.cpp(131): warning C4244: 'argument' : conversion from 'const int' to 'float', possible loss of data
+     1>c:\users\17wbe01\documents\github\bubblebobble\bubblebobble\bubblebobble\level.cpp(132): warning C4244: 'argument' : conversion from 'unsigned int' to 'float', possible loss of data
+     1>c:\users\17wbe01\documents\github\bubblebobble\bubblebobble\bubblebobble\level.cpp(143): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\17wbe01\documents\github\bubblebobble\bubblebobble\bubblebobble\level.cpp(188): warning C4244: 'argument' : conversion from 'const int' to 'float', possible loss of data
+     1>c:\users\17wbe01\documents\github\bubblebobble\bubblebobble\bubblebobble\level.cpp(234): warning C4244: '=' : conversion from 'float' to 'int', possible loss of data
+     1>c:\users\17wbe01\documents\github\bubblebobble\bubblebobble\bubblebobble\level.cpp(235): warning C4244: '=' : conversion from 'float' to 'int', possible loss of data
+         Invader.cpp
+         Hidegons.cpp
+         GameState.cpp
+     1>c:\users\17wbe01\documents\github\bubblebobble\bubblebobble\bubblebobble\gamestate.cpp(82): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\17wbe01\documents\github\bubblebobble\bubblebobble\bubblebobble\gamestate.cpp(109): warning C4018: '>=' : signed/unsigned mismatch
+     1>c:\users\17wbe01\documents\github\bubblebobble\bubblebobble\bubblebobble\gamestate.cpp(140): warning C4018: '>=' : signed/unsigned mismatch
+     1>c:\users\17wbe01\documents\github\bubblebobble\bubblebobble\bubblebobble\gamestate.cpp(190): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\17wbe01\documents\github\bubblebobble\bubblebobble\bubblebobble\gamestate.cpp(201): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\17wbe01\documents\github\bubblebobble\bubblebobble\bubblebobble\gamestate.cpp(203): warning C4018: '<' : signed/unsigned mismatch
+         GameObject.cpp
+     1>c:\users\17wbe01\documents\github\bubblebobble\bubblebobble\bubblebobble\gameobject.cpp(243): warning C4244: 'argument' : conversion from 'const int' to 'float', possible loss of data
+     1>c:\users\17wbe01\documents\github\bubblebobble\bubblebobble\bubblebobble\gameobject.cpp(252): warning C4244: 'argument' : conversion from 'const int' to 'float', possible loss of data
+     1>c:\users\17wbe01\documents\github\bubblebobble\bubblebobble\bubblebobble\gameobject.cpp(292): warning C4244: '=' : conversion from 'const int' to 'float', possible loss of data
+     1>c:\users\17wbe01\documents\github\bubblebobble\bubblebobble\bubblebobble\gameobject.cpp(294): warning C4244: '=' : conversion from 'const int' to 'float', possible loss of data
+     1>c:\users\17wbe01\documents\github\bubblebobble\bubblebobble\bubblebobble\gameobject.cpp(329): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\17wbe01\documents\github\bubblebobble\bubblebobble\bubblebobble\gameobject.cpp(338): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\17wbe01\documents\github\bubblebobble\bubblebobble\bubblebobble\gameobject.cpp(470): warning C4244: '=' : conversion from 'unsigned int' to 'float', possible loss of data
+     1>c:\users\17wbe01\documents\github\bubblebobble\bubblebobble\bubblebobble\gameobject.cpp(471): warning C4244: '=' : conversion from 'unsigned int' to 'float', possible loss of data
+         GameData.cpp
+     1>c:\users\17wbe01\documents\github\bubblebobble\bubblebobble\bubblebobble\gamedata.cpp(20): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\17wbe01\documents\github\bubblebobble\bubblebobble\bubblebobble\gamedata.cpp(34): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\17wbe01\documents\github\bubblebobble\bubblebobble\bubblebobble\gamedata.cpp(105): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\17wbe01\documents\github\bubblebobble\bubblebobble\bubblebobble\gamedata.cpp(160): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\17wbe01\documents\github\bubblebobble\bubblebobble\bubblebobble\gamedata.cpp(162): warning C4018: '<' : signed/unsigned mismatch
+         Generating Code...
+         Compiling...
+         Game.cpp
+         Drunk.cpp
+         BubbleBobble.cpp
          Bubble.cpp
-     1>c:\users\18mac03\desktop\bubble bobble\bubblebobble\bubblebobble\bubblebobble\bubble.cpp(16): warning C4244: 'argument' : conversion from 'double' to 'float', possible loss of data
-     1>c:\users\18mac03\desktop\bubble bobble\bubblebobble\bubblebobble\bubblebobble\bubble.cpp(17): warning C4244: 'argument' : conversion from 'unsigned int' to 'float', possible loss of data
-     1>c:\users\18mac03\desktop\bubble bobble\bubblebobble\bubblebobble\bubblebobble\bubble.cpp(31): warning C4244: 'argument' : conversion from 'double' to 'float', possible loss of data
+     1>c:\users\17wbe01\documents\github\bubblebobble\bubblebobble\bubblebobble\bubble.cpp(17): warning C4244: 'argument' : conversion from 'double' to 'float', possible loss of data
+     1>c:\users\17wbe01\documents\github\bubblebobble\bubblebobble\bubblebobble\bubble.cpp(18): warning C4244: 'argument' : conversion from 'unsigned int' to 'float', possible loss of data
+     1>c:\users\17wbe01\documents\github\bubblebobble\bubblebobble\bubblebobble\bubble.cpp(31): warning C4244: 'argument' : conversion from 'unsigned int' to 'float', possible loss of data
+     1>c:\users\17wbe01\documents\github\bubblebobble\bubblebobble\bubblebobble\bubble.cpp(32): warning C4244: 'argument' : conversion from 'double' to 'float', possible loss of data
+     1>c:\users\17wbe01\documents\github\bubblebobble\bubblebobble\bubblebobble\bubble.cpp(48): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\17wbe01\documents\github\bubblebobble\bubblebobble\bubblebobble\bubble.cpp(57): warning C4018: '<' : signed/unsigned mismatch
+         BaseState.cpp
+         Banebou.cpp
+         Generating Code...
        Link:
-         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\18mac03\Desktop\bubble bobble\BubbleBobble\BubbleBobble\Debug\BubbleBobble.exe" /INCREMENTAL /NOLOGO /LIBPATH:C:\SFML\lib "sfml-graphics-s-d.lib" "sfml-window-s-d.lib" "sfml-system-s-d.lib" opengl32.lib freetype.lib jpeg.lib winmm.lib gdi32.lib "sfml-audio-s-d.lib" openal32.lib flac.lib vorbisenc.lib vorbisfile.lib vorbis.lib ogg.lib "sfml-network-s-d.lib" ws2_32.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\18mac03\Desktop\bubble bobble\BubbleBobble\BubbleBobble\Debug\BubbleBobble.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\18mac03\Desktop\bubble bobble\BubbleBobble\BubbleBobble\Debug\BubbleBobble.lib" /MACHINE:X86 Debug\Animation.obj
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\17wbe01\Documents\GitHub\BubbleBobble\BubbleBobble\Debug\BubbleBobble.exe" /INCREMENTAL /NOLOGO /LIBPATH:C:\SFML\lib "sfml-graphics-s-d.lib" "sfml-window-s-d.lib" "sfml-system-s-d.lib" opengl32.lib freetype.lib jpeg.lib winmm.lib gdi32.lib "sfml-audio-s-d.lib" openal32.lib flac.lib vorbisenc.lib vorbisfile.lib vorbis.lib ogg.lib "sfml-network-s-d.lib" ws2_32.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\17wbe01\Documents\GitHub\BubbleBobble\BubbleBobble\Debug\BubbleBobble.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\17wbe01\Documents\GitHub\BubbleBobble\BubbleBobble\Debug\BubbleBobble.lib" /MACHINE:X86 Debug\Animation.obj
          Debug\Banebou.obj
          Debug\BaseState.obj
          Debug\Bubble.obj
@@ -36,9 +114,9 @@
          Debug\stdafx.obj
          Debug\SuperDrunk.obj
          Debug\Zenchan.obj
-         BubbleBobble.vcxproj -> C:\Users\18mac03\Desktop\bubble bobble\BubbleBobble\BubbleBobble\Debug\BubbleBobble.exe
-     1>Done Building Project "C:\Users\18mac03\Desktop\bubble bobble\BubbleBobble\BubbleBobble\BubbleBobble\BubbleBobble.vcxproj" (Build target(s)).
+         BubbleBobble.vcxproj -> C:\Users\17wbe01\Documents\GitHub\BubbleBobble\BubbleBobble\Debug\BubbleBobble.exe
+     1>Done Building Project "C:\Users\17wbe01\Documents\GitHub\BubbleBobble\BubbleBobble\BubbleBobble\BubbleBobble.vcxproj" (Build target(s)).
 
 Build succeeded.
 
-Time Elapsed 00:00:01.04
+Time Elapsed 00:00:13.46

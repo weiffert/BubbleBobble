@@ -10,6 +10,7 @@ public:
 	void update();
 	void collideWith();
 	void collided(GameObject *);
+	std::vector<bool> levelPathing(std::vector<int>, std::vector<int>);
 	void pickedUp(GameObject *);
 	void levelEnd();
 	void levelStart();

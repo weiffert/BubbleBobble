@@ -5,7 +5,7 @@
 
 Zenchan::Zenchan()
 {
-	name = "Zenchan";
+	name = "Monster Zenchan";
 	window = nullptr;
 	gameData = nullptr;
 	setTexture("../textures/Characters/Zenchan.png");
@@ -14,7 +14,10 @@ Zenchan::Zenchan()
 
 Zenchan::Zenchan(sf::RenderWindow *win, GameData *data)
 {
-	name = "Zenchan";
+	name = "Monster Zenchan";
+
+	std::cout << "Name: " << name.substr(8);
+
 	window = win;
 	gameData = data;
 	setTexture("../textures/Characters/Zenchan.png");

@@ -10,9 +10,9 @@ public:
 	Bubble(sf::RenderWindow *, GameData *, Player *);
 	~Bubble();
 	void distanceLimitPassed();
-	void timeLimitPassed();
 	void collided(GameObject *);
-	void popBubble();
+	void pop();
+	std::vector<bool> levelPathing(std::vector<int>, std::vector<int>);
 private:
 	GameObject * monsterContained;
 };

@@ -68,6 +68,7 @@ public:
 	void changePositionVertical(float);
 	void setPosition(float, float);
 	int getDirection();
+	virtual std::vector<bool> levelPathing(std::vector<int>, std::vector<int>);
 
 	//Testing if off screen.
 	bool offTop();
@@ -88,7 +89,7 @@ public:
 
 	void setVelocity(sf::Vector2f);
 	void setVelocity(float, float);
-	void velocityToNextGridLine(bool);
+	void moveToNextGridLine(bool);
 	sf::Vector2f getVelocity();
 
 	void setTexture(sf::Texture);

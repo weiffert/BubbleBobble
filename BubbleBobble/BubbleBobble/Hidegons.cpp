@@ -4,7 +4,7 @@
 
 Hidegons::Hidegons()
 {
-	name = "Hidegons";
+	name = "Monster Hidegons";
 	window = nullptr;
 	gameData = nullptr;
 }
@@ -12,7 +12,7 @@ Hidegons::Hidegons()
 
 Hidegons::Hidegons(sf::RenderWindow *win, GameData *data)
 {
-	name = "Hidegons";
+	name = "Monster Hidegons";
 	window = win;
 	gameData = data;
 	setTexture("../textures/Characters/hidegon.png");

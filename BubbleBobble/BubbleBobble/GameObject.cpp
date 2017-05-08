@@ -319,6 +319,35 @@ int GameObject::getDirection()
 }
 
 
+//Perform the pathing function. Passed in are the values of the level collision.
+std::vector<bool> GameObject::levelPathing(std::vector<int> horizontal, std::vector<int> vertical)
+{
+	std::vector<bool> collisionOccurances;
+	collisionOccurances.push_back(false);
+	collisionOccurances.push_back(false);
+
+	for (int i = 0; i < horizontal.size(); i++)
+	{
+		if (horizontal.at(i) == 1)
+		{
+			reverseDirectionHorizontal();
+			collisionOccurances.at(0) = true;
+		}
+	}
+
+	for (int i = 0; i < vertical.size(); i++)
+	{
+		if (vertical.at(i) != 0)
+		{
+			reverseDirectionVertical();
+			collisionOccurances.at(1) = true;
+		}
+	}
+
+	return collisionOccurances;
+}
+
+
 //Testing if off screen.
 bool GameObject::offTop()
 {
@@ -379,7 +408,7 @@ void GameObject::setVelocity(float x, float y)
 	velocity.y = y;
 }
 
-void GameObject::velocityToNextGridLine(bool horizontal)
+void GameObject::moveToNextGridLine(bool horizontal)
 {
 	sf::Vector2f newPosition, position;
 	position.x = rectangle.getGlobalBounds().left;
