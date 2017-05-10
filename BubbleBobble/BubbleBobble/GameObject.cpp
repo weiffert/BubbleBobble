@@ -427,7 +427,7 @@ void GameObject::moveToNextGridLine(bool horizontal)
 	}
 	else
 	{
-		newPosition.y = std::floor((position.y + velocity.y) / BITMAP_CONVERTER - 1) * BITMAP_CONVERTER + BITMAP_CONVERTER - 1;
+		newPosition.y = std::floor((position.y + velocity.y) / BITMAP_CONVERTER) * BITMAP_CONVERTER - 1;
 		verticalAcceleration = window->getSize().y;
 		velocity.y = 0;
 	}

@@ -61,9 +61,7 @@ void Monster::collided(GameObject *other)
 {
 	if (other->isFriendly())
 	{
-		if (other->getName().find("Bubble") != std::string::npos)
-			captured(other);
-		else
+		if (other->getName().find("Bubble") == std::string::npos)
 			death();
 	}
 }
@@ -77,6 +75,13 @@ void Monster::captured(GameObject *other)
 	//Sets the rectangle to be transparent.
 	//rectangle.setFillColor(sf::Color(0, 0, 0, 0));
 	rectangle.setFillColor(sf::Color(255, 0, 255));
+}
+
+
+void Monster::release()
+{
+	bubbleContainer = nullptr;
+	setVelocity(1 * SCREEN_MULTIPLIER, -1 * SCREEN_MULTIPLIER);
 }
 
 
@@ -120,8 +125,7 @@ void Monster::death()
 void Monster::distanceLimitPassed()
 {
 	noLevelCollision = false;
-	velocity.y = 1 * SCREEN_MULTIPLIER;
-	velocity.x = 1 * SCREEN_MULTIPLIER;
+	setVelocity(1 * SCREEN_MULTIPLIER, -1 * SCREEN_MULTIPLIER);
 }
 
 
