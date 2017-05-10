@@ -80,7 +80,6 @@ void GameObject::update()
 		levelTransition();
 	time();
 	distance();
-	collideWith();
 }
 
 

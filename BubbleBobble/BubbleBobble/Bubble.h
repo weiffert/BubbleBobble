@@ -9,6 +9,7 @@ class Bubble : public Projectile
 public:
 	Bubble(sf::RenderWindow *, GameData *, Player *);
 	~Bubble();
+	void levelPlay();
 	void distanceLimitPassed();
 	void collided(GameObject *);
 	void pop();

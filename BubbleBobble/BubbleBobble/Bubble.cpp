@@ -14,7 +14,7 @@ Bubble::Bubble(sf::RenderWindow * win, GameData * dat, Player * player) : Projec
 	setTexture("../textures/Projectile/bubble.png");
 	sf::Vector2f playerPos = player->getRectangle().getPosition();
 	rectangle.setPosition(playerPos.x + player->getDirection() * player->getRectangle().getSize().x, playerPos.y);
-	setVelocity(player->getDirection() * SCREEN_MULTIPLIER * 1.25, 0);
+	setVelocity(player->getDirection() * SCREEN_MULTIPLIER * 2, 0);
 	startPedometer(window->getSize().x / 4);
 }
 
@@ -26,7 +26,7 @@ Bubble::~Bubble()
 
 void Bubble::distanceLimitPassed()
 {
-	if (getVelocity().x != 0)
+	if (velocity.x != 0)
 	{
 		startPedometer(window->getSize().y / 2);
 		setVelocity(0, -1.25 * SCREEN_MULTIPLIER);
@@ -42,6 +42,15 @@ void Bubble::distanceLimitPassed()
 		}
 		pop();
 	}
+}
+
+
+void Bubble::levelPlay()
+{
+	collideWith();
+	rectangle.move(velocity);
+	if (monsterContained != nullptr)
+		monsterContained->setPosition(rectangle.getPosition().x, rectangle.getPosition().y);
 }
 
 

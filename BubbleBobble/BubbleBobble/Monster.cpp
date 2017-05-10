@@ -59,11 +59,10 @@ void Monster::collideWith()
 
 void Monster::collided(GameObject *other)
 {
-	if (other->isFriendly())
-	{
-		if (other->getName().find("Bubble") == std::string::npos)
-			death();
-	}
+	if (bubbleContainer != nullptr)
+		if (other->isFriendly())
+			if (other->getName().find("Bubble") == std::string::npos)
+				death();
 }
 
 
@@ -71,7 +70,6 @@ void Monster::captured(GameObject *other)
 {
 	//change animation and behavior.
 	bubbleContainer = other;
-	setVelocity(0, 0);
 	//Sets the rectangle to be transparent.
 	//rectangle.setFillColor(sf::Color(0, 0, 0, 0));
 	rectangle.setFillColor(sf::Color(255, 0, 255));
@@ -81,7 +79,7 @@ void Monster::captured(GameObject *other)
 void Monster::release()
 {
 	bubbleContainer = nullptr;
-	setVelocity(1 * SCREEN_MULTIPLIER, -1 * SCREEN_MULTIPLIER);
+	rectangle.setFillColor(sf::Color::Transparent);
 }
 
 
