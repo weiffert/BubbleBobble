@@ -114,7 +114,6 @@ std::vector<bool> Player::levelPathing(std::vector<int> horizontal, std::vector<
 		if (horizontal.at(i) == 1)
 		{
 			collisionOccurances.at(0) = true;
-			moveToNextGridLine(true);
 		}
 	}
 
@@ -126,10 +125,14 @@ std::vector<bool> Player::levelPathing(std::vector<int> horizontal, std::vector<
 			if (vertical.at(i) == 2 || vertical.at(i) == 3 || vertical.at(i) == 4)
 			{
 				collisionOccurances.at(1) = true;
-				moveToNextGridLine(false);
 			}
 		}
 	}
+
+	if (collisionOccurances.at(0))
+		moveToNextGridLine(true);
+	if (collisionOccurances.at(1))
+		moveToNextGridLine(false);
 
 	return collisionOccurances;
 }

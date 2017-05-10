@@ -33,6 +33,13 @@ void Bubble::distanceLimitPassed()
 	}
 	else
 	{
+		if (monsterContained != nullptr)
+		{
+			Monster *monster = dynamic_cast<Monster *>(monsterContained);
+			monsterContained = nullptr;
+			monster->release();
+			monster = nullptr;
+		}
 		pop();
 	}
 }
@@ -84,6 +91,7 @@ void Bubble::collided(GameObject * other)
 		monsterContained = other;
 		Monster *monster = dynamic_cast<Monster *>(other);
 		monster->captured(this);
+		monster = nullptr;
 	}
 	else if (other->getName().find("Player") != std::string::npos)
 	{
@@ -95,7 +103,10 @@ void Bubble::collided(GameObject * other)
 void Bubble::pop()
 {
 	if (monsterContained != nullptr)
+	{
 		monsterContained->death();
+		monsterContained = nullptr;
+	}
 
 	//perform popping sequence.
 	

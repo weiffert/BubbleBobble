@@ -10,6 +10,7 @@ public:
 	void collideWith();
 	void collided(GameObject *);
 	void captured(GameObject *);
+	void release();
 	void death();
 	void levelStart();
 	void levelPlay();
